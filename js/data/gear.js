@@ -5694,8 +5694,8 @@ var gear = {
       },
       {
          "name": "Polished Ironwood Crossbow",
-         "sta": 6,
-         "ap": 26,
+         "sta": 5,
+         "ap": 24,
          "resist": {
              "nature": 7
          },
