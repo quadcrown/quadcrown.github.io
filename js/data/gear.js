@@ -1608,7 +1608,7 @@ var gear = {
          "str": 20,
          "sta": 23,
          "ac": 422,
-         "source": "Crafted",
+         "source": "Crafting",
          "phase": 7,
          "id": 1913911112
       },
