@@ -5690,7 +5690,7 @@ var gear = {
          "name": "Time Frozen Bow",
          "hit": 1,
          "haste": 1,
-         "source": "Caverns of Time",
+         "source": "Dungeon",
          "phase": 7,
          "id": 2170016 // incorrect id
       },
