@@ -817,7 +817,7 @@ var gear = {
          "name": "Dreamsteel Bracers",
          "str": 33,
          "agi": 12,
-	 "ap": 12,
+         "ap": 12,
          "haste": 1,
          "source": "Crafting",
          "ac": 638,
@@ -1601,6 +1601,17 @@ var gear = {
       }
    ],
    "chest": [
+      {
+         "name": "Towerforge Breastplate",
+         "crit": 2,
+         "haste": 1,
+         "str": 20,
+         "sta": 23,
+         "ac": 422,
+         "source": "Crafted",
+         "phase": 7,
+         "id": 1913911112
+      },
       {
          "name": "Breastplate of Earthen Might",
          "crit": 2,
