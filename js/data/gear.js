@@ -1,6 +1,17 @@
 var gear = {
    "head": [
       {
+         "name": "Towerforge Crown",
+         "source": "Crafting",
+         "ac": 343,
+         "sta": 27,
+         "str": 25,
+         "crit": 1,
+         "haste": 2,
+         "phase": 7,
+         "id": 1913911113
+      },
+      {
          "name": "Dark Iron Helm",
          "source": "Crafting",
          "ac": 758,
@@ -9040,6 +9051,18 @@ var gear = {
       }
    ],
    "twohand": [
+      {
+         "name": "Towerforge Demolisher *Unknown ppm",
+         "mindmg": 173,
+         "maxdmg": 291,
+         "speed": 3.7,
+         "id": 1913911114,
+         "source": "Crafting",
+         "phase": 7,
+         "type": "Mace",
+         "ppm": 1,
+         "procspell": "TowerforgeWep"
+      },
       {
          "name": "Blade of the Blademaster",
          "str": 17,
