@@ -9056,7 +9056,7 @@ var gear = {
          "mindmg": 173,
          "maxdmg": 291,
          "speed": 3.7,
-         "id": 1913911114,
+         "id": 19139111114,
          "source": "Crafting",
          "phase": 7,
          "type": "Mace",
@@ -10907,10 +10907,8 @@ var sets = [
       name: 'Towerforge Battlegear',
       items: [1913911111,1913911112,1913911113,19139111114],
       bonus: [
-         {
-           count: 2, stats: { skill: 6, type: "Mace" },
-           count: 4, stats: { procspell: "TowerForgeSetBonus", procchance: 2 }
-         }
+         { count: 2, stats: { skill_0: 6 } },
+         { count: 4, stats: { procspell: "TowerForgeSetBonus", procchance: 2 } }
       ]
    },
    {
