@@ -9,7 +9,7 @@ var gear = {
          "crit": 1,
          "haste": 2,
          "phase": 7,
-         "id": 1913911113
+         "id": 60007
       },
       {
          "name": "Dark Iron Helm",
@@ -825,7 +825,7 @@ var gear = {
    ],
    "shoulder": [
       {
-         "name": "Dreamsteel Bracers",
+         "name": "Dreamsteel Mantle",
          "str": 33,
          "agi": 12,
          "ap": 12,
@@ -833,7 +833,7 @@ var gear = {
          "source": "Crafting",
          "ac": 638,
          "phase": 7,
-         "id": 21170002 // Wrong ID
+         "id": 61364
       },
       {
          "name": "Towerforge Pauldrons",
@@ -844,7 +844,7 @@ var gear = {
          "haste": 1,
          "crit": 1,
          "phase": 7,
-         "id": 1913911111
+         "id": 60009
       },
       {
          "name": "Fireguard Shoulders",
@@ -1254,7 +1254,7 @@ var gear = {
          "ac": 47,
          "source": "Quest",
          "phase": 7,
-         "id": 1170013
+         "id": 61709
       },
       {
          "name": "Wildfire Cape",
@@ -1621,7 +1621,7 @@ var gear = {
          "ac": 422,
          "source": "Crafting",
          "phase": 7,
-         "id": 1913911112
+         "id": 60008
       },
       {
          "name": "Breastplate of Earthen Might",
@@ -1632,7 +1632,7 @@ var gear = {
          "ac": 458,
          "source": "LowerKara",
          "phase": 7,
-         "id": 218141111
+         "id": 61275
       },
       {
          "name": "Volcanic Breastplate",
@@ -2208,17 +2208,7 @@ var gear = {
          "source": "LowerKara",
          "ac": 174,
          "phase": 7,
-         "id": 1171001
-      },
-      {
-         "name": "Dreamhide Bracers",
-         "sta": 5,
-         "str": 18,
-         "agi": 4,
-         "source": "Crafting",
-         "ac": 87,
-         "phase": 7,
-         "id": 1170001
+         "id": 61280
       },
       {
          "name": "Dreamsteel Bracers",
@@ -2228,7 +2218,7 @@ var gear = {
          "source": "Crafting",
          "ac": 318,
          "phase": 7,
-         "id": 1170002
+         "id": 61366
       },
       {
          "name": "Dark Iron Bracer",
@@ -3085,7 +3075,7 @@ var gear = {
          "source": "EmerSanc",
          "ac": 237,
          "phase": 7,
-         "id": 1170006
+         "id": 61273
       },
       {
          "name": "Dreamhide Belt",
@@ -3096,7 +3086,7 @@ var gear = {
          "source": "Crafting",
          "ac": 108,
          "phase": 7,
-         "id": 1170005
+         "id": 61359
       },
       {
          "name": "Molten Belt",
@@ -3570,7 +3560,7 @@ var gear = {
          "source": "Crafting",
          "ac": 228,
          "phase": 7,
-         "id": 1170003
+         "id": 61358
       },
       {
          "name": "Dreamsteel Leggings",
@@ -3581,7 +3571,7 @@ var gear = {
          "source": "Crafting",
          "ac": 648,
          "phase": 7,
-         "id": 1170004
+         "id": 61365
       },
       {
          "name": "Emberweave Leggings",
@@ -4104,7 +4094,7 @@ var gear = {
          "source": "Crafting",
          "ac": 108,
          "phase": 7,
-         "id": 1170008
+         "id": 61367
       },
       {
          "name": "Corehound Boots",
@@ -4545,7 +4535,7 @@ var gear = {
          "arp": 75,
          "source": "Dungeon",
          "phase": 7,
-         "id": 1170011
+         "id": 61406
       },
       {
          "name": "Prismatic Band of Fire Resistance",
@@ -4889,7 +4879,7 @@ var gear = {
          "arp": 75,
          "source": "Dungeon",
          "phase": 7,
-         "id": 1170011
+         "id": 61406
       },
       {
          "name": "Prismatic Band of Fire Resistance",
@@ -5232,7 +5222,7 @@ var gear = {
          "source": "Quest",
          "arp": 100,
          "phase": 7,
-         "id": 1170009
+         "id": 61517
       },
       {
          "name": "Blazing Emblem",
@@ -5467,7 +5457,7 @@ var gear = {
          "source": "Quest",
          "arp": 100,
          "phase": 7,
-         "id": 1170009
+         "id": 61517
       },
       {
          "name": "Blazing Emblem",
@@ -5703,7 +5693,7 @@ var gear = {
          "haste": 1,
          "source": "Dungeon",
          "phase": 7,
-         "id": 2170016 // incorrect id
+         "id": 61569
       },
       {
          "name": "Nature's Call",
@@ -5712,7 +5702,7 @@ var gear = {
          "arp": 50,
          "source": "EmerSanc",
          "phase": 7,
-         "id": 1170015
+         "id": 61525
       },
       {
          "name": "Polished Ironwood Crossbow",
@@ -6064,7 +6054,7 @@ var gear = {
          "type": "Axe",
          "source": "EmerSanc",
          "phase": 7,
-         "id": 1170016
+         "id": 61448
       },
       {
          "name": "Crystal Sword of the Blossom",
@@ -6081,7 +6071,7 @@ var gear = {
          "type": "Sword",
          "source": "EmerSanc",
          "phase": 7,
-         "id": 1170014
+         "id": 61523
       },
       {
          "name": "Claw of Senthos",
@@ -6093,7 +6083,7 @@ var gear = {
          "ap": 20,
          "source": "EmerSanc",
          "phase": 7,
-         "id": 1238927894323479,
+         "id": 61740,
          "Mainhand": true
       },
       {
@@ -7755,7 +7745,7 @@ var gear = {
          "type": "Axe",
          "source": "EmerSanc",
          "phase": 7,
-         "id": 1170016
+         "id": 61448
       },
       {
          "name": "Crystal Sword of the Blossom",
@@ -7772,7 +7762,7 @@ var gear = {
          "type": "Sword",
          "source": "EmerSanc",
          "phase": 7,
-         "id": 1170014
+         "id": 61523
       },
       {
          "name": "Stagwood Grasp",
@@ -9056,7 +9046,7 @@ var gear = {
          "mindmg": 173,
          "maxdmg": 291,
          "speed": 3.7,
-         "id": 19139111114,
+         "id": 60010,
          "source": "Crafting",
          "phase": 7,
          "type": "Mace",
@@ -10271,7 +10261,7 @@ var gear = {
 var enchant = {
    "head": [
       {
-         "id": 1170013,
+         "id": 92005,
          "name": "Invocation of Shattering",
          "arp": 75,
          "phase": 7
@@ -10342,14 +10332,14 @@ var enchant = {
          "phase": 4
       },
       {
-         "id": 10000538349,
+         "id": 61438,
          "spellid": true,
          "name": "Sigil of Penetration",
          "arp": 75,
          "phase": 7
       },
       {
-         "id": 1170012,
+         "id": 61437,
          "spellid": true,
          "name": "Sigil of Quickness",
          "haste": 2,
@@ -10482,7 +10472,7 @@ var enchant = {
          "phase": 1
       },
       {
-         "id": 100008349289234,
+         "id": 46087,
          "spellid": true,
          "name": "Major Strength",
          "str": 9,
@@ -10510,13 +10500,13 @@ var enchant = {
    ],
    "waist": [
       {
-         "id": 1000001,
+         "id": 61781,
          "name": "Iron",
          "arp": 25,
          "phase": 7,
       },
       {
-         "id": 1000002,
+         "id": 61782,
          "name": "Mithril",
          "agi": 6,
          "phase": 7,
@@ -10529,7 +10519,7 @@ var enchant = {
    ],
    "legs": [
       {
-         "id": 1170013,
+         "id": 92005,
          "name": "Invocation of Shattering",
          "arp": 75,
          "phase": 7
@@ -10807,9 +10797,9 @@ var enchant = {
 
 var sets = [
    {
-      id: 1170000001,
+      id: 1170000002,
       name: 'Dreamsteel Armor',
-      items: [1170002, 1170004, 1170006, 1170008],
+      items: [61364, 61365, 61366, 61367],
       bonus: [
          { count: 2, stats: { ap: 26} },
          { count: 4, stats: { arp: 100 } },
@@ -10903,9 +10893,9 @@ var sets = [
       ]
    },
    {
-      id: 54511111,
+      id: 1170001,
       name: 'Towerforge Battlegear',
-      items: [1913911111,1913911112,1913911113,19139111114],
+      items: [60007, 60008, 60009, 60010],
       bonus: [
          { count: 2, stats: { skill_0: 6 } },
          { count: 4, stats: { procspell: "TowerForgeSetBonus", procchance: 2 } }
