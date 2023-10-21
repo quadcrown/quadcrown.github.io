@@ -299,7 +299,7 @@ SIM.UI = {
 
             updateStat("hit", await simulateWeight(2, 2));
 
-            updateStat("haste", await simulateWeight(14, 2));
+            updateStat("haste", await simulateWeight(4, 1.01));
         }
 
         simulateAll().then(

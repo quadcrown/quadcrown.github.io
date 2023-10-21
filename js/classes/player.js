@@ -79,6 +79,9 @@ class Player {
             else if (testType == 3) {
                 this.base.str += testItem;
             }
+            else if (testType == 4) {
+                this.base.haste *= testItem;
+            }
         }
         else {
             this.testItem = testItem;
