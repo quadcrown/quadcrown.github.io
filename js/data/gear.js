@@ -1,6 +1,15 @@
 var gear = {
    "head": [
       {
+         "name": "Hateforge Helmet",
+         "source": "Crafting",
+         "ac": 279,
+         "sta":  7,
+         "str": 18,
+         "phase": 7,
+         "id": 60573
+      },
+      {
          "name": "Towerforge Crown",
          "source": "Crafting",
          "ac": 343,
@@ -1613,6 +1622,17 @@ var gear = {
    ],
    "chest": [
       {
+         "name": "Hateforge Cuirass",
+         "source": "Crafting",
+         "ac": 342,
+         "sta":  5,
+         "str": 10,
+         "haste": 1,
+         "crit": 1,
+         "phase": 7,
+         "id": 60574
+      },
+      {
          "name": "Towerforge Breastplate",
          "crit": 2,
          "haste": 1,
@@ -3067,6 +3087,14 @@ var gear = {
    ],
    "waist": [
       {
+         "name": "Hateforge Belt",
+         "source": "Crafting",
+         "ac": 184,
+         "str": 20,
+         "phase": 7,
+         "id": 60576
+      },
+      {
          "name": "Earthbreaker Belt",
          "sta": 15,
          "crit": 1,
@@ -3552,6 +3580,16 @@ var gear = {
       }
    ],
    "legs": [
+      {
+         "name": "Hateforge Leggings",
+         "source": "Crafting",
+         "ac": 281,
+         "sta":  10,
+         "str": 19,
+         "haste": 1,
+         "phase": 7,
+         "id": 60575
+      },
       {
          "name": "Dreamhide Leggings",
          "sta": 9,
@@ -4085,6 +4123,15 @@ var gear = {
       },
    ],
    "feet": [
+      {
+         "name": "Hateforge Cuirass",
+         "source": "Crafting",
+         "ac": 232,
+         "sta":  5,
+         "str": 17,
+         "phase": 7,
+         "id": 60578
+      },
       {
          "name": "Dreamsteel Boots",
          "sta": 4,
@@ -10797,11 +10844,21 @@ var enchant = {
 
 var sets = [
    {
+      id: 1161000001,
+      name: 'Hateforge Armor',
+      items: [60573, 60574, 60575, 60576, 60577, 60578],
+      bonus: [
+         { count: 2, stats: { ap: 20 } },
+         { count: 4, stats: { arp: 100 } },
+         { count: 6, stats: { haste: 2 } },
+      ]
+   },
+   {
       id: 1170000002,
       name: 'Dreamsteel Armor',
       items: [61364, 61365, 61366, 61367],
       bonus: [
-         { count: 2, stats: { ap: 26} },
+         { count: 2, stats: { ap: 26 } },
          { count: 4, stats: { arp: 100 } },
       ]
    },
@@ -10810,7 +10867,7 @@ var sets = [
       name: 'Convergence of the Elements',
       items: [65024, 65025, 65026, 65027],
       bonus: [
-         { count: 3, stats: { hit: 1, crit: 1} },
+         { count: 3, stats: { hit: 1, crit: 1 } },
          { count: 4, stats: { haste: .02, ap: 40 } },
       ]
    },
