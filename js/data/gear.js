@@ -568,6 +568,14 @@ var gear = {
    ],
    "neck": [
       {
+         "name": "Bixxle's Necklace of Mastery",
+         "source": "Quest",
+         "haste": 1,
+         "crit": 1,
+         "phase": 7,
+         "id": 60997
+      },
+      {
          "name": "Drakefire Amulet",
          "source": "Quest",
          "sta": 10,
