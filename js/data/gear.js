@@ -974,7 +974,7 @@ var gear = {
          "sta": 10,
          "str": 15,
          "agi": 7,
-         "arp": 30,
+         "arp": 20,
          "ac": 441,
          "source": "Dungeon",
          "phase": 7,
@@ -5281,7 +5281,7 @@ var gear = {
       {
          "name": "Chimaera's Eye",
          "source": "Quest",
-         "arp": 100,
+         "arp": 50,
          "phase": 7,
          "id": 61517
       },
@@ -9131,7 +9131,7 @@ var gear = {
       },
       {
          "name": "Bone Fracture",
-         "arp": 150,
+         "arp": 50,
          "str": 13,
          "mindmg": 103,
          "maxdmg": 209,
