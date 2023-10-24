@@ -918,8 +918,9 @@ class Hategrips extends Aura {
         this.name = 'Hatefury Haste';
     }
     use() {
-        this.player.timer = 1500;
-        this.player.itemtimer = this.duration * 1000;
+        // commented because stacks with trinkets
+        // this.player.timer = 1500;
+        // this.player.itemtimer = this.duration * 1000;
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
         this.player.updateHaste();
