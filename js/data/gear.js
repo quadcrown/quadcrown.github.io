@@ -2752,7 +2752,7 @@ var gear = {
          "ac": 173,
          "source": "Crafting",
          "phase": 7,
-         "id": 160577,
+         "id": 605771,
       },
       {
          "name": "Skulker's Gloves",
@@ -10854,7 +10854,7 @@ var sets = [
    {
       id: 1161000001,
       name: 'Hateforge Armor',
-      items: [60573, 60574, 60575, 60576, 60577, 60578],
+      items: [60573, 60574, 60575, 60576, 60577, 60578, 605771],
       bonus: [
          { count: 2, stats: { ap: 20 } },
          { count: 4, stats: { arp: 100 } },
