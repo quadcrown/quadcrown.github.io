@@ -10865,7 +10865,7 @@ var sets = [
       bonus: [
          { count: 2, stats: { ap: 20 } },
          { count: 4, stats: { arp: 100 } },
-         { count: 6, stats: { haste: 2 } },
+         { count: 6, stats: { haste: .02 } },
       ]
    },
    {
