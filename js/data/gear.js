@@ -2218,16 +2218,17 @@ var gear = {
          "source": "Crafting",
          "phase": 4,
          "id": 19693
-      },
-      {
-         "name": "Thick Obsidian Breastplate",
-         "str": 38,
-         "sta": 16,
-         "ac": 814,
-         "source": "Crafting",
-         "phase": 5,
-         "id": 22196
       }
+      // No longer a DPS chest:
+      // {
+      //    "name": "Thick Obsidian Breastplate",
+      //    "sta": 38,
+      //    "str": 16,
+      //    "ac": 814,
+      //    "source": "Crafting",
+      //    "phase": 5,
+      //    "id": 22196
+      // }
    ],
    "wrist": [
       {
@@ -2345,7 +2346,7 @@ var gear = {
          "agi": 17,
          "str": 6,
          "sta": 10,
-         "haste": 2,
+         "haste": 1,
          "ac": 88,
          "source": "EmerSanc",
          "phase": 7,
@@ -7784,8 +7785,8 @@ var gear = {
    "offhand": [
       {
          "name": "Anasterian's Legacy",
-         "sta": 16,
-         "agi": 16,
+         "sta": 12,
+         "agi": 12,
          "skill": 4,
          "mindmg": 57,
          "maxdmg": 104,
@@ -8191,8 +8192,8 @@ var gear = {
          "sta": 9,
          "agi": 6,
          "defense": 4,
-         "mindmg": 75,
-         "maxdmg": 141,
+         "mindmg": 81,
+         "maxdmg": 151,
          "speed": 2.1,
          "type": "Axe",
          "source": "AQ20",
