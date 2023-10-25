@@ -843,6 +843,15 @@ var gear = {
    ],
    "shoulder": [
       {
+         "name": "Pauldrons of the Timbermaw",
+         "str": 21,
+         "haste": 2,
+         "source": "Crafting",
+         "ac": 500,
+         "phase": 7,
+         "id": 61649
+      },
+      {
          "name": "Dreamsteel Mantle",
          "str": 30,
          "sta": 15,
@@ -3095,6 +3104,15 @@ var gear = {
       }
    ],
    "waist": [
+      {
+         "name": "Fury of the Timbermaw",
+         "str": 18,
+         "haste": 2,
+         "source": "Crafting",
+         "ac": 341,
+         "phase": 7,
+         "id": 61648
+      },
       {
          "name": "Hateforge Belt",
          "source": "Crafting",
