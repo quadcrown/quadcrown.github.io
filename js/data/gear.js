@@ -569,6 +569,15 @@ var gear = {
    ],
    "neck": [
       {
+         "name": "Feralkin Necklace",
+         "source": "Quest",
+         "skill": 4,
+         "type": "Fist",
+         "agi": 4,
+         "phase": 7,
+         "id": 61512
+      },
+      {
          "name": "Bixxle's Necklace of Mastery",
          "source": "Quest",
          "haste": 1,
