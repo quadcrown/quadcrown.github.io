@@ -1284,6 +1284,24 @@ var gear = {
    ],
    "back": [
       {
+         "name": "Kirin Tor Shawl of Oppression",
+         "haste": 1,
+         "str": 8,
+         "ac": 41,
+         "source": "Quest",
+         "phase": 7,
+         "id": 60649
+      },
+      {
+         "name": "Kirin Tor Shawl of Persecution",
+         "crit": 1,
+         "agi": 8,
+         "ac": 41,
+         "source": "Quest",
+         "phase": 7,
+         "id": 60648
+      },
+      {
          "name": "Windtalker Cape",
          "str": 16,
          "agi": 8,
