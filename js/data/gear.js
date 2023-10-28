@@ -16,8 +16,8 @@ var gear = {
          "ac": 343,
          "sta": 27,
          "str": 25,
-         "crit": 1,
-         "haste": 2,
+         "hit": 1,
+         "haste": 1,
          "phase": 7,
          "id": 60007
       },
@@ -862,7 +862,7 @@ var gear = {
       },
       {
          "name": "Dreamsteel Mantle",
-         "str": 30,
+         "str": 25,
          "sta": 15,
          "crit": 1,
          "source": "Crafting",
@@ -875,9 +875,9 @@ var gear = {
          "source": "Crafting",
          "ac": 317,
          "sta": 20,
-         "str": 17,
+         "str": 15,
          "haste": 1,
-         "crit": 1,
+         "hit": 1,
          "phase": 7,
          "id": 60009
       },
@@ -2379,9 +2379,9 @@ var gear = {
       },
       {
          "name": "Sanctum Bark Wraps",
-         "agi": 17,
-         "str": 6,
-         "sta": 10,
+         "agi": 14,
+         "str": 15,
+         "sta": 13,
          "haste": 1,
          "ac": 88,
          "source": "EmerSanc",
@@ -8923,7 +8923,7 @@ var gear = {
       {
          "name": "Maladath, Runed Blade of the Black Flight",
          "parry": 1,
-         "skill": 4,
+         "skill": 5,
          "mindmg": 86,
          "maxdmg": 162,
          "speed": 2.2,
