@@ -1,6 +1,16 @@
 var gear = {
    "head": [
       {
+         "name": "Timeless Artificier's Optics",
+         "source": "Dungeon",
+         "ac": 157,
+         "sta":  17,
+         "ap": 30,
+         "hit": 1,
+         "phase": 7,
+         "id": 60573
+      },
+      {
          "name": "Hateforge Helmet",
          "source": "Crafting",
          "ac": 279,
@@ -2656,6 +2666,24 @@ var gear = {
       }
    ],
    "hands": [
+      {
+         "name": "Stormshroud Gloves",
+         "source": "Crafting",
+         "hit": 1,
+         "crit": 1,
+         "ac": 109,
+         "phase": 7,
+         "id": 21278
+      },
+      {
+         "name": "Knife Juggler Gloves",
+         "source": "Other",
+         "ac": 86,
+         "skill": 7,
+         "type": "Dagger",
+         "phase": 7,
+         "id": 61336
+      },
       {
          "name": "Dark Iron Gauntlets",
          "source": "Crafting",
