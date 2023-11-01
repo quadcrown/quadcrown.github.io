@@ -8,7 +8,7 @@ var gear = {
          "ap": 30,
          "hit": 1,
          "phase": 7,
-         "id": 60573
+         "id": 61039
       },
       {
          "name": "Hateforge Helmet",
