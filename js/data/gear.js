@@ -2667,6 +2667,17 @@ var gear = {
    ],
    "hands": [
       {
+         "name": "Talonwind Gauntlets",
+         "haste": 1,
+         "crit": 1,
+         "agi": 20,
+         "sta": 17,
+         "ac": 301,
+         "source": "EmerSanc",
+         "phase": 7,
+         "id": 61213
+      },
+      {
          "name": "Stormshroud Gloves",
          "source": "Crafting",
          "hit": 1,
