@@ -784,7 +784,7 @@ SIM.UI = {
                     if (item.type != "Mace" && item.type != "Dagger") continue;
                 }
                 else if (filter == "Edgies Weps") {
-                    if (item.type != "Axe"  && item.type != "Dagger" && item.type != "Sword" && item.type != "Fist") continue;
+                    if (item.type != "Axe"  && item.type != "Dagger" && item.type != "Sword") continue;
                 }
                 else if (item.type != filter)
                     continue;

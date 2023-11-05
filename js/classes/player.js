@@ -165,7 +165,6 @@ class Player {
                             this.base['skill_1'] += item.skill;
                             this.base['skill_2'] += item.skill;
                             this.base['skill_3'] += item.skill;
-                            this.base['skill_4'] += item.skill;
                         }
                         else {
                             let sk = WEAPONTYPE[item.type.toUpperCase()];
