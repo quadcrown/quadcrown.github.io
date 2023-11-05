@@ -9198,7 +9198,7 @@ var gear = {
          "phase": 7,
          "type": "Mace",
          "ppm": 1,
-         "procspell": "TowerforgeWep"
+         // "procspell": "TowerforgeWep"
       },
       {
          "name": "Blade of the Blademaster",
