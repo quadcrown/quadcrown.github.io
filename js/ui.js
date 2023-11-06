@@ -147,6 +147,7 @@ SIM.UI = {
 
         view.tcontainer.on('click', 'table.enchant td:not(.ppm)', function(e) {
             var table = $(this).parents('table');
+            var type = table.data('type');
             var tr = $(this).parent();
             var temp = tr.data('temp');
 
