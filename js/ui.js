@@ -121,11 +121,15 @@ SIM.UI = {
             var tr = $(this).parent();
 
             if (table.hasClass('editmode')) {
-                if (tr.hasClass('hidden'))
-                    view.rowShowItem(tr);
-                else
-                    view.rowHideItem(tr);
-                return;
+                for(let i = 0; i < gear[type].length; i++) {
+                    if (gear[type][i].id == tr.data('id')) {
+                        if (gear[type][i].hidden)
+                            view.rowShowItem(tr);
+                        else
+                            view.rowHideItem(tr);
+                        return;
+                    }
+                }
             }
 
             if (tr.hasClass('active')) {
@@ -146,12 +150,17 @@ SIM.UI = {
             var tr = $(this).parent();
             var temp = tr.data('temp');
 
+
             if (table.hasClass('editmode')) {
-                if (tr.hasClass('hidden'))
-                    view.rowShowEnchant(tr);
-                else
-                    view.rowHideEnchant(tr);
-                return;
+                for(let i = 0; i < enchant[type].length; i++) {
+                    if (enchant[type][i].id == tr.data('id')) {
+                        if (enchant[type][i].hidden)
+                            view.rowShowEnchant(tr);
+                        else
+                            view.rowHideEnchant(tr);
+                        return;
+                    }
+                }
             }
 
             if (tr.hasClass('active')) {
@@ -492,7 +501,6 @@ SIM.UI = {
         var table = tr.parents('table');
         var type = table.data('type');
         tr.removeClass('active');
-        tr.addClass('hidden');
         tr.find('.hide').html(eyesvghidden);
         for(let i = 0; i < gear[type].length; i++) {
             if (gear[type][i].id == tr.data('id')) {
@@ -505,7 +513,6 @@ SIM.UI = {
     rowShowItem: function(tr) {
         var table = tr.parents('table');
         var type = table.data('type');
-        tr.removeClass('hidden');
         tr.find('.hide').html(eyesvg);
         for(let i = 0; i < gear[type].length; i++) {
             if (gear[type][i].id == tr.data('id'))
@@ -537,7 +544,6 @@ SIM.UI = {
         var table = tr.parents('table');
         var type = table.data('type');
         tr.removeClass('active');
-        tr.addClass('hidden');
         tr.find('.hide').html(eyesvghidden);
         for(let i = 0; i < enchant[type].length; i++) {
             if (enchant[type][i].id == tr.data('id')) {
@@ -550,7 +556,6 @@ SIM.UI = {
     rowShowEnchant: function(tr) {
         var table = tr.parents('table');
         var type = table.data('type');
-        tr.removeClass('hidden');
         tr.find('.hide').html(eyesvg);
         for(let i = 0; i < enchant[type].length; i++) {
             if (enchant[type][i].id == tr.data('id'))
@@ -808,7 +813,7 @@ SIM.UI = {
             if (tooltip == 199211) tooltip = 19921;
             if (item.rand) rand = '?rand=' + item.rand;
 
-            table += `<tr data-id="${item.id}" data-name="${item.name}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
+            table += `<tr data-id="${item.id}" data-name="${item.name}" class="${item.selected ? 'active' : ''} ">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
                         <td><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.name}</td>`
 
@@ -935,7 +940,7 @@ SIM.UI = {
             if (tooltip == 198981) tooltip = 19898;
             if (item.rand) rand = '?rand=' + item.rand;
 
-            table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
+            table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
 
                         <td><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.name}</td>`
@@ -1016,7 +1021,7 @@ SIM.UI = {
 
         for (let item of gear.custom) {
             if (item.hidden && !editmode) continue;
-            table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
+            table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
                         <td>${item.name}</td>
                         <td>${item.str || ''}</td>
@@ -1086,7 +1091,7 @@ SIM.UI = {
 
             if (item.hidden && !editmode) continue;
 
-            table += `<tr data-id="${item.id}" data-temp="${item.temp || false}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
+            table += `<tr data-id="${item.id}" data-temp="${item.temp || false}" class="${item.selected ? 'active' : ''} ">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
                         <td><a href="https://database.turtle-wow.org/?${item.spellid ? 'spell' : 'item'}=${item.id}"></a>${item.name}</td>
                         <td>${item.str || ''}</td>
