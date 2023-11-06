@@ -6224,6 +6224,7 @@ var gear = {
          "mindmg": 86,
          "maxdmg": 145,
          "speed": 2.4,
+         "type": "Fist",
          "crit": 1,
          "sta": 5,
          "ap": 20,
