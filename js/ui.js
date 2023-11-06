@@ -858,6 +858,7 @@ SIM.UI = {
         });
 
         view.loadEnchants(type, editmode);
+        view.updateSession();
     },
     resistCheckList: function() {
         return {
