@@ -122,7 +122,7 @@ var gear = {
          "ac": 608,
          "source": "LowerKara",
          "phase": 7,
-         "id": 4237234678,
+         "id": 61291,
       },
       {
          "name": "Blindfold of the Scarlet Marksman",
@@ -3171,6 +3171,17 @@ var gear = {
    ],
    "waist": [
       {
+         "name": "Cloverlink Belt",
+         "str": 16,
+         "agi": 16,
+         "sta": 13,
+         "haste": 2,
+         "source": "Quest",
+         "ac": 231,
+         "phase": 7,
+         "id": 61758
+      },
+      {
          "name": "Fury of the Timbermaw",
          "str": 18,
          "haste": 2,
@@ -3821,7 +3832,7 @@ var gear = {
          "ac": 169,
          "source": "LowerKara",
          "phase": 7,
-         "id": 1170017
+         "id": 61265
       },
       {
          "name": "Ancient Jade Leggings",
@@ -6176,6 +6187,18 @@ var gear = {
    ],
    "mainhand": [
       {
+         "name": "Skycleaver",
+         "mindmg": 71,
+         "maxdmg": 135,
+         "speed": 2.3,
+         "crit": 1,
+         "haste": 1,
+         "type": "Axe",
+         "source": "LowerKara",
+         "phase": 7,
+         "id": 61452
+      },
+      {
          "name": "Anasterian's Legacy",
          "sta": 12,
          "agi": 12,
@@ -6186,7 +6209,7 @@ var gear = {
          "type": "Sword",
          "source": "LowerKara",
          "phase": 7,
-         "id": 1170018
+         "id": 61453
       },
       {
          "name": "Axe of Dormant Slumber",
@@ -6244,7 +6267,7 @@ var gear = {
          "type": "Fist",
          "source": "AQ40",
          "phase": 7,
-         "id": 4278927894323479,
+         "id": 60003,
          "Mainhand": true,
       },
       {
@@ -7879,7 +7902,19 @@ var gear = {
          "type": "Sword",
          "source": "LowerKara",
          "phase": 7,
-         "id": 1170018
+         "id": 61453
+      },
+      {
+         "name": "Skycleaver",
+         "mindmg": 71,
+         "maxdmg": 135,
+         "speed": 2.3,
+         "crit": 1,
+         "haste": 1,
+         "type": "Axe",
+         "source": "LowerKara",
+         "phase": 7,
+         "id": 61452
       },
       {
          "name": "Axe of Dormant Slumber",
@@ -7921,7 +7956,7 @@ var gear = {
          "type": "Fist",
          "source": "Quest",
          "phase": 7,
-         "id": 1170010,
+         "id": 61755,
       },
       {
          "name": "Coldheart Icicle",
