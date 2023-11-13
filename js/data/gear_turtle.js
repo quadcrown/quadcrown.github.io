@@ -1,6 +1,16 @@
 var gear = {
    "head": [
       {
+         "name": "Rune-Etched Crown",
+         "source": "Crafting",
+         "agi": 5,
+         "str": 25,
+         "hit": 1,
+         "ac": 534,
+         "phase": 7,
+         "id": 60291
+      },
+      {
          "name": "Timeless Artificier's Optics",
          "source": "Dungeon",
          "ac": 157,
@@ -1677,6 +1687,16 @@ var gear = {
       }
    ],
    "chest": [
+      {
+         "name": "Rune-Etched Breastplate",
+         "source": "Crafting",
+         "agi": 3,
+         "str": 23,
+         "ap": 20,
+         "ac": 652,
+         "phase": 7,
+         "id": 60290
+      },
       {
          "name": "Hateforge Cuirass",
          "source": "Crafting",
@@ -3687,6 +3707,16 @@ var gear = {
       }
    ],
    "legs": [
+      {
+         "name": "Rune-Etched Legplates",
+         "source": "Crafting",
+         "agi": 15,
+         "str": 22,
+         "crit": 1,
+         "ac": 575,
+         "phase": 7,
+         "id": 60289
+      },
       {
          "name": "Hateforge Leggings",
          "source": "Crafting",
