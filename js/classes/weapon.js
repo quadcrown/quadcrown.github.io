@@ -33,18 +33,31 @@ class Weapon {
         if (this.type == WEAPONTYPE.DAGGER) this.normSpeed = 1.7;
         if (this.twohand) this.normSpeed = 3.3;
 
-        if (item.ppm) {
+        if (item.proc) {
             this.proc1 = {};
-            this.proc1.chance = ~~(item.speed * item.ppm / 0.006);
-            if (item.physdmg) this.proc1.physdmg = item.physdmg;
-            if (item.magicdmg) this.proc1.magicdmg = item.magicdmg;
-            if (item.binaryspell) this.proc1.binaryspell = item.binaryspell;
-            if (item.coeff) this.proc1.coeff = parseInt(item.coeff);
-            if (item.procextra) this.proc1.extra = item.procextra;
-            if (item.procgcd) this.proc1.gcd = item.procgcd;
-            if (item.procspell) {
-               player.auras[item.procspell.toLowerCase()] = eval('new ' + item.procspell + '(player)');
-               this.proc1.spell = player.auras[item.procspell.toLowerCase()];
+            this.proc1.chance = ~~(item.speed * (item.ppm || 1) / 0.006);
+            if (item.proc.dmg && !item.proc.magic) this.proc1.physdmg = item.proc.dmg;
+            if (item.proc.dmg && item.proc.magic) this.proc1.magicdmg = item.proc.dmg;
+            if (item.proc.binaryspell) this.proc1.binaryspell = true;
+            if (item.proc.coeff) this.proc1.coeff = parseInt(item.proc.coeff);
+            if (item.proc.procgcd) this.proc1.gcd = item.proc.procgcd;
+            if (item.proc.extra) this.proc1.extra = item.proc.extra;
+
+            // dont need an aura, just add the dmg
+            if (item.proc.tick && !item.proc.bleed) {
+                let ticks = parseInt(item.proc.duration) / parseInt(item.proc.interval);
+                if (item.proc.magic) this.proc1.magicdmg = (item.proc.dmg || 0) + (item.proc.tick * ticks);
+                else this.proc1.physdmg = (item.proc.dmg || 0) + (item.proc.tick * ticks);
+            }
+            // bleeds need aura
+            if (item.proc.tick && item.proc.bleed) {
+                player.auras["weaponbleed" + (this.offhand ? 'oh' : 'mh')] = new WeaponBleed(player, 0, item.proc.duration, item.proc.interval, item.proc.tick, this.offhand);
+                this.proc1.spell = player.auras["weaponbleed" + (this.offhand ? 'oh' : 'mh')];
+            }
+            // custom spells
+            if (item.proc.spell) {
+                player.auras[item.proc.spell.toLowerCase()] = eval('new ' + item.proc.spell + '(player)');
+                this.proc1.spell = player.auras[item.proc.spell.toLowerCase()];
             }
         }
         
@@ -65,9 +78,15 @@ class Weapon {
         }
 
         for (let buff of buffs) {
-            if (buff.id == 10614 && buff.active && !this.offhand) {
-                this.player.auras.windfury = new Windfury(this.player);
-                this.windfury = this.player.auras.windfury;
+            if (buff.group == "windfury" && buff.active) {
+                if (!this.player.auras.windfury)
+                    this.player.auras.windfury = new Windfury(this.player, buff.id);
+
+                // Wild Strikes
+                if (buff.id == 407975 || !this.offhand) {
+                    this.windfury = this.player.auras.windfury;
+                    this.wildstrikes = buff.id == 407975;
+                }
             }
         }
 
@@ -76,7 +95,7 @@ class Weapon {
                 this.basebonusdmg += buff.bonusdmg;
         if (enchant && enchant.bonusdmg) 
             this.basebonusdmg += enchant.bonusdmg;
-        if (!this.windfury && tempenchant && tempenchant.bonusdmg) 
+        if (tempenchant && tempenchant.bonusdmg) 
             this.basebonusdmg += tempenchant.bonusdmg;
         if (this.player.items.includes(21189))
             this.basebonusdmg += 4;

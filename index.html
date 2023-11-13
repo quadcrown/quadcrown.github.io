@@ -3,7 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width">
-  <title>TWoW Warrior DPS Sim</title>
+  <title>Warrior DPS Sim</title>
 
   <link href="dist/css/theme.default.min.css" rel="stylesheet">
   <link href="dist/css/style.css" rel="stylesheet">
@@ -19,50 +19,57 @@
   <script type="text/javascript" src="dist/js/classes/simulation.min.js"></script>
   <script type="text/javascript" src="dist/js/classes/spell.min.js"></script>
   <script type="text/javascript" src="dist/js/classes/weapon.min.js"></script>
-  <script type="text/javascript" src="dist/js/data/gear.min.js"></script>
-  <script type="text/javascript" src="dist/js/data/races.min.js"></script>
+  <script type="text/javascript" src="dist/js/data/gear_sod.min.js"></script>
+  <script type="text/javascript" src="dist/js/data/runes.min.js"></script>
+  <script type="text/javascript" src="dist/js/data/levelstats.min.js"></script>
   <script type="text/javascript" src="dist/js/data/buffs.min.js"></script>
+  <script type="text/javascript" src="dist/js/data/enchants.min.js"></script>
   <script type="text/javascript" src="dist/js/data/spells.min.js"></script>
   <script type="text/javascript" src="dist/js/data/talents.min.js"></script>
-  <script type="text/javascript" src="dist/js/data/session.min.js"></script>
+  <script type="text/javascript" src="dist/js/data/session_sod.min.js"></script>
   <script type="text/javascript" src="dist/js/globals.min.js"></script>
   <script type="text/javascript" src="dist/js/settings.min.js"></script>
   <script type="text/javascript" src="dist/js/stats.min.js"></script>
   <script type="text/javascript" src="dist/js/ui.min.js"></script>
 
-  <!-- TESTING JS -->
-  <!-- <script type="text/javascript" src="js/classes/player.js"></script>
-  <script type="text/javascript" src="js/classes/simulation.js"></script>
-  <script type="text/javascript" src="js/classes/spell.js"></script>
-  <script type="text/javascript" src="js/classes/weapon.js"></script>
-  <script type="text/javascript" src="js/data/gear.js"></script>
-  <script type="text/javascript" src="js/data/races.js"></script>
-  <script type="text/javascript" src="js/data/buffs.js"></script>
-  <script type="text/javascript" src="js/data/spells.js"></script>
-  <script type="text/javascript" src="js/data/talents.js"></script>
-  <script type="text/javascript" src="js/data/session.js"></script>
-  <script type="text/javascript" src="js/globals.js"></script>
-  <script type="text/javascript" src="js/settings.js"></script>
-  <script type="text/javascript" src="js/stats.js"></script>
-  <script type="text/javascript" src="js/ui.js"></script> -->
-
   <script>var whTooltips = { colorLinks: true, iconizeLinks: false, renameLinks: false, "hide": { "ilvl": false } };</script>
   <script src="https://wow.zamimg.com/widgets/power.js"></script>
-</head>
+  <script>var mode = "sod";</script>
 <!--
+  TODO
 
-Log option
-profiles
+  improve profiles
+  items with on chance + vibroblade
+  // midnight mace bonus dmg
+
+
+  later:
+  default session
+  come on and slam
+  review adjacents
+  revamp filters
+  resists
+  crusaders
+  check windfury ranks
+  aq books
 
 -->
+
+</head>
 <body>
   <div class="alerts"></div>
 
   <section class="sidebar">
+    <div class="tabs">
+      <a href="classic.html" class="btn js-classic">Classic</a>
+      <a href="." class="btn js-sod active">Season of Discovery</a>
+      <a href="turtle.html" class="btn js-turtle">Turtle</a>
+    </div>
+
     <div class="bg"></div>
     <div class="character">
       <p><span id="race">Human</span> Warrior</p>
-      <p>Level 60</p>
+      <p>Level <span id="level"></span></p>
 
       <ul>
         <li>
@@ -102,10 +109,6 @@ profiles
           <span id="dmgmod"></span>
         </li>
         <li>
-          <label>Armor Pen</label>
-          <span id="arp"></span>
-        </li>
-        <li>
           <label>Haste</label>
           <span id="haste"></span>
         </li>
@@ -142,19 +145,20 @@ profiles
         <div id="weight-ap"><span class="stat-name">Attack Power:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-crit"><span class="stat-name">Crit Chance:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-hit"><span class="stat-name">Hit Chance:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
-        <div id="weight-haste"><span class="stat-name">Haste:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
       </div>
       <div id="dps-box"><span id="dps"></span><span id="dpserr"></span></div>
       <div id="stats"></div>
       <div id="time"></div>
-      <a href="#" class="btn js-dps">CALCULATE DPS</a>
-      <a href="#" class="btn js-table">RANK YOUR OPTIONS</a>
+      <a href="#" class="btn js-dps">DPS</a>
       <a href="#" class="btn js-weights">STAT WEIGHTS</a>
-      <a href="#" class="btn js-stats disabled">FIGHT STATISTICS</a>
-      <a href="#" class="btn js-settings">FIGHT SETTINGS</a>
+      <a href="#" class="btn js-table">SHEET DPS</a>
+      <a href="#" class="btn js-stats disabled">STATS</a>
+      <a href="#" class="btn js-settings">SETTINGS</a>
+      <div class="author">made by Guybrush-Golemagg</div>
+      <div class="manual"><a href="https://docs.google.com/document/d/1-ugglMDHqIQlEDiE2z9G7zuI-kgyvb2kvgPobWbcxy0/edit" target="_blank">User Manual</a></div>
+      <div class="manual"><a href="https://github.com/GuybrushGit/WarriorSim" target="_blank">Github</a></div>
     </div>
-    <div class="manual"><a href="https://docs.google.com/document/d/1-ugglMDHqIQlEDiE2z9G7zuI-kgyvb2kvgPobWbcxy0/edit" target="_blank">User Manual</a></div>
-    <div class="author">made by Guybrush-Golemagg<br>modified by Zaas- and Hobbit-TurtleWoW</div>
+
   </section>
 
   <section class="settings">
@@ -166,7 +170,13 @@ profiles
         <ul>
           <li>
             <label>Level</label>
-            <input type="text" name="level" value="60" data-numberonly="true" readonly>
+            <input type="range" name="slider-level" min="1" max="60" value="25" class="slider">
+            <input type="text" name="level" value="25" data-numberonly="true">
+          </li>
+          <li>
+            <label>Target Level</label>
+            <input type="range"  name="slider-targetlevel" min="1" max="63" value="28" class="slider">
+            <input type="text" name="targetlevel" value="28" data-numberonly="true">
           </li>
           <li>
             <label>Race</label>
@@ -175,25 +185,23 @@ profiles
               <option value="Dwarf">Dwarf</option>
               <option value="Gnome">Gnome</option>
               <option value="Night Elf">Night Elf</option>
-              <option value="High Elf">High Elf</option>
               <option value="Undead">Undead</option>
               <option value="Orc">Orc</option>
               <option value="Tauren">Tauren</option>
               <option value="Troll">Troll</option>
-              <option value="Goblin">Goblin</option>
             </select>
           </li>
           <li>
             <label>Simulations</label>
-            <input type="text" name="simulations" value="15000" data-numberonly="true">
+            <input type="text" name="simulations" value="50000" data-numberonly="true">
           </li>
           <li>
             <label>Fight Duration (min)</label>
-            <input type="text" name="timesecsmin" value="90" data-numberonly="true">
+            <input type="text" name="timesecsmin" value="50" data-numberonly="true">
           </li>
           <li>
             <label>Fight Duration (max)</label>
-            <input type="text" name="timesecsmax" value="120" data-numberonly="true">
+            <input type="text" name="timesecsmax" value="60" data-numberonly="true">
           </li>
           <li>
             <label>Execute phase percentage</label>
@@ -202,15 +210,6 @@ profiles
           <li>
             <label>Initial Rage</label>
             <input type="text" name="startrage" value="0" data-numberonly="true">
-          </li>
-          <li>
-            <label>Target level</label>
-            <select name="targetlevel" dir="rtl">
-              <option value="60">60</option>
-              <option value="61">61</option>
-              <option value="62">62</option>
-              <option value="63" selected>63 (boss)</option>
-            </select>
           </li>
           <li>
             <label>Target Resistance</label>
@@ -225,8 +224,8 @@ profiles
             <input type="text" name="adjacentlevel" value="60" data-numberonly="true">
           </li>
           <li>
-            <label><a href="https://docs.google.com/spreadsheets/d/1WIHs3aDT5LHZyVKSXZkC5_J9A1Od0jowhc89AdAu_Yo/" target="_blank">Target Armor</a></label>
-            <input type="text" name="targetarmor" value="816" data-numberonly="true">
+            <label>Target Armor</label>
+            <input type="text" name="targetarmor" value="336" data-numberonly="true">
           </li>
           <li>
             <label>AQ Books</label>
@@ -263,10 +262,16 @@ profiles
       <article class="rotation">
         <label class="active">Rotation</label>
         <div></div>
+        <div class="details">
+        </div>
       </article>
 
       <article class="talents">
         <label class="active">Talents</label>
+        <div class="top">
+          <p>Points available: <span id="points"></span></p>
+          <a href="#" class="js-talents-reset">Reset</a>
+        </div>
       </article>
 
       <article class="filter">
@@ -282,10 +287,6 @@ profiles
           <li data-id="aq20">AQ20</li>
           <li data-id="aq40">AQ40</li>
           <li data-id="naxx">Naxxramas</li>
-          <li data-id="scitadel">Scarlet Citadel</li>
-          <li data-id="emersanc">Emerald Sanctum</li>
-          <li data-id="lowerkara">Lower Karazhan Halls</li>
-          <li data-id="unknown">Unknown/Unreleased</li>
           <li data-id="worldboss">World Boss</li>
           <li data-id="pvp">PvP</li>
           <li class="js-toggle" data-id="resistances-list">Resistances
@@ -331,7 +332,6 @@ profiles
           <li data-id="4" data-sources="zg">P4</li>
           <li data-id="5" data-sources="aq20,aq40">P5</li>
           <li data-id="6" data-sources="naxx">P6</li>
-          <li data-id="7" data-sources="scitadel,emersanc,lowerkara,unknown">TWoW</li>
         </ul>
       </article>
 
@@ -369,6 +369,21 @@ profiles
   <section class="main">
     <nav>
       <ul>
+        <li data-type="profiles">
+          <p>Profiles</p>
+          <ul class="filter">
+            <li class="active"><p>Profile 1</p></li>
+            <li><p>Profile 2</p></li>
+            <li><p>Profile 3</p></li>
+            <li><p>Profile 4</p></li>
+            <li><p>Profile 5</p></li>
+            <li><p>Profile 6</p></li>
+            <li><p>Profile 7</p></li>
+            <li><p>Profile 8</p></li>
+            <li><p>Profile 9</p></li>
+            <li><p>Profile 10</p></li>
+          </ul>
+        </li>
         <li data-type="mainhand" class="active">
           <p>Main Hand</p>
           <ul class="filter">
@@ -378,9 +393,8 @@ profiles
             <li><p>Fist</p></li>
             <li><p>Mace</p></li>
             <li><p>Sword</p></li>
-            <li><p>Human Weps</p></li>
-            <li><p>Goblin Weps</p></li>
-            <li><p>Edgies Weps</p></li>
+            <li><p>Mace & Sword</p></li>
+            <li><p>Axe, Dagger & Sword</p></li>
           </ul>
         </li>
         <li data-type="offhand">
@@ -392,9 +406,8 @@ profiles
             <li><p>Fist</p></li>
             <li><p>Mace</p></li>
             <li><p>Sword</p></li>
-            <li><p>Human Weps</p></li>
-            <li><p>Goblin Weps</p></li>
-            <li><p>Edgies Weps</p></li>
+            <li><p>Mace & Sword</p></li>
+            <li><p>Axe, Dagger & Sword</p></li>
           </ul>
         </li>
         <li data-type="twohand">
@@ -405,7 +418,7 @@ profiles
             <li><p>Mace</p></li>
             <li><p>Polearm</p></li>
             <li><p>Sword</p></li>
-            <li><p>Human Weps</p></li>
+            <li><p>Mace & Sword</p></li>
           </ul>
         </li>
         <li data-type="head"><p>Head</p></li>
@@ -423,7 +436,7 @@ profiles
         <li data-type="trinket1"><p>Trinket 1</p></li>
         <li data-type="trinket2"><p>Trinket 2</p></li>
         <li data-type="ranged"><p>Ranged</p></li>
-        <li data-type="custom"><p>Custom</p></li>
+        <!-- <li data-type="custom"><p>Custom</p></li> -->
       </ul>
     </nav>
 
