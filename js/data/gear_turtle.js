@@ -6535,7 +6535,7 @@ var gear = {
          "id": 81260,
       },
       {
-         "name": "Mechanist's Bonechopper Replica *Speculative PPM",
+         "name": "Mechanist's Bonechopper Replica",
          "str": 5,
          "agi": 5,
          "sta": 5,
@@ -6546,7 +6546,7 @@ var gear = {
          "source": "Quest",
          "phase": 7,
          "id": 81288,
-         "ppm": 1,
+         "ppm": 30,
          "physdmg": 20
       },
       {
@@ -8132,7 +8132,7 @@ var gear = {
          "id": 81260,
       },
       {
-         "name": "Mechanist's Bonechopper Replica *Speculative PPM",
+         "name": "Mechanist's Bonechopper Replica",
          "str": 5,
          "agi": 5,
          "sta": 5,
@@ -8143,7 +8143,7 @@ var gear = {
          "source": "Quest",
          "phase": 7,
          "id": 81288,
-         "ppm": 1,
+         "ppm": 30,
          "physdmg": 20
       },
       {
