@@ -1106,7 +1106,6 @@ SIM.UI = {
             if (item.subsource == 'shadow' || item.subsource == 'arcane' || item.subsource == 'nature' || item.subsource == 'fire' || item.subsource == 'frost')
                 source = 'resistances-list';
 
-
             if (max == 2 &&
                 ((phase && !view.filter.find('.phases [data-id="' + phase + '"]').hasClass('active')) ||
                 (source && !view.filter.find('.sources [data-id="' + source + '"]').hasClass('active'))))

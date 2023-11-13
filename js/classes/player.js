@@ -7,10 +7,10 @@ class Player {
             weaponrng: $('select[name="weaponrng"]').val() == "Yes",
             spelldamage: parseInt($('input[name="spelldamage"]').val()),
             target: {
-                level: parseInt($('select[name="targetlevel"]').val()),
+                level: parseInt($('input[name="targetlevel"]').val()),
                 basearmor: parseInt($('input[name="targetarmor"]').val()),
                 armor: parseInt($('input[name="targetarmor"]').val()),
-                defense: 5 * parseInt($('select[name="targetlevel"]').val()),
+                defense: parseInt($('input[name="targetlevel"]').val()) * 5,
                 mitigation: 1 - 15 * (parseInt($('input[name="targetresistance"]').val()) / 6000),
                 binaryresist: parseInt(10000 - (8300 * (1 - (parseInt($('input[name="targetresistance"]').val()) * 0.15 / 60)))),
             },
@@ -139,6 +139,8 @@ class Player {
             if (this.race == "Tauren") raceid = "6";
             if (this.race == "Gnome") raceid = "7";
             if (this.race == "Troll") raceid = "8";
+            if (this.race == "High Elf") raceid = "9";
+            if (this.race == "Goblin") raceid = "10";
 
             // race,class,level,str,agi,sta,inte,spi
             let stats = l.split(",");
@@ -147,9 +149,9 @@ class Player {
                 this.base.ap += 160;
                 this.base.str += parseInt(stats[3]);
                 this.base.agi += parseInt(stats[4]);
-                this.base.skill_0 += raceid == "1" ? 5 : 0;
+                this.base.skill_0 += raceid == "1" || raceid == "10" ? 5 : 0;
                 this.base.skill_1 += raceid == "1" ? 5 : 0;
-                this.base.skill_2 += 0;
+                this.base.skill_2 += raceid == "10" ? 5 : 0;
                 this.base.skill_3 += raceid == "2" ? 5 : 0;
             }
         }
