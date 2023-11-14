@@ -162,7 +162,6 @@ SIM.UI = {
 
         view.tcontainer.on('click', 'table.enchant td:not(.ppm)', function(e) {
             var table = $(this).parents('table');
-            var type = table.data('type');
             var tr = $(this).parent();
             var temp = tr.data('temp');
 
@@ -608,8 +607,8 @@ SIM.UI = {
     rowShowEnchant: function(tr) {
         var table = tr.parents('table');
         var type = table.data('type');
-        tr.find('.hide').html(eyesvg);
         tr.removeClass('hidden');
+        tr.find('.hide').html(eyesvg);
         for(let i = 0; i < enchant[type].length; i++) {
             if (enchant[type][i].id == tr.data('id'))
                 enchant[type][i].hidden = false;
@@ -1158,7 +1157,7 @@ SIM.UI = {
             widthFixed: true,
             sortList: editmode ? [[dpsrow, 1],[1, 0]] : [[dpsrow-1, 1],[0, 0]],
             textSorter : {
-                17 : function(a, b, direction, column, table) {
+                21 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
                     var b = parseFloat(b.substring(0,b.indexOf('.') + 3));
                     if (isNaN(a)) a = 0;
@@ -1167,7 +1166,7 @@ SIM.UI = {
                 },
             },
             headers: {
-                17: { sorter: "text" }
+                21: { sorter: "text" }
             }
         });
 
@@ -1205,7 +1204,7 @@ SIM.UI = {
 
         for (let item of gear.custom) {
             if (item.hidden && !editmode) continue;
-            table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ">
+            table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
                         <td>${item.name}</td>
                         <td>${item.str || ''}</td>
@@ -1231,7 +1230,7 @@ SIM.UI = {
         view.tcontainer.append(table);
         view.tcontainer.find('table.gear').tablesorter({
             widthFixed: true,
-            sortList: editmode ? [[10, 1]] : [[9, 1]],
+            sortList: editmode ? [[13, 1]] : [[12, 1]],
         });
     },
 
@@ -1309,9 +1308,9 @@ SIM.UI = {
         view.tcontainer.append(table);
         view.tcontainer.find('table.enchant').tablesorter({
             widthFixed: true,
-            sortList: editmode ? [[16, 1]] : [[15, 1]],
+            sortList: editmode ? [[15, 1]] : [[14, 1]],
             headers: {
-                15: { sorter: "text" }
+                14: { sorter: "text" }
             }
         });
 
