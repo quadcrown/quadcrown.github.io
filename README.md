@@ -1,19 +1,9 @@
 # WarriorSim-TurtleWoW
-Warrior sim modified for Turtle-wow.org.
+A webapp to simulate how 1.12 single target Warrior performs with different gear buffs rotation and talents. This version is modified for https://turtle-wow.org.
 
 Latest commit is up live here:
 https://zebouski.github.io/WarriorSim-TurtleWoW/ 
 
-## Setup Dev-env
+## Self-hosting and Contibuting
 
-Install (one time):
-```
-nvm use 11.15.0
-npm i
-```
-
-Run (every time):
-```
-nvm use 11.15.0
-npm run dev
-```
+[See here.](CONTRIBUTING.md)
