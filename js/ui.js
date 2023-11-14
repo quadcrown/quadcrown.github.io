@@ -925,6 +925,7 @@ SIM.UI = {
                             <tr>
                                 ${editmode ? '<th></th>' : ''}
                                 <th>Name</th>
+                                <th>Source</th>
                                 <th>Sta</th>
                                 <th>Str</th>
                                 <th>Agi</th>
@@ -992,7 +993,8 @@ SIM.UI = {
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
                         <td><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.name}</td>`
 
-            table +=`<td>${item.sta || ''}</td>
+            table +=`<td>${item.source || ''}</td>
+                        <td>${item.sta || ''}</td>
                         <td>${item.str || ''}</td>
                         <td>${item.agi || ''}</td>
                         <td>${item.ap || ''}</td>
@@ -1024,7 +1026,7 @@ SIM.UI = {
             widthFixed: true,
             sortList: editmode ?  [[dpsrow, 1],[1, 0]] : [[dpsrow-1, 1],[0, 0]],
             textSorter : {
-                21 : function(a, b, direction, column, table) {
+                22 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
                     var b = parseFloat(b.substring(0,b.indexOf('.') + 3));
                     if (isNaN(a)) a = 0;
@@ -1033,7 +1035,7 @@ SIM.UI = {
                 },
             },
             headers: {
-                21: { sorter: "text" }
+                22: { sorter: "text" }
             }
         });
 
@@ -1065,6 +1067,7 @@ SIM.UI = {
                             <tr>
                                 ${editmode ? '<th></th>' : ''}
                                 <th>Name</th>
+                                <th>Source</th>
                                 <th>Sta</th>
                                 <th>Str</th>
                                 <th>Agi</th>
@@ -1128,7 +1131,8 @@ SIM.UI = {
 
 
             var resistCheckList = SIM.UI.resistCheckList();
-            table += `<td>${item.sta || ''}</td>
+            table += `<td>${item.source || ''}</td>
+                        <td>${item.sta || ''}</td>
                         <td>${item.str || ''}</td>
                         <td>${item.agi || ''}</td>
                         <td>${item.ap || ''}</td>
@@ -1157,7 +1161,7 @@ SIM.UI = {
             widthFixed: true,
             sortList: editmode ? [[dpsrow, 1],[1, 0]] : [[dpsrow-1, 1],[0, 0]],
             textSorter : {
-                21 : function(a, b, direction, column, table) {
+                22 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
                     var b = parseFloat(b.substring(0,b.indexOf('.') + 3));
                     if (isNaN(a)) a = 0;
@@ -1166,7 +1170,7 @@ SIM.UI = {
                 },
             },
             headers: {
-                21: { sorter: "text" }
+                22: { sorter: "text" }
             }
         });
 
