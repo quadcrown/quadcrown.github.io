@@ -7,7 +7,7 @@ var session = {
     "executeperc": "20",
     "startrage": "0",
     "targetlevel": "28",
-    "targetarmor": "336",
+    "targetarmor": "242",
     "targetresistance": "24",
     "adjacent": "0",
     "adjacentlevel": "60",
@@ -272,6 +272,7 @@ var session = {
             "name": "Sunder Armor",
             "classname": "SunderArmor",
             "iconname": "ability_warrior_sunder",
+            "globalsactive": true,
             "globals": 1,
             "active": true
         },

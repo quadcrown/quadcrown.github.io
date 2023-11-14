@@ -337,12 +337,13 @@ var gear = {
     },
     {
       "id": 9375,
-      "type": "Leather",
+      "type": "Axe",
       "slot": "head",
       "r": 33,
       "name": "Expert Goldminer's Helmet",
       "agi": 5,
-      "sta": 6
+      "sta": 6,
+      "skill": 7
     },
     {
       "id": 9394,
@@ -1702,12 +1703,13 @@ var gear = {
     },
     {
       "id": 20623,
-      "type": "Leather",
+      "type": "Dagger",
       "slot": "head",
       "r": 60,
       "name": "Circlet of Restless Dreams",
       "agi": 21,
-      "sta": 38
+      "sta": 38,
+      "skill": 6
     },
     {
       "id": 20640,
@@ -8127,6 +8129,14 @@ var gear = {
       "ap": 200
     },
     {
+      "id": 13712,
+      "type": "Sword",
+      "slot": "chest",
+      "r": 55,
+      "name": "Test Sword Chest",
+      "skill": 40
+    },
+    {
       "id": 13717,
       "type": "Plate",
       "slot": "chest",
@@ -11622,6 +11632,14 @@ var gear = {
       "sta": 14
     },
     {
+      "id": 14551,
+      "type": "Varied",
+      "slot": "hands",
+      "r": 44,
+      "name": "Edgemaster's Handguards",
+      "skill": 7
+    },
+    {
       "id": 14572,
       "type": "Leather",
       "slot": "hands",
@@ -12526,13 +12544,14 @@ var gear = {
     },
     {
       "id": 18823,
-      "type": "Leather",
+      "type": "Dagger",
       "slot": "hands",
       "r": 60,
       "name": "Aged Core Leather Gloves",
       "str": 15,
       "sta": 15,
-      "crit": 1
+      "crit": 1,
+      "skill": 5
     },
     {
       "id": 19049,
@@ -15216,12 +15235,13 @@ var gear = {
     },
     {
       "id": 18505,
-      "type": "Leather",
+      "type": "Dagger",
       "slot": "waist",
       "r": 57,
       "name": "Mugger's Belt",
       "sta": 16,
-      "crit": 1
+      "crit": 1,
+      "skill": 5
     },
     {
       "id": 18547,
@@ -23049,6 +23069,14 @@ var gear = {
         "interval": "2000",
         "duration": "4000"
       }
+    },
+    {
+      "id": 9999998,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 25,
+      "name": "Avenger's Void Pearl",
+      "ap": 10
     }
   ],
   "trinket2": [
@@ -23244,6 +23272,14 @@ var gear = {
         "interval": "2000",
         "duration": "4000"
       }
+    },
+    {
+      "id": 9999998,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 25,
+      "name": "Avenger's Void Pearl",
+      "ap": 10
     }
   ],
   "ranged": [
@@ -23576,6 +23612,17 @@ var gear = {
       "rand": 681
     },
     {
+      "id": 16007,
+      "type": "Guns",
+      "slot": "ranged",
+      "r": 56,
+      "name": "Flawless Arcanite Rifle",
+      "speed": 3,
+      "mindmg": 65,
+      "maxdmg": 122,
+      "skill": 4
+    },
+    {
       "id": 16996,
       "type": "Bows",
       "slot": "ranged",
@@ -23692,16 +23739,6 @@ var gear = {
       "maxdmg": 77,
       "agi": 5,
       "sta": 4
-    },
-    {
-      "id": 19226,
-      "type": "Fist",
-      "slot": "ranged",
-      "r": 1,
-      "name": "Fast Test Fist",
-      "speed": 0.5,
-      "mindmg": 1,
-      "hit": -75
     },
     {
       "id": 19350,
@@ -24146,7 +24183,8 @@ var gear = {
       "maxdmg": 146,
       "proc": {
         "magic": true,
-        "dmg": 108
+        "dmg": 108,
+        "ppm": 0.8
       }
     },
     {
@@ -24233,6 +24271,26 @@ var gear = {
       "rand": 678
     },
     {
+      "id": 868,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 38,
+      "name": "Ardent Custodian",
+      "speed": 2.1,
+      "mindmg": 48,
+      "maxdmg": 90
+    },
+    {
+      "id": 869,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 36,
+      "name": "Dazzling Longsword",
+      "speed": 1.7,
+      "mindmg": 37,
+      "maxdmg": 70
+    },
+    {
       "id": 871,
       "type": "Axe",
       "slot": "onehand",
@@ -24242,7 +24300,8 @@ var gear = {
       "mindmg": 37,
       "maxdmg": 69,
       "proc": {
-        "extra": 1
+        "extra": 1,
+        "ppm": 1.8
       }
     },
     {
@@ -24283,6 +24342,37 @@ var gear = {
       "mindmg": 22,
       "maxdmg": 42,
       "agi": 4
+    },
+    {
+      "id": 934,
+      "type": "Axe",
+      "slot": "onehand",
+      "r": 32,
+      "name": "Stalvan's Reaper",
+      "speed": 2.9,
+      "mindmg": 50,
+      "maxdmg": 94
+    },
+    {
+      "id": 935,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 15,
+      "name": "Night Watch Shortsword",
+      "speed": 2.6,
+      "mindmg": 24,
+      "maxdmg": 46,
+      "sta": 4
+    },
+    {
+      "id": 936,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 33,
+      "name": "Midnight Mace",
+      "speed": 2.5,
+      "mindmg": 46,
+      "maxdmg": 94
     },
     {
       "id": 1207,
@@ -24426,8 +24516,8 @@ var gear = {
       "r": 19,
       "name": "Shadowfang",
       "speed": 2.7,
-      "mindmg": 29,
-      "maxdmg": 55,
+      "mindmg": 33,
+      "maxdmg": 63,
       "proc": {
         "magic": true,
         "procgcd": true,
@@ -24495,6 +24585,16 @@ var gear = {
       "maxdmg": 112,
       "str": 5,
       "sta": 11
+    },
+    {
+      "id": 1727,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 23,
+      "name": "Sword of Decay",
+      "speed": 2.7,
+      "mindmg": 33,
+      "maxdmg": 62
     },
     {
       "id": 1728,
@@ -24593,6 +24693,17 @@ var gear = {
       "rand": 684
     },
     {
+      "id": 2011,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 21,
+      "name": "Twisted Sabre",
+      "speed": 1.8,
+      "mindmg": 21,
+      "maxdmg": 39,
+      "sta": 2
+    },
+    {
       "id": 2020,
       "type": "Dagger",
       "slot": "onehand",
@@ -24680,6 +24791,16 @@ var gear = {
       }
     },
     {
+      "id": 2189,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 95,
+      "name": "Tigole's Boomstick (TEST)",
+      "speed": 1,
+      "mindmg": 63,
+      "maxdmg": 117
+    },
+    {
       "id": 2194,
       "type": "Mace",
       "slot": "onehand",
@@ -24713,6 +24834,26 @@ var gear = {
       "maxdmg": 18,
       "agi": 1,
       "str": 1
+    },
+    {
+      "id": 2236,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 20,
+      "name": "Blackfang",
+      "speed": 1.5,
+      "mindmg": 17,
+      "maxdmg": 32
+    },
+    {
+      "id": 2243,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Hand of Edward the Odd",
+      "speed": 1.6,
+      "mindmg": 50,
+      "maxdmg": 94
     },
     {
       "id": 2244,
@@ -24780,6 +24921,16 @@ var gear = {
       "agi": 1
     },
     {
+      "id": 2567,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 18,
+      "name": "Evocator's Blade",
+      "speed": 1.6,
+      "mindmg": 17,
+      "maxdmg": 32
+    },
+    {
       "id": 2807,
       "type": "Axe",
       "slot": "mainhand",
@@ -24802,6 +24953,16 @@ var gear = {
       "maxdmg": 75,
       "str": 8,
       "sta": 5
+    },
+    {
+      "id": 2816,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 28,
+      "name": "Death Speaker Scepter",
+      "speed": 2.8,
+      "mindmg": 33,
+      "maxdmg": 63
     },
     {
       "id": 2819,
@@ -24968,6 +25129,17 @@ var gear = {
       "sta": 3
     },
     {
+      "id": 3414,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 22,
+      "name": "Crested Scepter",
+      "speed": 2.6,
+      "mindmg": 31,
+      "maxdmg": 58,
+      "sta": 5
+    },
+    {
       "id": 3462,
       "type": "Sword",
       "slot": "mainhand",
@@ -25083,6 +25255,36 @@ var gear = {
       "str": 4
     },
     {
+      "id": 3895,
+      "type": "Axe",
+      "slot": "mainhand",
+      "r": 25,
+      "name": "TEST Legendary",
+      "speed": 1,
+      "mindmg": 16,
+      "maxdmg": 31
+    },
+    {
+      "id": 3933,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 18,
+      "name": "Deprecated Moon Glaive",
+      "speed": 1.6,
+      "mindmg": 17,
+      "maxdmg": 32
+    },
+    {
+      "id": 3934,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 19,
+      "name": "Deprecated Warden Blade",
+      "speed": 2,
+      "mindmg": 25,
+      "maxdmg": 38
+    },
+    {
       "id": 4088,
       "type": "Dagger",
       "slot": "onehand",
@@ -25094,6 +25296,16 @@ var gear = {
       "agi": 6,
       "str": 6,
       "rand": 684
+    },
+    {
+      "id": 4090,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 41,
+      "name": "Mug O' Hurt",
+      "speed": 1.7,
+      "mindmg": 37,
+      "maxdmg": 69
     },
     {
       "id": 4091,
@@ -25161,8 +25373,8 @@ var gear = {
       "r": 21,
       "name": "Blackvenom Blade",
       "speed": 1.8,
-      "mindmg": 21,
-      "maxdmg": 39,
+      "mindmg": 22,
+      "maxdmg": 46,
       "agi": 1,
       "proc": {
         "magic": true,
@@ -25582,6 +25794,16 @@ var gear = {
       "str": 4
     },
     {
+      "id": 6331,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 31,
+      "name": "Howling Blade",
+      "speed": 1.4,
+      "mindmg": 23,
+      "maxdmg": 44
+    },
+    {
       "id": 6333,
       "type": "Dagger",
       "slot": "onehand",
@@ -25645,6 +25867,20 @@ var gear = {
       "sta": 2
     },
     {
+      "id": 6622,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 58,
+      "name": "Sword of Zeal",
+      "speed": 2.8,
+      "mindmg": 81,
+      "maxdmg": 151,
+      "proc": {
+        "spell": "Zeal",
+        "ppm": 1.8
+      }
+    },
+    {
       "id": 6633,
       "type": "Sword",
       "slot": "onehand",
@@ -25655,6 +25891,27 @@ var gear = {
       "maxdmg": 44,
       "str": 2,
       "sta": 2
+    },
+    {
+      "id": 6660,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 50,
+      "name": "Julie's Dagger",
+      "speed": 1.3,
+      "mindmg": 33,
+      "maxdmg": 62
+    },
+    {
+      "id": 6691,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 30,
+      "name": "Swinetusk Shank",
+      "speed": 1.5,
+      "mindmg": 24,
+      "maxdmg": 45,
+      "sta": 6
     },
     {
       "id": 6692,
@@ -25709,6 +25966,17 @@ var gear = {
       "sta": 5
     },
     {
+      "id": 6829,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 34,
+      "name": "Sword of Serenity",
+      "speed": 2.2,
+      "mindmg": 46,
+      "maxdmg": 86,
+      "sta": 9
+    },
+    {
       "id": 6831,
       "type": "Dagger",
       "slot": "onehand",
@@ -25740,6 +26008,16 @@ var gear = {
       }
     },
     {
+      "id": 7682,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 29,
+      "name": "Torturing Poker",
+      "speed": 1.7,
+      "mindmg": 26,
+      "maxdmg": 46
+    },
+    {
       "id": 7687,
       "type": "Mace",
       "slot": "onehand",
@@ -25749,6 +26027,26 @@ var gear = {
       "mindmg": 38,
       "maxdmg": 72,
       "str": 7
+    },
+    {
+      "id": 7714,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 34,
+      "name": "Hypnotic Blade",
+      "speed": 1.4,
+      "mindmg": 26,
+      "maxdmg": 49
+    },
+    {
+      "id": 7721,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 39,
+      "name": "Hand of Righteousness",
+      "speed": 2.7,
+      "mindmg": 56,
+      "maxdmg": 105
     },
     {
       "id": 7736,
@@ -25866,6 +26164,26 @@ var gear = {
       "agi": 9
     },
     {
+      "id": 7954,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 42,
+      "name": "The Shatterer",
+      "speed": 2.4,
+      "mindmg": 53,
+      "maxdmg": 99
+    },
+    {
+      "id": 7961,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 44,
+      "name": "Phantom Blade",
+      "speed": 2.6,
+      "mindmg": 59,
+      "maxdmg": 111
+    },
+    {
       "id": 8006,
       "type": "Dagger",
       "slot": "onehand",
@@ -25920,6 +26238,16 @@ var gear = {
       "rand": 681
     },
     {
+      "id": 8223,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 32,
+      "name": "Blade of the Basilisk",
+      "speed": 1.9,
+      "mindmg": 33,
+      "maxdmg": 62
+    },
+    {
       "id": 8224,
       "type": "Sword",
       "slot": "mainhand",
@@ -25965,6 +26293,16 @@ var gear = {
       "sta": 4
     },
     {
+      "id": 8708,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 40,
+      "name": "Hammer of Expertise",
+      "speed": 2.1,
+      "mindmg": 54,
+      "maxdmg": 101
+    },
+    {
       "id": 9359,
       "type": "Mace",
       "slot": "onehand",
@@ -25987,6 +26325,26 @@ var gear = {
       "maxdmg": 94,
       "str": 6,
       "ap": 10
+    },
+    {
+      "id": 9379,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 44,
+      "name": "Sang'thraze the Deflector",
+      "speed": 1.7,
+      "mindmg": 34,
+      "maxdmg": 65
+    },
+    {
+      "id": 9380,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 45,
+      "name": "Jang'thraze the Protector",
+      "speed": 1.9,
+      "mindmg": 44,
+      "maxdmg": 83
     },
     {
       "id": 9384,
@@ -26111,6 +26469,17 @@ var gear = {
         "interval": "5000",
         "duration": "15000"
       }
+    },
+    {
+      "id": 9457,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 30,
+      "name": "Royal Diplomatic Scepter",
+      "speed": 2.3,
+      "mindmg": 37,
+      "maxdmg": 69,
+      "sta": 2
     },
     {
       "id": 9465,
@@ -26247,8 +26616,8 @@ var gear = {
       "r": 33,
       "name": "Reforged Blade of Heroes",
       "speed": 2.2,
-      "mindmg": 31,
-      "maxdmg": 59,
+      "mindmg": 36,
+      "maxdmg": 69,
       "str": 3,
       "sta": 8
     },
@@ -26279,6 +26648,16 @@ var gear = {
       }
     },
     {
+      "id": 10625,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 44,
+      "name": "Stealthblade",
+      "speed": 1.4,
+      "mindmg": 32,
+      "maxdmg": 60
+    },
+    {
       "id": 10703,
       "type": "Dagger",
       "slot": "onehand",
@@ -26299,6 +26678,17 @@ var gear = {
       "mindmg": 40,
       "maxdmg": 75,
       "str": 9
+    },
+    {
+      "id": 10750,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 40,
+      "name": "Lifeforce Dirk",
+      "speed": 1.6,
+      "mindmg": 40,
+      "maxdmg": 75,
+      "sta": 11
     },
     {
       "id": 10761,
@@ -26418,6 +26808,37 @@ var gear = {
       "hit": 1
     },
     {
+      "id": 10838,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 49,
+      "name": "Might of Hakkar",
+      "speed": 2.4,
+      "mindmg": 60,
+      "maxdmg": 112,
+      "sta": 11
+    },
+    {
+      "id": 10847,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 52,
+      "name": "Dragon's Call",
+      "speed": 2.5,
+      "mindmg": 72,
+      "maxdmg": 135
+    },
+    {
+      "id": 11086,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 45,
+      "name": "Jang'thraze the Protector",
+      "speed": 1.9,
+      "mindmg": 44,
+      "maxdmg": 83
+    },
+    {
       "id": 11120,
       "type": "Mace",
       "slot": "mainhand",
@@ -26482,7 +26903,8 @@ var gear = {
       "mindmg": 73,
       "maxdmg": 136,
       "proc": {
-        "extra": 2
+        "extra": 2,
+        "ppm": 0.8
       }
     },
     {
@@ -26523,6 +26945,17 @@ var gear = {
       }
     },
     {
+      "id": 11784,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 48,
+      "name": "Arbiter's Blade",
+      "speed": 2.4,
+      "mindmg": 59,
+      "maxdmg": 110,
+      "sta": 8
+    },
+    {
       "id": 11805,
       "type": "Mace",
       "slot": "mainhand",
@@ -26532,6 +26965,16 @@ var gear = {
       "mindmg": 51,
       "maxdmg": 96,
       "str": 5
+    },
+    {
+      "id": 11817,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 51,
+      "name": "Lord General's Sword",
+      "speed": 2.6,
+      "mindmg": 67,
+      "maxdmg": 125
     },
     {
       "id": 11856,
@@ -26576,6 +27019,27 @@ var gear = {
       }
     },
     {
+      "id": 11922,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 52,
+      "name": "Blood-etched Blade",
+      "speed": 1.5,
+      "mindmg": 39,
+      "maxdmg": 74,
+      "sta": 12
+    },
+    {
+      "id": 11923,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 52,
+      "name": "The Hammer of Grace",
+      "speed": 2.7,
+      "mindmg": 71,
+      "maxdmg": 132
+    },
+    {
       "id": 11964,
       "type": "Mace",
       "slot": "mainhand",
@@ -26596,6 +27060,17 @@ var gear = {
       "mindmg": 60,
       "maxdmg": 112,
       "ap": 22
+    },
+    {
+      "id": 12062,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 50,
+      "name": "Skilled Fighting Blade",
+      "speed": 1.4,
+      "mindmg": 35,
+      "maxdmg": 65,
+      "skill": 4
     },
     {
       "id": 12248,
@@ -26690,6 +27165,40 @@ var gear = {
       "ap": 28
     },
     {
+      "id": 12590,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "Felstriker",
+      "speed": 1.7,
+      "mindmg": 54,
+      "maxdmg": 101,
+      "proc": {
+        "spell": "Felstriker"
+      }
+    },
+    {
+      "id": 12621,
+      "type": "Axe",
+      "slot": "mainhand",
+      "r": 54,
+      "name": "Demonfork",
+      "speed": 2.8,
+      "mindmg": 76,
+      "maxdmg": 142
+    },
+    {
+      "id": 12709,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 58,
+      "name": "Pip's Skinner",
+      "speed": 1.3,
+      "mindmg": 37,
+      "maxdmg": 70,
+      "skill": 10
+    },
+    {
       "id": 12773,
       "type": "Axe",
       "slot": "mainhand",
@@ -26739,6 +27248,16 @@ var gear = {
       "agi": 5,
       "str": 5,
       "sta": 5
+    },
+    {
+      "id": 12781,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 52,
+      "name": "Serenity",
+      "speed": 2,
+      "mindmg": 52,
+      "maxdmg": 98
     },
     {
       "id": 12783,
@@ -26814,6 +27333,29 @@ var gear = {
         "interval": "3000",
         "duration": "30000",
         "bleed": true
+      }
+    },
+    {
+      "id": 12797,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 58,
+      "name": "Frostguard",
+      "speed": 2.3,
+      "mindmg": 66,
+      "maxdmg": 124
+    },
+    {
+      "id": 12798,
+      "type": "Axe",
+      "slot": "mainhand",
+      "r": 58,
+      "name": "Annihilator",
+      "speed": 1.7,
+      "mindmg": 49,
+      "maxdmg": 92,
+      "proc": {
+        "spell": "Annihilator"
       }
     },
     {
@@ -26901,6 +27443,17 @@ var gear = {
       "str": 6
     },
     {
+      "id": 13025,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 32,
+      "name": "Deadwood Sledge",
+      "speed": 1.9,
+      "mindmg": 33,
+      "maxdmg": 62,
+      "sta": 2
+    },
+    {
       "id": 13026,
       "type": "Mace",
       "slot": "mainhand",
@@ -26926,6 +27479,17 @@ var gear = {
       "sta": 5
     },
     {
+      "id": 13028,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 56,
+      "name": "Bludstone Hammer",
+      "speed": 2.1,
+      "mindmg": 59,
+      "maxdmg": 110,
+      "sta": 5
+    },
+    {
       "id": 13032,
       "type": "Sword",
       "slot": "onehand",
@@ -26941,6 +27505,16 @@ var gear = {
         "interval": "1000",
         "duration": "3000"
       }
+    },
+    {
+      "id": 13033,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 29,
+      "name": "Zealot Blade",
+      "speed": 2.8,
+      "mindmg": 43,
+      "maxdmg": 81
     },
     {
       "id": 13034,
@@ -27023,6 +27597,16 @@ var gear = {
       }
     },
     {
+      "id": 13198,
+      "type": "Fist",
+      "slot": "onehand",
+      "r": 55,
+      "name": "Hurd Smasher",
+      "speed": 1.8,
+      "mindmg": 49,
+      "maxdmg": 93
+    },
+    {
       "id": 13204,
       "type": "Mace",
       "slot": "onehand",
@@ -27032,6 +27616,64 @@ var gear = {
       "mindmg": 49,
       "maxdmg": 93,
       "str": 9
+    },
+    {
+      "id": 13218,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 56,
+      "name": "Fang of the Crystal Spider",
+      "speed": 1.6,
+      "mindmg": 45,
+      "maxdmg": 84
+    },
+    {
+      "id": 13246,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 55,
+      "name": "Argent Avenger",
+      "speed": 2.2,
+      "mindmg": 71,
+      "maxdmg": 108,
+      "proc": {
+        "spell": "Avenger"
+      }
+    },
+    {
+      "id": 13286,
+      "type": "Axe",
+      "slot": "onehand",
+      "r": 53,
+      "name": "Rivenspike",
+      "speed": 2.9,
+      "mindmg": 77,
+      "maxdmg": 144,
+      "proc": {
+        "spell": "Rivenspike"
+      }
+    },
+    {
+      "id": 13349,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 58,
+      "name": "Scepter of the Unholy",
+      "speed": 2.4,
+      "mindmg": 69,
+      "maxdmg": 129,
+      "sta": 5
+    },
+    {
+      "id": 13360,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "Gift of the Elven Magi",
+      "speed": 1.5,
+      "mindmg": 43,
+      "maxdmg": 81,
+      "sta": 5
     },
     {
       "id": 13361,
@@ -27061,6 +27703,16 @@ var gear = {
       "ap": 30
     },
     {
+      "id": 13401,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 56,
+      "name": "The Cruel Hand of Timmy",
+      "speed": 1.8,
+      "mindmg": 50,
+      "maxdmg": 94
+    },
+    {
       "id": 13408,
       "type": "Axe",
       "slot": "mainhand",
@@ -27078,6 +27730,36 @@ var gear = {
       }
     },
     {
+      "id": 13952,
+      "type": "Axe",
+      "slot": "mainhand",
+      "r": 57,
+      "name": "Iceblade Hacker",
+      "speed": 2,
+      "mindmg": 58,
+      "maxdmg": 111
+    },
+    {
+      "id": 13953,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 57,
+      "name": "Silent Fang",
+      "speed": 1.6,
+      "mindmg": 45,
+      "maxdmg": 85
+    },
+    {
+      "id": 13964,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Witchblade",
+      "speed": 1.6,
+      "mindmg": 45,
+      "maxdmg": 85
+    },
+    {
       "id": 13984,
       "type": "Dagger",
       "slot": "onehand",
@@ -27090,6 +27772,16 @@ var gear = {
         "magic": true,
         "dmg": 90
       }
+    },
+    {
+      "id": 14024,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 56,
+      "name": "Frightalon",
+      "speed": 1.4,
+      "mindmg": 39,
+      "maxdmg": 73
     },
     {
       "id": 14151,
@@ -27758,6 +28450,17 @@ var gear = {
       }
     },
     {
+      "id": 17015,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Dark Iron Reaver",
+      "speed": 2.4,
+      "mindmg": 71,
+      "maxdmg": 134,
+      "sta": 10
+    },
+    {
       "id": 17016,
       "type": "Axe",
       "slot": "mainhand",
@@ -27795,6 +28498,17 @@ var gear = {
       }
     },
     {
+      "id": 17055,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 45,
+      "name": "Changuk Smasher",
+      "speed": 1.9,
+      "mindmg": 44,
+      "maxdmg": 83,
+      "sta": 6
+    },
+    {
       "id": 17068,
       "type": "Axe",
       "slot": "onehand",
@@ -27806,8 +28520,19 @@ var gear = {
       "proc": {
         "magic": true,
         "procgcd": true,
-        "dmg": 125
+        "dmg": 125,
+        "ppm": 0.8
       }
+    },
+    {
+      "id": 17070,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Fang of the Mystics",
+      "speed": 1.5,
+      "mindmg": 54,
+      "maxdmg": 101
     },
     {
       "id": 17071,
@@ -27834,7 +28559,43 @@ var gear = {
       "mindmg": 100,
       "maxdmg": 187,
       "proc": {
-        "dmg": 240
+        "dmg": 240,
+        "ppm": 0.6
+      }
+    },
+    {
+      "id": 17103,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Azuresong Mageblade",
+      "speed": 2.4,
+      "mindmg": 88,
+      "maxdmg": 164,
+      "sta": 7
+    },
+    {
+      "id": 17105,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Aurastone Hammer",
+      "speed": 2.7,
+      "mindmg": 95,
+      "maxdmg": 178,
+      "sta": 10
+    },
+    {
+      "id": 17112,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Empyrean Demolisher",
+      "speed": 2.8,
+      "mindmg": 94,
+      "maxdmg": 175,
+      "proc": {
+        "spell": "Empyrean"
       }
     },
     {
@@ -27844,8 +28605,8 @@ var gear = {
       "r": 60,
       "name": "Shard of the Defiler",
       "speed": 1.1,
-      "mindmg": 52,
-      "maxdmg": 61,
+      "mindmg": 62,
+      "maxdmg": 76,
       "crit": 15
     },
     {
@@ -27877,6 +28638,37 @@ var gear = {
       }
     },
     {
+      "id": 17710,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 49,
+      "name": "Charstone Dirk",
+      "speed": 1.6,
+      "mindmg": 40,
+      "maxdmg": 75
+    },
+    {
+      "id": 17719,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 48,
+      "name": "Inventor's Focal Sword",
+      "speed": 2.2,
+      "mindmg": 54,
+      "maxdmg": 101
+    },
+    {
+      "id": 17733,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 48,
+      "name": "Fist of Stone",
+      "speed": 1.8,
+      "mindmg": 44,
+      "maxdmg": 83,
+      "sta": 11
+    },
+    {
       "id": 17752,
       "type": "Dagger",
       "slot": "onehand",
@@ -27892,29 +28684,14 @@ var gear = {
       }
     },
     {
-      "id": 17780,
-      "type": "Dagger",
-      "slot": "mainhand",
-      "r": 49,
-      "name": "Blade of Eternal Darkness",
-      "speed": 1.5,
-      "mindmg": 41,
-      "maxdmg": 77,
-      "proc": {
-        "magic": true,
-        "procgcd": true,
-        "dmg": 100
-      }
-    },
-    {
       "id": 17802,
       "type": "Sword",
       "slot": "mainhand",
       "r": 100,
       "name": "Thunderfury Blessed Blade of the Windseeker DEPRECATED",
       "speed": 1.9,
-      "mindmg": 82,
-      "maxdmg": 153,
+      "mindmg": 98,
+      "maxdmg": 183,
       "agi": 5,
       "sta": 8,
       "proc": {
@@ -27936,6 +28713,16 @@ var gear = {
       "sta": 12
     },
     {
+      "id": 18048,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 55,
+      "name": "Mastersmith's Hammer",
+      "speed": 2.4,
+      "mindmg": 66,
+      "maxdmg": 123
+    },
+    {
       "id": 18203,
       "type": "Fist",
       "slot": "mainhand",
@@ -27944,7 +28731,10 @@ var gear = {
       "speed": 1.5,
       "mindmg": 50,
       "maxdmg": 94,
-      "agi": 4
+      "agi": 4,
+      "proc": {
+        "spell": "Eskhandar"
+      }
     },
     {
       "id": 18310,
@@ -27958,6 +28748,16 @@ var gear = {
       "agi": 5
     },
     {
+      "id": 18321,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 54,
+      "name": "Energetic Rod",
+      "speed": 2.3,
+      "mindmg": 71,
+      "maxdmg": 107
+    },
+    {
       "id": 18347,
       "type": "Axe",
       "slot": "onehand",
@@ -27967,6 +28767,28 @@ var gear = {
       "mindmg": 48,
       "maxdmg": 90,
       "agi": 11
+    },
+    {
+      "id": 18348,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Quel'Serrar",
+      "speed": 2,
+      "mindmg": 84,
+      "maxdmg": 126,
+      "sta": 12
+    },
+    {
+      "id": 18372,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 57,
+      "name": "Blade of the New Moon",
+      "speed": 1.4,
+      "mindmg": 40,
+      "maxdmg": 74,
+      "sta": 5
     },
     {
       "id": 18376,
@@ -27979,6 +28801,16 @@ var gear = {
       "maxdmg": 117,
       "str": 7,
       "sta": 11
+    },
+    {
+      "id": 18396,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 57,
+      "name": "Mind Carver",
+      "speed": 2,
+      "mindmg": 57,
+      "maxdmg": 106
     },
     {
       "id": 18462,
@@ -28016,6 +28848,17 @@ var gear = {
       "ap": 28
     },
     {
+      "id": 18491,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 54,
+      "name": "Lorespinner",
+      "speed": 1.5,
+      "mindmg": 45,
+      "maxdmg": 68,
+      "sta": 5
+    },
+    {
       "id": 18498,
       "type": "Axe",
       "slot": "onehand",
@@ -28034,8 +28877,8 @@ var gear = {
       "r": 70,
       "name": "The Twin Blades of Azzinoth",
       "speed": 1.5,
-      "mindmg": 132,
-      "maxdmg": 139,
+      "mindmg": 172,
+      "maxdmg": 199,
       "agi": 75,
       "sta": 100,
       "hit": 20
@@ -28047,8 +28890,8 @@ var gear = {
       "r": 70,
       "name": "Warglaive of Azzinoth (Right)",
       "speed": 1,
-      "mindmg": 85,
-      "maxdmg": 95,
+      "mindmg": 115,
+      "maxdmg": 155,
       "agi": 40,
       "sta": 50
     },
@@ -28059,8 +28902,8 @@ var gear = {
       "r": 70,
       "name": "Warglaive of Azzinoth (Left)",
       "speed": 1,
-      "mindmg": 85,
-      "maxdmg": 95,
+      "mindmg": 115,
+      "maxdmg": 155,
       "agi": 60,
       "sta": 50
     },
@@ -28103,6 +28946,26 @@ var gear = {
       "maxdmg": 90,
       "agi": 13,
       "sta": 5
+    },
+    {
+      "id": 18758,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Specter's Blade",
+      "speed": 1.8,
+      "mindmg": 51,
+      "maxdmg": 96
+    },
+    {
+      "id": 18800,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "TEST 1H Amberseal Keeper",
+      "speed": 2.5,
+      "mindmg": 85,
+      "maxdmg": 159
     },
     {
       "id": 18805,
@@ -28249,20 +29112,32 @@ var gear = {
       "ap": 28
     },
     {
+      "id": 18878,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Sorcerous Dagger",
+      "speed": 1.4,
+      "mindmg": 46,
+      "maxdmg": 86,
+      "sta": 8
+    },
+    {
       "id": 19019,
       "type": "Sword",
       "slot": "onehand",
       "r": 60,
       "name": "Thunderfury Blessed Blade of the Windseeker",
       "speed": 1.9,
-      "mindmg": 82,
-      "maxdmg": 153,
+      "mindmg": 98,
+      "maxdmg": 183,
       "agi": 5,
       "sta": 8,
       "proc": {
         "magic": true,
         "binaryspell": true,
-        "dmg": 300
+        "dmg": 300,
+        "ppm": 6
       }
     },
     {
@@ -28343,6 +29218,27 @@ var gear = {
       "sta": 13
     },
     {
+      "id": 19166,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Black Amnesty",
+      "speed": 1.6,
+      "mindmg": 53,
+      "maxdmg": 100
+    },
+    {
+      "id": 19168,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Blackguard",
+      "speed": 1.8,
+      "mindmg": 65,
+      "maxdmg": 121,
+      "sta": 9
+    },
+    {
       "id": 19170,
       "type": "Mace",
       "slot": "onehand",
@@ -28355,8 +29251,29 @@ var gear = {
       "proc": {
         "magic": true,
         "procgcd": true,
-        "dmg": 200
+        "dmg": 200,
+        "ppm": 0.4
       }
+    },
+    {
+      "id": 19313,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1300 Test Dagger 63 blue",
+      "speed": 1.3,
+      "mindmg": 37,
+      "maxdmg": 70
+    },
+    {
+      "id": 19314,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2000 Test Dagger 63 blue",
+      "speed": 2,
+      "mindmg": 58,
+      "maxdmg": 108
     },
     {
       "id": 19324,
@@ -28397,6 +29314,28 @@ var gear = {
       "sta": 13
     },
     {
+      "id": 19347,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Claw of Chromaggus",
+      "speed": 1.5,
+      "mindmg": 61,
+      "maxdmg": 114,
+      "sta": 7
+    },
+    {
+      "id": 19351,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Maladath Runed Blade of the Black Flight",
+      "speed": 2.2,
+      "mindmg": 86,
+      "maxdmg": 162,
+      "skill": 4
+    },
+    {
       "id": 19352,
       "type": "Sword",
       "slot": "onehand",
@@ -28408,6 +29347,17 @@ var gear = {
       "agi": 14,
       "str": 14,
       "sta": 7
+    },
+    {
+      "id": 19360,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Lok'amir il Romathis",
+      "speed": 2.1,
+      "mindmg": 92,
+      "maxdmg": 172,
+      "sta": 10
     },
     {
       "id": 19362,
@@ -28446,6 +29396,76 @@ var gear = {
       "str": 13,
       "sta": 7,
       "crit": 1
+    },
+    {
+      "id": 19427,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1500 Test sword 63 blue",
+      "speed": 1.5,
+      "mindmg": 43,
+      "maxdmg": 81
+    },
+    {
+      "id": 19428,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2900 Test sword 63 blue",
+      "speed": 2.9,
+      "mindmg": 84,
+      "maxdmg": 156
+    },
+    {
+      "id": 19456,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "2900 Test sword 80 purple",
+      "speed": 2.9,
+      "mindmg": 125,
+      "maxdmg": 233
+    },
+    {
+      "id": 19457,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "1500 Test sword 80 purple",
+      "speed": 1.5,
+      "mindmg": 64,
+      "maxdmg": 121
+    },
+    {
+      "id": 19502,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2200 Test sword 63 blue",
+      "speed": 2.2,
+      "mindmg": 63,
+      "maxdmg": 119
+    },
+    {
+      "id": 19503,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2200 Test sword 80 purple",
+      "speed": 2.2,
+      "mindmg": 95,
+      "maxdmg": 177
+    },
+    {
+      "id": 19504,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2200 Test sword 70 purple",
+      "speed": 2.2,
+      "mindmg": 79,
+      "maxdmg": 148
     },
     {
       "id": 19542,
@@ -28640,6 +29660,26 @@ var gear = {
       "sta": 3
     },
     {
+      "id": 19622,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1800 Test Dagger 63 blue",
+      "speed": 1.8,
+      "mindmg": 52,
+      "maxdmg": 97
+    },
+    {
+      "id": 19810,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1000 Test dagger 60 blue",
+      "speed": 1,
+      "mindmg": 27,
+      "maxdmg": 51
+    },
+    {
       "id": 19852,
       "type": "Axe",
       "slot": "onehand",
@@ -28667,6 +29707,17 @@ var gear = {
       "ap": 28
     },
     {
+      "id": 19864,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Bloodcaller",
+      "speed": 2,
+      "mindmg": 69,
+      "maxdmg": 130,
+      "sta": 12
+    },
+    {
       "id": 19865,
       "type": "Sword",
       "slot": "mainhand",
@@ -28677,6 +29728,28 @@ var gear = {
       "maxdmg": 110,
       "ap": 28,
       "crit": 1
+    },
+    {
+      "id": 19867,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Bloodlord's Defender",
+      "speed": 1.9,
+      "mindmg": 64,
+      "maxdmg": 119,
+      "sta": 15
+    },
+    {
+      "id": 19890,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Jin'do's Hexxer",
+      "speed": 2.4,
+      "mindmg": 80,
+      "maxdmg": 150,
+      "sta": 6
     },
     {
       "id": 19896,
@@ -28703,7 +29776,18 @@ var gear = {
         "magic": true,
         "dmg": 84
       },
-      "ap": 12
+      "ap": 12,
+      "skill": 10
+    },
+    {
+      "id": 19903,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Fang of Venoxis",
+      "speed": 1.3,
+      "mindmg": 43,
+      "maxdmg": 80
     },
     {
       "id": 19908,
@@ -28714,6 +29798,7 @@ var gear = {
       "speed": 2.6,
       "mindmg": 77,
       "maxdmg": 145,
+      "skill": 2,
       "proc": {
         "magic": true,
         "dmg": 78
@@ -28728,9 +29813,40 @@ var gear = {
       "speed": 2.4,
       "mindmg": 71,
       "maxdmg": 134,
+      "skill": 2,
       "agi": 8,
       "str": 8,
       "rand": 690
+    },
+    {
+      "id": 19961,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Gri'lek's Grinder",
+      "speed": 2.4,
+      "mindmg": 75,
+      "maxdmg": 140
+    },
+    {
+      "id": 19964,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Renataki's Soul Conduit",
+      "speed": 2.1,
+      "mindmg": 66,
+      "maxdmg": 123
+    },
+    {
+      "id": 19965,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Wushoolay's Poker",
+      "speed": 1.6,
+      "mindmg": 50,
+      "maxdmg": 94
     },
     {
       "id": 19968,
@@ -28741,11 +29857,7 @@ var gear = {
       "speed": 1.8,
       "mindmg": 56,
       "maxdmg": 105,
-      "str": 7,
-      "proc": {
-        "magic": true,
-        "dmg": 2
-      }
+      "str": 7
     },
     {
       "id": 20003,
@@ -28758,6 +29870,27 @@ var gear = {
       "maxdmg": 90,
       "agi": 4,
       "hit": 1
+    },
+    {
+      "id": 20035,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 50,
+      "name": "Glacial Spike",
+      "speed": 1.3,
+      "mindmg": 31,
+      "maxdmg": 59
+    },
+    {
+      "id": 20070,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Sageclaw",
+      "speed": 1.7,
+      "mindmg": 56,
+      "maxdmg": 105,
+      "sta": 8
     },
     {
       "id": 20279,
@@ -28885,6 +30018,17 @@ var gear = {
       "ap": 154
     },
     {
+      "id": 20648,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 51,
+      "name": "Cold Forged Hammer",
+      "speed": 2.5,
+      "mindmg": 72,
+      "maxdmg": 135,
+      "sta": 5
+    },
+    {
       "id": 20657,
       "type": "Dagger",
       "slot": "onehand",
@@ -28897,6 +30041,17 @@ var gear = {
       "ap": 24
     },
     {
+      "id": 20666,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Hardened Steel Warhammer",
+      "speed": 2.6,
+      "mindmg": 74,
+      "maxdmg": 138,
+      "sta": 10
+    },
+    {
       "id": 20675,
       "type": "Axe",
       "slot": "onehand",
@@ -28906,6 +30061,27 @@ var gear = {
       "mindmg": 71,
       "maxdmg": 133,
       "ap": 28
+    },
+    {
+      "id": 20698,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 58,
+      "name": "Elemental Attuned Blade",
+      "speed": 2.1,
+      "mindmg": 67,
+      "maxdmg": 125
+    },
+    {
+      "id": 20720,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Dark Whisper Blade",
+      "speed": 1.4,
+      "mindmg": 41,
+      "maxdmg": 78,
+      "sta": 6
     },
     {
       "id": 20723,
@@ -28928,7 +30104,18 @@ var gear = {
       "mindmg": 95,
       "maxdmg": 144,
       "sta": 10,
-      "ap": 38
+      "ap": 38,
+      "skill": 3
+    },
+    {
+      "id": 21127,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Ahn'Qiraj Mace [PH]",
+      "speed": 2.6,
+      "mindmg": 117,
+      "maxdmg": 176
     },
     {
       "id": 21242,
@@ -28984,6 +30171,17 @@ var gear = {
       "sta": 9
     },
     {
+      "id": 21466,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Stinger of Ayamiss",
+      "speed": 2.4,
+      "mindmg": 85,
+      "maxdmg": 158,
+      "sta": 9
+    },
+    {
       "id": 21498,
       "type": "Dagger",
       "slot": "onehand",
@@ -29009,6 +30207,17 @@ var gear = {
       "sta": 14
     },
     {
+      "id": 21521,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Runesword of the Red",
+      "speed": 2.2,
+      "mindmg": 88,
+      "maxdmg": 164,
+      "sta": 17
+    },
+    {
       "id": 21522,
       "type": "Dagger",
       "slot": "onehand",
@@ -29019,6 +30228,28 @@ var gear = {
       "maxdmg": 127,
       "agi": 13,
       "str": 9,
+      "sta": 14
+    },
+    {
+      "id": 21523,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Fang of Korialstrasz",
+      "speed": 1.8,
+      "mindmg": 72,
+      "maxdmg": 135,
+      "sta": 9
+    },
+    {
+      "id": 21622,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Sharpened Silithid Femur",
+      "speed": 2.3,
+      "mindmg": 95,
+      "maxdmg": 178,
       "sta": 14
     },
     {
@@ -29060,6 +30291,27 @@ var gear = {
       "ap": 20
     },
     {
+      "id": 21782,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2000 Test sword 63 blue",
+      "speed": 2,
+      "mindmg": 58,
+      "maxdmg": 108
+    },
+    {
+      "id": 21802,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "The Lost Kris of Zedd",
+      "speed": 1.5,
+      "mindmg": 47,
+      "maxdmg": 88,
+      "sta": 6
+    },
+    {
       "id": 21837,
       "type": "Mace",
       "slot": "onehand",
@@ -29069,7 +30321,40 @@ var gear = {
       "mindmg": 66,
       "maxdmg": 123,
       "sta": 7,
+      "skill": 4,
       "ap": 32
+    },
+    {
+      "id": 21839,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Scepter of the False Prophet",
+      "speed": 1.8,
+      "mindmg": 83,
+      "maxdmg": 156,
+      "sta": 10
+    },
+    {
+      "id": 22266,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 52,
+      "name": "Flarethorn",
+      "speed": 1.8,
+      "mindmg": 47,
+      "maxdmg": 88
+    },
+    {
+      "id": 22315,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 56,
+      "name": "Hammer of Revitalization",
+      "speed": 2.7,
+      "mindmg": 75,
+      "maxdmg": 141,
+      "sta": 5
     },
     {
       "id": 22317,
@@ -29093,6 +30378,17 @@ var gear = {
       "mindmg": 45,
       "maxdmg": 84,
       "crit": 1
+    },
+    {
+      "id": 22332,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 57,
+      "name": "Blade of Necromancy",
+      "speed": 1.5,
+      "mindmg": 42,
+      "maxdmg": 80,
+      "sta": 4
     },
     {
       "id": 22377,
@@ -29119,6 +30415,38 @@ var gear = {
       "ap": 26
     },
     {
+      "id": 22379,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Shivsprocket's Shiv",
+      "speed": 1.5,
+      "mindmg": 44,
+      "maxdmg": 84,
+      "sta": 13
+    },
+    {
+      "id": 22380,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 60,
+      "name": "Simone's Cultivating Hammer",
+      "speed": 1.8,
+      "mindmg": 53,
+      "maxdmg": 100
+    },
+    {
+      "id": 22383,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 59,
+      "name": "Sageblade",
+      "speed": 1.8,
+      "mindmg": 58,
+      "maxdmg": 109,
+      "sta": 14
+    },
+    {
       "id": 22384,
       "type": "Mace",
       "slot": "mainhand",
@@ -29143,6 +30471,28 @@ var gear = {
       "ap": 10
     },
     {
+      "id": 22688,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 55,
+      "name": "Verimonde's Last Resort",
+      "speed": 1.4,
+      "mindmg": 42,
+      "maxdmg": 79,
+      "sta": 7
+    },
+    {
+      "id": 22713,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Zulian Scepter of Rites",
+      "speed": 2.6,
+      "mindmg": 81,
+      "maxdmg": 152,
+      "sta": 9
+    },
+    {
       "id": 22736,
       "type": "Sword",
       "slot": "mainhand",
@@ -29165,6 +30515,17 @@ var gear = {
       "agi": 16,
       "crit": 1,
       "hit": 1
+    },
+    {
+      "id": 22803,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Midnight Haze",
+      "speed": 1.8,
+      "mindmg": 90,
+      "maxdmg": 136,
+      "sta": 20
     },
     {
       "id": 22804,
@@ -29205,6 +30566,17 @@ var gear = {
       "hit": 1
     },
     {
+      "id": 22807,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Wraith Blade",
+      "speed": 1.8,
+      "mindmg": 82,
+      "maxdmg": 153,
+      "sta": 10
+    },
+    {
       "id": 22808,
       "type": "Mace",
       "slot": "onehand",
@@ -29229,6 +30601,17 @@ var gear = {
       "maxdmg": 221,
       "ap": 36,
       "crit": 1
+    },
+    {
+      "id": 22942,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "The Widow's Embrace",
+      "speed": 1.9,
+      "mindmg": 83,
+      "maxdmg": 156,
+      "sta": 12
     },
     {
       "id": 22988,
@@ -29282,6 +30665,38 @@ var gear = {
       "ap": 40
     },
     {
+      "id": 23056,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Hammer of the Twisting Nether",
+      "speed": 1.9,
+      "mindmg": 97,
+      "maxdmg": 181,
+      "sta": 8
+    },
+    {
+      "id": 23132,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Lord Blackwood's Blade",
+      "speed": 1.5,
+      "mindmg": 42,
+      "maxdmg": 80,
+      "sta": 14
+    },
+    {
+      "id": 23168,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 30,
+      "name": "Scorn's Focal Dagger",
+      "speed": 1.4,
+      "mindmg": 22,
+      "maxdmg": 42
+    },
+    {
       "id": 23221,
       "type": "Mace",
       "slot": "onehand",
@@ -29292,8 +30707,20 @@ var gear = {
       "maxdmg": 238,
       "proc": {
         "magic": true,
-        "dmg": 125
+        "dmg": 125,
+        "ppm": 2
       }
+    },
+    {
+      "id": 23454,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Grand Marshal's Warhammer",
+      "speed": 2.9,
+      "mindmg": 138,
+      "maxdmg": 207,
+      "sta": 14
     },
     {
       "id": 23456,
@@ -29307,6 +30734,28 @@ var gear = {
       "sta": 7,
       "crit": 1,
       "ap": 28
+    },
+    {
+      "id": 23577,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "The Hungering Cold",
+      "speed": 1.5,
+      "mindmg": 76,
+      "maxdmg": 143,
+      "sta": 14,
+      "skill": 6
+    },
+    {
+      "id": 24071,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 0,
+      "name": "Bland Dagger",
+      "speed": 1.8,
+      "mindmg": 82,
+      "maxdmg": 82
     },
     {
       "id": 24222,
@@ -29344,6 +30793,60 @@ var gear = {
       "sta": 7,
       "crit": 1,
       "ap": 28
+    },
+    {
+      "id": 17943,
+      "type": "Mace",
+      "slot": "mainhand",
+      "r": 48,
+      "name": "Fist of Stone",
+      "speed": 1.8,
+      "mindmg": 44,
+      "maxdmg": 83
+    },
+    {
+      "id": 23451,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Grand Marshal's Mageblade",
+      "speed": 2,
+      "mindmg": 95,
+      "maxdmg": 143,
+      "sta": 14
+    },
+    {
+      "id": 23466,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "High Warlord's Spellblade",
+      "speed": 2,
+      "mindmg": 95,
+      "maxdmg": 143,
+      "sta": 14
+    },
+    {
+      "id": 20214,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Mindfang",
+      "speed": 1.7,
+      "mindmg": 56,
+      "maxdmg": 105,
+      "sta": 8
+    },
+    {
+      "id": 23464,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "High Warlord's Battle Mace",
+      "speed": 2.9,
+      "mindmg": 138,
+      "maxdmg": 207,
+      "sta": 14
     },
     {
       "id": 23467,
@@ -29457,7 +30960,8 @@ var gear = {
       "mindmg": 37,
       "maxdmg": 69,
       "proc": {
-        "extra": 1
+        "extra": 1,
+        "ppm": 1.8
       }
     },
     {
@@ -29475,6 +30979,37 @@ var gear = {
         "interval": "3000",
         "duration": "15000"
       }
+    },
+    {
+      "id": 934,
+      "type": "Axe",
+      "slot": "onehand",
+      "r": 32,
+      "name": "Stalvan's Reaper",
+      "speed": 2.9,
+      "mindmg": 50,
+      "maxdmg": 94
+    },
+    {
+      "id": 935,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 15,
+      "name": "Night Watch Shortsword",
+      "speed": 2.6,
+      "mindmg": 24,
+      "maxdmg": 46,
+      "sta": 4
+    },
+    {
+      "id": 936,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 33,
+      "name": "Midnight Mace",
+      "speed": 2.5,
+      "mindmg": 46,
+      "maxdmg": 94
     },
     {
       "id": 1207,
@@ -29741,6 +31276,26 @@ var gear = {
       "str": 1
     },
     {
+      "id": 2236,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 20,
+      "name": "Blackfang",
+      "speed": 1.5,
+      "mindmg": 17,
+      "maxdmg": 32
+    },
+    {
+      "id": 2243,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Hand of Edward the Odd",
+      "speed": 1.6,
+      "mindmg": 50,
+      "maxdmg": 94
+    },
+    {
       "id": 2266,
       "type": "Dagger",
       "slot": "onehand",
@@ -29750,6 +31305,16 @@ var gear = {
       "mindmg": 7,
       "maxdmg": 14,
       "agi": 1
+    },
+    {
+      "id": 2567,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 18,
+      "name": "Evocator's Blade",
+      "speed": 1.6,
+      "mindmg": 17,
+      "maxdmg": 32
     },
     {
       "id": 2819,
@@ -29928,6 +31493,16 @@ var gear = {
       "rand": 684
     },
     {
+      "id": 4090,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 41,
+      "name": "Mug O' Hurt",
+      "speed": 1.7,
+      "mindmg": 37,
+      "maxdmg": 69
+    },
+    {
       "id": 4091,
       "type": "Dagger",
       "slot": "onehand",
@@ -29946,8 +31521,8 @@ var gear = {
       "r": 21,
       "name": "Blackvenom Blade",
       "speed": 1.8,
-      "mindmg": 21,
-      "maxdmg": 39,
+      "mindmg": 22,
+      "maxdmg": 46,
       "agi": 1,
       "proc": {
         "magic": true,
@@ -30222,6 +31797,16 @@ var gear = {
       }
     },
     {
+      "id": 6331,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 31,
+      "name": "Howling Blade",
+      "speed": 1.4,
+      "mindmg": 23,
+      "maxdmg": 44
+    },
+    {
       "id": 6333,
       "type": "Dagger",
       "slot": "onehand",
@@ -30285,6 +31870,27 @@ var gear = {
       "sta": 2
     },
     {
+      "id": 6660,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 50,
+      "name": "Julie's Dagger",
+      "speed": 1.3,
+      "mindmg": 33,
+      "maxdmg": 62
+    },
+    {
+      "id": 6691,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 30,
+      "name": "Swinetusk Shank",
+      "speed": 1.5,
+      "mindmg": 24,
+      "maxdmg": 45,
+      "sta": 6
+    },
+    {
       "id": 6692,
       "type": "Axe",
       "slot": "onehand",
@@ -30307,6 +31913,17 @@ var gear = {
       "agi": 3,
       "str": 9,
       "sta": 4
+    },
+    {
+      "id": 6829,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 34,
+      "name": "Sword of Serenity",
+      "speed": 2.2,
+      "mindmg": 46,
+      "maxdmg": 86,
+      "sta": 9
     },
     {
       "id": 6831,
@@ -30340,6 +31957,16 @@ var gear = {
       }
     },
     {
+      "id": 7682,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 29,
+      "name": "Torturing Poker",
+      "speed": 1.7,
+      "mindmg": 26,
+      "maxdmg": 46
+    },
+    {
       "id": 7687,
       "type": "Mace",
       "slot": "onehand",
@@ -30349,6 +31976,16 @@ var gear = {
       "mindmg": 38,
       "maxdmg": 72,
       "str": 7
+    },
+    {
+      "id": 7714,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 34,
+      "name": "Hypnotic Blade",
+      "speed": 1.4,
+      "mindmg": 26,
+      "maxdmg": 49
     },
     {
       "id": 7736,
@@ -30451,6 +32088,16 @@ var gear = {
       "rand": 681
     },
     {
+      "id": 8223,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 32,
+      "name": "Blade of the Basilisk",
+      "speed": 1.9,
+      "mindmg": 33,
+      "maxdmg": 62
+    },
+    {
       "id": 8225,
       "type": "Sword",
       "slot": "onehand",
@@ -30490,6 +32137,26 @@ var gear = {
       "maxdmg": 94,
       "str": 6,
       "ap": 10
+    },
+    {
+      "id": 9379,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 44,
+      "name": "Sang'thraze the Deflector",
+      "speed": 1.7,
+      "mindmg": 34,
+      "maxdmg": 65
+    },
+    {
+      "id": 9380,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 45,
+      "name": "Jang'thraze the Protector",
+      "speed": 1.9,
+      "mindmg": 44,
+      "maxdmg": 83
     },
     {
       "id": 9384,
@@ -30601,6 +32268,17 @@ var gear = {
       }
     },
     {
+      "id": 9457,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 30,
+      "name": "Royal Diplomatic Scepter",
+      "speed": 2.3,
+      "mindmg": 37,
+      "maxdmg": 69,
+      "sta": 2
+    },
+    {
       "id": 9465,
       "type": "Axe",
       "slot": "onehand",
@@ -30682,8 +32360,8 @@ var gear = {
       "r": 33,
       "name": "Reforged Blade of Heroes",
       "speed": 2.2,
-      "mindmg": 31,
-      "maxdmg": 59,
+      "mindmg": 36,
+      "maxdmg": 69,
       "str": 3,
       "sta": 8
     },
@@ -30699,6 +32377,16 @@ var gear = {
       "str": 5
     },
     {
+      "id": 10625,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 44,
+      "name": "Stealthblade",
+      "speed": 1.4,
+      "mindmg": 32,
+      "maxdmg": 60
+    },
+    {
       "id": 10703,
       "type": "Dagger",
       "slot": "onehand",
@@ -30708,6 +32396,17 @@ var gear = {
       "mindmg": 35,
       "maxdmg": 66,
       "str": 8
+    },
+    {
+      "id": 10750,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 40,
+      "name": "Lifeforce Dirk",
+      "speed": 1.6,
+      "mindmg": 40,
+      "maxdmg": 75,
+      "sta": 11
     },
     {
       "id": 10761,
@@ -30798,6 +32497,16 @@ var gear = {
       "rand": 690
     },
     {
+      "id": 10847,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 52,
+      "name": "Dragon's Call",
+      "speed": 2.5,
+      "mindmg": 72,
+      "maxdmg": 135
+    },
+    {
       "id": 11635,
       "type": "Dagger",
       "slot": "onehand",
@@ -30850,6 +32559,17 @@ var gear = {
       "sta": 3
     },
     {
+      "id": 11922,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 52,
+      "name": "Blood-etched Blade",
+      "speed": 1.5,
+      "mindmg": 39,
+      "maxdmg": 74,
+      "sta": 12
+    },
+    {
       "id": 12061,
       "type": "Sword",
       "slot": "onehand",
@@ -30859,6 +32579,17 @@ var gear = {
       "mindmg": 60,
       "maxdmg": 112,
       "ap": 22
+    },
+    {
+      "id": 12062,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 50,
+      "name": "Skilled Fighting Blade",
+      "speed": 1.4,
+      "mindmg": 35,
+      "maxdmg": 65,
+      "skill": 4
     },
     {
       "id": 12248,
@@ -30937,6 +32668,19 @@ var gear = {
       "sta": 7,
       "crit": 1,
       "ap": 28
+    },
+    {
+      "id": 12590,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "Felstriker",
+      "speed": 1.7,
+      "mindmg": 54,
+      "maxdmg": 101,
+      "proc": {
+        "spell": "Felstriker",
+      }
     },
     {
       "id": 12774,
@@ -31029,6 +32773,16 @@ var gear = {
       }
     },
     {
+      "id": 13033,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 29,
+      "name": "Zealot Blade",
+      "speed": 2.8,
+      "mindmg": 43,
+      "maxdmg": 81
+    },
+    {
       "id": 13034,
       "type": "Sword",
       "slot": "onehand",
@@ -31097,6 +32851,16 @@ var gear = {
       }
     },
     {
+      "id": 13198,
+      "type": "Fist",
+      "slot": "onehand",
+      "r": 55,
+      "name": "Hurd Smasher",
+      "speed": 1.8,
+      "mindmg": 49,
+      "maxdmg": 93
+    },
+    {
       "id": 13204,
       "type": "Mace",
       "slot": "onehand",
@@ -31106,6 +32870,53 @@ var gear = {
       "mindmg": 49,
       "maxdmg": 93,
       "str": 9
+    },
+    {
+      "id": 13218,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 56,
+      "name": "Fang of the Crystal Spider",
+      "speed": 1.6,
+      "mindmg": 45,
+      "maxdmg": 84
+    },
+    {
+      "id": 13246,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 55,
+      "name": "Argent Avenger",
+      "speed": 2.2,
+      "mindmg": 71,
+      "maxdmg": 108,
+      "proc": {
+        "spell": "Avenger"
+      }
+    },
+    {
+      "id": 13286,
+      "type": "Axe",
+      "slot": "onehand",
+      "r": 53,
+      "name": "Rivenspike",
+      "speed": 2.9,
+      "mindmg": 77,
+      "maxdmg": 144,
+      "proc": {
+        "spell": "Rivenspike"
+      }
+    },
+    {
+      "id": 13360,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "Gift of the Elven Magi",
+      "speed": 1.5,
+      "mindmg": 43,
+      "maxdmg": 81,
+      "sta": 5
     },
     {
       "id": 13361,
@@ -31135,6 +32946,26 @@ var gear = {
       "ap": 30
     },
     {
+      "id": 13401,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 56,
+      "name": "The Cruel Hand of Timmy",
+      "speed": 1.8,
+      "mindmg": 50,
+      "maxdmg": 94
+    },
+    {
+      "id": 13964,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Witchblade",
+      "speed": 1.6,
+      "mindmg": 45,
+      "maxdmg": 85
+    },
+    {
       "id": 13984,
       "type": "Dagger",
       "slot": "onehand",
@@ -31147,6 +32978,16 @@ var gear = {
         "magic": true,
         "dmg": 90
       }
+    },
+    {
+      "id": 14024,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 56,
+      "name": "Frightalon",
+      "speed": 1.4,
+      "mindmg": 39,
+      "maxdmg": 73
     },
     {
       "id": 14151,
@@ -31682,6 +33523,17 @@ var gear = {
       }
     },
     {
+      "id": 17055,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 45,
+      "name": "Changuk Smasher",
+      "speed": 1.9,
+      "mindmg": 44,
+      "maxdmg": 83,
+      "sta": 6
+    },
+    {
       "id": 17068,
       "type": "Axe",
       "slot": "onehand",
@@ -31693,8 +33545,19 @@ var gear = {
       "proc": {
         "magic": true,
         "procgcd": true,
-        "dmg": 125
+        "dmg": 125,
+        "ppm": 0.8
       }
+    },
+    {
+      "id": 17070,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Fang of the Mystics",
+      "speed": 1.5,
+      "mindmg": 54,
+      "maxdmg": 101
     },
     {
       "id": 17071,
@@ -31721,8 +33584,20 @@ var gear = {
       "mindmg": 100,
       "maxdmg": 187,
       "proc": {
-        "dmg": 240
+        "dmg": 240,
+        "ppm": 0.6
       }
+    },
+    {
+      "id": 17105,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Aurastone Hammer",
+      "speed": 2.7,
+      "mindmg": 95,
+      "maxdmg": 178,
+      "sta": 10
     },
     {
       "id": 17142,
@@ -31731,8 +33606,8 @@ var gear = {
       "r": 60,
       "name": "Shard of the Defiler",
       "speed": 1.1,
-      "mindmg": 52,
-      "maxdmg": 61,
+      "mindmg": 62,
+      "maxdmg": 76,
       "crit": 15
     },
     {
@@ -31747,6 +33622,16 @@ var gear = {
       "proc": {
         "extra": 1
       }
+    },
+    {
+      "id": 17719,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 48,
+      "name": "Inventor's Focal Sword",
+      "speed": 2.2,
+      "mindmg": 54,
+      "maxdmg": 101
     },
     {
       "id": 17752,
@@ -31839,8 +33724,8 @@ var gear = {
       "r": 70,
       "name": "The Twin Blades of Azzinoth",
       "speed": 1.5,
-      "mindmg": 132,
-      "maxdmg": 139,
+      "mindmg": 172,
+      "maxdmg": 199,
       "agi": 75,
       "sta": 100,
       "hit": 20
@@ -31852,8 +33737,8 @@ var gear = {
       "r": 70,
       "name": "Warglaive of Azzinoth (Right)",
       "speed": 1,
-      "mindmg": 85,
-      "maxdmg": 95,
+      "mindmg": 115,
+      "maxdmg": 155,
       "agi": 40,
       "sta": 50
     },
@@ -31864,8 +33749,8 @@ var gear = {
       "r": 70,
       "name": "Warglaive of Azzinoth (Left)",
       "speed": 1,
-      "mindmg": 85,
-      "maxdmg": 95,
+      "mindmg": 115,
+      "maxdmg": 155,
       "agi": 60,
       "sta": 50
     },
@@ -31892,6 +33777,16 @@ var gear = {
       "maxdmg": 90,
       "agi": 13,
       "sta": 5
+    },
+    {
+      "id": 18758,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Specter's Blade",
+      "speed": 1.8,
+      "mindmg": 51,
+      "maxdmg": 96
     },
     {
       "id": 18805,
@@ -32018,14 +33913,15 @@ var gear = {
       "r": 60,
       "name": "Thunderfury Blessed Blade of the Windseeker",
       "speed": 1.9,
-      "mindmg": 82,
-      "maxdmg": 153,
+      "mindmg": 98,
+      "maxdmg": 183,
       "agi": 5,
       "sta": 8,
       "proc": {
         "magic": true,
         "binaryspell": true,
-        "dmg": 300
+        "dmg": 300,
+        "ppm": 6
       }
     },
     {
@@ -32106,6 +34002,27 @@ var gear = {
       "sta": 13
     },
     {
+      "id": 19166,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Black Amnesty",
+      "speed": 1.6,
+      "mindmg": 53,
+      "maxdmg": 100
+    },
+    {
+      "id": 19168,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Blackguard",
+      "speed": 1.8,
+      "mindmg": 65,
+      "maxdmg": 121,
+      "sta": 9
+    },
+    {
       "id": 19170,
       "type": "Mace",
       "slot": "onehand",
@@ -32118,8 +34035,29 @@ var gear = {
       "proc": {
         "magic": true,
         "procgcd": true,
-        "dmg": 200
+        "dmg": 200,
+        "ppm": 0.4
       }
+    },
+    {
+      "id": 19313,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1300 Test Dagger 63 blue",
+      "speed": 1.3,
+      "mindmg": 37,
+      "maxdmg": 70
+    },
+    {
+      "id": 19314,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2000 Test Dagger 63 blue",
+      "speed": 2,
+      "mindmg": 58,
+      "maxdmg": 108
     },
     {
       "id": 19324,
@@ -32146,6 +34084,28 @@ var gear = {
       "maxdmg": 130,
       "agi": 16,
       "sta": 13
+    },
+    {
+      "id": 19347,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Claw of Chromaggus",
+      "speed": 1.5,
+      "mindmg": 61,
+      "maxdmg": 114,
+      "sta": 7
+    },
+    {
+      "id": 19351,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Maladath Runed Blade of the Black Flight",
+      "speed": 2.2,
+      "mindmg": 86,
+      "maxdmg": 162,
+      "skill": 4
     },
     {
       "id": 19352,
@@ -32184,6 +34144,76 @@ var gear = {
       "maxdmg": 188,
       "sta": 13,
       "ap": 36
+    },
+    {
+      "id": 19427,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1500 Test sword 63 blue",
+      "speed": 1.5,
+      "mindmg": 43,
+      "maxdmg": 81
+    },
+    {
+      "id": 19428,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2900 Test sword 63 blue",
+      "speed": 2.9,
+      "mindmg": 84,
+      "maxdmg": 156
+    },
+    {
+      "id": 19456,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "2900 Test sword 80 purple",
+      "speed": 2.9,
+      "mindmg": 125,
+      "maxdmg": 233
+    },
+    {
+      "id": 19457,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "1500 Test sword 80 purple",
+      "speed": 1.5,
+      "mindmg": 64,
+      "maxdmg": 121
+    },
+    {
+      "id": 19502,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2200 Test sword 63 blue",
+      "speed": 2.2,
+      "mindmg": 63,
+      "maxdmg": 119
+    },
+    {
+      "id": 19503,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2200 Test sword 80 purple",
+      "speed": 2.2,
+      "mindmg": 95,
+      "maxdmg": 177
+    },
+    {
+      "id": 19504,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2200 Test sword 70 purple",
+      "speed": 2.2,
+      "mindmg": 79,
+      "maxdmg": 148
     },
     {
       "id": 19542,
@@ -32378,6 +34408,26 @@ var gear = {
       "sta": 3
     },
     {
+      "id": 19622,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1800 Test Dagger 63 blue",
+      "speed": 1.8,
+      "mindmg": 52,
+      "maxdmg": 97
+    },
+    {
+      "id": 19810,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 58,
+      "name": "1000 Test dagger 60 blue",
+      "speed": 1,
+      "mindmg": 27,
+      "maxdmg": 51
+    },
+    {
       "id": 19852,
       "type": "Axe",
       "slot": "onehand",
@@ -32417,7 +34467,8 @@ var gear = {
         "magic": true,
         "dmg": 84
       },
-      "ap": 12
+      "ap": 12,
+      "skill": 10
     },
     {
       "id": 19908,
@@ -32428,6 +34479,7 @@ var gear = {
       "speed": 2.6,
       "mindmg": 77,
       "maxdmg": 145,
+      "skill": 2,
       "proc": {
         "magic": true,
         "dmg": 78
@@ -32442,9 +34494,41 @@ var gear = {
       "speed": 2.4,
       "mindmg": 71,
       "maxdmg": 134,
+      "skill": 2,
       "agi": 8,
       "str": 8,
       "rand": 690
+    },
+    {
+      "id": 19961,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Gri'lek's Grinder",
+      "speed": 2.4,
+      "mindmg": 75,
+      "maxdmg": 140
+    },
+    {
+      "id": 20035,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 50,
+      "name": "Glacial Spike",
+      "speed": 1.3,
+      "mindmg": 31,
+      "maxdmg": 59
+    },
+    {
+      "id": 20070,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Sageclaw",
+      "speed": 1.7,
+      "mindmg": 56,
+      "maxdmg": 105,
+      "sta": 8
     },
     {
       "id": 20279,
@@ -32571,6 +34655,17 @@ var gear = {
       "ap": 24
     },
     {
+      "id": 20666,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Hardened Steel Warhammer",
+      "speed": 2.6,
+      "mindmg": 74,
+      "maxdmg": 138,
+      "sta": 10
+    },
+    {
       "id": 20675,
       "type": "Axe",
       "slot": "onehand",
@@ -32591,7 +34686,8 @@ var gear = {
       "mindmg": 95,
       "maxdmg": 144,
       "sta": 10,
-      "ap": 38
+      "ap": 38,
+      "skill": 3
     },
     {
       "id": 21242,
@@ -32711,6 +34807,16 @@ var gear = {
       "ap": 20
     },
     {
+      "id": 21782,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 58,
+      "name": "2000 Test sword 63 blue",
+      "speed": 2,
+      "mindmg": 58,
+      "maxdmg": 108
+    },
+    {
       "id": 21837,
       "type": "Mace",
       "slot": "onehand",
@@ -32720,7 +34826,18 @@ var gear = {
       "mindmg": 66,
       "maxdmg": 123,
       "sta": 7,
+      "skill": 4,
       "ap": 32
+    },
+    {
+      "id": 22266,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 52,
+      "name": "Flarethorn",
+      "speed": 1.8,
+      "mindmg": 47,
+      "maxdmg": 88
     },
     {
       "id": 22317,
@@ -32770,6 +34887,17 @@ var gear = {
       "ap": 26
     },
     {
+      "id": 22713,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Zulian Scepter of Rites",
+      "speed": 2.6,
+      "mindmg": 81,
+      "maxdmg": 152,
+      "sta": 9
+    },
+    {
       "id": 22802,
       "type": "Dagger",
       "slot": "onehand",
@@ -32781,6 +34909,17 @@ var gear = {
       "agi": 16,
       "crit": 1,
       "hit": 1
+    },
+    {
+      "id": 22803,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Midnight Haze",
+      "speed": 1.8,
+      "mindmg": 90,
+      "maxdmg": 136,
+      "sta": 20
     },
     {
       "id": 22804,
@@ -32821,6 +34960,17 @@ var gear = {
       "hit": 1
     },
     {
+      "id": 22807,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Wraith Blade",
+      "speed": 1.8,
+      "mindmg": 82,
+      "maxdmg": 153,
+      "sta": 10
+    },
+    {
       "id": 22808,
       "type": "Mace",
       "slot": "onehand",
@@ -32845,6 +34995,17 @@ var gear = {
       "maxdmg": 221,
       "ap": 36,
       "crit": 1
+    },
+    {
+      "id": 22942,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "The Widow's Embrace",
+      "speed": 1.9,
+      "mindmg": 83,
+      "maxdmg": 156,
+      "sta": 12
     },
     {
       "id": 22988,
@@ -32898,6 +35059,38 @@ var gear = {
       "ap": 40
     },
     {
+      "id": 23056,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Hammer of the Twisting Nether",
+      "speed": 1.9,
+      "mindmg": 97,
+      "maxdmg": 181,
+      "sta": 8
+    },
+    {
+      "id": 23132,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 57,
+      "name": "Lord Blackwood's Blade",
+      "speed": 1.5,
+      "mindmg": 42,
+      "maxdmg": 80,
+      "sta": 14
+    },
+    {
+      "id": 23168,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 30,
+      "name": "Scorn's Focal Dagger",
+      "speed": 1.4,
+      "mindmg": 22,
+      "maxdmg": 42
+    },
+    {
       "id": 23221,
       "type": "Mace",
       "slot": "onehand",
@@ -32908,8 +35101,20 @@ var gear = {
       "maxdmg": 238,
       "proc": {
         "magic": true,
-        "dmg": 125
+        "dmg": 125,
+        "ppm": 2
       }
+    },
+    {
+      "id": 23454,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Grand Marshal's Warhammer",
+      "speed": 2.9,
+      "mindmg": 138,
+      "maxdmg": 207,
+      "sta": 14
     },
     {
       "id": 23456,
@@ -32923,6 +35128,28 @@ var gear = {
       "sta": 7,
       "crit": 1,
       "ap": 28
+    },
+    {
+      "id": 23577,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "name": "The Hungering Cold",
+      "speed": 1.5,
+      "mindmg": 76,
+      "maxdmg": 143,
+      "sta": 14,
+      "skill": 6
+    },
+    {
+      "id": 24071,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 0,
+      "name": "Bland Dagger",
+      "speed": 1.8,
+      "mindmg": 82,
+      "maxdmg": 82
     },
     {
       "id": 24222,
@@ -32962,6 +35189,50 @@ var gear = {
       "ap": 28
     },
     {
+      "id": 23451,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Grand Marshal's Mageblade",
+      "speed": 2,
+      "mindmg": 95,
+      "maxdmg": 143,
+      "sta": 14
+    },
+    {
+      "id": 23466,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "High Warlord's Spellblade",
+      "speed": 2,
+      "mindmg": 95,
+      "maxdmg": 143,
+      "sta": 14
+    },
+    {
+      "id": 20214,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "name": "Mindfang",
+      "speed": 1.7,
+      "mindmg": 56,
+      "maxdmg": 105,
+      "sta": 8
+    },
+    {
+      "id": 23464,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "name": "High Warlord's Battle Mace",
+      "speed": 2.9,
+      "mindmg": 138,
+      "maxdmg": 207,
+      "sta": 14
+    },
+    {
       "id": 23467,
       "type": "Sword",
       "slot": "onehand",
@@ -32977,6 +35248,19 @@ var gear = {
   ],
   "twohand": [
     {
+      "id": 647,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 52,
+      "name": "Destiny",
+      "speed": 2.6,
+      "mindmg": 112,
+      "maxdmg": 168,
+      "proc": {
+        "spell": "Destiny"
+      }
+    },
+    {
       "id": 756,
       "type": "Axe",
       "slot": "twohand",
@@ -32987,6 +35271,28 @@ var gear = {
       "maxdmg": 74,
       "agi": 7,
       "sta": 7
+    },
+    {
+      "id": 791,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 26,
+      "name": "Gnarled Ash Staff",
+      "speed": 3.2,
+      "mindmg": 65,
+      "maxdmg": 99,
+      "sta": 6
+    },
+    {
+      "id": 812,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 49,
+      "name": "Glowing Brightwood Staff",
+      "speed": 3.1,
+      "mindmg": 127,
+      "maxdmg": 191,
+      "sta": 15
     },
     {
       "id": 866,
@@ -33031,6 +35337,27 @@ var gear = {
       "str": 7
     },
     {
+      "id": 873,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 35,
+      "name": "Staff of Jordan",
+      "speed": 3.7,
+      "mindmg": 119,
+      "maxdmg": 180
+    },
+    {
+      "id": 890,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 19,
+      "name": "Twisted Chanter's Staff",
+      "speed": 3.4,
+      "mindmg": 55,
+      "maxdmg": 84,
+      "sta": 6
+    },
+    {
       "id": 911,
       "type": "Mace",
       "slot": "twohand",
@@ -33067,6 +35394,37 @@ var gear = {
         "procgcd": true,
         "dmg": 125
       }
+    },
+    {
+      "id": 943,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 43,
+      "name": "Warden Staff",
+      "speed": 2.4,
+      "mindmg": 89,
+      "maxdmg": 134,
+      "sta": 11
+    },
+    {
+      "id": 944,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 56,
+      "name": "Elemental Mage Staff",
+      "speed": 3.2,
+      "mindmg": 147,
+      "maxdmg": 221
+    },
+    {
+      "id": 1155,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 24,
+      "name": "Rod of the Sleepwalker",
+      "speed": 2.8,
+      "mindmg": 53,
+      "maxdmg": 80
     },
     {
       "id": 1218,
@@ -33134,8 +35492,8 @@ var gear = {
       "r": 18,
       "name": "Night Reaver",
       "speed": 3.3,
-      "mindmg": 52,
-      "maxdmg": 78,
+      "mindmg": 53,
+      "maxdmg": 83,
       "proc": {
         "magic": true,
         "procgcd": true,
@@ -33217,6 +35575,16 @@ var gear = {
       "str": 6
     },
     {
+      "id": 1484,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 17,
+      "name": "Witching Stave",
+      "speed": 3.6,
+      "mindmg": 55,
+      "maxdmg": 83
+    },
+    {
       "id": 1521,
       "type": "Axe",
       "slot": "twohand",
@@ -33238,6 +35606,16 @@ var gear = {
       "mindmg": 63,
       "maxdmg": 95,
       "agi": 11
+    },
+    {
+      "id": 1607,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 49,
+      "name": "Soulkeeper",
+      "speed": 3.8,
+      "mindmg": 141,
+      "maxdmg": 213
     },
     {
       "id": 1613,
@@ -33478,6 +35856,16 @@ var gear = {
       "str": 10
     },
     {
+      "id": 2042,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 14,
+      "name": "Staff of Westfall",
+      "speed": 3,
+      "mindmg": 49,
+      "maxdmg": 74
+    },
+    {
       "id": 2058,
       "type": "Mace",
       "slot": "twohand",
@@ -33586,6 +35974,17 @@ var gear = {
       "str": 2
     },
     {
+      "id": 2271,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 18,
+      "name": "Staff of the Blessed Seer",
+      "speed": 3,
+      "mindmg": 47,
+      "maxdmg": 71,
+      "sta": 2
+    },
+    {
       "id": 2280,
       "type": "Staff",
       "slot": "twohand",
@@ -33631,6 +36030,16 @@ var gear = {
       }
     },
     {
+      "id": 2549,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 22,
+      "name": "Staff of the Shade",
+      "speed": 2.6,
+      "mindmg": 46,
+      "maxdmg": 70
+    },
+    {
       "id": 2801,
       "type": "Sword",
       "slot": "twohand",
@@ -33653,6 +36062,28 @@ var gear = {
       "mindmg": 32,
       "maxdmg": 48,
       "str": 6
+    },
+    {
+      "id": 2877,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 28,
+      "name": "Combatant Claymore",
+      "speed": 2.9,
+      "mindmg": 64,
+      "maxdmg": 97,
+      "sta": 10
+    },
+    {
+      "id": 2907,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 16,
+      "name": "Dwarven Tree Chopper",
+      "speed": 3.3,
+      "mindmg": 34,
+      "maxdmg": 52,
+      "skill": 2
     },
     {
       "id": 2915,
@@ -33728,8 +36159,8 @@ var gear = {
       "r": 16,
       "name": "Black Malice",
       "speed": 3.3,
-      "mindmg": 48,
-      "maxdmg": 73,
+      "mindmg": 49,
+      "maxdmg": 79,
       "proc": {
         "magic": true,
         "procgcd": true,
@@ -33878,6 +36309,17 @@ var gear = {
       "rand": 687
     },
     {
+      "id": 3415,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 19,
+      "name": "Staff of the Friar",
+      "speed": 2.6,
+      "mindmg": 42,
+      "maxdmg": 64,
+      "sta": 4
+    },
+    {
       "id": 3417,
       "type": "Sword",
       "slot": "twohand",
@@ -33996,6 +36438,17 @@ var gear = {
       "maxdmg": 87,
       "str": 11,
       "sta": 10
+    },
+    {
+      "id": 4548,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 35,
+      "name": "Servomechanic Sledgehammer",
+      "speed": 2.2,
+      "mindmg": 53,
+      "maxdmg": 80,
+      "skill": 7
     },
     {
       "id": 4562,
@@ -34132,6 +36585,17 @@ var gear = {
       }
     },
     {
+      "id": 5194,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 18,
+      "name": "Taskmaster Axe",
+      "speed": 2.7,
+      "mindmg": 42,
+      "maxdmg": 64,
+      "sta": 8
+    },
+    {
       "id": 5200,
       "type": "Polearm",
       "slot": "twohand",
@@ -34141,6 +36605,17 @@ var gear = {
       "mindmg": 27,
       "maxdmg": 42,
       "agi": 7
+    },
+    {
+      "id": 5201,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 18,
+      "name": "Emberstone Staff",
+      "speed": 3,
+      "mindmg": 47,
+      "maxdmg": 71,
+      "sta": 5
     },
     {
       "id": 5322,
@@ -34284,6 +36759,17 @@ var gear = {
       "sta": 2
     },
     {
+      "id": 6318,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 21,
+      "name": "Odo's Ley Staff",
+      "speed": 2.9,
+      "mindmg": 50,
+      "maxdmg": 76,
+      "sta": 5
+    },
+    {
       "id": 6327,
       "type": "Mace",
       "slot": "twohand",
@@ -34294,6 +36780,28 @@ var gear = {
       "maxdmg": 156,
       "str": 18,
       "sta": 7
+    },
+    {
+      "id": 6505,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 10,
+      "name": "Crescent Staff",
+      "speed": 2.9,
+      "mindmg": 47,
+      "maxdmg": 71,
+      "sta": 7
+    },
+    {
+      "id": 6631,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 20,
+      "name": "Living Root",
+      "speed": 2.9,
+      "mindmg": 49,
+      "maxdmg": 74,
+      "sta": 2
     },
     {
       "id": 6679,
@@ -34317,6 +36825,17 @@ var gear = {
       "maxdmg": 132,
       "str": 15,
       "sta": 8
+    },
+    {
+      "id": 6689,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 27,
+      "name": "Wind Spirit Staff",
+      "speed": 3.3,
+      "mindmg": 70,
+      "maxdmg": 106,
+      "sta": 3
     },
     {
       "id": 6830,
@@ -34407,14 +36926,56 @@ var gear = {
       "sta": 15
     },
     {
+      "id": 7710,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 31,
+      "name": "Loksey's Training Stick",
+      "speed": 3.1,
+      "mindmg": 77,
+      "maxdmg": 117
+    },
+    {
+      "id": 7713,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 34,
+      "name": "Illusionary Rod",
+      "speed": 3.4,
+      "mindmg": 94,
+      "maxdmg": 142,
+      "sta": 7
+    },
+    {
+      "id": 7717,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 37,
+      "name": "Ravager",
+      "speed": 3.5,
+      "mindmg": 104,
+      "maxdmg": 157
+    },
+    {
+      "id": 7723,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 39,
+      "name": "Mograine's Might",
+      "speed": 2.8,
+      "mindmg": 87,
+      "maxdmg": 131,
+      "sta": 17
+    },
+    {
       "id": 7730,
       "type": "Mace",
       "slot": "twohand",
       "r": 29,
       "name": "Cobalt Crusher",
       "speed": 3.2,
-      "mindmg": 74,
-      "maxdmg": 111,
+      "mindmg": 79,
+      "maxdmg": 116,
       "proc": {
         "magic": true,
         "dmg": 115
@@ -34435,6 +36996,17 @@ var gear = {
         "duration": "30000",
         "bleed": true
       }
+    },
+    {
+      "id": 7757,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 32,
+      "name": "Windweaver Staff",
+      "speed": 3.1,
+      "mindmg": 80,
+      "maxdmg": 121,
+      "sta": 7
     },
     {
       "id": 7758,
@@ -34464,6 +37036,16 @@ var gear = {
         "interval": "5000",
         "duration": "60000"
       }
+    },
+    {
+      "id": 7960,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 47,
+      "name": "Truesilver Champion",
+      "speed": 3,
+      "mindmg": 108,
+      "maxdmg": 162
     },
     {
       "id": 8178,
@@ -34522,6 +37104,16 @@ var gear = {
       "sta": 19
     },
     {
+      "id": 9385,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 31,
+      "name": "Archaic Defender",
+      "speed": 3.1,
+      "mindmg": 77,
+      "maxdmg": 117
+    },
+    {
       "id": 9391,
       "type": "Mace",
       "slot": "twohand",
@@ -34571,6 +37163,26 @@ var gear = {
       "sta": 15
     },
     {
+      "id": 9418,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 44,
+      "name": "Stoneslayer",
+      "speed": 3.9,
+      "mindmg": 133,
+      "maxdmg": 200
+    },
+    {
+      "id": 9423,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 40,
+      "name": "The Jackhammer",
+      "speed": 2.5,
+      "mindmg": 79,
+      "maxdmg": 119
+    },
+    {
       "id": 9425,
       "type": "Axe",
       "slot": "twohand",
@@ -34594,6 +37206,16 @@ var gear = {
       "maxdmg": 70,
       "agi": 5,
       "str": 16
+    },
+    {
+      "id": 9452,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 27,
+      "name": "Hydrocane",
+      "speed": 2.8,
+      "mindmg": 48,
+      "maxdmg": 73
     },
     {
       "id": 9459,
@@ -34621,6 +37243,16 @@ var gear = {
       }
     },
     {
+      "id": 9477,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 45,
+      "name": "The Chief's Enforcer",
+      "speed": 3.4,
+      "mindmg": 118,
+      "maxdmg": 178
+    },
+    {
       "id": 9480,
       "type": "Polearm",
       "slot": "twohand",
@@ -34643,6 +37275,16 @@ var gear = {
       "maxdmg": 164,
       "str": 8,
       "sta": 24
+    },
+    {
+      "id": 9482,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 42,
+      "name": "Witch Doctor's Cane",
+      "speed": 2.3,
+      "mindmg": 75,
+      "maxdmg": 114
     },
     {
       "id": 9486,
@@ -34745,6 +37387,26 @@ var gear = {
       "sta": 7
     },
     {
+      "id": 10626,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 45,
+      "name": "Ragehammer",
+      "speed": 3.7,
+      "mindmg": 128,
+      "maxdmg": 193
+    },
+    {
+      "id": 10627,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 42,
+      "name": "Bludgeon of the Grinning Dog",
+      "speed": 3.4,
+      "mindmg": 112,
+      "maxdmg": 168
+    },
+    {
       "id": 10628,
       "type": "Sword",
       "slot": "twohand",
@@ -34792,6 +37454,59 @@ var gear = {
       "maxdmg": 159,
       "str": 15,
       "sta": 18
+    },
+    {
+      "id": 10844,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 49,
+      "name": "Spire of Hakkar",
+      "speed": 3.4,
+      "mindmg": 126,
+      "maxdmg": 190,
+      "sta": 16
+    },
+    {
+      "id": 11607,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 52,
+      "name": "Dark Iron Sunderer",
+      "speed": 2.6,
+      "mindmg": 101,
+      "maxdmg": 153
+    },
+    {
+      "id": 11608,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 50,
+      "name": "Dark Iron Pulverizer",
+      "speed": 3.7,
+      "mindmg": 140,
+      "maxdmg": 211
+    },
+    {
+      "id": 11750,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 48,
+      "name": "Kindling Stave",
+      "speed": 2.9,
+      "mindmg": 106,
+      "maxdmg": 160,
+      "sta": 10
+    },
+    {
+      "id": 11786,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 51,
+      "name": "Stone of the Earth",
+      "speed": 3.2,
+      "mindmg": 123,
+      "maxdmg": 185,
+      "sta": 12
     },
     {
       "id": 11803,
@@ -34858,6 +37573,17 @@ var gear = {
       "maxdmg": 225,
       "crit": 1,
       "ap": 30
+    },
+    {
+      "id": 11932,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 54,
+      "name": "Guiding Stave of Wisdom",
+      "speed": 3.3,
+      "mindmg": 133,
+      "maxdmg": 200,
+      "sta": 11
     },
     {
       "id": 12000,
@@ -34944,6 +37670,37 @@ var gear = {
       }
     },
     {
+      "id": 12469,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 42,
+      "name": "Mutilator",
+      "speed": 2.5,
+      "mindmg": 82,
+      "maxdmg": 124
+    },
+    {
+      "id": 12528,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 47,
+      "name": "The Judge's Gavel",
+      "speed": 3.4,
+      "mindmg": 122,
+      "maxdmg": 184
+    },
+    {
+      "id": 12532,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 51,
+      "name": "Spire of the Stoneshaper",
+      "speed": 3.4,
+      "mindmg": 131,
+      "maxdmg": 197,
+      "sta": 20
+    },
+    {
       "id": 12583,
       "type": "Polearm",
       "slot": "twohand",
@@ -34955,6 +37712,16 @@ var gear = {
       "proc": {
         "dmg": 432
       }
+    },
+    {
+      "id": 12592,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Blackblade of Shahram",
+      "speed": 3.5,
+      "mindmg": 166,
+      "maxdmg": 250
     },
     {
       "id": 12764,
@@ -34989,6 +37756,17 @@ var gear = {
       "mindmg": 100,
       "maxdmg": 151,
       "str": 23
+    },
+    {
+      "id": 12775,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 51,
+      "name": "Huge Thorium Battleaxe",
+      "speed": 3.3,
+      "mindmg": 114,
+      "maxdmg": 172,
+      "skill": 10
     },
     {
       "id": 12776,
@@ -35026,6 +37804,16 @@ var gear = {
       "ap": 62
     },
     {
+      "id": 12790,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Arcanite Champion",
+      "speed": 3,
+      "mindmg": 129,
+      "maxdmg": 194
+    },
+    {
       "id": 12796,
       "type": "Mace",
       "slot": "twohand",
@@ -35035,6 +37823,16 @@ var gear = {
       "mindmg": 163,
       "maxdmg": 246,
       "str": 15
+    },
+    {
+      "id": 12802,
+      "type": "Polearm",
+      "slot": "twohand",
+      "r": 55,
+      "name": "Darkspear",
+      "speed": 3.2,
+      "mindmg": 131,
+      "maxdmg": 197
     },
     {
       "id": 12969,
@@ -35107,6 +37905,16 @@ var gear = {
       }
     },
     {
+      "id": 13000,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Staff of Hale Magefire",
+      "speed": 3.3,
+      "mindmg": 140,
+      "maxdmg": 210
+    },
+    {
       "id": 13003,
       "type": "Axe",
       "slot": "twohand",
@@ -35136,6 +37944,16 @@ var gear = {
       }
     },
     {
+      "id": 13017,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 35,
+      "name": "Hellslayer Battle Axe",
+      "speed": 2.9,
+      "mindmg": 82,
+      "maxdmg": 124
+    },
+    {
       "id": 13018,
       "type": "Axe",
       "slot": "twohand",
@@ -35146,6 +37964,16 @@ var gear = {
       "maxdmg": 191,
       "str": 23,
       "hit": 1
+    },
+    {
+      "id": 13041,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 21,
+      "name": "Guardian Blade",
+      "speed": 2.9,
+      "mindmg": 50,
+      "maxdmg": 76
     },
     {
       "id": 13042,
@@ -35170,6 +37998,16 @@ var gear = {
       "maxdmg": 169,
       "str": 10,
       "sta": 24
+    },
+    {
+      "id": 13044,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 52,
+      "name": "Demonslayer",
+      "speed": 3.1,
+      "mindmg": 121,
+      "maxdmg": 182
     },
     {
       "id": 13045,
@@ -35207,6 +38045,16 @@ var gear = {
       "maxdmg": 221,
       "str": 14,
       "sta": 21
+    },
+    {
+      "id": 13049,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 26,
+      "name": "Deanship Claymore",
+      "speed": 2.8,
+      "mindmg": 53,
+      "maxdmg": 80
     },
     {
       "id": 13051,
@@ -35303,6 +38151,17 @@ var gear = {
       }
     },
     {
+      "id": 13058,
+      "type": "Polearm",
+      "slot": "twohand",
+      "r": 39,
+      "name": "Khoo's Point",
+      "speed": 2.5,
+      "mindmg": 77,
+      "maxdmg": 117,
+      "sta": 20
+    },
+    {
       "id": 13059,
       "type": "Polearm",
       "slot": "twohand",
@@ -35343,6 +38202,17 @@ var gear = {
       }
     },
     {
+      "id": 13161,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 56,
+      "name": "Trindlehaven Staff",
+      "speed": 2.1,
+      "mindmg": 87,
+      "maxdmg": 132,
+      "sta": 12
+    },
+    {
       "id": 13163,
       "type": "Sword",
       "slot": "twohand",
@@ -35368,14 +38238,25 @@ var gear = {
       "sta": 12
     },
     {
+      "id": 13249,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 55,
+      "name": "Argent Crusader",
+      "speed": 3,
+      "mindmg": 127,
+      "maxdmg": 191,
+      "sta": 6
+    },
+    {
       "id": 13262,
       "type": "Sword",
       "slot": "twohand",
       "r": 60,
       "name": "Ashbringer",
       "speed": 3,
-      "mindmg": 201,
-      "maxdmg": 247,
+      "mindmg": 231,
+      "maxdmg": 297,
       "proc": {
         "magic": true,
         "procgcd": true,
@@ -35426,6 +38307,47 @@ var gear = {
       "maxdmg": 241,
       "str": 29,
       "sta": 12
+    },
+    {
+      "id": 13393,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 56,
+      "name": "Malown's Slam",
+      "speed": 3.8,
+      "mindmg": 158,
+      "maxdmg": 238
+    },
+    {
+      "id": 13505,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Runeblade of Baron Rivendare",
+      "speed": 3.6,
+      "mindmg": 171,
+      "maxdmg": 257
+    },
+    {
+      "id": 13937,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Headmaster's Charge",
+      "speed": 2.9,
+      "mindmg": 135,
+      "maxdmg": 204,
+      "sta": 30
+    },
+    {
+      "id": 13982,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Warblade of Caer Darrow",
+      "speed": 3.3,
+      "mindmg": 143,
+      "maxdmg": 236
     },
     {
       "id": 13983,
@@ -35854,6 +38776,26 @@ var gear = {
       "sta": 8
     },
     {
+      "id": 15854,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Dancing Sliver",
+      "speed": 2.4,
+      "mindmg": 98,
+      "maxdmg": 148
+    },
+    {
+      "id": 16039,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 52,
+      "name": "Ta'Kierthan Songblade",
+      "speed": 3.3,
+      "mindmg": 130,
+      "maxdmg": 214
+    },
+    {
       "id": 17073,
       "type": "Mace",
       "slot": "twohand",
@@ -35889,6 +38831,10 @@ var gear = {
       "mindmg": 206,
       "maxdmg": 310,
       "sta": 16,
+      "proc": {
+        "spell": "Bonereaver",
+        "ppm": 2
+      },
       "crit": 1
     },
     {
@@ -35901,6 +38847,16 @@ var gear = {
       "mindmg": 203,
       "maxdmg": 305,
       "ap": 34
+    },
+    {
+      "id": 17113,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Amberseal Keeper",
+      "speed": 3.3,
+      "mindmg": 168,
+      "maxdmg": 252
     },
     {
       "id": 17182,
@@ -35919,7 +38875,8 @@ var gear = {
         "dmg": 303,
         "tick": 15,
         "interval": "2000",
-        "duration": "10000"
+        "duration": "10000",
+        "ppm": 0.7
       }
     },
     {
@@ -35957,6 +38914,16 @@ var gear = {
       }
     },
     {
+      "id": 17743,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 45,
+      "name": "Resurgence Rod",
+      "speed": 3.8,
+      "mindmg": 139,
+      "maxdmg": 209
+    },
+    {
       "id": 17766,
       "type": "Mace",
       "slot": "twohand",
@@ -35968,6 +38935,28 @@ var gear = {
       "proc": {
         "dmg": 160
       }
+    },
+    {
+      "id": 18082,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 42,
+      "name": "Zum'rah's Vexing Cane",
+      "speed": 2.7,
+      "mindmg": 88,
+      "maxdmg": 133,
+      "sta": 10
+    },
+    {
+      "id": 18311,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 53,
+      "name": "Quel'dorai Channeling Rod",
+      "speed": 2.8,
+      "mindmg": 111,
+      "maxdmg": 167,
+      "sta": 8
     },
     {
       "id": 18324,
@@ -36006,6 +38995,17 @@ var gear = {
       "str": 22
     },
     {
+      "id": 18502,
+      "type": "Polearm",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Monstrous Glaive",
+      "speed": 2.9,
+      "mindmg": 123,
+      "maxdmg": 185,
+      "sta": 23
+    },
+    {
       "id": 18520,
       "type": "Sword",
       "slot": "twohand",
@@ -36016,6 +39016,28 @@ var gear = {
       "maxdmg": 207,
       "crit": 1,
       "ap": 60
+    },
+    {
+      "id": 18531,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Unyielding Maul",
+      "speed": 3.2,
+      "mindmg": 135,
+      "maxdmg": 204,
+      "sta": 12
+    },
+    {
+      "id": 18534,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Rod of the Ogre Magi",
+      "speed": 2.7,
+      "mindmg": 116,
+      "maxdmg": 175,
+      "sta": 11
     },
     {
       "id": 18538,
@@ -36044,6 +39066,17 @@ var gear = {
       "sta": 10
     },
     {
+      "id": 18717,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Hammer of the Grand Crusader",
+      "speed": 2.7,
+      "mindmg": 116,
+      "maxdmg": 175,
+      "sta": 10
+    },
+    {
       "id": 18725,
       "type": "Polearm",
       "slot": "twohand",
@@ -36068,6 +39101,17 @@ var gear = {
       "ap": 26
     },
     {
+      "id": 18803,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Hyperthermically Insulated Lava Dredger",
+      "speed": 2.9,
+      "mindmg": 155,
+      "maxdmg": 234,
+      "sta": 25
+    },
+    {
       "id": 18822,
       "type": "Sword",
       "slot": "twohand",
@@ -36076,7 +39120,8 @@ var gear = {
       "speed": 3.4,
       "mindmg": 176,
       "maxdmg": 264,
-      "str": 42
+      "str": 42,
+      "skill": 8
     },
     {
       "id": 18830,
@@ -36103,6 +39148,17 @@ var gear = {
       "str": 26,
       "sta": 41,
       "crit": 1
+    },
+    {
+      "id": 18842,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Staff of Dominance",
+      "speed": 2.9,
+      "mindmg": 155,
+      "maxdmg": 234,
+      "sta": 16
     },
     {
       "id": 18867,
@@ -36155,6 +39211,28 @@ var gear = {
       "str": 26,
       "sta": 41,
       "crit": 1
+    },
+    {
+      "id": 18873,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Grand Marshal's Stave",
+      "speed": 3,
+      "mindmg": 185,
+      "maxdmg": 279,
+      "sta": 41
+    },
+    {
+      "id": 18874,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "High Warlord's War Staff",
+      "speed": 3,
+      "mindmg": 185,
+      "maxdmg": 279,
+      "sta": 41
     },
     {
       "id": 18876,
@@ -36214,6 +39292,28 @@ var gear = {
       "crit": 1
     },
     {
+      "id": 19101,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Whiteout Staff",
+      "speed": 3.1,
+      "mindmg": 138,
+      "maxdmg": 207,
+      "sta": 25
+    },
+    {
+      "id": 19102,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Crackling Staff",
+      "speed": 3.1,
+      "mindmg": 138,
+      "maxdmg": 207,
+      "sta": 25
+    },
+    {
       "id": 19106,
       "type": "Polearm",
       "slot": "twohand",
@@ -36240,6 +39340,196 @@ var gear = {
       "crit": 1
     },
     {
+      "id": 19169,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Nightfall",
+      "speed": 3.5,
+      "mindmg": 187,
+      "maxdmg": 282
+    },
+    {
+      "id": 19184,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3800 Test 2h Axe 63 blue",
+      "speed": 3.8,
+      "mindmg": 163,
+      "maxdmg": 246
+    },
+    {
+      "id": 19185,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2100 Test 2h Axe 63 blue",
+      "speed": 2.1,
+      "mindmg": 90,
+      "maxdmg": 136
+    },
+    {
+      "id": 19186,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2700 Test 2h Axe 63 blue",
+      "speed": 2.7,
+      "mindmg": 116,
+      "maxdmg": 175
+    },
+    {
+      "id": 19187,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3200 Test 2h Axe 63 blue",
+      "speed": 3.2,
+      "mindmg": 138,
+      "maxdmg": 207
+    },
+    {
+      "id": 19188,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2200 Test 2h Axe 63 blue",
+      "speed": 2.2,
+      "mindmg": 94,
+      "maxdmg": 142
+    },
+    {
+      "id": 19189,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2300 Test 2h Axe 63 blue",
+      "speed": 2.3,
+      "mindmg": 99,
+      "maxdmg": 149
+    },
+    {
+      "id": 19190,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2400 Test 2h Axe 63 blue",
+      "speed": 2.4,
+      "mindmg": 103,
+      "maxdmg": 155
+    },
+    {
+      "id": 19191,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2500 Test 2h Axe 63 blue",
+      "speed": 2.5,
+      "mindmg": 107,
+      "maxdmg": 162
+    },
+    {
+      "id": 19192,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2600 Test 2h Axe 63 blue",
+      "speed": 2.6,
+      "mindmg": 112,
+      "maxdmg": 168
+    },
+    {
+      "id": 19193,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2800 Test 2h Axe 63 blue",
+      "speed": 2.8,
+      "mindmg": 120,
+      "maxdmg": 181
+    },
+    {
+      "id": 19194,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2900 Test 2h Axe 63 blue",
+      "speed": 2.9,
+      "mindmg": 125,
+      "maxdmg": 188
+    },
+    {
+      "id": 19195,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3000 Test 2h Axe 63 blue",
+      "speed": 3,
+      "mindmg": 129,
+      "maxdmg": 194
+    },
+    {
+      "id": 19196,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3100 Test 2h Axe 63 blue",
+      "speed": 3.1,
+      "mindmg": 133,
+      "maxdmg": 201
+    },
+    {
+      "id": 19197,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3300 Test 2h Axe 63 blue",
+      "speed": 3.3,
+      "mindmg": 142,
+      "maxdmg": 214
+    },
+    {
+      "id": 19198,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3400 Test 2h Axe 63 blue",
+      "speed": 3.4,
+      "mindmg": 146,
+      "maxdmg": 220
+    },
+    {
+      "id": 19199,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3500 Test 2h Axe 63 blue",
+      "speed": 3.5,
+      "mindmg": 151,
+      "maxdmg": 227
+    },
+    {
+      "id": 19200,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3600 Test 2h Axe 63 blue",
+      "speed": 3.6,
+      "mindmg": 155,
+      "maxdmg": 233
+    },
+    {
+      "id": 19201,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "3700 Test 2h Axe 63 blue",
+      "speed": 3.7,
+      "mindmg": 159,
+      "maxdmg": 240
+    },
+    {
       "id": 19323,
       "type": "Mace",
       "slot": "twohand",
@@ -36262,7 +39552,10 @@ var gear = {
       "mindmg": 192,
       "maxdmg": 289,
       "agi": 22,
-      "sta": 16
+      "sta": 16,
+      "proc": {
+        "spell": "Untamed"
+      }
     },
     {
       "id": 19353,
@@ -36290,6 +39583,28 @@ var gear = {
       "maxdmg": 262,
       "str": 21,
       "sta": 18
+    },
+    {
+      "id": 19355,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Shadow Wing Focus Staff",
+      "speed": 3.2,
+      "mindmg": 187,
+      "maxdmg": 282,
+      "sta": 22
+    },
+    {
+      "id": 19356,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Staff of the Shadow Flame",
+      "speed": 3.2,
+      "mindmg": 209,
+      "maxdmg": 315,
+      "sta": 24
     },
     {
       "id": 19357,
@@ -36329,6 +39644,124 @@ var gear = {
       "ap": 86
     },
     {
+      "id": 19455,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 60,
+      "name": "3500 Test 2h Axe 70 purple",
+      "speed": 3.5,
+      "mindmg": 187,
+      "maxdmg": 282
+    },
+    {
+      "id": 19566,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Advisor's Gnarled Staff",
+      "speed": 2.9,
+      "mindmg": 125,
+      "maxdmg": 188,
+      "sta": 21
+    },
+    {
+      "id": 19567,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 48,
+      "name": "Advisor's Gnarled Staff",
+      "speed": 2.9,
+      "mindmg": 106,
+      "maxdmg": 160,
+      "sta": 18
+    },
+    {
+      "id": 19568,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 38,
+      "name": "Advisor's Gnarled Staff",
+      "speed": 2.9,
+      "mindmg": 88,
+      "maxdmg": 133,
+      "sta": 14
+    },
+    {
+      "id": 19569,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 28,
+      "name": "Advisor's Gnarled Staff",
+      "speed": 2.9,
+      "mindmg": 64,
+      "maxdmg": 97,
+      "sta": 11
+    },
+    {
+      "id": 19570,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Lorekeeper's Staff",
+      "speed": 2.9,
+      "mindmg": 125,
+      "maxdmg": 188,
+      "sta": 21
+    },
+    {
+      "id": 19571,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 48,
+      "name": "Lorekeeper's Staff",
+      "speed": 2.9,
+      "mindmg": 106,
+      "maxdmg": 160,
+      "sta": 18
+    },
+    {
+      "id": 19572,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 38,
+      "name": "Lorekeeper's Staff",
+      "speed": 2.9,
+      "mindmg": 88,
+      "maxdmg": 133,
+      "sta": 14
+    },
+    {
+      "id": 19573,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 28,
+      "name": "Lorekeeper's Staff",
+      "speed": 2.9,
+      "mindmg": 64,
+      "maxdmg": 97,
+      "sta": 11
+    },
+    {
+      "id": 19662,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 60,
+      "name": "3500 Test 2h Axe 80 purple",
+      "speed": 3.5,
+      "mindmg": 225,
+      "maxdmg": 338
+    },
+    {
+      "id": 19809,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2500 Test 2h Axe 60 blue",
+      "speed": 2.5,
+      "mindmg": 102,
+      "maxdmg": 154
+    },
+    {
       "id": 19854,
       "type": "Sword",
       "slot": "twohand",
@@ -36354,6 +39787,17 @@ var gear = {
       }
     },
     {
+      "id": 19884,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Jin'do's Judgement",
+      "speed": 3.3,
+      "mindmg": 165,
+      "maxdmg": 248,
+      "sta": 10
+    },
+    {
       "id": 19900,
       "type": "Axe",
       "slot": "twohand",
@@ -36366,6 +39810,17 @@ var gear = {
       "crit": 1
     },
     {
+      "id": 19909,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Will of Arlokk",
+      "speed": 3,
+      "mindmg": 147,
+      "maxdmg": 222,
+      "sta": 15
+    },
+    {
       "id": 19918,
       "type": "Mace",
       "slot": "twohand",
@@ -36375,7 +39830,8 @@ var gear = {
       "mindmg": 177,
       "maxdmg": 266,
       "proc": {
-        "dmg": 210
+        "dmg": 210,
+        "ppm": 4
       }
     },
     {
@@ -36401,6 +39857,37 @@ var gear = {
       "maxdmg": 232,
       "sta": 20,
       "hit": 2
+    },
+    {
+      "id": 19962,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Gri'lek's Carver",
+      "speed": 3.9,
+      "mindmg": 182,
+      "maxdmg": 274
+    },
+    {
+      "id": 19963,
+      "type": "Polearm",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Pitchfork of Madness",
+      "speed": 3.5,
+      "mindmg": 163,
+      "maxdmg": 246
+    },
+    {
+      "id": 20069,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Ironbark Staff",
+      "speed": 3.4,
+      "mindmg": 156,
+      "maxdmg": 262,
+      "sta": 19
     },
     {
       "id": 20083,
@@ -36439,6 +39926,17 @@ var gear = {
       "sta": 27
     },
     {
+      "id": 20258,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Zulian Ceremonial Staff",
+      "speed": 2.6,
+      "mindmg": 115,
+      "maxdmg": 174,
+      "sta": 13
+    },
+    {
       "id": 20280,
       "type": "Axe",
       "slot": "twohand",
@@ -36449,6 +39947,17 @@ var gear = {
       "maxdmg": 206,
       "str": 19,
       "sta": 18
+    },
+    {
+      "id": 20334,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "90 Epic Frost Staff",
+      "speed": 2.7,
+      "mindmg": 209,
+      "maxdmg": 315,
+      "sta": 16
     },
     {
       "id": 20370,
@@ -36479,6 +39988,28 @@ var gear = {
       "ap": 280
     },
     {
+      "id": 20425,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 18,
+      "name": "Advisor's Gnarled Staff",
+      "speed": 2.9,
+      "mindmg": 45,
+      "maxdmg": 69,
+      "sta": 8
+    },
+    {
+      "id": 20434,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 18,
+      "name": "Lorekeeper's Staff",
+      "speed": 2.9,
+      "mindmg": 45,
+      "maxdmg": 69,
+      "sta": 8
+    },
+    {
       "id": 20504,
       "type": "Sword",
       "slot": "twohand",
@@ -36503,6 +40034,17 @@ var gear = {
       "str": 17
     },
     {
+      "id": 20536,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 50,
+      "name": "Soul Harvester",
+      "speed": 3.3,
+      "mindmg": 118,
+      "maxdmg": 178,
+      "sta": 16
+    },
+    {
       "id": 20556,
       "type": "Staff",
       "slot": "twohand",
@@ -36515,6 +40057,28 @@ var gear = {
       "sta": 10,
       "hit": 1,
       "crit": 1
+    },
+    {
+      "id": 20581,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Staff of Rampant Growth",
+      "speed": 2.6,
+      "mindmg": 142,
+      "maxdmg": 213,
+      "sta": 12
+    },
+    {
+      "id": 20654,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 55,
+      "name": "Amethyst War Staff",
+      "speed": 2.9,
+      "mindmg": 119,
+      "maxdmg": 179,
+      "sta": 6
     },
     {
       "id": 20660,
@@ -36553,6 +40117,27 @@ var gear = {
       "crit": 2
     },
     {
+      "id": 21125,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Ahn'Qiraj Staff [PH]",
+      "speed": 2.9,
+      "mindmg": 170,
+      "maxdmg": 255
+    },
+    {
+      "id": 21128,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Staff of the Qiraji Prophets",
+      "speed": 2.9,
+      "mindmg": 170,
+      "maxdmg": 255,
+      "sta": 21
+    },
+    {
       "id": 21134,
       "type": "Axe",
       "slot": "twohand",
@@ -36564,6 +40149,48 @@ var gear = {
       "agi": 19,
       "str": 35,
       "sta": 25
+    },
+    {
+      "id": 21188,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Fist of Cenarius",
+      "speed": 3.5,
+      "mindmg": 175,
+      "maxdmg": 263
+    },
+    {
+      "id": 21273,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Blessed Qiraji Acolyte Staff",
+      "speed": 3,
+      "mindmg": 189,
+      "maxdmg": 284,
+      "sta": 32
+    },
+    {
+      "id": 21276,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Blessed Qiraji Naturalist Staff UNUSED",
+      "speed": 3,
+      "mindmg": 192,
+      "maxdmg": 289
+    },
+    {
+      "id": 21452,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Staff of the Ruins",
+      "speed": 3.4,
+      "mindmg": 189,
+      "maxdmg": 284,
+      "sta": 24
     },
     {
       "id": 21492,
@@ -36671,6 +40298,28 @@ var gear = {
       "agi": 35
     },
     {
+      "id": 22333,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Hammer of Divine Might",
+      "speed": 2.1,
+      "mindmg": 89,
+      "maxdmg": 134,
+      "sta": 13
+    },
+    {
+      "id": 22335,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Lord Valthalak's Staff of Command",
+      "speed": 2.1,
+      "mindmg": 90,
+      "maxdmg": 136,
+      "sta": 11
+    },
+    {
       "id": 22348,
       "type": "Mace",
       "slot": "twohand",
@@ -36682,6 +40331,48 @@ var gear = {
       "str": 22,
       "sta": 22,
       "hit": 1
+    },
+    {
+      "id": 22394,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 57,
+      "name": "Staff of Metanoia",
+      "speed": 2.1,
+      "mindmg": 89,
+      "maxdmg": 134,
+      "sta": 15
+    },
+    {
+      "id": 22406,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 56,
+      "name": "Redemption",
+      "speed": 2.1,
+      "mindmg": 87,
+      "maxdmg": 132
+    },
+    {
+      "id": 22458,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 50,
+      "name": "Moonshadow Stave",
+      "speed": 3.7,
+      "mindmg": 133,
+      "maxdmg": 200
+    },
+    {
+      "id": 22589,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Atiesh Greatstaff of the Guardian",
+      "speed": 2.9,
+      "mindmg": 225,
+      "maxdmg": 338,
+      "sta": 31
     },
     {
       "id": 22691,
@@ -36713,6 +40404,50 @@ var gear = {
       "str": 20,
       "sta": 46,
       "crit": 2
+    },
+    {
+      "id": 22799,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Soulseeker",
+      "speed": 3.2,
+      "mindmg": 243,
+      "maxdmg": 366,
+      "sta": 30
+    },
+    {
+      "id": 22800,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Brimstone Staff",
+      "speed": 3.2,
+      "mindmg": 217,
+      "maxdmg": 327,
+      "sta": 31
+    },
+    {
+      "id": 22801,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Spire of Twilight",
+      "speed": 3.2,
+      "mindmg": 217,
+      "maxdmg": 327,
+      "sta": 30
+    },
+    {
+      "id": 22809,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Maul of the Redeemed Crusader",
+      "speed": 3.6,
+      "mindmg": 244,
+      "maxdmg": 367,
+      "sta": 29
     },
     {
       "id": 22813,
@@ -36773,7 +40508,19 @@ var gear = {
       "mindmg": 251,
       "maxdmg": 378,
       "agi": 45,
-      "sta": 22
+      "sta": 22,
+      "skill": 4
+    },
+    {
+      "id": 23124,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 55,
+      "name": "Staff of Balzaphon",
+      "speed": 3.9,
+      "mindmg": 160,
+      "maxdmg": 241,
+      "sta": 8
     },
     {
       "id": 23171,
@@ -36785,6 +40532,28 @@ var gear = {
       "mindmg": 50,
       "maxdmg": 76,
       "str": 14
+    },
+    {
+      "id": 23455,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Grand Marshal's Demolisher",
+      "speed": 3.8,
+      "mindmg": 235,
+      "maxdmg": 353,
+      "sta": 28
+    },
+    {
+      "id": 23465,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 60,
+      "name": "High Warlord's Destroyer",
+      "speed": 3.8,
+      "mindmg": 235,
+      "maxdmg": 353,
+      "sta": 28
     },
     {
       "id": 17223,
@@ -36821,6 +40590,70 @@ var gear = {
       }
     },
     {
+      "id": 19811,
+      "type": "Axe",
+      "slot": "twohand",
+      "r": 58,
+      "name": "2500 Test 2h Axe 60 blue (bear)",
+      "speed": 2.5,
+      "mindmg": 102,
+      "maxdmg": 154
+    },
+    {
+      "id": 20220,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Ironbark Staff",
+      "speed": 3.4,
+      "mindmg": 156,
+      "maxdmg": 262,
+      "sta": 19
+    },
+    {
+      "id": 21275,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Blessed Qiraji Augur Staff",
+      "speed": 3,
+      "mindmg": 189,
+      "maxdmg": 284,
+      "sta": 23
+    },
+    {
+      "id": 22391,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 58,
+      "name": "Monster - Staff Lord Valthalak",
+      "speed": 2.1,
+      "mindmg": 90,
+      "maxdmg": 136
+    },
+    {
+      "id": 22630,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Atiesh Greatstaff of the Guardian",
+      "speed": 2.9,
+      "mindmg": 225,
+      "maxdmg": 338,
+      "sta": 30
+    },
+    {
+      "id": 22631,
+      "type": "Staff",
+      "slot": "twohand",
+      "r": 60,
+      "name": "Atiesh Greatstaff of the Guardian",
+      "speed": 2.9,
+      "mindmg": 225,
+      "maxdmg": 338,
+      "sta": 28
+    },
+    {
       "id": 22632,
       "type": "Staff",
       "slot": "twohand",
@@ -36831,6 +40664,17 @@ var gear = {
       "maxdmg": 338,
       "sta": 28,
       "ap": 420
+    },
+    {
+      "id": 9999999,
+      "type": "Sword",
+      "slot": "twohand",
+      "r": 25,
+      "name": "Fathomblade",
+      "speed": 2.5,
+      "mindmg": 48,
+      "maxdmg": 73,
+      "hit": 1
     }
   ]
 };

@@ -35,7 +35,7 @@ class Weapon {
 
         if (item.proc) {
             this.proc1 = {};
-            this.proc1.chance = ~~(item.speed * (item.ppm || 1) / 0.006);
+            this.proc1.chance = ~~(item.speed * (item.proc.ppm || 1) / 0.006);
             if (item.proc.dmg && !item.proc.magic) this.proc1.physdmg = item.proc.dmg;
             if (item.proc.dmg && item.proc.magic) this.proc1.magicdmg = item.proc.dmg;
             if (item.proc.binaryspell) this.proc1.binaryspell = true;
@@ -56,14 +56,17 @@ class Weapon {
             }
             // custom spells
             if (item.proc.spell) {
-                player.auras[item.proc.spell.toLowerCase()] = eval('new ' + item.proc.spell + '(player)');
+                if (!player.auras[item.proc.spell.toLowerCase()]) {
+                    player.auras[item.proc.spell.toLowerCase()] = eval('new ' + item.proc.spell + '(player)');
+                }
                 this.proc1.spell = player.auras[item.proc.spell.toLowerCase()];
             }
         }
         
-        if (enchant && enchant.ppm) {
+        if (enchant && (enchant.ppm || enchant.chance)) {
             this.proc2 = {};
-            this.proc2.chance = ~~(this.speed * enchant.ppm / 0.006);
+            if (enchant.ppm) this.proc2.chance = ~~(this.speed * enchant.ppm / 0.006);
+            if (enchant.chance) this.proc2.chance = enchant.chance * 100;
             if (enchant.magicdmg) this.proc2.magicdmg = enchant.magicdmg;
             if (enchant.procspell && !offhand) {
                 player.auras.crusader1 = new Crusader(player);
@@ -99,6 +102,8 @@ class Weapon {
             this.basebonusdmg += tempenchant.bonusdmg;
         if (this.player.items.includes(21189))
             this.basebonusdmg += 4;
+        if (this.player.items.includes(19968) || item.id == 19968)
+            this.basebonusdmg += 2;
         this.bonusdmg = this.basebonusdmg;
     }
     dmg(heroicstrike) {
