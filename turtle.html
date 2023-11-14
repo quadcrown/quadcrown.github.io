@@ -58,7 +58,14 @@
 <body>
   <div class="alerts"></div>
 
-  <section class="sidebar">
+  <section class="sidebar closed">
+    <div class="sidebar-mobile">
+      <a href="#" class="btn js-dps">DPS</a>
+      <span class="dps"></span>
+      <label class="menu-button-container">
+        <div class="menu-button"></div>
+      </label>
+    </div>
     <div class="tabs">
       <a href="https://guybrushgit.github.io/WarriorSim/classic.html" class="btn js-classic">Classic</a>
       <a href="https://guybrushgit.github.io/WarriorSim/" class="btn js-sod">SoD</a>
@@ -150,7 +157,7 @@
         <div id="weight-hit"><span class="stat-name">Hit Chance:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
         <div id="weight-haste"><span class="stat-name">Haste:</span><span class="stat-dps">12345</span><span class="stat-error">123</span></div>
       </div>
-      <div id="dps-box"><span id="dps"></span><span id="dpserr"></span></div>
+      <div id="dps-box"><span class="dps"></span><span id="dpserr"></span></div>
       <div id="stats"></div>
       <div id="time"></div>
       <a href="#" class="btn js-dps">CALCULATE DPS</a>

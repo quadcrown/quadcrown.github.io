@@ -76,6 +76,11 @@ SIM.UI = {
             view.tcontainer.find('table.gear tbody tr td:last-of-type').html('');
             view.startLoading();
             view.simulateDPS(rows);
+
+            // mobile
+            view.sidebar.addClass('closed');
+            view.sidebar.find('.menu-button-container').removeClass('open');
+            if (window.innerWidth < 960) view.sidebar.get(0).scrollTop = 0;
         });
 
         view.main.on('click', '.js-enchant', function(e) {
@@ -212,6 +217,13 @@ SIM.UI = {
             view.updateSidebar();
             SIM.SETTINGS.buildSpells();
         });
+
+        view.sidebar.find('.menu-button-container').click(function (e) {
+            e.preventDefault();
+            $(this).parents('.sidebar').toggleClass('closed');
+            $(this).parents('.sidebar').get(0).scrollTop = 0;
+            $(this).toggleClass('open');
+        });
     },
 
     enableEditMode: function() {
@@ -247,7 +259,7 @@ SIM.UI = {
             view.endLoading();
             return;
         }
-        let dps = view.sidebar.find('#dps');
+        let dps = view.sidebar.find('.dps');
         let error = view.sidebar.find('#dpserr');
         let stats = view.sidebar.find('#stats');
         let time = view.sidebar.find('#time');
@@ -363,7 +375,7 @@ SIM.UI = {
             },
             error => {
                 btn.css('background', '');
-                view.sidebar.find('#dps').text('ERROR');
+                view.sidebar.find('.dps').text('ERROR');
                 view.sidebar.find('#dpserr').text('');
                 view.endLoading();
                 console.error(error);
@@ -450,7 +462,7 @@ SIM.UI = {
         var item = tr.data('id');
         var isench = tr.parents('table').hasClass('enchant');
         var istemp = tr.data('temp') == true;
-        var base = parseFloat(view.sidebar.find('#dps').text());
+        var base = parseFloat(view.sidebar.find('.dps').text());
 
         const params = {
             player: [item, type, istemp ? 2 : isench ? 1 : 0, Player.getConfig()],
@@ -1023,7 +1035,7 @@ SIM.UI = {
         view.tcontainer.append(table);
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
-            widthFixed: true,
+            widthFixed: false,
             sortList: editmode ?  [[dpsrow, 1],[1, 0]] : [[dpsrow-1, 1],[0, 0]],
             textSorter : {
                 22 : function(a, b, direction, column, table) {
@@ -1158,7 +1170,7 @@ SIM.UI = {
         view.tcontainer.append(table);
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
-            widthFixed: true,
+            widthFixed: false,
             sortList: editmode ? [[dpsrow, 1],[1, 0]] : [[dpsrow-1, 1],[0, 0]],
             textSorter : {
                 22 : function(a, b, direction, column, table) {
@@ -1233,7 +1245,7 @@ SIM.UI = {
         view.tcontainer.empty();
         view.tcontainer.append(table);
         view.tcontainer.find('table.gear').tablesorter({
-            widthFixed: true,
+            widthFixed: false,
             sortList: editmode ? [[13, 1]] : [[12, 1]],
         });
     },
@@ -1311,7 +1323,7 @@ SIM.UI = {
 
         view.tcontainer.append(table);
         view.tcontainer.find('table.enchant').tablesorter({
-            widthFixed: true,
+            widthFixed: false,
             sortList: editmode ? [[15, 1]] : [[14, 1]],
             headers: {
                 14: { sorter: "text" }
@@ -1356,7 +1368,7 @@ SIM.UI = {
 
         view.tcontainer.append(table);
         view.tcontainer.find('table.runes').tablesorter({
-            widthFixed: true,
+            widthFixed: false,
             sortList: editmode ? [[1, 0]] : [[0, 0]],
             headers: {
                 0: { sorter: "text" }
