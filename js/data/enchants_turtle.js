@@ -1,12 +1,6 @@
 var enchant = {
    "mainhand": [
        {
-           "id": 211845,
-           "name": "Blackfathom Sharpening Stone",
-           "hit": 2,
-           "temp": true
-       },
-       {
            "id": 18262,
            "name": "Elemental Sharpening Stone",
            "crit": 2,
@@ -121,12 +115,6 @@ var enchant = {
       },
     ],
     "offhand": [
-      {
-         "id": 211845,
-         "name": "Blackfathom Sharpening Stone",
-         "hit": 2,
-         "temp": true
-     },
      {
          "id": 18262,
          "name": "Elemental Sharpening Stone",
@@ -242,12 +230,6 @@ var enchant = {
 },
     ],
     "twohand": [
-       {
-           "id": 211845,
-           "name": "Blackfathom Sharpening Stone",
-           "hit": 2,
-           "temp": true
-       },
        {
            "id": 18262,
            "name": "Elemental Sharpening Stone",
@@ -374,7 +356,13 @@ var enchant = {
          "r": 40
       },
     ],
-    "head": [
+   "head": [
+      {
+         "id": 92005,
+         "name": "Invocation of Shattering",
+         "arp": 75,
+         "phase": 7
+      },
       {
          "name": "Ice Guard",
          "source": "Quest",
@@ -447,6 +435,25 @@ var enchant = {
          "ap": 30,
          "phase": 4,
          "r": 58
+      },
+      {
+         "id": 61438,
+         "spellid": true,
+         "name": "Sigil of Penetration",
+         "arp": 75,
+         "phase": 7
+      },
+      {
+         "id": 61437,
+         "spellid": true,
+         "name": "Sigil of Quickness",
+         "haste": 2,
+         "phase": 7
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
       }
    ],
    "back": [
@@ -506,6 +513,11 @@ var enchant = {
          "name": "Minor Agility",
          "agi": 1,
          "phase": 1
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
       }
    ],
    "chest": [
@@ -540,9 +552,12 @@ var enchant = {
          "agi": 1,
          "str": 1,
          "phase": 1
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
       }
-
-
    ],
    "wrist": [
       {
@@ -587,12 +602,18 @@ var enchant = {
          "str": 1,
          "phase": 1
       },
-
-
-
-
-
-
+      {
+         "id": 60969,
+         "spellid": true,
+         "name": "Greater Agility",
+         "agi": 7,
+         "phase": 7
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
+      }
    ],
    "hands": [
       {
@@ -636,9 +657,46 @@ var enchant = {
          "name": "Minor Haste",
          "haste": 1,
          "phase": 1
+      },
+      {
+         "id": 46087,
+         "spellid": true,
+         "name": "Major Strength",
+         "str": 9,
+         "phase": 7
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
+      }
+   ],
+   "waist": [
+      {
+         "id": 61781,
+         "name": "Iron",
+         "arp": 25,
+         "phase": 7,
+      },
+      {
+         "id": 61782,
+         "name": "Mithril",
+         "agi": 6,
+         "phase": 7,
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
       }
    ],
    "legs": [
+      {
+         "id": 92005,
+         "name": "Invocation of Shattering",
+         "arp": 75,
+         "phase": 7
+      },
       {
          "id": 18329,
          "name": "Arcanum of Rapidity",
@@ -659,6 +717,11 @@ var enchant = {
          "str": 8,
          "phase": 1,
          "r": 50
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
       }
    ],
    "feet": [
@@ -695,11 +758,64 @@ var enchant = {
          "spellid": true,
          "name": "Minor Speed",
          "phase": 1
+      },
+      {
+         "id": 0,
+         "name": "No Enchant",
+         "phase": 1
       }
-   ],
- };
+   ]
+};
 
- var sets = [
+var sets = [
+   {
+      id: 1161000001,
+      name: 'Hateforge Armor',
+      items: [60573, 60574, 60575, 60576, 60577, 60578, 605771],
+      bonus: [
+         { count: 2, stats: { ap: 20 } },
+         { count: 4, stats: { arp: 100 } },
+         { count: 6, stats: { haste: .02 } },
+      ]
+   },
+   {
+      id: 1170000002,
+      name: 'Dreamsteel Armor',
+      items: [61364, 61365, 61366, 61367],
+      bonus: [
+         { count: 2, stats: { ap: 26 } },
+         { count: 4, stats: { arp: 100 } },
+      ]
+   },
+   {
+      id: 100000997,
+      name: 'Convergence of the Elements',
+      items: [65024, 65025, 65026, 65027],
+      bonus: [
+         { count: 3, stats: { hit: 1, crit: 1 } },
+         { count: 4, stats: { haste: .02, ap: 40 } },
+      ]
+   },
+   {
+      id: 100000999,
+      name: 'Bloody Gladiator\'s Vestements',
+      items: [83429, 83430, 83431, 83432, 83433, 83434, 83435, 83436],
+      bonus: [
+         { count: 4, stats: { arp: 100 } },
+         { count: 6, stats: { ap: 40 } },
+         { count: 8, stats: { crit: 2 } },
+      ]
+   },
+   {
+      id: 100000998,
+      name: 'Bloody Gladiator\'s Battlegear',
+      items: [60358, 60359, 60360, 60361, 60362, 60363, 60364, 60365],
+      bonus: [
+         { count: 4, stats: { arp: 100 } },
+         { count: 6, stats: { ap: 40 } },
+         { count: 8, stats: { crit: 2 } },
+      ]
+   },
    {
       id: 143,
       name: 'Devilsaur Armor',
@@ -759,6 +875,15 @@ var enchant = {
       ]
    },
    {
+      id: 1170001,
+      name: 'Towerforge Battlegear',
+      items: [60007, 60008, 60009, 60010],
+      bonus: [
+         { count: 2, stats: { skill_0: 6 } },
+         { count: 4, stats: { procspell: "TowerForgeSetBonus", procchance: 2 } }
+      ]
+   },
+   {
       id: 218,
       name: 'Battlegear of Wrath',
       items: [16959, 16966, 16964, 16963, 16962, 16961, 16965, 16960],
@@ -812,6 +937,14 @@ var enchant = {
       items: [16864,16861,16865,16863,16866,16867,16868,16862],
       bonus: [
          { count: 3, stats: { sta: 0 } }
+      ]
+   },
+   {
+      id: 442,
+      name: 'Blood Tiger Harness',
+      items: [19688,19689],
+      bonus: [
+         { count: 2, stats: { crit: 1 } }
       ]
    },
 ];

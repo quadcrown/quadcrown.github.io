@@ -1287,15 +1287,15 @@ SIM.UI = {
                         <td>${item.agi || ''}</td>
                         <td>${item.ap || ''}</td>
                         <td>${item.arp || ''}</td>
+                        <td>${item.crit || ''}</td>
+                        <td>${item.hit || ''}</td>
                         <td>${item.haste || ''}</td>` +
                         // <td class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">${(item.resist || {}).shadow || ''}</td>
                         // <td class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">${(item.resist || {}).arcane || ''}</td>
                         // <td class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">${(item.resist || {}).nature || ''}</td>
                         // <td class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">${(item.resist || {}).fire || ''}</td>
                         // <td class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">${(item.resist || {}).frost || ''}</td>
-                        `<td>${item.crit || ''}</td>
-                        <td>${item.hit || ''}</td>
-                        <td>${item.bonusdmg || ''}</td>
+                        `<td>${item.bonusdmg || ''}</td>
                         <td>${item.ppm || ''}</td>
                         <td>${item.dps || ''}</td>
                     </tr>`;

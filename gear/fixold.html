@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
   <script type="text/javascript" src="/dist/js/libs/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="/js/data/gear.js"></script>
+  <script type="text/javascript" src="/js/data/gear_turtle.js"></script>
 </head>
 <body>
 
@@ -56,7 +56,7 @@
           }
         }
 
-        document.querySelector("textarea").value = "var gear = " + JSON.stringify(gear) + ";";
+        document.querySelector("textarea").value = "var gear = " + JSON.stringify(gear, null, 2) + ";";
       });
     </script>
 
