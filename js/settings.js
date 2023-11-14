@@ -52,7 +52,7 @@ SIM.SETTINGS = {
         view.talents.on('click', '.icon', function (e) {
             let talent = view.getTalent($(this));
             let total = view.getTalentTotal($(this));
-            if (total < talent.y * 5) return;
+            // if (total < talent.y * 5) return;
 
             let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
             let level = parseInt(storage.level);
@@ -61,7 +61,7 @@ SIM.SETTINGS = {
                 for (let talent of tree.t)
                     count += talent.c;
             let available = Math.max(level - 9 - count, 0);
-            if (available <= 0) return;
+            // if (available <= 0) return; Disabled this restriction so we can theorycraft different talent combos to recommend class changes
 
             talent.c = talent.c < talent.m ? talent.c + 1 : talent.m;
             $(this).attr('data-count', talent.c);

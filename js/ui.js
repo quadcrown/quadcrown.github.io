@@ -730,7 +730,7 @@ SIM.UI = {
         for (let tree of talents)
             for (let talent of tree.t)
                 count += talent.c;
-        view.talents.find("#points").text(Math.max(player.level - 9 - count, 0));
+        view.talents.find("#points").text(player.level - 9 - count);
     },
 
     updateSession: function (i) {
