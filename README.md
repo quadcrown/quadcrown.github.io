@@ -1,5 +1,5 @@
 # WarriorSim-TurtleWoW
-A webapp to simulate how https://turtle-wow.org single-target Warrior performs with different gear, buffs, rotations, and talents.
+A webapp to simulate how https://turtle-wow.org DPS Warrior performs with different gear, buffs, rotations, and talents.
 
 Forked from https://github.com/GuybrushGit/WarriorSim
 
