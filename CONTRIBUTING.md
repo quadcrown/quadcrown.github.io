@@ -7,7 +7,7 @@ On windows you should install [nvm-windows](https://github.com/coreybutler/nvm-w
 Install webapp (first time):
 ```bash
 git clone https://github.com/Zebouski/WarriorSim-TurtleWoW.git
-cd WarriorSim
+cd WarriorSim-TurtleWoW
 nvm install 11.15.0
 nvm use 11.15.0
 npm install
