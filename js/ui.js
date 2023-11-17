@@ -44,6 +44,7 @@ SIM.UI = {
             $('section.settings').toggleClass('active');
             view.sidebar.find('.js-stats').removeClass('active');
             $('section.stats').removeClass('active');
+            view.body.removeClass('sidebar-mobile-open');
         });
 
         view.sidebar.find('.js-dps').click(function (e) {
@@ -63,9 +64,12 @@ SIM.UI = {
         view.sidebar.find('.js-stats').click(function (e) {
             e.preventDefault();
             $(this).toggleClass('active');
+            window.scrollTo(0, 0);
+            $('section.stats').css('min-height', view.body.outerHeight() + 'px');
             $('section.stats').toggleClass('active');
             view.sidebar.find('.js-settings').removeClass('active');
             $('section.settings').removeClass('active');
+            view.body.removeClass('sidebar-mobile-open');
         });
 
         view.body.on('click', '.js-table', function(e) {
@@ -81,6 +85,7 @@ SIM.UI = {
             view.sidebar.addClass('closed');
             view.sidebar.find('.menu-button-container').removeClass('open');
             if (window.innerWidth < 960) view.sidebar.get(0).scrollTop = 0;
+            view.body.removeClass('sidebar-mobile-open');
         });
 
         view.main.on('click', '.js-enchant', function(e) {
@@ -102,6 +107,16 @@ SIM.UI = {
             else view.disableEditMode();
         });
 
+        view.main.on('click', '.js-export', function(e) {
+            e.preventDefault();
+            view.exportProfile();
+        });
+
+        view.main.on('click', '.js-import', function(e) {
+            e.preventDefault();
+            view.importProfile();
+        });
+
         view.main.find('nav li p').click(function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -117,6 +132,8 @@ SIM.UI = {
 
             view.main.find('.js-editmode').show();
             view.main.find('.js-table').show();
+            view.main.find('.js-import').hide();
+            view.main.find('.js-export').hide();
 
             if (type == "mainhand" || type == "offhand" || type == "twohand")
                 view.loadWeapons(type);
@@ -127,6 +144,8 @@ SIM.UI = {
                 view.main.find('.js-editmode').hide();
                 view.main.find('.js-table').hide();
                 view.main.find('.js-enchant').hide();
+                view.main.find('.js-import').show();
+                view.main.find('.js-export').show();
             }
             else
                 view.loadGear(type);
@@ -223,6 +242,7 @@ SIM.UI = {
             $(this).parents('.sidebar').toggleClass('closed');
             $(this).parents('.sidebar').get(0).scrollTop = 0;
             $(this).toggleClass('open');
+            view.body.toggleClass('sidebar-mobile-open');
         });
     },
 
@@ -760,10 +780,9 @@ SIM.UI = {
         obj.targetarmor = view.fight.find('input[name="targetarmor"]').val();
         obj.targetresistance = view.fight.find('input[name="targetresistance"]').val();
         obj.adjacent = view.fight.find('input[name="adjacent"]').val();
-        obj.adjacentlevel = view.fight.find('input[name="adjacentlevel"]').val();
         obj.aqbooks = view.fight.find('select[name="aqbooks"]').val();
-        obj.weaponrng = view.fight.find('select[name="weaponrng"]').val();
-        obj.spelldamage = view.fight.find('input[name="spelldamage"]').val();
+        obj.reactionmin = view.fight.find('input[name="reactionmin"]').val();
+        obj.reactionmax = view.fight.find('input[name="reactionmax"]').val();
         obj.batching = view.fight.find('select[name="batching"]').val();
 
         let _buffs = [], _rotation = [], _talents = [], _sources = [], _phases = [], _gear = {}, _enchant = {}, _runes = {}, _resistance = {};
@@ -920,6 +939,8 @@ SIM.UI = {
             <input type="text" name="profilename" value="${storage.profilename}">
         </div>`);
 
+        view.tcontainer.append(`<textarea class="profilejson" name="profilejson"></textarea>`);
+
         if (subtype)
             view.addAlert(`${storage.profilename} loaded`);
     },
@@ -969,8 +990,11 @@ SIM.UI = {
                 continue;
             }
 
-            if (filter && filter != "All") {
-                if (filter == "Human Weps") {
+            if (filter) {
+                if (filter == "All") {
+                    if (item.type == "Shield") continue;
+                }
+                else if (filter == "Human Weps") {
                     if (item.type != "Mace" && item.type != "Sword") continue;
                 }
                 else if (filter == "Goblin Weps") {
@@ -1395,16 +1419,148 @@ SIM.UI = {
         console.log('Welcome!');
     },
 
-    newVersion: function() {
-        var view = this;
+    exportProfile: function() {
+        const view = this;
 
-        localStorage[mode].version = version;
+        let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
+        let minified = {};
 
-        if (!view.filter.find(`.phases [data-id="4"]`).hasClass('active'))
-            setTimeout(() => { view.filter.find(`.phases [data-id="4"]`).click() }, 100);
-        if (!view.filter.find(`.phases [data-id="5"]`).hasClass('active'))
-            setTimeout(() => { view.filter.find(`.phases [data-id="5"]`).click() }, 100);
 
+        for(let prop in storage) {
+            if (typeof storage[prop] == 'string') minified[prop] = storage[prop];
+        }
+        minified.buffs = storage.buffs;
+        minified.talents = storage.talents;
+        minified.gear = {};
+        for (let type in storage.gear) {
+            for (let item of storage.gear[type])
+                if (item.selected) minified.gear[type] = item.id;
+        }
+        minified.rotation = [];
+        for (let spell of storage.rotation) {
+            if (spell.active) {
+                let obj = {};
+                obj.id = spell.id;
+                if (typeof spell.duration !== 'undefined') obj.duration = spell.duration;
+                if (typeof spell.durationactive !== 'undefined') obj.durationactive = spell.durationactive;
+                if (typeof spell.timetoend !== 'undefined') obj.timetoend = spell.timetoend;
+                if (typeof spell.crusaders !== 'undefined') obj.crusaders = spell.crusaders;
+                if (typeof spell.haste !== 'undefined') obj.haste = spell.haste;
+                if (typeof spell.procblock !== 'undefined') obj.procblock = spell.procblock;
+                if (typeof spell.rageblock !== 'undefined') obj.rageblock = spell.rageblock;
+                if (typeof spell.rageblockactive !== 'undefined') obj.rageblockactive = spell.rageblockactive;
+                if (typeof spell.minrage !== 'undefined') obj.minrage = spell.minrage;
+                if (typeof spell.minrageactive !== 'undefined') obj.minrageactive = spell.minrageactive;
+                if (typeof spell.maxrage !== 'undefined') obj.maxrage = spell.maxrage;
+                if (typeof spell.maxrageactive !== 'undefined') obj.maxrageactive = spell.maxrageactive;
+                if (typeof spell.maincd !== 'undefined') obj.maincd = spell.maincd;
+                if (typeof spell.maincdactive !== 'undefined') obj.maincdactive = spell.maincdactive;
+                if (typeof spell.priorityap !== 'undefined') obj.priorityap = spell.priorityap;
+                if (typeof spell.priorityapactive !== 'undefined') obj.priorityapactive = spell.priorityapactive;
+                if (typeof spell.flagellation !== 'undefined') obj.flagellation = spell.flagellation;
+                if (typeof spell.consumedrage !== 'undefined') obj.consumedrage = spell.consumedrage;
+                if (typeof spell.unqueue !== 'undefined') obj.unqueue = spell.unqueue;
+                if (typeof spell.unqueueactive !== 'undefined') obj.unqueueactive = spell.unqueueactive;
+                if (typeof spell.exmacro !== 'undefined') obj.exmacro = spell.exmacro;
+                if (typeof spell.globals !== 'undefined') obj.globals = spell.globals;
+                if (typeof spell.globalsactive !== 'undefined') obj.globalsactive = spell.globalsactive;
+                minified.rotation.push(obj);
+            }
+        }
+        minified.runes = {};
+        for (let type in storage.runes) {
+            for (let item of storage.runes[type])
+                if (item.selected) minified.runes[type] = item.id;
+        }
+        minified.enchant = {};
+        for (let type in storage.enchant) {
+            for (let item of storage.enchant[type])
+                if (item.selected) {
+                    if (!minified.enchant[type]) minified.enchant[type] = [];
+                    minified.enchant[type].push(item.id);
+                }
+        }
+
+        let str = JSON.stringify(minified);
+        view.main.find('[name="profilejson"]').val(str);
+        navigator.clipboard.writeText(str);
+        view.addAlert('Profile copied to clipboard');
+    },
+
+    importProfile() {
+
+        const view = this;
+        try {
+            let str = view.main.find('[name="profilejson"]').val();
+            let minified = JSON.parse(str);
+            let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
+
+
+            for(let prop in minified) {
+                if (typeof minified[prop] == 'string') storage[prop] = minified[prop];
+            }
+            storage.buffs = minified.buffs;
+            storage.talents = minified.talents;
+
+            for (let type in storage.gear) {
+                for (let item of storage.gear[type])
+                    if (item.id == minified.gear[type]) item.selected = true;
+                    else delete item.selected;
+            }
+            for (let spell of storage.rotation) {
+                let newspell = minified.rotation.filter(s => s.id == spell.id)[0];
+                if (newspell) {
+                    spell.active = true;
+                    if (typeof newspell.duration !== 'undefined') spell.duration = newspell.duration;
+                    if (typeof newspell.durationactive !== 'undefined') spell.durationactive = newspell.durationactive;
+                    if (typeof newspell.timetoend !== 'undefined') spell.timetoend = newspell.timetoend;
+                    if (typeof newspell.crusaders !== 'undefined') spell.crusaders = newspell.crusaders;
+                    if (typeof newspell.haste !== 'undefined') spell.haste = newspell.haste;
+                    if (typeof newspell.procblock !== 'undefined') spell.procblock = newspell.procblock;
+                    if (typeof newspell.rageblock !== 'undefined') spell.rageblock = newspell.rageblock;
+                    if (typeof newspell.rageblockactive !== 'undefined') spell.rageblockactive = newspell.rageblockactive;
+                    if (typeof newspell.minrage !== 'undefined') spell.minrage = newspell.minrage;
+                    if (typeof newspell.minrageactive !== 'undefined') spell.minrageactive = newspell.minrageactive;
+                    if (typeof newspell.maxrage !== 'undefined') spell.maxrage = newspell.maxrage;
+                    if (typeof newspell.maxrageactive !== 'undefined') spell.maxrageactive = newspell.maxrageactive;
+                    if (typeof newspell.maincd !== 'undefined') spell.maincd = newspell.maincd;
+                    if (typeof newspell.maincdactive !== 'undefined') spell.maincdactive = newspell.maincdactive;
+                    if (typeof newspell.priorityap !== 'undefined') spell.priorityap = newspell.priorityap;
+                    if (typeof newspell.priorityapactive !== 'undefined') spell.priorityapactive = newspell.priorityapactive;
+                    if (typeof newspell.flagellation !== 'undefined') spell.flagellation = newspell.flagellation;
+                    if (typeof newspell.consumedrage !== 'undefined') spell.consumedrage = newspell.consumedrage;
+                    if (typeof newspell.unqueue !== 'undefined') spell.unqueue = newspell.unqueue;
+                    if (typeof newspell.unqueueactive !== 'undefined') spell.unqueueactive = newspell.unqueueactive;
+                    if (typeof newspell.exmacro !== 'undefined') spell.exmacro = newspell.exmacro;
+                    if (typeof newspell.globals !== 'undefined') spell.globals = newspell.globals;
+                    if (typeof newspell.globalsactive !== 'undefined') spell.globalsactive = newspell.globalsactive;
+                }
+                else {
+                    spell.active = false;
+                }
+            }
+            for (let type in storage.runes) {
+                for (let item of storage.runes[type])
+                    if (item.id == minified.runes[type]) item.selected = true;
+                    else delete item.selected;
+            }
+
+            for (let type in storage.enchant) {
+                for (let item of storage.enchant[type]) {
+                    if (minified.enchant[type] && minified.enchant[type].includes(item.id))
+                        item.selected = true;
+                    else
+                        delete item.selected;
+                }
+            }
+
+            view.main.find('[name="profilejson"]').val('');
+            localStorage[mode + (globalThis.profileid || 0)] = JSON.stringify(storage);
+            view.loadProfiles(true);
+
+        } catch (e) {
+            view.addAlert('Invalid profile');
+        }
     }
 
 

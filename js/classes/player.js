@@ -4,8 +4,9 @@ class Player {
             level: $('input[name="level"]').val(),
             race: $('select[name="race"]').val(),
             aqbooks: $('select[name="aqbooks"]').val() == "Yes",
-            weaponrng: $('select[name="weaponrng"]').val() == "Yes",
-            spelldamage: parseInt($('input[name="spelldamage"]').val()),
+            reactionmin: parseInt($('input[name="reactionmin"]').val()),
+            reactionmax: parseInt($('input[name="reactionmax"]').val()),
+            adjacent: parseInt($('input[name="adjacent"]').val()),
             target: {
                 level: parseInt($('input[name="targetlevel"]').val()),
                 basearmor: parseInt($('input[name="targetarmor"]').val()),
@@ -25,15 +26,16 @@ class Player {
         this.timer = 0;
         this.itemtimer = 0;
         this.dodgetimer = 0;
-        this.mhextras = 0;
-        this.ohextras = 0;
+        this.extraattacks = 0;
         this.batchedextras = 0;
         this.nextswinghs = false;
         this.nextswingcl = false;
         this.race = config.race;
         this.aqbooks = config.aqbooks;
-        this.weaponrng = config.weaponrng;
-        this.spelldamage = config.spelldamage;
+        this.reactionmin = config.reactionmin;
+        this.reactionmax = config.reactionmax;
+        this.adjacent = config.adjacent;
+        this.spelldamage = 0;
         this.target = config.target;
         this.base = {
             ap: 0,
@@ -49,6 +51,7 @@ class Player {
             skill_3: this.level * 5,
             skill_4: this.level * 5,
             skill_5: this.level * 5,
+            skill_6: this.level * 5,
             haste: 1,
             strmod: 1,
             agimod: 1,
@@ -108,6 +111,10 @@ class Player {
         this.addRunes();
         if (this.talents.flurry) this.auras.flurry = new Flurry(this);
         if (this.talents.deepwounds) this.auras.deepwounds = new DeepWounds(this);
+        if (this.adjacent && this.talents.deepwounds) {
+            for (let i = 2; i <= (this.adjacent + 1); i++)
+                this.auras['deepwounds' + i] = new DeepWounds(this, null, i);
+        }
         if (this.spells.overpower) this.auras.battlestance = new BattleStance(this);
         if (this.spells.bloodrage) this.auras.bloodrage = new BloodrageAura(this);
         if (this.spells.berserkerrage) this.auras.berserkerrage = new BerserkerRageAura(this);
@@ -145,8 +152,8 @@ class Player {
             // race,class,level,str,agi,sta,inte,spi
             let stats = l.split(",");
             if (stats[0] == raceid && stats[2] == this.level) {
-                this.base.aprace = 160;
-                this.base.ap += 160;
+                this.base.aprace = (this.level * 3) - 20;
+                this.base.ap += (this.level * 3) - 20;
                 this.base.str += parseInt(stats[3]);
                 this.base.agi += parseInt(stats[4]);
                 this.base.skill_0 += raceid == "1" || raceid == "10" ? 5 : 0;
@@ -202,18 +209,18 @@ class Player {
                     // Blazefury Medallion
                     if (item.id == 17111) {
                         this.attackproc = {};
-                        this.attackproc.chance = item.procchance * 100;
-                        this.attackproc.magicdmg = item.magicdmg;
+                        this.attackproc.chance = item.proc.chance * 100;
+                        this.attackproc.magicdmg = item.proc.dmg;
                     }
 
-                    if (item.procchance && (type == "trinket1" || type == "trinket2")) {
+                    if (item.proc && item.proc.chance && (type == "trinket1" || type == "trinket2")) {
                         let proc = {};
-                        proc.chance = item.procchance * 100;
-                        proc.extra = item.procextra;
-                        proc.magicdmg = item.magicdmg;
-                        if (item.procspell) {
-                            this.auras[item.procspell.toLowerCase()] = eval('new ' + item.procspell + '(this)');
-                            proc.spell = this.auras[item.procspell.toLowerCase()];
+                        proc.chance = item.proc.chance * 100;
+                        proc.extra = item.proc.extra;
+                        proc.magicdmg = item.proc.dmg;
+                        if (item.spell) {
+                            this.auras[item.proc.spell.toLowerCase()] = eval('new ' + item.proc.spell + '(this)');
+                            proc.spell = this.auras[item.proc.spell.toLowerCase()];
                         }
                         this["trinketproc" + (this.trinketproc1 ? 2 : 1)] = proc;
                     }
@@ -262,7 +269,7 @@ class Player {
         if (type == "mainhand")
             this.mh = new Weapon(this, item, ench, tempench, false, false);
 
-        if (type == "offhand")
+        if (type == "offhand" && item.type != "Shield")
             this.oh = new Weapon(this, item, ench, tempench, true, false);
 
         if (type == "twohand")
@@ -439,8 +446,7 @@ class Player {
         this.mh.timer = 0;
         if (this.oh)
             this.oh.timer = Math.round(this.oh.speed * 1000 / this.stats.haste / 2);
-        this.mhextras = 0;
-        this.ohextras = 0;
+        this.extraattacks = 0;
         this.batchedextras = 0;
         this.nextswinghs = false;
         this.nextswingcl = false;
@@ -455,6 +461,15 @@ class Player {
         }
         if (this.auras.deepwounds) {
             this.auras.deepwounds.idmg = 0;
+        }
+        if (this.auras.deepwounds2) {
+            this.auras.deepwounds2.idmg = 0;
+        }
+        if (this.auras.deepwounds3) {
+            this.auras.deepwounds3.idmg = 0;
+        }
+        if (this.auras.deepwounds4) {
+            this.auras.deepwounds4.idmg = 0;
         }
         if (this.auras.rend) {
             this.auras.rend.idmg = 0;
@@ -612,8 +627,7 @@ class Player {
         let diff = this.target.defense - this.stats['skill_' + weapon.type];
         let low = Math.max(Math.min(1.3 - 0.05 * diff, 0.91), 0.01);
         let high = Math.max(Math.min(1.2 - 0.03 * diff, 0.99), 0.2);
-        if (this.weaponrng) return Math.random() * (high - low) + low;
-        else return avg(low, high);
+        return Math.random() * (high - low) + low;
     }
     getGlanceChance(weapon) {
         return 10 + Math.max(this.target.defense - Math.min(this.level * 5, this.stats['skill_' + weapon.type]), 0) * 2;
@@ -725,7 +739,6 @@ class Player {
         if (this.auras.zandalarian && this.auras.zandalarian.firstuse && this.auras.zandalarian.timer) this.auras.zandalarian.step();
 
         if (this.mh.windfury && this.mh.windfury.timer) this.mh.windfury.step();
-        if (this.oh && this.oh.windfury && this.oh.windfury.timer) this.oh.windfury.step();
         if (this.trinketproc1 && this.trinketproc1.spell && this.trinketproc1.spell.timer) this.trinketproc1.spell.step();
         if (this.trinketproc2 && this.trinketproc2.spell && this.trinketproc2.spell.timer) this.trinketproc2.spell.step();
         if (this.attackproc && this.attackproc.spell && this.attackproc.spell.timer) this.attackproc.spell.step();
@@ -737,6 +750,12 @@ class Player {
         if (this.auras.consumedrage && this.auras.consumedrage.timer) this.auras.consumedrage.step();
         if (this.auras.weaponbleedmh && this.auras.weaponbleedmh.timer) this.auras.weaponbleedmh.step();
         if (this.auras.weaponbleedoh && this.auras.weaponbleedoh.timer) this.auras.weaponbleedoh.step();
+
+        if (this.adjacent) {
+            if (this.auras.deepwounds2 && this.auras.deepwounds2.timer) this.auras.deepwounds2.step();
+            if (this.auras.deepwounds3 && this.auras.deepwounds3.timer) this.auras.deepwounds3.step();
+            if (this.auras.deepwounds4 && this.auras.deepwounds4.timer) this.auras.deepwounds4.step();
+        }
     }
     endauras() {
 
@@ -764,13 +783,15 @@ class Player {
         if (this.auras.zandalarian && this.auras.zandalarian.firstuse && this.auras.zandalarian.timer) this.auras.zandalarian.end();
 
         if (this.mh.windfury && this.mh.windfury.timer) this.mh.windfury.end();
-        if (this.oh && this.oh.windfury && this.oh.windfury.timer) this.oh.windfury.end();
         if (this.trinketproc1 && this.trinketproc1.spell && this.trinketproc1.spell.timer) this.trinketproc1.spell.end();
         if (this.trinketproc2 && this.trinketproc2.spell && this.trinketproc2.spell.timer) this.trinketproc2.spell.end();
         if (this.attackproc && this.attackproc.spell && this.attackproc.spell.timer) this.attackproc.spell.end();
 
         if (this.auras.flurry && this.auras.flurry.timer) this.auras.flurry.end();
         if (this.auras.deepwounds && this.auras.deepwounds.timer) this.auras.deepwounds.end();
+        if (this.auras.deepwounds2 && this.auras.deepwounds2.timer) this.auras.deepwounds2.end();
+        if (this.auras.deepwounds3 && this.auras.deepwounds3.timer) this.auras.deepwounds3.end();
+        if (this.auras.deepwounds4 && this.auras.deepwounds4.timer) this.auras.deepwounds4.end();
         if (this.auras.rend && this.auras.rend.timer) this.auras.rend.end();
         if (this.auras.flagellation && this.auras.flagellation.timer) this.auras.flagellation.end();
         if (this.auras.berserkerrage && this.auras.berserkerrage.timer) this.auras.berserkerrage.end();
@@ -812,7 +833,7 @@ class Player {
         if (roll < tmp && !spell.nocrit) return RESULT.CRIT;
         return RESULT.HIT;
     }
-    attackmh(weapon) {
+    attackmh(weapon, adjacent, damageSoFar) {
         this.stepauras();
 
         let spell = null;
@@ -826,6 +847,11 @@ class Player {
                 spell = this.spells.heroicstrike;
                 this.rage -= spell.cost;
             }
+            else if (this.spells.cleave && this.spells.cleave.cost <= this.rage) {
+                result = this.rollspell(this.spells.cleave);
+                spell = this.spells.cleave;
+                if (adjacent) this.rage -= spell.cost;
+            }
             else {
                 result = this.rollweapon(weapon);
                 /* start-log */ if (log) this.log(`Heroic Strike auto canceled`); /* end-log */
@@ -836,7 +862,7 @@ class Player {
         }
 
         let dmg = weapon.dmg(spell);
-        procdmg = this.procattack(spell, weapon, result);
+        procdmg = this.procattack(spell, weapon, result, adjacent, damageSoFar);
 
         if (result == RESULT.DODGE) {
             this.dodgetimer = 5000;
@@ -846,21 +872,26 @@ class Player {
         }
         if (result == RESULT.CRIT) {
             dmg *= 2 + (spell ? this.talents.abilitiescrit : 0);
-            this.proccrit();
+            this.proccrit(adjacent);
         }
 
         weapon.use();
-        let done = this.dealdamage(dmg, result, weapon, spell);
+        let done = this.dealdamage(dmg, result, weapon, spell, adjacent);
         if (spell) {
             spell.totaldmg += done;
-            spell.data[result]++;
+            if (!adjacent) spell.data[result]++;
         }
         else {
             weapon.totaldmg += done;
             weapon.data[result]++;
         }
         weapon.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`${spell ? spell.name + ' for' : 'Main hand attack for'} ${done + procdmg} (${Object.keys(RESULT)[result]})`); /* end-log */
+        /* start-log */ if (log) this.log(`${spell ? spell.name + ' for' : 'Main hand attack for'} ${done + procdmg} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}`); /* end-log */
+
+        if (spell instanceof Cleave && !adjacent) {
+            this.nextswinghs = true;
+            done += this.attackmh(weapon, 1, done);
+        }
         return done + procdmg;
     }
     attackoh(weapon) {
@@ -892,9 +923,11 @@ class Player {
         /* start-log */ if (log) this.log(`Off hand attack for ${done + procdmg} (${Object.keys(RESULT)[result]})${this.nextswinghs ? ' (HS queued)' : ''}`); /* end-log */
         return done + procdmg;
     }
-    cast(spell, delayedheroic) {
-        this.stepauras();
-        spell.use(delayedheroic);
+    cast(spell, delayedheroic, adjacent, damageSoFar) {
+        if (!adjacent) {
+            this.stepauras();
+            spell.use(delayedheroic);
+        }
         if (spell.useonly) {
             /* start-log */ if (log) this.log(`${spell.name} used`); /* end-log */
             return 0;
@@ -902,7 +935,7 @@ class Player {
         let procdmg = 0;
         let dmg = spell.dmg() * this.mh.modifier;
         let result = this.rollspell(spell);
-        procdmg = this.procattack(spell, this.mh, result);
+        procdmg = this.procattack(spell, this.mh, result, adjacent, damageSoFar);
 
         if (result == RESULT.MISS) {
             spell.failed();
@@ -913,74 +946,92 @@ class Player {
         }
         else if (result == RESULT.CRIT) {
             dmg *= 2 + this.talents.abilitiescrit;
-            this.proccrit();
+            this.proccrit(adjacent);
         }
 
-        let done = this.dealdamage(dmg, result, this.mh, spell);
-        spell.data[result]++;
+        let done = this.dealdamage(dmg, result, this.mh, spell, adjacent);
+        if (!adjacent) spell.data[result]++;
         spell.totaldmg += done;
         this.mh.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`${spell.name} for ${done + procdmg} (${Object.keys(RESULT)[result]}).`); /* end-log */
+        /* start-log */ if (log) this.log(`${spell.name} for ${done + procdmg} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}.`); /* end-log */
         return done + procdmg;
     }
-    dealdamage(dmg, result, weapon, spell) {
+    dealdamage(dmg, result, weapon, spell, adjacent) {
         if (result != RESULT.MISS && result != RESULT.DODGE) {
             dmg *= this.stats.dmgmod;
             dmg *= (1 - this.armorReduction);
-            this.addRage(dmg, result, weapon, spell);
+            if (!adjacent) this.addRage(dmg, result, weapon, spell);
             return ~~dmg;
         }
         else {
-            this.addRage(dmg, result, weapon, spell);
+            if (!adjacent) this.addRage(dmg, result, weapon, spell);
             return 0;
         }
     }
-    proccrit() {
+    proccrit(adjacent) {
         if (this.auras.flurry) this.auras.flurry.use();
-        if (this.auras.deepwounds) this.auras.deepwounds.use();
+        if (this.auras.deepwounds) {
+            if (!adjacent) this.auras.deepwounds.use();
+            else this.auras['deepwounds' + (~~rng(1,adjacent) + 1)].use();
+        }
     }
-    procattack(spell, weapon, result) {
+    procattack(spell, weapon, result, adjacent, damageSoFar) {
         let procdmg = 0;
+        let extras = 0;
+        let batchedextras = 0;
         if (result != RESULT.MISS && result != RESULT.DODGE) {
-            if (weapon.proc1 && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
+            if (weapon.proc1 && !weapon.proc1.extra && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
                 if (weapon.proc1.spell) weapon.proc1.spell.use();
                 if (weapon.proc1.magicdmg) procdmg += this.magicproc(weapon.proc1);
                 if (weapon.proc1.physdmg) procdmg += this.physproc(weapon.proc1.physdmg);
-                if (weapon.proc1.extra && weapon.offhand) this.ohextras += weapon.proc1.extra;
-                if (weapon.proc1.extra && !weapon.offhand) this.mhextras += weapon.proc1.extra;
+                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + procdmg : ''}`); /* end-log */
+            }
+            // Extra attacks roll only once per multi target attack
+            if (weapon.proc1 && weapon.proc1.extra && !damageSoFar && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
+                // Multiple extras procs off a non spel will only grant extra attack(s) from one source
+                if (spell) this.extraattacks += weapon.proc1.extra;
+                else extras = weapon.proc1.extra;
                 /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + procdmg : ''}`); /* end-log */
             }
             if (weapon.proc2 && rng10k() < weapon.proc2.chance) {
                 if (weapon.proc2.spell) weapon.proc2.spell.use();
                 if (weapon.proc2.magicdmg) procdmg += this.magicproc(weapon.proc2);
             }
-            if (weapon.windfury && !this.auras.windfury.timer && rng10k() < 2000) {
-                weapon.windfury.use(weapon.offhand);
-            }
-            if (this.trinketproc1 && rng10k() < this.trinketproc1.chance) {
-                /* start-log */ if (log) this.log(`Trinket 1 proc`); /* end-log */
-                if (this.trinketproc1.extra)
-                    this.batchedextras += this.trinketproc1.extra;
+            if (this.trinketproc1 && !this.trinketproc1.extra && rng10k() < this.trinketproc1.chance) {
                 if (this.trinketproc1.magicdmg) procdmg += this.magicproc(this.trinketproc1);
                 if (this.trinketproc1.spell) this.trinketproc1.spell.use();
+                /* start-log */ if (log) this.log(`Trinket 1 proc`); /* end-log */
             }
-            if (this.trinketproc2 && rng10k() < this.trinketproc2.chance) {
-                /* start-log */ if (log) this.log(`Trinket 2 proc`); /* end-log */
-                if (this.trinketproc2.extra)
-                    this.batchedextras += this.trinketproc2.extra;
+            if (this.trinketproc1 && this.trinketproc1.extra && !damageSoFar && rng10k() < this.trinketproc1.chance) {
+                if (spell) this.batchedextras += this.trinketproc1.extra;
+                else batchedextras = this.trinketproc1.extra;
+                /* start-log */ if (log) this.log(`Trinket 1 proc`); /* end-log */
+            }
+            if (this.trinketproc2 && !this.trinketproc2.extra  && rng10k() < this.trinketproc2.chance) {
                 if (this.trinketproc2.magicdmg) procdmg += this.magicproc(this.trinketproc2);
                 if (this.trinketproc2.spell) this.trinketproc2.spell.use();
+                /* start-log */ if (log) this.log(`Trinket 2 proc`); /* end-log */
+            }
+            if (this.trinketproc2 && this.trinketproc2.extra && !damageSoFar && rng10k() < this.trinketproc2.chance) {
+                if (spell) this.batchedextras += this.trinketproc2.extra;
+                else batchedextras = this.trinketproc2.extra;
+                /* start-log */ if (log) this.log(`Trinket 2 proc`); /* end-log */
             }
             if (this.attackproc && rng10k() < this.attackproc.chance) {
                 if (this.attackproc.magicdmg) procdmg += this.magicproc(this.attackproc);
                 if (this.attackproc.spell) this.attackproc.spell.use();
                 /* start-log */ if (log) this.log(`Misc proc`); /* end-log */
             }
-            if (this.talents.swordproc && weapon.type == WEAPONTYPE.SWORD) {
-                if (rng10k() < this.talents.swordproc * 100){
-                    this.mhextras++;
-                    /* start-log */ if (log) this.log(`Sword talent proc`); /* end-log */
-                }
+            // Sword spec shouldnt be able to proc itself
+            if (this.talents.swordproc && weapon.type == WEAPONTYPE.SWORD && !damageSoFar && this.swordspecstep != step && rng10k() < this.talents.swordproc * 100) {
+                this.swordspecstep = step;
+                if (spell) this.extraattacks++;
+                else extras++;
+                /* start-log */ if (log) this.log(`Sword talent proc`); /* end-log */
+            }
+            if (weapon.windfury && !this.auras.windfury.timer && !damageSoFar && rng10k() < 2000) {
+                if (!spell) extras = 0;
+                weapon.windfury.use();
             }
             if (this.auras.swarmguard && this.auras.swarmguard.timer && rng10k() < this.auras.swarmguard.chance) {
                 this.auras.swarmguard.proc();
@@ -991,16 +1042,16 @@ class Player {
             if (this.dragonbreath && rng10k() < 400) {
                 procdmg += this.magicproc({ magicdmg: 60, coeff: 1 });
             }
+            if (extras) this.extraattacks += extras;
+            if (batchedextras) this.batchedextras += batchedextras;
         }
-        if (!spell || spell instanceof HeroicStrike) {
+        if (!spell || spell instanceof HeroicStrike || (spell instanceof Cleave && !adjacent)) {
             if (this.auras.flurry && this.auras.flurry.stacks)
                 this.auras.flurry.proc();
             if (this.auras.consumedrage && this.auras.consumedrage.stacks)
                 this.auras.consumedrage.proc();
             if (this.mh.windfury && this.mh.windfury.stacks)
                 this.mh.windfury.proc();
-            if (this.oh && this.oh.windfury && this.oh.windfury.stacks)
-                this.oh.windfury.proc();
         }
         return procdmg;
     }
@@ -1008,7 +1059,6 @@ class Player {
         let mod = 1;
         let miss = 1700;
         let dmg = proc.magicdmg;
-        //if (proc.gcd && this.timer && this.timer < 1500) return 0;
         if (proc.binaryspell) miss = this.target.binaryresist;
         else mod *= this.target.mitigation;
         if (rng10k() < miss) return 0;

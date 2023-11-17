@@ -80,6 +80,8 @@
           if (agi) obj.agi = agi;
           if (str) obj.str = str;
           if (sta) obj.sta = sta;
+
+          if (item.ID == 11815) debugger;
         
           let spells = getRows('ItemEffect', 'ParentItemID', item.ID);
           if (spells.length) {
@@ -156,7 +158,7 @@
               let proc = getProcFromSpell(spell.SpellID), proc2;
               let triggerSpell = effects.filter(e => !!parseInt(e.EffectTriggerSpell));
               if (triggerSpell.length) {
-                if (item.ClassID != "2") {
+                if (item.ClassID != "2" && item.ID != 11815) {
                   console.log("check: " + obj.name);
                 }
                 else {
@@ -197,6 +199,8 @@
 
           let include = false, exclude = false;
           if (obj.id == 21568) include = true;
+          if (obj.id == 18706) include = true;
+          if (obj.id == 19024) include = true;
           if (obj.id == 21567) include = true;
           if (obj.id == 17780) exclude = true;
 
@@ -226,6 +230,23 @@
         }
 
         // custom items
+        gear["neck"].push({
+          id: 9999997,
+          type: "Miscellaneous",
+          slot: "neck",
+          name: "High Tide Choker",
+          str: 7,
+          agi: 4,
+          r: 25,
+        });
+        gear["back"].push({
+          id: 9999996,
+          type: "Miscellaneous",
+          slot: "neck",
+          name: "Shimmering Thresher Cape",
+          str: 6,
+          r: 25,
+        });
         gear["chest"].push({
           id: 210794,
           type: "Mail",
@@ -357,6 +378,10 @@
           if (id == 21151 || id == 21992 || id == 24388) {
             proc.binaryspell = true;
           }
+          // todo: custom chances
+          if (id == 15601) {
+            proc.chance = 2;
+          }
           if (id == 11791) proc.spell = "Vibroblade";
         });
 
@@ -459,6 +484,7 @@
             case "2": return "Leather";
             case "3": return "Mail";
             case "4": return "Plate";
+            case "6": return "Shield";
           }
         }
         if (cl == "2") { // Weapon

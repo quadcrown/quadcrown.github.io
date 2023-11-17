@@ -4,7 +4,8 @@ var WEAPONTYPE = {
     DAGGER: 2,
     AXE: 3,
     FIST: 4,
-    POLEARM: 5
+    POLEARM: 5,
+    STAFF: 6
 }
 
 class Weapon {
@@ -98,7 +99,7 @@ class Weapon {
                 this.basebonusdmg += buff.bonusdmg;
         if (enchant && enchant.bonusdmg) 
             this.basebonusdmg += enchant.bonusdmg;
-        if (tempenchant && tempenchant.bonusdmg) 
+        if ((!this.windfury || this.wildstrikes) && tempenchant && tempenchant.bonusdmg)
             this.basebonusdmg += tempenchant.bonusdmg;
         if (this.player.items.includes(21189))
             this.basebonusdmg += 4;
@@ -108,8 +109,7 @@ class Weapon {
     }
     dmg(heroicstrike) {
         let dmg;
-        if (this.player.weaponrng) dmg = rng(this.mindmg + this.bonusdmg, this.maxdmg + this.bonusdmg) + (this.player.stats.ap / 14) * this.speed;
-        else dmg = avg(this.mindmg + this.bonusdmg, this.maxdmg + this.bonusdmg) + (this.player.stats.ap / 14) * this.speed;
+        dmg = rng(this.mindmg + this.bonusdmg, this.maxdmg + this.bonusdmg) + (this.player.stats.ap / 14) * this.speed;
         if (heroicstrike) dmg += heroicstrike.bonus;
         return dmg * this.modifier;
     }

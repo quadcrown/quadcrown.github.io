@@ -8,7 +8,7 @@
   <link href="dist/css/theme.default.min.css" rel="stylesheet">
   <link href="dist/css/style.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
   <script type="text/javascript" src="dist/js/libs/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="dist/js/libs/jquery.tablesorter.min.js"></script>
@@ -228,14 +228,6 @@
             <label>Target Resistance</label>
             <input type="text" name="targetresistance" value="24" data-numberonly="true">
           </li>
-          <li style="display: none;">
-            <label>Adjacent Targets</label>
-            <input type="text" name="adjacent" value="0" data-numberonly="true">
-          </li>
-          <li style="display: none;">
-            <label>Adjacent Targets Level</label>
-            <input type="text" name="adjacentlevel" value="60" data-numberonly="true">
-          </li>
           <li>
             <label><a href="https://docs.google.com/spreadsheets/d/1WIHs3aDT5LHZyVKSXZkC5_J9A1Od0jowhc89AdAu_Yo/" target="_blank">Target Armor</a></label>
             <input type="text" name="targetarmor" value="816" data-numberonly="true">
@@ -248,24 +240,26 @@
             </select>
           </li>
           <li>
-            <label>Weapon Damage RNG</label>
-            <select dir="rtl" name="weaponrng">
-              <option value="Yes">Yes</option>
-              <option value="No">No</option>
-            </select>
-          </li>
-          <li>
-            <label>Spell Damage</label>
-            <input type="text" name="spelldamage" value="0" data-numberonly="true">
-          </li>
-          <li>
             <label>Spell Batching</label>
             <select name="batching" dir="rtl">
               <option value="10" selected>10</option>
               <option value="400">400</option>
             </select>
           </li>
+          <li>
+            <label>Reaction Time (min)</label>
+            <input type="text" name="reactionmin" value="200" data-numberonly="true">
+          </li>
+          <li>
+            <label>Reaction Time (max)</label>
+            <input type="text" name="reactionmax" value="300" data-numberonly="true">
+          </li>
         </ul>
+        <li>
+          <label>Adjacent Mobs</label>
+          <input type="range"  name="slider-adjacent" min="0" max="3" value="0" class="slider">
+          <input type="text" name="adjacent" value="0" data-numberonly="true">
+        </li>
       </article>
 
       <article class="buffs">
@@ -465,6 +459,8 @@
       <a href="#" class="btn js-editmode">SHOW / HIDE ROWS</a>
       <a href="#" class="btn js-enchant">ENCHANTS DPS</a>
       <a href="#" class="btn js-table">GEAR DPS</a>
+      <a href="#" class="btn js-export">EXPORT PROFILE</a>
+      <a href="#" class="btn js-import">IMPORT PROFILE</a>
     </div>
 
     <progress value="0" max="100"></progress>

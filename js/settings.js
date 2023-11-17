@@ -31,6 +31,7 @@ SIM.SETTINGS = {
             e.preventDefault();
             $('.js-settings').removeClass('active');
             $('section.settings').removeClass('active');
+            view.body.addClass('sidebar-mobile-open');
         });
         view.buffs.on('click', '.icon', function (e) {
             let obj = $(this).toggleClass('active');
@@ -190,21 +191,10 @@ SIM.SETTINGS = {
             view.buildSpells();
         });
 
-        view.fight.on('change', 'select[name="weaponrng"]', function (e) {
-            e.stopPropagation();
-            SIM.UI.updateSession();
-            SIM.UI.updateSidebar();
-        });
-
         view.fight.on('change', 'select[name="batching"]', function (e) {
             e.stopPropagation();
             SIM.UI.updateSession();
             SIM.UI.updateSidebar();
-        });
-
-        view.rotation.on('click', '.spell', function (e) {
-            e.stopPropagation();
-            
         });
 
         view.rotation.on('click', '.spell a', function (e) {
@@ -239,19 +229,33 @@ SIM.SETTINGS = {
             $(this).toggleClass('active');
             let active = $(this).hasClass('active');
             let id = $(this).parents('.details').data('id');
+            let spell;
+            for (let s of spells) if (s.id == id) spell = s;
 
             if ($(this).data('id') == 'active') {
                 view.rotation.find(`.spell[data-id="${id}"]`).toggleClass('active', active);
+
+                if (active && spell.name == "Heroic Strike") {
+                    for (let s of spells) 
+                        if (s.name == "Cleave" && s.active) {
+                            s.active = false;
+                            view.rotation.find(`.spell[data-id="${s.id}"]`).removeClass('active');
+                        }
+                }
+                if (active && spell.name == "Cleave") {
+                    for (let s of spells) 
+                        if (s.name == "Heroic Strike" && s.active) {
+                            s.active = false;
+                            view.rotation.find(`.spell[data-id="${s.id}"]`).removeClass('active');
+                        }
+                }
             }
 
             if (active && $(this).data('group')) {
                 $(this).siblings(`.active[data-group="${$(this).data('group')}"]`).click();
             }
 
-            for (let spell of spells)
-                if (spell.id == id)
-                    spell[$(this).data('id')] = active;
-
+            spell[$(this).data('id')] = active;
             SIM.UI.updateSession();
         });
 
@@ -318,6 +322,12 @@ SIM.SETTINGS = {
                 }
             }
             else if (spell.rune) {
+                spell.active = false;
+                continue;
+            }
+
+            // aoe restriction
+            if (storage.adjacent == 0 && spell.name == "Cleave") {
                 spell.active = false;
                 continue;
             }
