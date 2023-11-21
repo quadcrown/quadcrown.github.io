@@ -258,6 +258,16 @@ var buffs = [
       minlevel: 60
    },
    {
+      id: 20217,
+      spellid: true,
+      name: "Blessing of Kings",
+      iconname: "spell_magic_magearmor",
+      group: "kings",
+      strmod: 10,
+      agimod: 10,
+      minlevel: 20,
+   },
+   {
       id: 19740,
       spellid: true,
       name: "Blessing of Might",
