@@ -91,6 +91,7 @@ class SimulationWorkerParallel {
                             result.player.auras[id] = src;
                         } else {
                             dst.uptime += src.uptime;
+                            if (src.uses) dst.uses += src.uses;
                             if (src.totaldmg) {
                                 dst.totaldmg = (dst.totaldmg || 0) + src.totaldmg;
                             }
@@ -224,6 +225,7 @@ class Simulation {
         this.executestep = this.maxsteps - parseInt(this.maxsteps * (this.executeperc / 100));
         let delayedspell, delayedheroic;
         let spellcheck = false;
+        let canSpellQueue = false;
         let next = 0;
 
         // determine when to use item auras
@@ -307,6 +309,11 @@ class Simulation {
                     if (player.spells.ragingblow && player.spells.ragingblow.canUse(true)) { 
                         player.spelldelay = 1; delayedspell = player.spells.ragingblow; 
                     }
+                    else if (player.spells.berserkerrage && player.spells.berserkerrage.canUse()) { 
+                        player.spelldelay = 1; delayedspell = player.spells.berserkerrage; 
+                    }
+                    else if (player.auras.consumedrage && player.auras.consumedrage.erageblock && player.rage < player.auras.consumedrage.erageblock) { } 
+                    else if (player.auras.consumedrage && player.auras.consumedrage.echargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.echargeblock && player.rage < 80) { } 
                     else if (player.stats.ap >= player.spells.execute.priorityap) {
                         if (player.spells.bloodthirst && player.spells.bloodthirst.canUse()) {
                             player.spelldelay = 1; delayedspell = player.spells.bloodthirst;
@@ -325,15 +332,16 @@ class Simulation {
                 else if (player.spells.berserkerrage && player.spells.berserkerrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.berserkerrage; }
                 
                 // prevent using spells while waiting for consumed by rage proc
-                else if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer) { } 
-                else if (player.auras.consumedrage && player.auras.consumedrage.rageblockactive && player.rage < player.auras.consumedrage.rageblock) { } 
+                else if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 80) { } 
+                else if (player.auras.consumedrage && player.auras.consumedrage.rageblock && player.rage < player.auras.consumedrage.rageblock) { } 
+                else if (player.auras.consumedrage && player.auras.consumedrage.chargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.chargeblock && player.rage < 80) { } 
 
                 // Normal phase - rage cost
+                else if (player.spells.overpower && player.spells.overpower.canUse()) { player.spelldelay = 1; delayedspell = player.spells.overpower; }
                 else if (player.spells.bloodthirst && player.spells.bloodthirst.canUse()) { player.spelldelay = 1; delayedspell = player.spells.bloodthirst; }
                 else if (player.spells.mortalstrike && player.spells.mortalstrike.canUse()) { player.spelldelay = 1; delayedspell = player.spells.mortalstrike; }
                 else if (player.spells.quickstrike && player.spells.quickstrike.canUse()) { player.spelldelay = 1; delayedspell = player.spells.quickstrike; }
                 else if (player.spells.whirlwind && player.spells.whirlwind.canUse()) { player.spelldelay = 1; delayedspell = player.spells.whirlwind; }
-                else if (player.spells.overpower && player.spells.overpower.canUse()) { player.spelldelay = 1; delayedspell = player.spells.overpower; }
                 else if (player.spells.sunderarmor && player.spells.sunderarmor.canUse()) { player.spelldelay = 1; delayedspell = player.spells.sunderarmor; }
                 else if (player.spells.hamstring && player.spells.hamstring.canUse()) { player.spelldelay = 1; delayedspell = player.spells.hamstring; }
                 else if (player.auras.rend && player.auras.rend.canUse()) { player.spelldelay = 1; delayedspell = player.auras.rend; }
@@ -345,8 +353,10 @@ class Simulation {
             if (spellcheck && !player.heroicdelay) {
                 if (!player.spells.execute || step < this.executestep) {
                     // prevent using spells while waiting for consumed by rage proc
-                    if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer) { } 
-                    else if (player.auras.consumedrage && player.auras.consumedrage.rageblockactive && player.rage < player.auras.consumedrage.rageblock) { } 
+                    if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 80) { } 
+                    else if (player.auras.consumedrage && player.auras.consumedrage.rageblock && player.rage < player.auras.consumedrage.rageblock) { } 
+                    else if (player.auras.consumedrage && player.auras.consumedrage.chargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.chargeblock && player.rage < 80) { } 
+
                     else if (player.spells.heroicstrike && player.spells.heroicstrike.canUse()) { 
                         player.heroicdelay = 1; delayedheroic = player.spells.heroicstrike;
                     }
@@ -359,11 +369,11 @@ class Simulation {
             }
 
             // Cast spells
-            if (player.spelldelay && delayedspell && player.spelldelay > delayedspell.maxdelay) {
+            if (player.spelldelay && delayedspell && (canSpellQueue || player.spelldelay > delayedspell.maxdelay)) {
 
                 // Prevent casting HS and other spells at the exact same time
                 if (player.heroicdelay && delayedheroic && player.heroicdelay > delayedheroic.maxdelay)
-                    player.heroicdelay = delayedheroic.maxdelay - 49;
+                    player.heroicdelay = delayedheroic.maxdelay - 99;
 
                 if (delayedspell.canUse()) {
                     let done = player.cast(delayedspell, delayedheroic)
@@ -478,7 +488,8 @@ class Simulation {
             if (player.oh) player.oh.step(next);
 
             // Determine if a spell check should happen next step
-            if (player.timer && player.steptimer(next) && !player.spelldelay) spellcheck = true;
+            canSpellQueue = false;
+            if (player.timer && player.steptimer(next) && !player.spelldelay) { spellcheck = true; canSpellQueue = true; }
             if (player.itemtimer && player.stepitemtimer(next) && !player.spelldelay) spellcheck = true;
             if (player.dodgetimer) player.stepdodgetimer(next);
             if (player.spelldelay) player.spelldelay += next;

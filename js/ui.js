@@ -11,6 +11,8 @@ SIM.UI = {
         view.loadSession();
         view.loadWeapons("mainhand");
         view.updateSidebar();
+        view.main.find('.js-import').hide();
+        view.main.find('.js-export').hide();
 
         view.body.on('click', '.wh-tooltip, .tablesorter-default a', function (e) {
             e.preventDefault();
@@ -43,8 +45,24 @@ SIM.UI = {
             $('section.settings').css('min-height', view.body.outerHeight() + 'px');
             $('section.settings').toggleClass('active');
             view.sidebar.find('.js-stats').removeClass('active');
+            view.sidebar.find('.js-profiles').removeClass('active');
             $('section.stats').removeClass('active');
+            $('section.profiles').removeClass('active');
             view.body.removeClass('sidebar-mobile-open');
+        });
+
+        view.sidebar.find('.js-profiles').click(function (e) {
+            e.preventDefault();
+            $(this).toggleClass('active');
+            window.scrollTo(0, 0);
+            $('section.profiles').css('min-height', view.body.outerHeight() + 'px');
+            $('section.profiles').toggleClass('active');
+            view.sidebar.find('.js-stats').removeClass('active');
+            view.sidebar.find('.js-settings').removeClass('active');
+            $('section.stats').removeClass('active');
+            $('section.settings').removeClass('active');
+            view.body.removeClass('sidebar-mobile-open');
+            SIM.PROFILES.buildProfiles();
         });
 
         view.sidebar.find('.js-dps').click(function (e) {
@@ -68,7 +86,9 @@ SIM.UI = {
             $('section.stats').css('min-height', view.body.outerHeight() + 'px');
             $('section.stats').toggleClass('active');
             view.sidebar.find('.js-settings').removeClass('active');
+            view.sidebar.find('.js-profiles').removeClass('active');
             $('section.settings').removeClass('active');
+            $('section.profiles').removeClass('active');
             view.body.removeClass('sidebar-mobile-open');
         });
 
@@ -139,22 +159,8 @@ SIM.UI = {
                 view.loadWeapons(type);
             else if (type == "custom")
                 view.loadCustom();
-            else if (type == "profiles") {
-                view.loadProfiles(subtype);
-                view.main.find('.js-editmode').hide();
-                view.main.find('.js-table').hide();
-                view.main.find('.js-enchant').hide();
-                view.main.find('.js-import').show();
-                view.main.find('.js-export').show();
-            }
             else
                 view.loadGear(type);
-        });
-
-        view.tcontainer.on('keyup', '[name="profilename"]', function(e) {
-            let value = e.target.value;
-            view.main.find('[data-type="profiles"] .active p').html(value);
-            view.updateSession();
         });
 
         view.tcontainer.on('click', 'table.gear td:not(.ppm)', function(e) {
@@ -210,26 +216,17 @@ SIM.UI = {
             view.updateSidebar();
         });
 
-        view.tcontainer.on('click', 'table.runes td:not(.ppm)', function(e) {
-            var table = $(this).parents('table');
-            var tr = $(this).parent();
-            var temp = tr.data('temp');
+        view.tcontainer.on('click', '.runes .icon', function(e) {
+            var parent = $(this).parents('.runes');
+            var rune = $(this).parent();
 
-            if (table.hasClass('editmode')) {
-                if (tr.hasClass('hidden'))
-                    view.rowShowRunes(tr);
-                else
-                    view.rowHideRunes(tr);
-                return;
-            }
-
-            if (tr.hasClass('active')) {
-                view.rowDisableRunes(tr);
+            if (rune.hasClass('active')) {
+                view.rowDisableRunes(rune);
             }
             else {
-                let disable = table.find('tr.active').first();
+                let disable = parent.find('.rune.active').first();
                 if (disable.length) view.rowDisableRunes(disable);
-                view.rowEnableRunes(tr);
+                view.rowEnableRunes(rune);
             }
 
             view.updateSession();
@@ -244,6 +241,18 @@ SIM.UI = {
             $(this).toggleClass('open');
             view.body.toggleClass('sidebar-mobile-open');
         });
+
+        view.tcontainer.on('keyup', 'input[name="search"]', function (e) {
+            e.preventDefault();
+            if (e.key == "Escape") $(this).val('');
+            let val = $(this).val();
+            view.tcontainer.find('.gear td:first-child').each(function() {
+                let td = $(this).get(0);
+                if (!val || td.textContent.toLowerCase().indexOf(val.toLowerCase()) > -1) td.parentElement.classList.remove('filtered');
+                else td.parentElement.classList.add('filtered');
+            });
+        });
+
     },
 
     enableEditMode: function() {
@@ -253,8 +262,6 @@ SIM.UI = {
             view.loadWeapons(type, true);
         else if (type == "custom")
             view.loadCustom(true);
-        else if (type == "profiles")
-            view.loadProfiles(true);
         else
             view.loadGear(type, true);
     },
@@ -267,8 +274,6 @@ SIM.UI = {
             view.loadWeapons(type, false);
         else if (type == "custom")
             view.loadCustom(false);
-        else if (type == "profiles")
-            view.loadProfiles(false);
         else
             view.loadGear(type, false);
     },
@@ -647,12 +652,12 @@ SIM.UI = {
         }
     },
 
-    rowDisableRunes: function(tr) {
-        var table = tr.parents('table');
-        var type = table.data('type');
-        tr.removeClass('active');
+    rowDisableRunes: function(div) {
+        var parent = div.parents('.runes');
+        var type = parent.data('type');
+        div.removeClass('active');
         for(let i = 0; i < runes[type].length; i++) {
-            if (runes[type][i].id == tr.data('id')) {
+            if (runes[type][i].id == div.data('id')) {
                 runes[type][i].selected = false;
                 if (runes[type][i].enable) {
                     for (let spell of spells)
@@ -664,39 +669,19 @@ SIM.UI = {
         }
     },
 
-    rowEnableRunes: function(tr) {
-        var table = tr.parents('table');
-        var type = table.data('type');
-        tr.addClass('active');
+    rowEnableRunes: function(div) {
+        var parent = div.parents('.runes');
+        var type = parent.data('type');
+        div.addClass('active');
         for(let i = 0; i < runes[type].length; i++) {
-            if (runes[type][i].id == tr.data('id')) {
+            if (runes[type][i].id == div.data('id')) {
                 runes[type][i].selected = true;
+                if (runes[type][i].enable) {
+                    for (let spell of spells)
+                        if (spell.id == runes[type][i].enable)
+                            spell.active = true;
+                }
             }
-        }
-    },
-
-    rowHideRunes: function(tr) {
-        var table = tr.parents('table');
-        var type = table.data('type');
-        tr.removeClass('active');
-        tr.addClass('hidden');
-        tr.find('.hide').html(eyesvghidden);
-        for(let i = 0; i < runes[type].length; i++) {
-            if (runes[type][i].id == tr.data('id')) {
-                runes[type][i].hidden = true;
-                runes[type][i].selected = false;
-            }
-        }
-    },
-
-    rowShowRunes: function(tr) {
-        var table = tr.parents('table');
-        var type = table.data('type');
-        tr.removeClass('hidden');
-        tr.find('.hide').html(eyesvg);
-        for(let i = 0; i < runes[type].length; i++) {
-            if (runes[type][i].id == tr.data('id'))
-                runes[type][i].hidden = false;
         }
     },
 
@@ -837,7 +822,7 @@ SIM.UI = {
         obj.enchant = _enchant;
         obj.runes = _runes;
         obj.resistance = _resistance;
-        obj.profilename = view.main.find('[data-type="profiles"] .active p').text();
+        if (globalThis.profilename) obj.profilename = globalThis.profilename;
 
         let profileid = globalThis.profileid || 0;
         localStorage[mode + profileid] = JSON.stringify(obj);
@@ -854,6 +839,7 @@ SIM.UI = {
         if (!storage.level) storage.level = session.level;
         if (!storage.targetlevel) storage.targetlevel = session.targetlevel;
         if (!storage.profilename) storage.profilename = session.profilename;
+        globalThis.profilename = storage.profilename;
         
         for (let prop in storage) {
             view.fight.find('input[name="' + prop + '"]').val(storage[prop]);
@@ -889,13 +875,6 @@ SIM.UI = {
             }
         }
 
-        for(let i = 0; i <= 9; i++) {
-            if (typeof localStorage[mode + i] === 'undefined') continue;
-            let obj = JSON.parse(localStorage[mode + i]);
-            if (obj && obj.profilename)
-                view.main.find('[data-type="profiles"] .filter p')[i].innerText = obj.profilename;
-        }
-
     },
 
     filterGear: function () {
@@ -905,44 +884,8 @@ SIM.UI = {
             view.loadWeapons(type);
         else if (type == "custom")
             view.loadCustom();
-        else if (type == "profiles")
-            view.loadProfiles();
         else
             view.loadGear(type);
-    },
-    
-    loadProfiles: function (subtype) {
-        var view = this;
-        var index = view.main.find('nav li.active .filter .active').index();
-        let modei = mode + index;
-        let oldmodei = mode + globalThis.profileid;
-        globalThis.profileid = index;
-
-        if (typeof localStorage[modei] === 'undefined') {
-            localStorage[modei] = localStorage[oldmodei];
-            let storage = JSON.parse(localStorage[modei]);
-            storage.profilename = view.main.find('nav li.active .filter .active p').text();
-            localStorage[modei] = JSON.stringify(storage);
-        }
-
-        view.loadSession();
-        view.updateSidebar();
-        SIM.SETTINGS.buildSpells();
-        SIM.SETTINGS.buildBuffs();
-        SIM.SETTINGS.buildTalents();
-        SIM.SETTINGS.buildRunes();
-        let storage = JSON.parse(localStorage[modei]);
-
-        view.tcontainer.empty();
-        view.tcontainer.append(`<div class="profileoption">
-            <label>Edit name:</label>
-            <input type="text" name="profilename" value="${storage.profilename}">
-        </div>`);
-
-        view.tcontainer.append(`<textarea class="profilejson" name="profilejson"></textarea>`);
-
-        if (subtype)
-            view.addAlert(`${storage.profilename} loaded`);
     },
 
     loadWeapons: function (type, editmode) {
@@ -966,16 +909,12 @@ SIM.UI = {
                                 <th>ArP</th>
                                 <th>Crit</th>
                                 <th>Hit</th>
-                                <th>Haste</th>`+
-                                // <th class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">SR</th>
-                                // <th class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">AR</th>
-                                // <th class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">NR</th>
-                                // <th class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">FiR</th>
-                                // <th class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">FR</th>
-                                `<th>Min</th>
+                                <th>Haste</th>
+                                <th>Min</th>
                                 <th>Max</th>
                                 <th>Speed</th>
                                 <th>Skill</th>
+                                <th>Resist</th>
                                 <th>Type</th>
                                 <th>PPM</th>
                                 <th>DPS</th>
@@ -1019,11 +958,23 @@ SIM.UI = {
             if (source && !view.filter.find('.sources [data-id="' + source + '"]').hasClass('active'))
                 continue;
 
+            if (source === 'resistances-list' && !$(".resistances[data-id='"+item.subsource+"-resist']").prop("checked")) {
+                continue;
+            }
+
             if (item.hidden && !editmode) continue;
 
             let tooltip = item.id, rand = '';
             if (tooltip == 199211) tooltip = 19921;
             if (item.rand) rand = '?rand=' + item.rand;
+
+            let resist = '';
+            if (item.resist) {
+                if (item.resist.fire) resist += item.resist.fire + ' FiR';
+                if (item.resist.frost) resist += (resist.length ? ' + ' : '') + item.resist.frost + ' FR';
+                if (item.resist.nature) resist += (resist.length ? ' + ' : '') + item.resist.nature + ' NR';
+                if (item.resist.shadow) resist += (resist.length ? ' + ' : '') + item.resist.shadow + ' SR';
+            }
 
             table += `<tr data-id="${item.id}" data-name="${item.name}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
@@ -1037,16 +988,12 @@ SIM.UI = {
                         <td>${item.arp || item.arpv || ''}</td>
                         <td>${item.crit || ''}</td>
                         <td>${item.hit || ''}</td>
-                        <td>${item.haste || ''}</td>` +
-                        // <td class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">${(item.resist || {}).shadow || ''}</td>
-                        // <td class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">${(item.resist || {}).arcane || ''}</td>
-                        // <td class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">${(item.resist || {}).nature || ''}</td>
-                        // <td class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">${(item.resist || {}).fire || ''}</td>
-                        // <td class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">${(item.resist || {}).frost || ''}</td>
-                        `<td>${item.mindmg || ''}</td>
+                        <td>${item.haste || ''}</td>
+                        <td>${item.mindmg || ''}</td>
                         <td>${item.maxdmg || ''}</td>
                         <td>${item.speed || ''}</td>
                         <td>${item.skill || ''}</td>
+                        <td>${resist || ''}</td>
                         <td>${item.type || ''}</td>
                         <td class="ppm"><p contenteditable="true">${item.proc && item.proc.ppm || ''}</p></td>
                         <td>${item.dps || ''}</td>
@@ -1056,6 +1003,7 @@ SIM.UI = {
         table += '</tbody></table></section>';
 
         view.tcontainer.empty();
+        view.tcontainer.append(`<div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>`);
         view.tcontainer.append(table);
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
@@ -1111,13 +1059,9 @@ SIM.UI = {
                                 <th>ArP</th>
                                 <th>Hit</th>
                                 <th>Crit</th>
-                                <th>Haste</th>` +
-                                // <th class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">SR</th>
-                                // <th class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">AR</th>
-                                // <th class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">NR</th>
-                                // <th class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">FiR</th>
-                                // <th class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">FR</th>
-                                `<th>Skill</th>
+                                <th>Haste</th>
+                                <th>Skill</th>
+                                <th>Resist</th>
                                 <th>Type</th>
                                 <th>DPS</th>
                             </tr>
@@ -1161,12 +1105,18 @@ SIM.UI = {
             if (tooltip == 198981) tooltip = 19898;
             if (item.rand) rand = '?rand=' + item.rand;
 
+            let resist = '';
+            if (item.resist) {
+                if (item.resist.fire) resist += item.resist.fire + ' FiR';
+                if (item.resist.frost) resist += (resist.length ? ' + ' : '') + item.resist.frost + ' FR';
+                if (item.resist.nature) resist += (resist.length ? ' + ' : '') + item.resist.nature + ' NR';
+                if (item.resist.shadow) resist += (resist.length ? ' + ' : '') + item.resist.shadow + ' SR';
+            }
+
             table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
                         <td><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.name}</td>`
 
-
-            var resistCheckList = SIM.UI.resistCheckList();
             table += `<td>${item.source || ''}</td>
                         <td>${item.sta || ''}</td>
                         <td>${item.str || ''}</td>
@@ -1175,13 +1125,9 @@ SIM.UI = {
                         <td>${item.arp || item.arpv || ''}</td>
                         <td>${item.hit || ''}</td>
                         <td>${item.crit || ''}</td>
-                        <td>${item.haste || ''}</td>` +
-                        // <td class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">${(item.resist || {}).shadow || ''}</td>
-                        // <td class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">${(item.resist || {}).arcane || ''}</td>
-                        // <td class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">${(item.resist || {}).nature || ''}</td>
-                        // <td class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">${(item.resist || {}).fire || ''}</td>
-                        // <td class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">${(item.resist || {}).frost || ''}</td>
-                        `<td>${item.skill || ''}</td>
+                        <td>${item.haste || ''}</td>
+                        <td>${item.skill || ''}</td>
+                        <td>${resist || ''}</td>
                         <td>${item.type || ''}</td>
                         <td>${item.dps || ''}</td>
                     </tr>`;
@@ -1191,6 +1137,7 @@ SIM.UI = {
 
         view.tcontainer.empty();
         view.loadRunes(type, editmode);
+        view.tcontainer.append(`<div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>`);
         view.tcontainer.append(table);
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
@@ -1230,19 +1177,23 @@ SIM.UI = {
                                 <th>ArP</th>
                                 <th>Hit</th>
                                 <th>Crit</th>
-                                <th>Haste</th>` +
-                                // <th class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">SR</th>
-                                // <th class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">AR</th>
-                                // <th class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">NR</th>
-                                // <th class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">FiR</th>
-                                // <th class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">FR</th>
-                                `<th>Skill</th>
+                                <th>Haste</th>
+                                <th>Skill</th>
+                                <th>Resist</th>
                                 <th>DPS</th>
                             </tr>
                         </thead>
                     <tbody>`;
 
         for (let item of gear.custom) {
+            let resist = '';
+            if (item.resist) {
+                if (item.resist.fire) resist += item.resist.fire + ' FiR';
+                if (item.resist.frost) resist += (resist.length ? ' + ' : '') + item.resist.frost + ' FR';
+                if (item.resist.nature) resist += (resist.length ? ' + ' : '') + item.resist.nature + ' NR';
+                if (item.resist.shadow) resist += (resist.length ? ' + ' : '') + item.resist.shadow + ' SR';
+            }
+
             if (item.hidden && !editmode) continue;
             table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
@@ -1253,13 +1204,9 @@ SIM.UI = {
                         <td>${item.arp || ''}</td>
                         <td>${item.hit || ''}</td>
                         <td>${item.crit || ''}</td>
-                        <td>${item.haste || ''}</td>` +
-                        // <td class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">${(item.resist || {}).shadow || ''}</td>
-                        // <td class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">${(item.resist || {}).arcane || ''}</td>
-                        // <td class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">${(item.resist || {}).nature || ''}</td>
-                        // <td class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">${(item.resist || {}).fire || ''}</td>
-                        // <td class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">${(item.resist || {}).frost || ''}</td>
-                        `<td>${item.skill_1 || ''}</td>
+                        <td>${item.haste || ''}</td>
+                        <td>${item.skill_1 || ''}</td>
+                        <td>${resist || ''}</td>
                         <td>${item.dps || ''}</td>
                     </tr>`;
         }
@@ -1296,13 +1243,8 @@ SIM.UI = {
                                 <th>Crit</th>
                                 <th>Hit</th>
                                 <th>Haste</th>
-                                <th>Damage</th>`+
-                                // <th class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">SR</th>
-                                // <th class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">AR</th>
-                                // <th class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">NR</th>
-                                // <th class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">FiR</th>
-                                // <th class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">FR</th>
-                                `<th>PPM</th>
+                                <th>Damage</th>
+                                <th>Resist</th>
                                 <th>DPS</th>
                             </tr>
                         </thead>
@@ -1315,10 +1257,18 @@ SIM.UI = {
                 continue;
             }
 
-            // if (item.phase && !view.filter.find('.phases [data-id="' + item.phase + '"]').hasClass('active'))
-            //     continue;
+            if (item.phase && !view.filter.find('.phases [data-id="' + item.phase + '"]').hasClass('active'))
+                continue;
 
             if (item.hidden && !editmode) continue;
+
+            let resist = '';
+            if (item.resist) {
+                if (item.resist.fire) resist += item.resist.fire + ' FiR';
+                if (item.resist.frost) resist += (resist.length ? ' + ' : '') + item.resist.frost + ' FR';
+                if (item.resist.nature) resist += (resist.length ? ' + ' : '') + item.resist.nature + ' NR';
+                if (item.resist.shadow) resist += (resist.length ? ' + ' : '') + item.resist.shadow + ' SR';
+            }
 
             table += `<tr data-id="${item.id}" data-temp="${item.temp || false}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
@@ -1329,13 +1279,9 @@ SIM.UI = {
                         <td>${item.arp || ''}</td>
                         <td>${item.crit || ''}</td>
                         <td>${item.hit || ''}</td>
-                        <td>${item.haste || ''}</td>` +
-                        // <td class="shadow-resist ${resistCheckList.shadow ? '' : 'hidden'}">${(item.resist || {}).shadow || ''}</td>
-                        // <td class="arcane-resist ${resistCheckList.arcane ? '' : 'hidden'}">${(item.resist || {}).arcane || ''}</td>
-                        // <td class="nature-resist ${resistCheckList.nature ? '' : 'hidden'}">${(item.resist || {}).nature || ''}</td>
-                        // <td class="fire-resist ${resistCheckList.fire ? '' : 'hidden'}">${(item.resist || {}).fire || ''}</td>
-                        // <td class="frost-resist ${resistCheckList.frost ? '' : 'hidden'}">${(item.resist || {}).frost || ''}</td>
-                        `<td>${item.bonusdmg || ''}</td>
+                        <td>${item.haste || ''}</td>
+                        <td>${resist || ''}</td>
+                        <td>${item.bonusdmg || ''}</td>
                         <td>${item.ppm || ''}</td>
                         <td>${item.dps || ''}</td>
                     </tr>`;
@@ -1362,42 +1308,20 @@ SIM.UI = {
 
         if (typeof runes === 'undefined' || !runes[type] || runes[type].length == 0) return;
 
-        let table = `<table class="runes ${editmode ? 'editmode' : ''}" data-type="${type}" data-max="1">
-                        <thead>
-                            <tr>
-                                ${editmode ? '<th></th>' : ''}
-                                <th>Rune</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                    <tbody>`;
-
+        let html = $(`<div class="runes" data-type="${type}"></div>`);
+        html.append('<label>Runes</label>')
         for (let item of runes[type]) {
 
-            if (item.phase && !view.filter.find('.phases [data-id="' + item.phase + '"]').hasClass('active'))
-                continue;
-
-            if (item.hidden && !editmode) continue;
-
-            table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
-                        ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
-                        <td><a href="https://classic.wowhead.com/spell=${item.id}"></a>${item.name}</td>
-                        <td>${item.description}</td>
-                    </tr>`;
+            html.append(`
+                <div data-id="${item.id}" class="rune ${item.selected ? 'active' : ''}">
+                    <div class="icon">
+                        <img src="dist/img/${item.iconname}.jpg" alt="${item.name}">
+                        <a href="https://classic.wowhead.com/spell=${item.id}" class="wh-tooltip"></a>
+                    </div>
+                </div>`);
         }
 
-        table += '</tbody></table></section>';
-
-        if ($(table).find('tbody tr').length == 0) return;
-
-        view.tcontainer.append(table);
-        view.tcontainer.find('table.runes').tablesorter({
-            widthFixed: false,
-            sortList: editmode ? [[1, 0]] : [[0, 0]],
-            headers: {
-                0: { sorter: "text" }
-            }
-        });
+        view.tcontainer.append(html);
     },
 
     addAlert: function (msg) {
@@ -1419,153 +1343,8 @@ SIM.UI = {
         console.log('Welcome!');
     },
 
-    exportProfile: function() {
-        const view = this;
-
-        let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
-        let minified = {};
-
-
-        for(let prop in storage) {
-            if (typeof storage[prop] == 'string') minified[prop] = storage[prop];
-        }
-        minified.buffs = storage.buffs;
-        minified.talents = storage.talents;
-        minified.gear = {};
-        for (let type in storage.gear) {
-            for (let item of storage.gear[type])
-                if (item.selected) minified.gear[type] = item.id;
-        }
-        minified.rotation = [];
-        for (let spell of storage.rotation) {
-            if (spell.active) {
-                let obj = {};
-                obj.id = spell.id;
-                if (typeof spell.duration !== 'undefined') obj.duration = spell.duration;
-                if (typeof spell.durationactive !== 'undefined') obj.durationactive = spell.durationactive;
-                if (typeof spell.timetoend !== 'undefined') obj.timetoend = spell.timetoend;
-                if (typeof spell.crusaders !== 'undefined') obj.crusaders = spell.crusaders;
-                if (typeof spell.haste !== 'undefined') obj.haste = spell.haste;
-                if (typeof spell.procblock !== 'undefined') obj.procblock = spell.procblock;
-                if (typeof spell.rageblock !== 'undefined') obj.rageblock = spell.rageblock;
-                if (typeof spell.rageblockactive !== 'undefined') obj.rageblockactive = spell.rageblockactive;
-                if (typeof spell.minrage !== 'undefined') obj.minrage = spell.minrage;
-                if (typeof spell.minrageactive !== 'undefined') obj.minrageactive = spell.minrageactive;
-                if (typeof spell.maxrage !== 'undefined') obj.maxrage = spell.maxrage;
-                if (typeof spell.maxrageactive !== 'undefined') obj.maxrageactive = spell.maxrageactive;
-                if (typeof spell.maincd !== 'undefined') obj.maincd = spell.maincd;
-                if (typeof spell.maincdactive !== 'undefined') obj.maincdactive = spell.maincdactive;
-                if (typeof spell.priorityap !== 'undefined') obj.priorityap = spell.priorityap;
-                if (typeof spell.priorityapactive !== 'undefined') obj.priorityapactive = spell.priorityapactive;
-                if (typeof spell.flagellation !== 'undefined') obj.flagellation = spell.flagellation;
-                if (typeof spell.consumedrage !== 'undefined') obj.consumedrage = spell.consumedrage;
-                if (typeof spell.unqueue !== 'undefined') obj.unqueue = spell.unqueue;
-                if (typeof spell.unqueueactive !== 'undefined') obj.unqueueactive = spell.unqueueactive;
-                if (typeof spell.exmacro !== 'undefined') obj.exmacro = spell.exmacro;
-                if (typeof spell.globals !== 'undefined') obj.globals = spell.globals;
-                if (typeof spell.globalsactive !== 'undefined') obj.globalsactive = spell.globalsactive;
-                minified.rotation.push(obj);
-            }
-        }
-        minified.runes = {};
-        for (let type in storage.runes) {
-            for (let item of storage.runes[type])
-                if (item.selected) minified.runes[type] = item.id;
-        }
-        minified.enchant = {};
-        for (let type in storage.enchant) {
-            for (let item of storage.enchant[type])
-                if (item.selected) {
-                    if (!minified.enchant[type]) minified.enchant[type] = [];
-                    minified.enchant[type].push(item.id);
-                }
-        }
-
-        let str = JSON.stringify(minified);
-        view.main.find('[name="profilejson"]').val(str);
-        navigator.clipboard.writeText(str);
-        view.addAlert('Profile copied to clipboard');
-    },
-
-    importProfile() {
-
-        const view = this;
-        try {
-            let str = view.main.find('[name="profilejson"]').val();
-            let minified = JSON.parse(str);
-            let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
-
-
-            for(let prop in minified) {
-                if (typeof minified[prop] == 'string') storage[prop] = minified[prop];
-            }
-            storage.buffs = minified.buffs;
-            storage.talents = minified.talents;
-
-            for (let type in storage.gear) {
-                for (let item of storage.gear[type])
-                    if (item.id == minified.gear[type]) item.selected = true;
-                    else delete item.selected;
-            }
-            for (let spell of storage.rotation) {
-                let newspell = minified.rotation.filter(s => s.id == spell.id)[0];
-                if (newspell) {
-                    spell.active = true;
-                    if (typeof newspell.duration !== 'undefined') spell.duration = newspell.duration;
-                    if (typeof newspell.durationactive !== 'undefined') spell.durationactive = newspell.durationactive;
-                    if (typeof newspell.timetoend !== 'undefined') spell.timetoend = newspell.timetoend;
-                    if (typeof newspell.crusaders !== 'undefined') spell.crusaders = newspell.crusaders;
-                    if (typeof newspell.haste !== 'undefined') spell.haste = newspell.haste;
-                    if (typeof newspell.procblock !== 'undefined') spell.procblock = newspell.procblock;
-                    if (typeof newspell.rageblock !== 'undefined') spell.rageblock = newspell.rageblock;
-                    if (typeof newspell.rageblockactive !== 'undefined') spell.rageblockactive = newspell.rageblockactive;
-                    if (typeof newspell.minrage !== 'undefined') spell.minrage = newspell.minrage;
-                    if (typeof newspell.minrageactive !== 'undefined') spell.minrageactive = newspell.minrageactive;
-                    if (typeof newspell.maxrage !== 'undefined') spell.maxrage = newspell.maxrage;
-                    if (typeof newspell.maxrageactive !== 'undefined') spell.maxrageactive = newspell.maxrageactive;
-                    if (typeof newspell.maincd !== 'undefined') spell.maincd = newspell.maincd;
-                    if (typeof newspell.maincdactive !== 'undefined') spell.maincdactive = newspell.maincdactive;
-                    if (typeof newspell.priorityap !== 'undefined') spell.priorityap = newspell.priorityap;
-                    if (typeof newspell.priorityapactive !== 'undefined') spell.priorityapactive = newspell.priorityapactive;
-                    if (typeof newspell.flagellation !== 'undefined') spell.flagellation = newspell.flagellation;
-                    if (typeof newspell.consumedrage !== 'undefined') spell.consumedrage = newspell.consumedrage;
-                    if (typeof newspell.unqueue !== 'undefined') spell.unqueue = newspell.unqueue;
-                    if (typeof newspell.unqueueactive !== 'undefined') spell.unqueueactive = newspell.unqueueactive;
-                    if (typeof newspell.exmacro !== 'undefined') spell.exmacro = newspell.exmacro;
-                    if (typeof newspell.globals !== 'undefined') spell.globals = newspell.globals;
-                    if (typeof newspell.globalsactive !== 'undefined') spell.globalsactive = newspell.globalsactive;
-                }
-                else {
-                    spell.active = false;
-                }
-            }
-            for (let type in storage.runes) {
-                for (let item of storage.runes[type])
-                    if (item.id == minified.runes[type]) item.selected = true;
-                    else delete item.selected;
-            }
-
-            for (let type in storage.enchant) {
-                for (let item of storage.enchant[type]) {
-                    if (minified.enchant[type] && minified.enchant[type].includes(item.id))
-                        item.selected = true;
-                    else
-                        delete item.selected;
-                }
-            }
-
-            view.main.find('[name="profilejson"]').val('');
-            localStorage[mode + (globalThis.profileid || 0)] = JSON.stringify(storage);
-            view.loadProfiles(true);
-
-        } catch (e) {
-            view.addAlert('Invalid profile');
-        }
-    }
-
-
-
 };
 
 var eyesvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>';
 var eyesvghidden = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.885 14.988l3.104-3.098.011.11c0 1.654-1.346 3-3 3l-.115-.012zm8.048-8.032l-3.274 3.268c.212.554.341 1.149.341 1.776 0 2.757-2.243 5-5 5-.631 0-1.229-.13-1.785-.344l-2.377 2.372c1.276.588 2.671.972 4.177.972 7.733 0 11.985-8.449 11.985-8.449s-1.415-2.478-4.067-4.595zm1.431-3.536l-18.619 18.58-1.382-1.422 3.455-3.447c-3.022-2.45-4.818-5.58-4.818-5.58s4.446-7.551 12.015-7.551c1.825 0 3.456.426 4.886 1.075l3.081-3.075 1.382 1.42zm-13.751 10.922l1.519-1.515c-.077-.264-.132-.538-.132-.827 0-1.654 1.346-3 3-3 .291 0 .567.055.833.134l1.518-1.515c-.704-.382-1.496-.619-2.351-.619-2.757 0-5 2.243-5 5 0 .852.235 1.641.613 2.342z"/></svg>';
+var searchSVG = '<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="20px" height="20px"><path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"/></svg>';

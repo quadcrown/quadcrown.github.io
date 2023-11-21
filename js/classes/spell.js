@@ -128,6 +128,7 @@ class Execute extends Spell {
         super(player, id);
         this.cost = 15 - player.talents.executecost;
         this.usedrage = 0;
+        this.totalusedrage = 0;
         this.refund = false;
         this.weaponspell = false;
     }
@@ -150,6 +151,7 @@ class Execute extends Spell {
         this.player.timer = 1500;
         this.player.rage -= this.cost;
         this.usedrage = ~~this.player.rage;
+        this.totalusedrage += this.usedrage;
         this.timer = batching - (step % batching);
     }
     step(a) {
@@ -197,7 +199,7 @@ class HeroicStrike extends Spell {
     constructor(player, id) {
         super(player, id, "Heroic Strike");
         this.cost = 15 - player.talents.impheroicstrike;
-        this.bonus = player.aqbooks ? 157 : this.value1;
+        this.bonus = this.value1;
         this.useonly = true;
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
@@ -339,7 +341,9 @@ class RagingBlow extends Spell {
     canUse(executephase) {
         return !this.timer && !this.player.timer && 
             (!executephase || this.execute) &&
-            ((this.player.auras.bloodrage && this.player.auras.bloodrage.timer) || (this.player.auras.berserkerrage && this.player.auras.berserkerrage.timer));
+            ((this.player.auras.bloodrage && this.player.auras.bloodrage.timer) 
+              || (this.player.auras.berserkerrage && this.player.auras.berserkerrage.timer)
+              || (this.player.auras.consumedrage && this.player.auras.consumedrage.timer));
     }
 }
 
@@ -432,6 +436,9 @@ class Aura {
         if (spell.value2) this.value2 = spell.value2;
         if (spell.procblock) this.procblock = spell.procblock;
         if (spell.rageblockactive) this.rageblock = parseInt(spell.rageblock);
+        if (spell.erageblockactive) this.erageblock = parseInt(spell.erageblock);
+        if (spell.chargeblockactive) this.chargeblock = parseInt(spell.chargeblock);
+        if (spell.echargeblockactive) this.echargeblock = parseInt(spell.echargeblock);
         if (spell.wfap) this.wfap = parseInt(spell.wfap);
         if (spell.wfapperc) this.wfapperc = parseInt(spell.wfapperc);
 
@@ -1017,7 +1024,7 @@ class Windfury extends Aura {
         }
     }
     step() {
-        if (step >= this.timer) {
+        if (step >= this.timer || this.stacks == 0) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
             this.stacks = 0;
@@ -1379,6 +1386,7 @@ class Rend extends Aura {
         this.idmg = 0;
         this.totaldmg = 0;
         this.lasttick = 0;
+        this.uses = 0;
         this.dmgmod = 1 + this.player.talents.rendmod / 100;
     }
     step() {
@@ -1417,6 +1425,8 @@ class Rend extends Aura {
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
         this.stacks = this.value2;
+        this.player.rage -= this.cost;
+        this.uses++;
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
