@@ -3707,6 +3707,18 @@ var gear = {
   ],
   "legs": [
     {
+      "name": "Fallen Crusader Legguards (Vs Undead)",
+      "source": "Other",
+      "str": 17,
+      "bonusdmg": 28,
+      "resist": {
+        "shadow": 15
+      },
+      "ac": 463,
+      "phase": 7,
+      "id": 81355
+    },
+    {
       "name": "Rune-Etched Legplates",
       "source": "Crafting",
       "agi": 15,
