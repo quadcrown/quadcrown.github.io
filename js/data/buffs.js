@@ -439,7 +439,7 @@ var buffs = [
       name: "Grace of Air Totem",
       iconname: "spell_nature_invisibilitytotem",
       group: "graceair",
-      agi: 93,
+      agi: 67,
       minlevel: 56,
       aq: false,
    },
