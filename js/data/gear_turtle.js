@@ -878,6 +878,17 @@ var gear = {
   ],
   "shoulder": [
     {
+      "name": "Rune-Etched Mantle",
+      "str": 20,
+      "agi": 5,
+      "source": "Crafting",
+      "ac": 491,
+      "phase": 7,
+      "id": 60292,
+      "i": 63,
+      "q": 3
+    },
+    {
       "name": "Pauldrons of the Timbermaw",
       "str": 21,
       "haste": 2,
