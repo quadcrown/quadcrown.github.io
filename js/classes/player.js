@@ -95,7 +95,6 @@ class Player {
             else if (testType == 5) {
                 this.base.haste *= testItem;
             }
-
         }
         else {
             this.testItem = testItem;

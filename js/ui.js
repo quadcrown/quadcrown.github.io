@@ -1055,7 +1055,7 @@ SIM.UI = {
         view.tcontainer.append(`<div class="topgear">
             <div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>
             <div class="filters">
-                <label id="filter_tiger" class="${globalThis.filter_tiger ? 'active' : ''}">Of the Tiger</label>
+                <label style="display: none;" id="filter_tiger" class="${globalThis.filter_tiger ? 'active' : ''}">Of the Tiger</label>
                 <label id="filter_green" class="${globalThis.filter_green ? 'active' : ''}">Greens</label>
                 <label id="filter_blue" class="${globalThis.filter_blue ? 'active' : ''}">Blues</label>
             </div>
@@ -1205,7 +1205,7 @@ SIM.UI = {
         view.tcontainer.append(`<div class="topgear">
             <div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>
             <div class="filters">
-                <label id="filter_tiger" class="${globalThis.filter_tiger ? 'active' : ''}">Of the Tiger</label>
+                <label style="display: none;" id="filter_tiger" class="${globalThis.filter_tiger ? 'active' : ''}">Of the Tiger</label>
                 <label id="filter_green" class="${globalThis.filter_green ? 'active' : ''}">Greens</label>
                 <label id="filter_blue" class="${globalThis.filter_blue ? 'active' : ''}">Blues</label>
             </div>
