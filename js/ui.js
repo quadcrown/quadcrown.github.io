@@ -27,6 +27,7 @@ SIM.UI = {
         view.fight = view.body.find('article.fight');
         view.rotation = view.body.find('article.rotation');
         view.talents = view.body.find('article.talents');
+        view.runes = view.body.find('article.runes');
         view.filter = view.body.find('article.filter');
         view.main = view.body.find('section.main');
         view.sidebar = view.body.find('section.sidebar');
@@ -216,6 +217,33 @@ SIM.UI = {
             view.updateSidebar();
         });
 
+        view.runes.on('click', '.rune .icon', function(e) {
+            var current_open_page =  $(`nav`).children('ul').children('li.active').find('p:first').text().toLowerCase().replace(/\s/g, '');
+            var rune_type = $(this).closest('tr[name]').attr('name');
+            var rune_id = $(this).parent().attr('data-id').toString();;
+            view.loadGear(rune_type);
+            var parent = view.tcontainer.find($(`.runes[data-type="${rune_type}"]`));
+            var rune = parent.find($(`[data-id="${rune_id}"]`));
+            if (rune.hasClass('active')) {
+                view.rowDisableRunes(rune);
+            } else {
+                parent.children('div').each(function(index, element) {
+                    view.rowDisableRunes($(element));
+                });
+                view.rowEnableRunes(rune);
+            }
+            view.updateSession();
+            view.updateSidebar();
+            SIM.SETTINGS.buildSpells();
+
+            if (current_open_page == "mainhand" || current_open_page == "offhand" || current_open_page == "twohand")
+                view.loadWeapons(current_open_page);
+            else if (current_open_page == "custom")
+                view.loadCustom();
+            else 
+                view.loadGear(current_open_page);
+        });
+
         view.tcontainer.on('click', '.runes .icon', function(e) {
             var parent = $(this).parents('.runes');
             var rune = $(this).parent();
@@ -246,11 +274,18 @@ SIM.UI = {
             e.preventDefault();
             if (e.key == "Escape") $(this).val('');
             let val = $(this).val();
-            view.tcontainer.find('.gear td:first-child').each(function() {
+            view.tcontainer.find('.gear td:nth-child(2)').each(function() {
                 let td = $(this).get(0);
                 if (!val || td.textContent.toLowerCase().indexOf(val.toLowerCase()) > -1) td.parentElement.classList.remove('filtered');
                 else td.parentElement.classList.add('filtered');
             });
+        });
+
+        view.tcontainer.on('click', '.filters label', function (e) {
+            $(this).toggleClass('active');
+            globalThis[$(this).attr('id')] = $(this).hasClass('active');
+            view.updateSession();
+            view.filterGear();
         });
 
     },
@@ -667,12 +702,16 @@ SIM.UI = {
             }
                
         }
+        var settings_parent = this.body.find('article.runes');
+        var rune_lookup = $(`tr[name="${type}"]`);
+        settings_parent.find(rune_lookup).find('div').removeClass('active');
     },
 
     rowEnableRunes: function(div) {
         var parent = div.parents('.runes');
         var type = parent.data('type');
         div.addClass('active');
+        let this_spell_id = 0;
         for(let i = 0; i < runes[type].length; i++) {
             if (runes[type][i].id == div.data('id')) {
                 runes[type][i].selected = true;
@@ -681,8 +720,12 @@ SIM.UI = {
                         if (spell.id == runes[type][i].enable)
                             spell.active = true;
                 }
+                this_spell_id = runes[type][i].id;
             }
         }
+        var settings_parent = this.body.find('article.runes');
+        var rune_lookup = $(`[data-id="${this_spell_id}"]`);
+        settings_parent.find(rune_lookup).children('div').addClass('active');
     },
 
     startLoading: function() {
@@ -769,6 +812,9 @@ SIM.UI = {
         obj.reactionmin = view.fight.find('input[name="reactionmin"]').val();
         obj.reactionmax = view.fight.find('input[name="reactionmax"]').val();
         obj.batching = view.fight.find('select[name="batching"]').val();
+        obj.filter_tiger = view.main.find('#filter_tiger').hasClass('active');
+        obj.filter_green = view.main.find('#filter_green').hasClass('active');
+        obj.filter_blue = view.main.find('#filter_blue').hasClass('active');
 
         let _buffs = [], _rotation = [], _talents = [], _sources = [], _phases = [], _gear = {}, _enchant = {}, _runes = {}, _resistance = {};
         view.buffs.find('.active').each(function () { _buffs.push($(this).attr('data-id')); });
@@ -839,7 +885,13 @@ SIM.UI = {
         if (!storage.level) storage.level = session.level;
         if (!storage.targetlevel) storage.targetlevel = session.targetlevel;
         if (!storage.profilename) storage.profilename = session.profilename;
+        if (typeof storage.filter_tiger == 'undefined') storage.filter_tiger = true;
+        if (typeof storage.filter_green == 'undefined') storage.filter_green = true;
+        if (typeof storage.filter_blue == 'undefined') storage.filter_blue = true;
         globalThis.profilename = storage.profilename;
+        globalThis.filter_tiger = storage.filter_tiger;
+        globalThis.filter_green = storage.filter_green;
+        globalThis.filter_blue = storage.filter_blue;
         
         for (let prop in storage) {
             view.fight.find('input[name="' + prop + '"]').val(storage[prop]);
@@ -900,6 +952,7 @@ SIM.UI = {
                         <thead>
                             <tr>
                                 ${editmode ? '<th></th>' : ''}
+                                <th>ilvl</th>
                                 <th>Name</th>
                                 <th>Source</th>
                                 <th>Sta</th>
@@ -924,7 +977,14 @@ SIM.UI = {
 
         for (let item of gear[type]) {
 
-            if (item.r > level || item.r < (level -20) || item.r == 0) {
+            if (item.r > level || (mode == "sod" && item.q < 4 && item.i < (level - 7))) {
+                item.selected = false;
+                continue;
+            }
+
+            if ((globalThis.filter_tiger === false && item.name.toLowerCase().indexOf('of the tiger') > -1) ||
+                (globalThis.filter_green === false && item.q == "2") ||
+                (globalThis.filter_blue === false && item.q == "3")) {
                 item.selected = false;
                 continue;
             }
@@ -978,7 +1038,8 @@ SIM.UI = {
 
             table += `<tr data-id="${item.id}" data-name="${item.name}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
-                        <td><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.name}</td>`
+                        <td data-quality="${item.q}"><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.i}</td>
+                        <td>${item.name}</td>`
 
             table +=`<td>${item.source || ''}</td>
                         <td>${item.sta || ''}</td>
@@ -1003,12 +1064,19 @@ SIM.UI = {
         table += '</tbody></table></section>';
 
         view.tcontainer.empty();
-        view.tcontainer.append(`<div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>`);
+        view.tcontainer.append(`<div class="topgear">
+            <div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>
+            <div class="filters">
+                <label id="filter_tiger" class="${globalThis.filter_tiger ? 'active' : ''}">Of the Tiger</label>
+                <label id="filter_green" class="${globalThis.filter_green ? 'active' : ''}">Greens</label>
+                <label id="filter_blue" class="${globalThis.filter_blue ? 'active' : ''}">Blues</label>
+            </div>
+        </div>`);
         view.tcontainer.append(table);
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
             widthFixed: false,
-            sortList: editmode ?  [[dpsrow, 1],[1, 0]] : [[dpsrow-1, 1],[0, 0]],
+            sortList: editmode ?  [[dpsrow, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
             textSorter : {
                 22 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
@@ -1050,6 +1118,7 @@ SIM.UI = {
                         <thead>
                             <tr>
                                 ${editmode ? '<th></th>' : ''}
+                                <th>ilvl</th>
                                 <th>Name</th>
                                 <th>Source</th>
                                 <th>Sta</th>
@@ -1070,7 +1139,14 @@ SIM.UI = {
 
         for (let item of gear[type]) {
             
-            if (item.r > level || (item.r < (level -20) && item.r !== 0)) {
+            if (item.r > level || (mode == "sod" && item.q < 4 && item.i < (level - 7))) {
+                item.selected = false;
+                continue;
+            }
+
+            if ((globalThis.filter_tiger === false && item.name.toLowerCase().indexOf('of the tiger') > -1) ||
+                (globalThis.filter_green === false && item.q == "2") ||
+                (globalThis.filter_blue === false && item.q == "3")) {
                 item.selected = false;
                 continue;
             }
@@ -1115,7 +1191,8 @@ SIM.UI = {
 
             table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
-                        <td><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.name}</td>`
+                        <td data-quality="${item.q}"><a href="https://database.turtle-wow.org/?item=${tooltip}${rand}"></a>${item.i}</td>
+                        <td>${item.name}</td>`
 
             table += `<td>${item.source || ''}</td>
                         <td>${item.sta || ''}</td>
@@ -1137,12 +1214,19 @@ SIM.UI = {
 
         view.tcontainer.empty();
         view.loadRunes(type, editmode);
-        view.tcontainer.append(`<div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>`);
+        view.tcontainer.append(`<div class="topgear">
+            <div class="search"><input name="search" placeholder="Search" />${searchSVG}</div>
+            <div class="filters">
+                <label id="filter_tiger" class="${globalThis.filter_tiger ? 'active' : ''}">Of the Tiger</label>
+                <label id="filter_green" class="${globalThis.filter_green ? 'active' : ''}">Greens</label>
+                <label id="filter_blue" class="${globalThis.filter_blue ? 'active' : ''}">Blues</label>
+            </div>
+        </div>`);
         view.tcontainer.append(table);
         let dpsrow = view.tcontainer.find('table.gear th').length;
         view.tcontainer.find('table.gear').tablesorter({
             widthFixed: false,
-            sortList: editmode ? [[dpsrow, 1],[1, 0]] : [[dpsrow-1, 1],[0, 0]],
+            sortList: editmode ? [[dpsrow, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
             textSorter : {
                 22 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));

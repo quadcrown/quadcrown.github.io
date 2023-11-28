@@ -53,6 +53,7 @@ class Player {
             skill_4: this.level * 5,
             skill_5: this.level * 5,
             skill_6: this.level * 5,
+            skill_7: (this.level < 35 ? 225 : 300),
             haste: 1,
             strmod: 1,
             agimod: 1,
@@ -199,7 +200,7 @@ class Player {
                             this.base['skill_3'] += item.skill;
                         }
                         else {
-                            let sk = WEAPONTYPE[item.type.toUpperCase()];
+                            let sk = WEAPONTYPE[item.type.replace(' ','').toUpperCase()];
                             this.base['skill_' + sk] += item.skill;
                         }
                     }
@@ -243,7 +244,7 @@ class Player {
         //                         this.base['skill_3'] -= item.skill;
         //                     }
         //                     else {
-        //                         let sk = WEAPONTYPE[item.type.toUpperCase()];
+        //                         let sk = WEAPONTYPE[item.type.replace(' ','').toUpperCase()];
         //                         this.base['skill_' + sk] -= item.skill;
         //                     }
         //                 }
@@ -392,7 +393,9 @@ class Player {
             if (buff.active) {
                 let ap = 0, str = 0, agi = 0;
                 if (buff.group == "battleshout") {
-                    ap = ~~((buff.ap + (this.enhancedbs ? 30 : 0)) * (1 + this.talents.impbattleshout));
+                    let lvlbonus = 0;
+                    if (buff.lvlmod) lvlbonus = ~~((this.level - buff.minlevel + 1) * buff.lvlmod);
+                    ap = ~~((buff.ap + lvlbonus + (this.enhancedbs ? 30 : 0)) * (1 + this.talents.impbattleshout));
                 }
                 if (buff.name == "Blessing of Might") {
                     let impmight = buffs.filter(s => s.mightmod && s.active)[0];
@@ -424,12 +427,14 @@ class Player {
                 this.base.strmod *= (1 + buff.strmod / 100) || 1;
                 this.base.dmgmod *= (1 + buff.dmgmod / 100) || 1;
                 this.base.haste *= (1 + buff.haste / 100) || 1;
+                this.base.skill_7 += buff.skill_7 || 0;
             }
         }
     }
     addSpells() {
         for (let spell of spells) {
             if (spell.active) {
+                if (!spell.aura && this.mh.type == WEAPONTYPE.FISHINGPOLE) continue; 
                 if (spell.aura) this.auras[spell.classname.toLowerCase()] = eval(`new ${spell.classname}(this, ${spell.id})`);
                 else this.spells[spell.classname.toLowerCase()] = eval(`new ${spell.classname}(this, ${spell.id})`);
             }
@@ -588,9 +593,15 @@ class Player {
             this.stats.haste *= (1 + this.auras.hategrips.mult_stats.haste / 100);
         if (this.auras.voidmadness && this.auras.voidmadness.timer)
             this.stats.haste *= (1 + this.auras.voidmadness.mult_stats.haste / 100);
+        if (this.auras.jackhammer && this.auras.jackhammer.timer)
+            this.stats.haste *= (1 + this.auras.jackhammer.mult_stats.haste / 100);
+        if (this.auras.ragehammer && this.auras.ragehammer.timer)
+            this.stats.haste *= (1 + this.auras.ragehammer.mult_stats.haste / 100);
     }
     updateBonusDmg() {
         let bonus = 0;
+        if (this.auras.stoneslayer && this.auras.stoneslayer.timer)
+            bonus += this.auras.stoneslayer.stats.bonusdmg;
         if (this.auras.zeal && this.auras.zeal.timer)
             bonus += this.auras.zeal.stats.bonusdmg;
         if (this.auras.zandalarian && this.auras.zandalarian.timer)
@@ -608,6 +619,8 @@ class Player {
             this.target.armor = Math.max(this.target.armor - (this.auras.rivenspike.stacks * this.auras.rivenspike.armor), 0);
         if (this.auras.vibroblade && this.auras.vibroblade.timer)
             this.target.armor = Math.max(this.target.armor - this.auras.vibroblade.armor, 0);
+        if (this.auras.cleavearmor && this.auras.cleavearmor.timer)
+            this.target.armor = Math.max(this.target.armor - this.auras.cleavearmor.armor, 0);
         if (this.auras.bonereaver && this.auras.bonereaver.timer)
             this.target.armor = Math.max(this.target.armor - (this.auras.bonereaver.stacks * this.auras.bonereaver.armor), 0);
         if (this.auras.swarmguard && this.auras.swarmguard.timer)
