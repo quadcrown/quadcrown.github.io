@@ -9442,6 +9442,35 @@ var gear = {
   ],
   "twohand": [
     {
+      "name": "Untempered Runeblade",
+      "str": 10,
+      "resist": {
+        "shadow": 10
+      },
+      "mindmg": 168,
+      "maxdmg": 252,
+      "speed": 3.7,
+      "id": 60293,
+      "source": "Crafting",
+      "phase": 7,
+      "type": "Sword"
+    },
+    {
+      "name": "Tempered Runeblade",
+      "str": 20,
+      "ap": 20,
+      "resist": {
+        "shadow": 20
+      },
+      "mindmg": 183,
+      "maxdmg": 278,
+      "speed": 3.7,
+      "id": 81060,
+      "source": "Quest",
+      "phase": 7,
+      "type": "Sword"
+    },
+    {
       "name": "Towerforge Demolisher *Unknown ppm",
       "mindmg": 173,
       "maxdmg": 291,
@@ -10531,6 +10560,21 @@ var gear = {
       "source": "BWL",
       "phase": 3,
       "type": "Mace"
+    },
+    {
+      "name": "Demonshear",
+      "mindmg": 163,
+      "maxdmg": 246,
+      "speed": 3.8,
+      "id": 13348,
+      "source": "Dungeon",
+      "phase": 1,
+      "type": "Sword",
+      "proc": {
+        "ppm": 1,
+        "magic": true,
+        "dmg": 270
+      }
     }
   ],
   "custom": [
