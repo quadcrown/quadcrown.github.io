@@ -7584,6 +7584,21 @@ var gear = {
       "source": "BWL",
       "phase": 3,
       "type": "Mace"
+    },
+    {
+      "name": "Demonshear",
+      "mindmg": 163,
+      "maxdmg": 246,
+      "speed": 3.8,
+      "id": 13348,
+      "source": "Dungeon",
+      "phase": 1,
+      "type": "Sword",
+      "proc": {
+        "ppm": 1,
+        "magic": true,
+        "dmg": 270
+      }
     }
   ],
   "custom": [
