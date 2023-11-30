@@ -10585,7 +10585,24 @@ var gear = {
         "ppm": 1,
         "magic": true,
         "dmg": 270
-      }
+      },
+    },
+    {
+      "name": "Corruption",
+      "str": 30,
+      "sta": 30,
+      "mindmg": 119,
+      "maxdmg": 179,
+      "speed": 3.0,
+      "id": 12782,
+      "source": "Crafting",
+      "phase": 1,
+      "type": "Sword",
+      "proc": {
+        "ppm": 3,
+        "magic": true,
+        "dmg": 90
+      },
     }
   ],
   "custom": [
