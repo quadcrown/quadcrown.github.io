@@ -169,7 +169,7 @@ SIM.PROFILES = {
                     <p></p>
                     <p>${talents}</p>
                     <ul>${items}</ul>
-                    <div class="export-profile" title="Export" ${i == 0 ? 'style="right: 20px"' : ''}>${svgExport}</div>
+                    <div class="export-profile" title="Export">${svgExport}</div>
                     ${i > 0 ? `<div class="delete-profile" title="Delete">${svgThrash}</div>` : ''}
                 </div>`);
             view.container.append(profile);
@@ -188,7 +188,7 @@ SIM.PROFILES = {
             if (type == "twohand" || type == "mainhand" || type == "offhand") {
                 for  (let item of storage.gear[type]) {
                     if (item.selected) 
-                        html += view.getItemHTML(view.getItem(item.id));
+                        html += view.getItemHTML(view.getItem(item.id), storage);
                 }
             }
         }
@@ -196,19 +196,20 @@ SIM.PROFILES = {
             if (type != "twohand" && type != "mainhand" && type != "offhand") {
                 for  (let item of storage.gear[type]) {
                     if (item.selected) 
-                        html += view.getItemHTML(view.getItem(item.id));
+                        html += view.getItemHTML(view.getItem(item.id), storage);
                 }
             }
         }
         return html;
     },
 
-    getItemHTML(item) {
+    getItemHTML(item, storage) {
         let icon = '';
-        if (typeof runes !== 'undefined' && runes[item.slot]) {
-            for (let rune of runes[item.slot]) {
+        if (typeof storage.runes !== 'undefined' && storage.runes[item.slot]) {
+            for (let rune of storage.runes[item.slot]) {
                 if (rune.selected) {
-                    icon = `<img src="dist/img/${rune.iconname}.jpg">`
+                    let r = runes[item.slot].filter(a => a.id == rune.id)[0];
+                    icon = `<img src="dist/img/${r.iconname}.jpg">`
                 }
             }
         }
