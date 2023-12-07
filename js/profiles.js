@@ -187,7 +187,7 @@ SIM.PROFILES = {
         for(let type in storage.gear) {
             if (type == "twohand" || type == "mainhand" || type == "offhand") {
                 for  (let item of storage.gear[type]) {
-                    if (item.selected) 
+                    if (item.selected && item.id < 9999990) 
                         html += view.getItemHTML(view.getItem(item.id), storage);
                 }
             }
@@ -195,7 +195,7 @@ SIM.PROFILES = {
         for(let type in storage.gear) {
             if (type != "twohand" && type != "mainhand" && type != "offhand") {
                 for  (let item of storage.gear[type]) {
-                    if (item.selected) 
+                    if (item.selected && item.id < 9999990) 
                         html += view.getItemHTML(view.getItem(item.id), storage);
                 }
             }
@@ -209,7 +209,8 @@ SIM.PROFILES = {
             for (let rune of storage.runes[item.slot]) {
                 if (rune.selected) {
                     let r = runes[item.slot].filter(a => a.id == rune.id)[0];
-                    icon = `<img src="dist/img/${r.iconname}.jpg">`
+                    if (!r) rune.selected = false;
+                    else icon = `<img src="dist/img/${r.iconname}.jpg">`
                 }
             }
         }
