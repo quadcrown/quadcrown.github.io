@@ -3201,6 +3201,19 @@ var gear = {
   ],
   "waist": [
     {
+      "name": "Greatfather Winter's Belt",
+      "hit": 1,
+      "haste": 1,
+      "sta": 3,
+      "resist": {
+        "frost": 10
+      },
+      "source": "Quest",
+      "ac": 96,
+      "phase": 7,
+      "id": 61088
+    },
+    {
       "name": "Cloverlink Belt",
       "str": 16,
       "agi": 16,
@@ -9452,6 +9465,22 @@ var gear = {
     }
   ],
   "twohand": [
+    {
+      "name": "Winter Veil Branch",
+      "str": 25,
+      "arp": 25,
+      "haste": 1,
+      "resist": {
+        "frost": 10
+      },
+      "mindmg": 106,
+      "maxdmg": 220,
+      "speed": 3.1,
+      "id": 61087,
+      "source": "Quest",
+      "phase": 7,
+      "type": "Mace"
+    },
     {
       "name": "Untempered Runeblade",
       "str": 10,
