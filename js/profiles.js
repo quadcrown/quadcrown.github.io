@@ -29,9 +29,9 @@ SIM.PROFILES = {
             view.body.addClass('sidebar-mobile-open');
         });
 
-        view.container.on('click','.profile ul', function (e) {
+        view.container.on('click','.profile', function (e) {
             e.preventDefault();
-            let p = $(this).parents('.profile');
+            let p = $(this);
             view.loadProfile(p);
             view.close.click();
         });
@@ -187,16 +187,21 @@ SIM.PROFILES = {
         for(let type in storage.gear) {
             if (type == "twohand" || type == "mainhand" || type == "offhand") {
                 for  (let item of storage.gear[type]) {
-                    if (item.selected && item.id < 9999990) 
-                        html += view.getItemHTML(view.getItem(item.id), storage);
+                    if (item.selected) {
+                        let i = view.getItem(item.id);
+                        if (i) html += view.getItemHTML(i, storage);
+                    }
+                        
                 }
             }
         }
         for(let type in storage.gear) {
             if (type != "twohand" && type != "mainhand" && type != "offhand") {
                 for  (let item of storage.gear[type]) {
-                    if (item.selected && item.id < 9999990) 
-                        html += view.getItemHTML(view.getItem(item.id), storage);
+                    if (item.selected) {
+                        let i = view.getItem(item.id);
+                        if (i) html += view.getItemHTML(i, storage);
+                    }
                 }
             }
         }
