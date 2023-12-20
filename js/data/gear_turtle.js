@@ -3262,7 +3262,7 @@ var gear = {
       "crit": 1,
       "arp": 25,
       "ap": 44,
-      "source": "EmerSanc",
+      "source": "LowerKara",
       "ac": 237,
       "phase": 7,
       "id": 61273
