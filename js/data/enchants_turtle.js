@@ -360,7 +360,7 @@ var enchant = {
       {
          "id": 92005,
          "name": "Invocation of Shattering",
-         "arp": 75,
+         "arp": 40,
          "phase": 7
       },
       {
@@ -440,7 +440,7 @@ var enchant = {
          "id": 61438,
          "spellid": true,
          "name": "Sigil of Penetration",
-         "arp": 75,
+         "arp": 40,
          "phase": 7
       },
       {
@@ -694,7 +694,7 @@ var enchant = {
       {
          "id": 92005,
          "name": "Invocation of Shattering",
-         "arp": 75,
+         "arp": 40,
          "phase": 7
       },
       {

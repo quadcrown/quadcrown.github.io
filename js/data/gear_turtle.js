@@ -2416,9 +2416,9 @@ var gear = {
     },
     {
       "name": "Sanctum Bark Wraps",
-      "agi": 14,
+      "agi": 15,
       "str": 15,
-      "sta": 13,
+      "sta": 14,
       "haste": 1,
       "ac": 88,
       "source": "EmerSanc",
@@ -2697,7 +2697,7 @@ var gear = {
       "name": "Talonwind Gauntlets",
       "haste": 1,
       "crit": 1,
-      "agi": 20,
+      "agi": 22,
       "sta": 17,
       "ac": 301,
       "source": "EmerSanc",
@@ -3902,6 +3902,7 @@ var gear = {
     {
       "name": "Ancient Jade Leggings",
       "agi": 26,
+      "str": 9,
       "skill": 8,
       "type": "Mace",
       "crit": 1,
@@ -5935,7 +5936,7 @@ var gear = {
     },
     {
       "name": "Nature's Call",
-      "sta": 5,
+      "sta": 8,
       "hit": 1,
       "arp": 25,
       "source": "EmerSanc",
@@ -6294,12 +6295,12 @@ var gear = {
     },
     {
       "name": "Axe of Dormant Slumber",
-      "mindmg": 90,
-      "maxdmg": 166,
+      "mindmg": 92,
+      "maxdmg": 171,
       "speed": 2.2,
       "hit": 1,
       "sta": 11,
-      "str": 8,
+      "str": 9,
       "ac": 100,
       "type": "Axe",
       "source": "EmerSanc",
@@ -6325,13 +6326,13 @@ var gear = {
     },
     {
       "name": "Claw of Senthos",
-      "mindmg": 86,
-      "maxdmg": 145,
+      "mindmg": 94,
+      "maxdmg": 175,
       "speed": 2.4,
       "type": "Fist",
       "crit": 1,
       "sta": 5,
-      "ap": 20,
+      "ap": 24,
       "source": "EmerSanc",
       "phase": 7,
       "id": 61740,
@@ -8087,12 +8088,12 @@ var gear = {
     },
     {
       "name": "Axe of Dormant Slumber",
-      "mindmg": 90,
-      "maxdmg": 166,
+      "mindmg": 92,
+      "maxdmg": 171,
       "speed": 2.2,
       "hit": 1,
       "sta": 11,
-      "str": 8,
+      "str": 9,
       "ac": 100,
       "type": "Axe",
       "source": "EmerSanc",
@@ -8108,8 +8109,8 @@ var gear = {
       "hit": 1,
       "ap": 20,
       "skill": 3,
-      "mindmg": 75,
-      "maxdmg": 139,
+      "mindmg": 79,
+      "maxdmg": 147,
       "speed": 1.8,
       "type": "Sword",
       "source": "EmerSanc",
@@ -9810,7 +9811,7 @@ var gear = {
       "type": "Axe"
     },
     {
-      "name": "Drake Talon Cleaver *Classic PPM",
+      "name": "Drake Talon Cleaver",
       "str": 22,
       "sta": 17,
       "mindmg": 199,
@@ -9821,7 +9822,7 @@ var gear = {
       "phase": 3,
       "type": "Axe",
       "proc": {
-        "ppm": 1,
+        "ppm": 2,
         "dmg": 240
       }
     },
@@ -9883,7 +9884,7 @@ var gear = {
       "type": "Axe"
     },
     {
-      "name": "Neretzek, The Blood Drinker *Classic PPM",
+      "name": "Neretzek, The Blood Drinker",
       "str": 21,
       "sta": 16,
       "mindmg": 202,
@@ -9894,7 +9895,7 @@ var gear = {
       "phase": 5,
       "type": "Axe",
       "proc": {
-        "ppm": 1,
+        "ppm": 1.4,
         "magic": true,
         "dmg": 152
       }
