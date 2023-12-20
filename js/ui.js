@@ -796,6 +796,9 @@ SIM.UI = {
         obj.targetlevel = view.fight.find('input[name="targetlevel"]').val();
         obj.targetarmor = view.fight.find('input[name="targetarmor"]').val();
         obj.targetresistance = view.fight.find('input[name="targetresistance"]').val();
+        obj.targetspeed = view.fight.find('input[name="targetspeed"]').val();
+        obj.targetmindmg = view.fight.find('input[name="targetmindmg"]').val();
+        obj.targetmaxdmg = view.fight.find('input[name="targetmaxdmg"]').val();
         obj.adjacent = view.fight.find('input[name="adjacent"]').val();
         obj.aqbooks = view.fight.find('select[name="aqbooks"]').val();
         obj.reactionmin = view.fight.find('input[name="reactionmin"]').val();
@@ -1233,7 +1236,7 @@ SIM.UI = {
             widthFixed: false,
             sortList: editmode ? [[dpsrow, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
             textSorter : {
-                22 : function(a, b, direction, column, table) {
+                15 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
                     var b = parseFloat(b.substring(0,b.indexOf('.') + 3));
                     if (isNaN(a)) a = 0;
@@ -1242,7 +1245,7 @@ SIM.UI = {
                 },
             },
             headers: {
-                22: { sorter: "text" }
+                15: { sorter: "text" }
             }
         });
 

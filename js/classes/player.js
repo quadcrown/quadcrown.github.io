@@ -14,6 +14,9 @@ class Player {
                 defense: parseInt($('input[name="targetlevel"]').val()) * 5,
                 mitigation: 1 - 15 * (parseInt($('input[name="targetresistance"]').val()) / 6000),
                 binaryresist: parseInt(10000 - (8300 * (1 - (parseInt($('input[name="targetresistance"]').val()) * 0.15 / 60)))),
+                speed: parseFloat($('input[name="targetspeed"]').val()) * 1000,
+                mindmg: parseInt($('input[name="targetmindmg"]').val()),
+                maxdmg: parseInt($('input[name="targetmaxdmg"]').val()),
             },
         };
     }
@@ -423,6 +426,8 @@ class Player {
                     this.gladstance = true;
                 if (buff.id == 71)
                     this.defstance = true;
+                if (buff.bleedmod)
+                    this.bleedmod = buff.bleedmod;
 
                 this.base.ap += ap || buff.ap || 0;
                 this.base.agi += agi || buff.agi || 0;
@@ -969,7 +974,7 @@ class Player {
         }
         else if (result == RESULT.CRIT) {
             dmg *= 2 + this.talents.abilitiescrit;
-            this.proccrit(adjacent);
+            this.proccrit(adjacent, spell);
         }
 
         let done = this.dealdamage(dmg, result, this.mh, spell, adjacent);
@@ -991,9 +996,9 @@ class Player {
             return 0;
         }
     }
-    proccrit(adjacent) {
+    proccrit(adjacent, spell) {
         if (this.auras.flurry) this.auras.flurry.use();
-        if (this.auras.deepwounds) {
+        if (this.auras.deepwounds && !(spell instanceof SunderArmor)) {
             if (!adjacent) this.auras.deepwounds.use();
             else this.auras['deepwounds' + (~~rng(1,adjacent) + 1)].use();
         }

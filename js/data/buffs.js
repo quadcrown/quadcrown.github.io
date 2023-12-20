@@ -396,8 +396,8 @@ var buffs = [
       name: "Horn of Lordaeron",
       iconname: "inv_misc_horn_03",
       group: "blessingmight",
-      str: 6,
-      agi: 6,
+      str: 17,
+      agi: 17,
       sod: true,
    },
    {
@@ -440,7 +440,7 @@ var buffs = [
       maxlevel: 55
    },
    {
-      id: 25359,
+      id: 10627,
       spellid: true,
       name: "Grace of Air Totem",
       iconname: "spell_nature_invisibilitytotem",
@@ -518,6 +518,16 @@ var buffs = [
       wfapperc: 20,
       sod: true,
    },
+   {
+      id: 407995,
+      spellid: true,
+      name: "Mangle",
+      iconname: "ability_druid_mangle2",
+      bleedmod: 1.3,
+      sod: true,
+   },
+
+   
 
    // Consumes
    {
