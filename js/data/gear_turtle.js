@@ -9613,7 +9613,7 @@ var gear = {
       "type": "Polearm"
     },
     {
-      "name": "Chronobreaker *Unknown PPM",
+      "name": "Chronobreaker",
       "mindmg": 142,
       "maxdmg": 214,
       "speed": 2.9,
@@ -9622,7 +9622,7 @@ var gear = {
       "phase": 7,
       "type": "Sword",
       "proc": {
-        "ppm": 1,
+        "ppm": 2,
         "extra": 1
       }
     },

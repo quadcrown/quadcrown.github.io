@@ -38,7 +38,7 @@ var enchant = {
         {
            "id": 23122,
            "name": "Consecrated Sharpening Stone",
-           "ap": 100,
+           "ap": 108,
            "r": 50,
            "temp": true
         },
@@ -153,7 +153,7 @@ var enchant = {
       {
          "id": 23122,
          "name": "Consecrated Sharpening Stone",
-         "ap": 100,
+         "ap": 108,
          "r": 50,
          "temp": true
       },
