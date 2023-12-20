@@ -1321,6 +1321,19 @@ var gear = {
   ],
   "back": [
     {
+      "name": "Veil of Nightmare",
+      "crit": 1,
+      "sta": 12,
+      "ap": 32,
+      "resist": {
+        "nature": 10
+      },
+      "ac": 57,
+      "source": "EmerSanc",
+      "phase": 7,
+      "id": 61210
+    },
+    {
       "name": "Kirin Tor Shawl of Oppression",
       "haste": 1,
       "str": 8,
