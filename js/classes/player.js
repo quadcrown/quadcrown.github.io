@@ -529,7 +529,7 @@ class Player {
         this.stats.agi = ~~(this.stats.agi * this.stats.agimod);
         this.stats.ap += this.stats.str * 2;
         this.stats.crit += this.stats.agi * this.agipercrit;
-        this.crit = this.getCritChance();
+        this.crit = this.getCritChance(this.mh);
 
         if (this.stats.baseapmod != 1)
             this.stats.ap += ~~((this.base.aprace + this.stats.str * 2) * (this.stats.baseapmod - 1));
@@ -669,8 +669,10 @@ class Player {
         miss -= (diff > 10 ? this.stats.hit - 1 : this.stats.hit);
         return miss;
     }
-    getCritChance() {
-        let crit = this.stats.crit + (this.talents.crit || 0) + (this.level - this.target.level) * 1;
+    getCritChance(weapon) {
+        // on vmangos, you can use weapon skill to defeat level based crit suppression! https://github.com/vmangos/core/blob/development/src/game/Objects/Unit.cpp#L2755
+        // this is as opposed to blizzlike: https://github.com/magey/classic-warrior/wiki/Attack-table#critical-strike
+        let crit = this.stats.crit + (this.talents.crit || 0) + (this.stats['skill_' + weapon.type] - this.target.level * 5) * 0.2;
         return Math.max(crit, 0);
     }
     getDodgeChance(weapon) {
