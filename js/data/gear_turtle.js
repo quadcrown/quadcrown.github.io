@@ -4315,7 +4315,7 @@ var gear = {
       "name": "Deepstone Boots",
       "source": "LowerKara",
       "ac": 274,
-      "agi": 14
+      "agi": 14,
       "sta": 15,
       "arp": 25,
       "hit": 1,
