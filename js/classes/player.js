@@ -119,8 +119,8 @@ class Player {
         this.addSpells();
         this.addRunes();
         if (this.talents.flurry) this.auras.flurry = new Flurry(this);
-        if (this.talents.deepwounds) this.auras.deepwounds = new DeepWounds(this);
-        if (this.adjacent && this.talents.deepwounds) {
+        if (this.talents.deepwounds && globalThis.runes) this.auras.deepwounds = new DeepWounds(this);
+        if (this.adjacent && this.talents.deepwounds && globalThis.runes) {
             for (let i = 2; i <= (this.adjacent + 1); i++)
                 this.auras['deepwounds' + i] = new DeepWounds(this, null, i);
         }
@@ -712,7 +712,7 @@ class Player {
         }
         if (this.rage > 100) this.rage = 100;
 
-        if (this.auras.consumedrage && oldRage <= 80 && this.rage > 80)
+        if (this.auras.consumedrage && oldRage < 80 && this.rage >= 80)
             this.auras.consumedrage.use();
     }
     steptimer(a) {
