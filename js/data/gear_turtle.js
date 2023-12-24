@@ -4312,6 +4312,27 @@ var gear = {
   ],
   "feet": [
     {
+      "name": "Deepstone Boots",
+      "source": "LowerKara",
+      "ac": 274,
+      "agi": 14
+      "sta": 15,
+      "arp": 25,
+      "hit": 1,
+      "phase": 7,
+      "id": 61272
+    },
+    {
+      "name": "Grave Robber's Treads",
+      "source": "Dungeon",
+      "ac": 121,
+      "sta": 15,
+      "str": 10,
+      "hit": 1,
+      "phase": 7,
+      "id": 60807
+    },
+    {
       "name": "Hateforge Boots",
       "source": "Crafting",
       "ac": 232,
