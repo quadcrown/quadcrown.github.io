@@ -1919,7 +1919,6 @@ var gear = {
       "str": 28,
       "sta": 12,
       "ap": 10,
-      "crit": 1,
       "ac": 784,
       "source": "Dungeon",
       "phase": 7,
