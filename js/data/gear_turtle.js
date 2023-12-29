@@ -201,17 +201,6 @@ var gear = {
       "id": 60436
     },
     {
-      "name": "Felguard's Visage",
-      "sta": 20,
-      "str": 16,
-      "crit": 1,
-      "ap": 18,
-      "ac": 301,
-      "source": "Dungeon",
-      "phase": 7,
-      "id": 60428
-    },
-    {
       "name": "Thornweave Mask",
       "sta": 15,
       "str": 15,
@@ -1353,7 +1342,7 @@ var gear = {
     },
     {
       "name": "Windtalker Cape",
-      "str": 16,
+      "str": 15,
       "agi": 8,
       "ac": 47,
       "source": "Quest",
@@ -5584,11 +5573,11 @@ var gear = {
       "id": 60501
     },
     {
-      "name": "Finke's Accelerator",
+      "name": "Boon of Niremius",
       "haste": 2,
       "source": "Other",
       "phase": "7",
-      "id": 60789
+      "id": 61095
     },
     {
       "name": "Zandalarian Hero Medallion (Used last 20 secs)",
@@ -5827,11 +5816,11 @@ var gear = {
       "id": 60501
     },
     {
-      "name": "Finke's Accelerator",
+      "name": "Boon of Niremius",
       "haste": 2,
       "source": "Other",
       "phase": "7",
-      "id": 60789
+      "id": 61095
     },
     {
       "name": "Zandalarian Hero Medallion (Used last 20 secs)",
@@ -10436,7 +10425,7 @@ var gear = {
       "type": "Sword",
       "arpv": "0–2100",
       "proc": {
-        "ppm": 4,
+        "ppm": 3,
         "spell": "Bonereaver"
       }
     },

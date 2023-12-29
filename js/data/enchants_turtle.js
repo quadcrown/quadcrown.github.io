@@ -437,14 +437,14 @@ var enchant = {
          "r": 58
       },
       {
-         "id": 61438,
+         "id": 57157,
          "spellid": true,
          "name": "Sigil of Penetration",
          "arp": 40,
          "phase": 7
       },
       {
-         "id": 61437,
+         "id": 57156,
          "spellid": true,
          "name": "Sigil of Quickness",
          "haste": 2,

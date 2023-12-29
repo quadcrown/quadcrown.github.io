@@ -185,6 +185,15 @@ var buffs = [
       minlevel: 40,
    },
    {
+      id: 45851,
+      spellid: true,
+      name: "Moonclaw",
+      iconname: "inv_misc_monsterclaw_04",
+      group: "",
+      crit: 1,
+      minlevel: 60,
+   },
+   {
       id: 5232,
       spellid: true,
       name: "Mark of the Wild",
