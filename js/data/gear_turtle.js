@@ -2306,9 +2306,19 @@ var gear = {
   ],
   "wrist": [
     {
+      "name": "Searhide Bracers",
+      "ac": 106,
+      "agi": 11,
+      "str": 10,
+      "sta": 11,
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61274
+    },
+    {
       "name": "Granitized Bracers",
-      "sta": 12,
-      "ap": 22,
+      "sta": 11,
+      "ap": 20,
       "arp": 15,
       "source": "LowerKara",
       "ac": 174,
@@ -2694,6 +2704,28 @@ var gear = {
     }
   ],
   "hands": [
+    {
+      "name": "Pulverizer Gauntlets",
+      "ac": 129,
+      "sta": 13,
+      "crit": 1,
+      "arp": 20,
+      "ap": 30,
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61274
+    },
+    {
+      "name": "Sparkgrasp Gloves",
+      "crit": 1,
+      "agi": 12,
+      "sta": 12,
+      "str": 12,
+      "ac": 111,
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61267
+    },
     {
       "name": "Talonwind Gauntlets",
       "haste": 1,
@@ -3732,6 +3764,17 @@ var gear = {
   ],
   "legs": [
     {
+      "name": "Slateplate Leggings",
+      "ac": 348,
+      "sta": 18,
+      "hit": 2,
+      "arp": 25,
+      "ap": 36,
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61279
+    },
+    {
       "name": "Fallen Crusader Legguards (Vs Undead)",
       "source": "Other",
       "str": 17,
@@ -4299,6 +4342,17 @@ var gear = {
     }
   ],
   "feet": [
+    {
+      "name": "Boots of Blazing Steps",
+      "haste": 1,
+      "agi": 14,
+      "sta": 14,
+      "str": 14,
+      "ac": 129,
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61271
+    },
     {
       "name": "Deepstone Boots",
       "source": "LowerKara",
@@ -6291,6 +6345,28 @@ var gear = {
   ],
   "mainhand": [
     {
+      "name": "Vampiric Kris",
+      "mindmg": 60,
+      "maxdmg": 112,
+      "speed": 1.9,
+      "agi": 7,
+      "type": "Dagger",
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61278
+    },
+    {
+      "name": "Dawnstone Bludgeon",
+      "mindmg": 75,
+      "maxdmg": 140,
+      "speed": 2.4,
+      "sta": 11,
+      "type": "Mace",
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61295
+    },
+    {
       "name": "Skycleaver",
       "mindmg": 71,
       "maxdmg": 135,
@@ -8083,6 +8159,28 @@ var gear = {
     }
   ],
   "offhand": [
+    {
+      "name": "Vampiric Kris",
+      "mindmg": 60,
+      "maxdmg": 112,
+      "speed": 1.9,
+      "agi": 7,
+      "type": "Dagger",
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61278
+    },
+    {
+      "name": "Dawnstone Bludgeon",
+      "mindmg": 75,
+      "maxdmg": 140,
+      "speed": 2.4,
+      "sta": 11,
+      "type": "Mace",
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61295
+    },
     {
       "name": "Anasterian's Legacy",
       "sta": 12,
