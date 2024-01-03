@@ -6345,6 +6345,22 @@ var gear = {
   ],
   "mainhand": [
     {
+      "name": "Groveslicer Glaive",
+      "mindmg": 76,
+      "maxdmg": 142,
+      "speed": 2.6,
+      "haste": 1,
+      "str": 9,
+      "resist": {
+        "nature": 5
+      },
+      "type": "Sword",
+      "source": "Quest",
+      "phase": 7,
+      "id": 61717,
+      "Mainhand": true
+    },
+    {
       "name": "Vampiric Kris",
       "mindmg": 60,
       "maxdmg": 112,
