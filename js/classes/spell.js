@@ -759,6 +759,23 @@ class MightyRagePotion extends Aura {
     }
 }
 
+class QuicknessPotion extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Potion of Quickness');
+        this.mult_stats = { haste: this.value1 };
+        this.duration = 30;
+    }
+    use() {
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateHaste();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    canUse() {
+        return this.firstuse && !this.timer && step >= this.usestep;
+    }
+}
+
 class BloodFury extends Aura {
     constructor(player, id) {
         super(player, id, 'Blood Fury');

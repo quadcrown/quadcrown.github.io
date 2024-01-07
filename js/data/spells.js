@@ -672,6 +672,19 @@ var spells = [
     active: true,
     buff: true,
 },
+{
+    id: 61181,
+    name: 'Potion of Quickness',
+    classname: 'QuicknessPotion',
+    iconname: 'inv_potion_08',
+    timetoend: 31,
+    crusaders: 0,
+    aura: true,
+    minlevel: 50,
+    value1: 5,
+    active: false,
+    buff: true,
+},
 
 // Berserking
 {
