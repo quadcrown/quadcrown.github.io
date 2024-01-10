@@ -6817,8 +6817,7 @@ var gear = {
       }
     },
     {
-      "name": "Annihilator *Classic PPM",
-      "Mainhand": true,
+      "name": "Annihilator",
       "mindmg": 49,
       "maxdmg": 92,
       "speed": 1.7,
@@ -8175,6 +8174,20 @@ var gear = {
     }
   ],
   "offhand": [
+    {
+      "name": "Annihilator",
+      "mindmg": 49,
+      "maxdmg": 92,
+      "speed": 1.7,
+      "type": "Axe",
+      "source": "Crafting",
+      "phase": 1,
+      "id": 12798,
+      "proc": {
+        "ppm": 1,
+        "spell": "Annihilator"
+      }
+    },
     {
       "name": "Vampiric Kris",
       "mindmg": 60,
