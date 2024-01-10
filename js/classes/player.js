@@ -99,6 +99,9 @@ class Player {
             else if (testType == 5) {
                 this.base.haste *= testItem;
             }
+            else if (testType == 6) {
+                this.base.arp += testItem;
+            }
         }
         else {
             this.testItem = testItem;
