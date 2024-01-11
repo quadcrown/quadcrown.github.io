@@ -1037,6 +1037,15 @@ class Champion extends Aura {
     }
 }
 
+class ForgottenOrder extends Aura {
+    constructor(player) {
+        super(player);
+        this.duration = 15;
+        this.stats = { str: 50 };
+        this.name = 'Fist of the Forgotten Order';
+    }
+}
+
 class Pummeler extends Aura {
     constructor(player, id) {
         super(player, id);

@@ -9616,6 +9616,24 @@ var gear = {
   ],
   "twohand": [
     {
+      "name": "Fist of the Forgotten Order",
+      "str": 25,
+      "sta": 10,
+      "proc": {
+        "ppm": 1,
+        "magic": true,
+        "dmg": 212,
+        "spell": "ForgottenOrder"
+      },
+      "mindmg": 194,
+      "maxdmg": 297,
+      "speed": 3.6,
+      "id": 61277,
+      "source": "LowerKara",
+      "phase": 7,
+      "type": "Mace"
+    },
+    {
       "name": "Winter Veil Branch",
       "str": 25,
       "arp": 25,
