@@ -471,8 +471,8 @@ class Simulation {
                 next = 3000 - ((step - player.auras.rend.starttimer) % 3000);
             if (player.auras.deepwounds && player.auras.deepwounds.timer && (3000 - ((step - player.auras.deepwounds.starttimer) % 3000)) < next)
                 next = 3000 - ((step - player.auras.deepwounds.starttimer) % 3000);
-            if (player.auras.potentvenoms && player.auras.potentvenoms.timer && (2000 - ((step - player.auras.potentvenoms.starttimer) % 2000)) < next)
-                next = 2000 - ((step - player.auras.potentvenoms.starttimer) % 2000);
+            if (player.auras.potentvenoms && player.auras.potentvenoms.timer && (3000 - ((step - player.auras.potentvenoms.starttimer) % 3000)) < next)
+                next = 3000 - ((step - player.auras.potentvenoms.starttimer) % 3000);
             if (player.adjacent) {
                 if (player.auras.deepwounds2 && player.auras.deepwounds2.timer && (3000 - ((step - player.auras.deepwounds2.starttimer) % 3000)) < next)
                 next = 3000 - ((step - player.auras.deepwounds2.starttimer) % 3000);
@@ -480,8 +480,8 @@ class Simulation {
                 next = 3000 - ((step - player.auras.deepwounds3.starttimer) % 3000);
                 if (player.auras.deepwounds4 && player.auras.deepwounds4.timer && (3000 - ((step - player.auras.deepwounds4.starttimer) % 3000)) < next)
                 next = 3000 - ((step - player.auras.deepwounds4.starttimer) % 3000);
-                if (player.auras.potentvenoms2 && player.auras.potentvenoms2.timer && (2000 - ((step - player.auras.potentvenoms2.starttimer) % 2000)) < next)
-                next = 2000 - ((step - player.auras.potentvenoms2.starttimer) % 2000);
+                if (player.auras.potentvenoms2 && player.auras.potentvenoms2.timer && (3000 - ((step - player.auras.potentvenoms2.starttimer) % 3000)) < next)
+                next = 3000 - ((step - player.auras.potentvenoms2.starttimer) % 3000);
             }
             if (player.auras.weaponbleedmh && player.auras.weaponbleedmh.timer && (player.auras.weaponbleedmh.interval - ((step - player.auras.weaponbleedmh.starttimer) % player.auras.weaponbleedmh.interval)) < next)
                 next = player.auras.weaponbleedmh.interval - ((step - player.auras.weaponbleedmh.starttimer) % player.auras.weaponbleedmh.interval);

@@ -613,8 +613,8 @@ class OldDeepWounds extends Aura {
 class PotentVenoms extends Aura {
     constructor(player, id, adjacent) {
         super(player, id, 'Potent Venoms' + (adjacent ? ' 2' : ''));
-        this.duration = 8;
-        this.dmg = 100;
+        this.duration = 12;
+        this.dmg = 120;
         this.stacks = 0;
         this.chance = 5000;
         this.idmg = 0;
@@ -630,7 +630,7 @@ class PotentVenoms extends Aura {
 
             /* start-log */ if (log) this.player.log(`${this.name} (${this.stacks} stacks) tick for ${(dmg / 4).toFixed(2)}`); /* end-log */
 
-            this.nexttick += 2000;
+            this.nexttick += 3000;
         }
 
         if (step >= this.timer) {
@@ -641,7 +641,7 @@ class PotentVenoms extends Aura {
         }
     }
     use() {
-        if (this.stacks == 0) this.nexttick = step + 2000;
+        if (this.stacks == 0) this.nexttick = step + 3000;
         this.stacks = Math.min(this.stacks + 1, 2);
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
