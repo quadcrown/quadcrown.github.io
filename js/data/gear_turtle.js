@@ -5517,6 +5517,12 @@ var gear = {
   ],
   "trinket1": [
     {
+      "name": "Vial of Potent Venoms (Assumed 50% proc chance)",
+      "source": "LowerKara",
+      "phase": "7",
+      "id": 61243
+    },
+    {
       "name": "Chimaera's Eye",
       "source": "Quest",
       "arp": 50,
@@ -5759,6 +5765,12 @@ var gear = {
     }
   ],
   "trinket2": [
+    {
+      "name": "Vial of Potent Venoms (Assumed 50% proc chance)",
+      "source": "LowerKara",
+      "phase": "7",
+      "id": 61243
+    },
     {
       "name": "Chimaera's Eye",
       "source": "Quest",

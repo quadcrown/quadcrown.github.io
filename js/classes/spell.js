@@ -610,6 +610,45 @@ class OldDeepWounds extends Aura {
     }
 }
 
+class PotentVenoms extends Aura {
+    constructor(player, id, adjacent) {
+        super(player, id, 'Potent Venoms' + (adjacent ? ' 2' : ''));
+        this.duration = 8;
+        this.dmg = 100;
+        this.stacks = 0;
+        this.chance = 5000;
+        this.idmg = 0;
+        this.totaldmg = 0;
+    }
+    step() {
+        while (step >= this.nexttick) {
+            let dmg = this.dmg;
+            // dmg *= this.player.stats.dmgmod;
+            dmg *= this.stacks;
+            this.idmg += dmg / 4;
+            this.totaldmg += dmg / 4;
+
+            /* start-log */ if (log) this.player.log(`${this.name} (${this.stacks} stacks) tick for ${(dmg / 4).toFixed(2)}`); /* end-log */
+
+            this.nexttick += 2000;
+        }
+
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.stacks = 0;
+            /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+    use() {
+        if (this.stacks == 0) this.nexttick = step + 2000;
+        this.stacks = Math.min(this.stacks + 1, 2);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+}
+
 class Crusader extends Aura {
     constructor(player, id) {
         super(player, id);

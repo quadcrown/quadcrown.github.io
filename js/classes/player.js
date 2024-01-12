@@ -140,6 +140,11 @@ class Player {
         if (this.items.includes(21670)) this.auras.swarmguard = new Swarmguard(this);
         if (this.items.includes(19949)) this.auras.zandalarian = new Zandalarian(this);
         if (this.items.includes(60577)) this.auras.hategrips = new Hategrips(this);
+        if (this.items.includes(61243)) this.auras.potentvenoms = new PotentVenoms(this);
+        if (this.adjacent && this.items.includes(61243)) {
+            for (let i = 2; i <= (this.adjacent + 1); i++)
+                this.auras['potentvenoms' + i] = new PotentVenoms(this, null, i);
+        }
         if (this.items.includes(211423)) this.auras.voidmadness = new VoidMadness(this);
         if (this.defstance && this.spells.sunderarmor && this.devastate && !this.oh && !this.mh.twohand) {
             this.spells.sunderarmor.devastate = true;
@@ -490,6 +495,12 @@ class Player {
         if (this.auras.deepwounds4) {
             this.auras.deepwounds4.idmg = 0;
         }
+        if (this.auras.potentvenoms) {
+            this.auras.potentvenoms.idmg = 0;
+        }
+        if (this.auras.potentvenoms2) {
+            this.auras.potentvenoms2.idmg = 0;
+        }
         if (this.auras.rend) {
             this.auras.rend.idmg = 0;
         }
@@ -780,6 +791,7 @@ class Player {
         if (this.trinketproc2 && this.trinketproc2.spell && this.trinketproc2.spell.timer) this.trinketproc2.spell.step();
         if (this.attackproc && this.attackproc.spell && this.attackproc.spell.timer) this.attackproc.spell.step();
 
+        if (this.auras.potentvenoms && this.auras.potentvenoms.timer) this.auras.potentvenoms.step();
         if (this.auras.deepwounds && this.auras.deepwounds.timer) this.auras.deepwounds.step();
         if (this.auras.rend && this.auras.rend.timer) this.auras.rend.step();
         if (this.auras.flagellation && this.auras.flagellation.timer) this.auras.flagellation.step();
@@ -792,6 +804,7 @@ class Player {
             if (this.auras.deepwounds2 && this.auras.deepwounds2.timer) this.auras.deepwounds2.step();
             if (this.auras.deepwounds3 && this.auras.deepwounds3.timer) this.auras.deepwounds3.step();
             if (this.auras.deepwounds4 && this.auras.deepwounds4.timer) this.auras.deepwounds4.step();
+            if (this.auras.potentvenoms2 && this.auras.potentvenoms2.timer) this.auras.potentvenoms2.step();
         }
     }
     endauras() {
@@ -830,6 +843,8 @@ class Player {
         if (this.auras.deepwounds2 && this.auras.deepwounds2.timer) this.auras.deepwounds2.end();
         if (this.auras.deepwounds3 && this.auras.deepwounds3.timer) this.auras.deepwounds3.end();
         if (this.auras.deepwounds4 && this.auras.deepwounds4.timer) this.auras.deepwounds4.end();
+        if (this.auras.potentvenoms && this.auras.potentvenoms.timer) this.auras.potentvenoms.end();
+        if (this.auras.potentvenoms2 && this.auras.potentvenoms2.timer) this.auras.potentvenoms2.end();
         if (this.auras.rend && this.auras.rend.timer) this.auras.rend.end();
         if (this.auras.flagellation && this.auras.flagellation.timer) this.auras.flagellation.end();
         if (this.auras.berserkerrage && this.auras.berserkerrage.timer) this.auras.berserkerrage.end();
@@ -1076,6 +1091,10 @@ class Player {
             }
             if (this.auras.zandalarian && this.auras.zandalarian.timer) {
                 this.auras.zandalarian.proc();
+            }
+            if (this.auras.potentvenoms && rng10k() < this.auras.potentvenoms.chance) {
+                if (!adjacent) this.auras.potentvenoms.use();
+                if (adjacent && spell instanceof Cleave) this.auras.potentvenoms2.use();
             }
             if (this.dragonbreath && rng10k() < 400) {
                 procdmg += this.magicproc({ magicdmg: 60, coeff: 1 });

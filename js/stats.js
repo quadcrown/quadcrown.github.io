@@ -131,6 +131,16 @@ SIM.STATS = {
             data.push((sim.player.auras.deepwounds4.totaldmg / sim.totalduration).toFixed(2));
             colors.push(view.colors[counter % view.colors.length]);
         }
+        if (sim.player.auras.potentvenoms && sim.player.auras.potentvenoms.totaldmg) {
+            view.dmgdata.labels.push(sim.player.auras.potentvenoms.name);
+            data.push((sim.player.auras.potentvenoms.totaldmg / sim.totalduration).toFixed(2));
+            colors.push(view.colors[counter % view.colors.length]);
+        }
+        if (sim.player.auras.potentvenoms2 && sim.player.auras.potentvenoms2.totaldmg) {
+            view.dmgdata.labels.push(sim.player.auras.potentvenoms2.name);
+            data.push((sim.player.auras.potentvenoms2.totaldmg / sim.totalduration).toFixed(2));
+            colors.push(view.colors[counter % view.colors.length]);
+        }
 
         // Rend
         if (sim.player.auras.rend && sim.player.auras.rend.totaldmg) {

@@ -471,6 +471,8 @@ class Simulation {
                 next = 3000 - ((step - player.auras.rend.starttimer) % 3000);
             if (player.auras.deepwounds && player.auras.deepwounds.timer && (3000 - ((step - player.auras.deepwounds.starttimer) % 3000)) < next)
                 next = 3000 - ((step - player.auras.deepwounds.starttimer) % 3000);
+            if (player.auras.potentvenoms && player.auras.potentvenoms.timer && (2000 - ((step - player.auras.potentvenoms.starttimer) % 2000)) < next)
+                next = 2000 - ((step - player.auras.potentvenoms.starttimer) % 2000);
             if (player.adjacent) {
                 if (player.auras.deepwounds2 && player.auras.deepwounds2.timer && (3000 - ((step - player.auras.deepwounds2.starttimer) % 3000)) < next)
                 next = 3000 - ((step - player.auras.deepwounds2.starttimer) % 3000);
@@ -478,6 +480,8 @@ class Simulation {
                 next = 3000 - ((step - player.auras.deepwounds3.starttimer) % 3000);
                 if (player.auras.deepwounds4 && player.auras.deepwounds4.timer && (3000 - ((step - player.auras.deepwounds4.starttimer) % 3000)) < next)
                 next = 3000 - ((step - player.auras.deepwounds4.starttimer) % 3000);
+                if (player.auras.potentvenoms2 && player.auras.potentvenoms2.timer && (2000 - ((step - player.auras.potentvenoms2.starttimer) % 2000)) < next)
+                next = 2000 - ((step - player.auras.potentvenoms2.starttimer) % 2000);
             }
             if (player.auras.weaponbleedmh && player.auras.weaponbleedmh.timer && (player.auras.weaponbleedmh.interval - ((step - player.auras.weaponbleedmh.starttimer) % player.auras.weaponbleedmh.interval)) < next)
                 next = player.auras.weaponbleedmh.interval - ((step - player.auras.weaponbleedmh.starttimer) % player.auras.weaponbleedmh.interval);
@@ -537,12 +541,14 @@ class Simulation {
             if (player.auras.gabbar && player.auras.gabbar.timer) player.auras.gabbar.step();
             if (player.auras.rend && player.auras.rend.timer && !player.auras.rend.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.deepwounds && player.auras.deepwounds.timer && !player.auras.deepwounds.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.potentvenoms && player.auras.potentvenoms.timer && !player.auras.potentvenoms.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.weaponbleedmh && player.auras.weaponbleedmh.timer && !player.auras.weaponbleedmh.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.weaponbleedoh && player.auras.weaponbleedoh.timer && !player.auras.weaponbleedoh.step() && !player.spelldelay) spellcheck = true;
             if (player.adjacent) {
                 if (player.auras.deepwounds2 && player.auras.deepwounds2.timer && !player.auras.deepwounds2.step() && !player.spelldelay) spellcheck = true;
                 if (player.auras.deepwounds3 && player.auras.deepwounds3.timer && !player.auras.deepwounds3.step() && !player.spelldelay) spellcheck = true;
                 if (player.auras.deepwounds4 && player.auras.deepwounds4.timer && !player.auras.deepwounds4.step() && !player.spelldelay) spellcheck = true;
+                if (player.auras.potentvenoms2 && player.auras.potentvenoms2.timer && !player.auras.potentvenoms2.step() && !player.spelldelay) spellcheck = true;
             }
         }
 
@@ -560,6 +566,12 @@ class Simulation {
         }
         if (player.auras.deepwounds4) {
             this.idmg += player.auras.deepwounds4.idmg;
+        }
+        if (player.auras.potentvenoms) {
+            this.idmg += player.auras.potentvenoms.idmg;
+        }
+        if (player.auras.potentvenoms2) {
+            this.idmg += player.auras.potentvenoms2.idmg;
         }
         if (player.auras.rend) {
             this.idmg += player.auras.rend.idmg;
