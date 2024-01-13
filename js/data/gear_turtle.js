@@ -7492,7 +7492,7 @@ var gear = {
       "id": 21673
     },
     {
-      "name": "Thekal's Grasp (1% chance on set) (old dps)",
+      "name": "Thekal's Grasp (1% chance on set)",
       "Mainhand": true,
       "crit": 1,
       "sta": 13,
@@ -9062,10 +9062,10 @@ var gear = {
       "id": 22377
     },
     {
-      "name": "Arlokk's Grasp (1% chance on set) (old dps)",
+      "name": "Arlokk's Grasp (1% chance on set)",
       "offhand": true,
-      "mindmg": 41,
-      "maxdmg": 84,
+      "mindmg": 43,
+      "maxdmg": 92,
       "speed": 1.5,
       "type": "Fist",
       "source": "ZG",
