@@ -406,7 +406,9 @@ class Simulation {
                         // Start casting slam
                         if (delayedspell instanceof Slam) {
                             slamstep = step + delayedspell.casttime;
-                            this.player.timer = 1500;
+                            player.timer = 1500;
+                            player.heroicdelay = 0;
+                            player.nextswinghs = false;
                             next = 0;
                             /* start-log */ if (log) this.player.log(`Casting Slam`); /* end-log */
                             continue;
@@ -470,7 +472,6 @@ class Simulation {
             if (slamstep && step == slamstep) {
                 let done = player.cast(delayedspell, delayedheroic)
                 this.idmg += done;
-                player.spelldelay = 0;
                 spellcheck = true;
                 slamstep = 0;
             }
@@ -479,7 +480,7 @@ class Simulation {
             if (!player.mh.timer || (!player.spelldelay && spellcheck && !slamstep) || (!player.heroicdelay && spellcheck && !slamstep)) { next = 0; continue; }
             next = Math.min(player.mh.timer, player.oh ? player.oh.timer : 9999);
             if (!slamstep && player.spelldelay && (delayedspell.maxdelay - player.spelldelay) < next) next = delayedspell.maxdelay - player.spelldelay + 1;
-            if (!slamstep && player.heroicdelay && (delayedheroic.maxdelay - player.heroicdelay) < next) next = delayedheroic.maxdelay - player.heroicdelay + 1;
+            if (player.heroicdelay && (delayedheroic.maxdelay - player.heroicdelay) < next) next = delayedheroic.maxdelay - player.heroicdelay + 1;
             if (player.timer && player.timer < next) next = player.timer;
             if (player.itemtimer && player.itemtimer < next) next = player.itemtimer;
             if (slamstep && (slamstep - step) < next) next = slamstep - step;
