@@ -513,6 +513,9 @@ class Simulation {
             if (player.auras.weaponbleedoh && player.auras.weaponbleedoh.timer && (player.auras.weaponbleedoh.interval - ((step - player.auras.weaponbleedoh.starttimer) % player.auras.weaponbleedoh.interval)) < next)
                 next = player.auras.weaponbleedoh.interval - ((step - player.auras.weaponbleedoh.starttimer) % player.auras.weaponbleedoh.interval);
 
+            if (player.auras.battlestance && player.auras.battlestance.timer && (player.auras.battlestance.timer - step) < next)
+                next = player.auras.battlestance.timer - step;
+
             // Spells used by player
             if (player.spells.bloodthirst && player.spells.bloodthirst.timer && player.spells.bloodthirst.timer < next) next = player.spells.bloodthirst.timer;
             if (player.spells.mortalstrike && player.spells.mortalstrike.timer && player.spells.mortalstrike.timer < next) next = player.spells.mortalstrike.timer;
@@ -569,6 +572,7 @@ class Simulation {
             if (player.auras.potentvenoms && player.auras.potentvenoms.timer && !player.auras.potentvenoms.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.weaponbleedmh && player.auras.weaponbleedmh.timer && !player.auras.weaponbleedmh.step() && !player.spelldelay) spellcheck = true;
             if (player.auras.weaponbleedoh && player.auras.weaponbleedoh.timer && !player.auras.weaponbleedoh.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.battlestance && player.auras.battlestance.timer && !player.auras.battlestance.step() && !player.spelldelay) spellcheck = true;
             if (player.adjacent) {
                 if (player.auras.deepwounds2 && player.auras.deepwounds2.timer && !player.auras.deepwounds2.step() && !player.spelldelay) spellcheck = true;
                 if (player.auras.deepwounds3 && player.auras.deepwounds3.timer && !player.auras.deepwounds3.step() && !player.spelldelay) spellcheck = true;

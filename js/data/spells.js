@@ -722,6 +722,8 @@ var spells = [
     value1: 32,
     minlevel: 30,
     maxlevel: 37,
+    maincd: 2,
+    maincdactive: false,
     active: false,
 },
 {
@@ -734,6 +736,8 @@ var spells = [
     value1: 43,
     minlevel: 38,
     maxlevel: 45,
+    maincd: 2,
+    maincdactive: false,
     active: false,
 },
 {
@@ -746,6 +750,8 @@ var spells = [
     value1: 68,
     minlevel: 46,
     maxlevel: 53,
+    maincd: 2,
+    maincdactive: false,
     active: false,
 },
 {
@@ -759,6 +765,8 @@ var spells = [
     value1: 87,
     value2: 105,
     minlevel: 54,
+    maincd: 2,
+    maincdactive: false,
     active: false,
 },
 
