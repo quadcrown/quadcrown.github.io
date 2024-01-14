@@ -31,6 +31,7 @@ class Spell {
         if (spell.exmacro) this.exmacro = spell.exmacro;
         if (spell.execute) this.execute = spell.execute;
         if (spell.globalsactive) this.globals = spell.globals;
+        if (spell.decisive) this.decisive = spell.decisive;
     }
     dmg() {
         return 0;
@@ -411,12 +412,12 @@ class Slam extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 15;
-        this.casttime = 1500 - (player.talents.impslam * 100);
+        this.casttime = (this.decisive ? 2000 : 1500) - (player.talents.impslam * 100);
         this.mhthreshold = player.mh.speed * 1000 - 1000;
     }
     dmg() {
         let dmg;
-        dmg = this.value1 + rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
+        dmg = (this.decisive && this.player.level == 60 ? this.value2 : this.value1) + rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
         return dmg + (this.player.stats.ap / 14) * this.player.mh.speed;
     }
     use() {
