@@ -91,6 +91,13 @@ class Weapon {
             }
         }
 
+        if (!this.windfury && !this.proc2 && tempenchant && (tempenchant.ppm || tempenchant.chance)) {
+            this.proc2 = {};
+            if (tempenchant.ppm) this.proc2.chance = ~~(this.speed * tempenchant.ppm / 0.006);
+            if (tempenchant.chance) this.proc2.chance = tempenchant.chance * 100;
+            if (tempenchant.magicdmg) this.proc2.magicdmg = tempenchant.magicdmg;
+        }
+
         for(let buff of buffs)
             if (buff.bonusdmg && buff.active)
                 this.basebonusdmg += buff.bonusdmg;

@@ -7,6 +7,7 @@ class Player {
             reactionmin: parseInt($('input[name="reactionmin"]').val()),
             reactionmax: parseInt($('input[name="reactionmax"]').val()),
             adjacent: parseInt($('input[name="adjacent"]').val()),
+            mode: globalThis.mode,
             target: {
                 level: parseInt($('input[name="targetlevel"]').val()),
                 basearmor: parseInt($('input[name="targetarmor"]').val()),
@@ -43,6 +44,7 @@ class Player {
         this.adjacent = config.adjacent;
         this.spelldamage = 0;
         this.target = config.target;
+        this.mode = config.mode;
         this.base = {
             ap: 0,
             agi: 0,
@@ -123,10 +125,10 @@ class Player {
         this.addSpells();
         this.addRunes();
         if (this.talents.flurry) this.auras.flurry = new Flurry(this);
-        if (this.talents.deepwounds && !this.target.bleedimmune) this.auras.deepwounds = globalThis.runes ? new DeepWounds(this) : new OldDeepWounds(this);
-        if (this.adjacent && this.talents.deepwounds && !this.target.bleedimmune) {
+        if (this.talents.deepwounds && !this.target.bleedimmune && this.mode !== 'classic') this.auras.deepwounds = this.mode == "sod" ? new DeepWounds(this) : new OldDeepWounds(this);
+        if (this.adjacent && this.talents.deepwounds && !this.target.bleedimmune && this.mode !== 'classic') {
             for (let i = 2; i <= (this.adjacent + 1); i++)
-                this.auras['deepwounds' + i] = globalThis.runes ? new DeepWounds(this, null, i) : new OldDeepWounds(this, null, i);
+                this.auras['deepwounds' + i] = this.mode == "sod" ? new DeepWounds(this, null, i) : new OldDeepWounds(this, null, i);
         }
         if (this.spells.overpower) this.auras.battlestance = new BattleStance(this);
         if (this.spells.bloodrage) this.auras.bloodrage = new BloodrageAura(this);
@@ -484,6 +486,8 @@ class Player {
             this.auras[s].timer = 0;
             this.auras[s].firstuse = true;
             this.auras[s].stacks = 0;
+            if (this.auras[s].ticksleft) this.auras[s].ticksleft = 0;
+            if (this.auras[s].saveddmg) this.auras[s].saveddmg = 0;
         }
         if (this.auras.deepwounds) {
             this.auras.deepwounds.idmg = 0;
