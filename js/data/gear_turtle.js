@@ -1707,6 +1707,18 @@ var gear = {
   ],
   "chest": [
     {
+      "name": "Centaur Battle Harness",
+      "source": "Crafting",
+      "str": 5,
+      "agi": 16,
+      "crit": 1,
+      "haste": 1,
+      "ap": 12,
+      "ac": 173,
+      "phase": 7,
+      "id": 60910
+    },
+    {
       "name": "Rune-Etched Breastplate",
       "source": "Crafting",
       "agi": 3,
