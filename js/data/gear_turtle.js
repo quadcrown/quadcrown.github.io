@@ -9640,6 +9640,18 @@ var gear = {
   ],
   "twohand": [
     {
+      "name": "Aspect of Seradane",
+      "agi": 28,
+      "hit": 1,
+      "mindmg": 181,
+      "maxdmg": 335,
+      "speed": 3.3,
+      "id": 41076,
+      "source": "EmerSanc",
+      "phase": 7,
+      "type": "Mace",
+    },
+    {
       "name": "Fist of the Forgotten Order",
       "str": 25,
       "sta": 10,
