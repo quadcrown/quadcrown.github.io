@@ -233,6 +233,8 @@ class Simulation {
         let itemdelay = 1000;
         if (player.auras.flask) { this.flaskstep = Math.max(this.maxsteps - 60000, 0); itemdelay += 60000; }
         if (player.auras.cloudkeeper) { this.cloudstep = Math.max(this.maxsteps - itemdelay - 30000, 0); itemdelay += 30000; }
+        if (player.auras.hategrips) { this.hatestep = Math.max(this.maxsteps - itemdelay - 15000, 0); itemdelay += 15000; }
+        if (player.auras.worgenmark) { this.worgenstep = Math.max(this.maxsteps - itemdelay - 30000, 0); itemdelay += 30000; }
         if (player.auras.voidmadness) { this.voidstep = Math.max(this.maxsteps - itemdelay - 10000, 0); itemdelay += 10000; }
         if (player.auras.slayer) { this.slayerstep = Math.max(this.maxsteps - itemdelay - 20000, 0); itemdelay += 20000; }
         if (player.auras.spider) { this.spiderstep = Math.max(this.maxsteps - itemdelay - 15000, 0); itemdelay += 15000; }
@@ -249,7 +251,6 @@ class Simulation {
         if (player.auras.berserking) { player.auras.berserking.usestep = Math.max(this.maxsteps - player.auras.berserking.timetoend, 0); }
         if (player.auras.bloodfury) { player.auras.bloodfury.usestep = Math.max(this.maxsteps - player.auras.bloodfury.timetoend, 0); }
         if (player.auras.swarmguard) { player.auras.swarmguard.usestep = Math.max(this.maxsteps - player.auras.swarmguard.timetoend, 0); }
-        if (player.auras.hategrips) { player.auras.hategrips.usestep = Math.max(this.maxsteps - player.auras.hategrips.timetoend, 0); }
 
         while (step < this.maxsteps) {
 
@@ -305,13 +306,14 @@ class Simulation {
 
                     // Use no GCD spells
                     if (player.auras.swarmguard && player.auras.swarmguard.canUse()) { player.spelldelay = 1; delayedspell = player.auras.swarmguard; }
-                    else if (player.auras.hategrips && player.auras.hategrips.canUse()) { player.spelldelay = 1; delayedspell = player.auras.hategrips; }
                     else if (player.auras.mightyragepotion && player.auras.mightyragepotion.canUse()) { player.spelldelay = 1; delayedspell = player.auras.mightyragepotion; }
                     else if (player.auras.quicknesspotion && player.auras.quicknesspotion.canUse()) { player.spelldelay = 1; delayedspell = player.auras.quicknesspotion; }
                     else if (player.spells.bloodrage && player.spells.bloodrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.bloodrage; }
                     else if (player.spells.ragepotion && player.spells.ragepotion.canUse()) { player.spelldelay = 1; delayedspell = player.spells.ragepotion; }
 
                     else if (player.auras.cloudkeeper && player.auras.cloudkeeper.canUse() && step > this.cloudstep) { player.spelldelay = 1; delayedspell = player.auras.cloudkeeper; }
+                    else if (player.auras.hategrips && player.auras.hategrips.canUse() && step > this.hatestep) { player.spelldelay = 1; delayedspell = player.auras.hategrips; }
+                    else if (player.auras.worgenmark && player.auras.worgenmark.canUse() && step > this.worgenstep) { player.spelldelay = 1; delayedspell = player.auras.worgenmark; }
                     else if (player.auras.voidmadness && player.auras.voidmadness.canUse() && step > this.voidstep) { player.spelldelay = 1; delayedspell = player.auras.voidmadness; }
                     else if (player.auras.pummeler && player.auras.pummeler.canUse() && step > this.pummelstep) { player.spelldelay = 1; delayedspell = player.auras.pummeler; }
                     else if (player.auras.slayer && player.auras.slayer.canUse() && step > this.slayerstep) { player.spelldelay = 1; delayedspell = player.auras.slayer; }

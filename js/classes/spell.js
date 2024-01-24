@@ -1238,13 +1238,10 @@ class Hategrips extends Aura {
         this.name = 'Hatefury Haste';
     }
     use() {
-        // commented because stacks with trinkets
-        // this.player.timer = 1500;
-        // this.player.itemtimer = this.duration * 1000;
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
         this.player.updateHaste();
-        //if (log) this.player.log(`${this.name} applied`);
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
         return this.firstuse && !this.timer && !this.player.timer && !this.player.itemtimer;
@@ -1287,6 +1284,24 @@ class Slayer extends Aura {
     }
     canUse() {
         return this.firstuse && !this.timer && !this.player.itemtimer;
+    }
+}
+
+class WorgenMark extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 30;
+        this.stats = { ap: 45 };
+        this.name = 'Mark of the Worgen';
+    }
+    use() {
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateAP();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    canUse() {
+        return this.firstuse && !this.timer;
     }
 }
 

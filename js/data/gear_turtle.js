@@ -4841,12 +4841,28 @@ var gear = {
   ],
   "finger1": [
     {
-      "name": "Mark of the Worgen",
+      "name": "Peering Eyeball",
+      "hit": 1,
+      "arp": 35,
+      "source": "Other",
+      "phase": 7,
+      "id": 41062
+    },
+    {
+      "name": "Mark of the Worgen (Used last 30 secs)",
       "ap": 20,
       "arp": 40,
       "source": "Dungeon",
       "phase": 7,
       "id": 61406
+    },
+    {
+      "name": "Mark of the Worgen (Not Used)",
+      "ap": 20,
+      "arp": 40,
+      "source": "Dungeon",
+      "phase": 7,
+      "id": 614061
     },
     {
       "name": "Prismatic Band of Fire Resistance",
@@ -5185,12 +5201,28 @@ var gear = {
   ],
   "finger2": [
     {
-      "name": "Mark of the Worgen",
+      "name": "Peering Eyeball",
+      "hit": 1,
+      "arp": 35,
+      "source": "Other",
+      "phase": 7,
+      "id": 41062
+    },
+    {
+      "name": "Mark of the Worgen (Used last 30 secs)",
       "ap": 20,
       "arp": 40,
       "source": "Dungeon",
       "phase": 7,
       "id": 61406
+    },
+    {
+      "name": "Mark of the Worgen (Not Used)",
+      "ap": 20,
+      "arp": 40,
+      "source": "Dungeon",
+      "phase": 7,
+      "id": 614061
     },
     {
       "name": "Prismatic Band of Fire Resistance",

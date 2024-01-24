@@ -143,6 +143,7 @@ class Player {
         if (this.items.includes(21670)) this.auras.swarmguard = new Swarmguard(this);
         if (this.items.includes(19949)) this.auras.zandalarian = new Zandalarian(this);
         if (this.items.includes(60577)) this.auras.hategrips = new Hategrips(this);
+        if (this.items.includes(61406)) this.auras.worgenmark = new WorgenMark(this);
         if (this.items.includes(61243)) this.auras.potentvenoms = new PotentVenoms(this);
         if (this.adjacent && this.items.includes(61243)) {
             for (let i = 2; i <= (this.adjacent + 1); i++)
@@ -787,6 +788,7 @@ class Player {
         if (this.auras.slayer && this.auras.slayer.firstuse && this.auras.slayer.timer) this.auras.slayer.step();
         if (this.auras.spider && this.auras.spider.firstuse && this.auras.spider.timer) this.auras.spider.step();
         if (this.auras.hategrips && this.auras.hategrips.firstuse && this.auras.hategrips.timer) this.auras.hategrips.step();
+        if (this.auras.worgenmark && this.auras.worgenmark.firstuse && this.auras.worgenmark.timer) this.auras.worgenmark.step();
         if (this.auras.earthstrike && this.auras.earthstrike.firstuse && this.auras.earthstrike.timer) this.auras.earthstrike.step();
         if (this.auras.pummeler && this.auras.pummeler.firstuse && this.auras.pummeler.timer) this.auras.pummeler.step();
         if (this.auras.swarmguard && this.auras.swarmguard.firstuse && this.auras.swarmguard.timer) this.auras.swarmguard.step();
@@ -833,6 +835,7 @@ class Player {
         if (this.auras.slayer && this.auras.slayer.firstuse && this.auras.slayer.timer) this.auras.slayer.end();
         if (this.auras.spider && this.auras.spider.firstuse && this.auras.spider.timer) this.auras.spider.end();
         if (this.auras.hategrips && this.auras.hategrips.firstuse && this.auras.hategrips.timer) this.auras.hategrips.end();
+        if (this.auras.worgenmark && this.auras.worgenmark.firstuse && this.auras.worgenmark.timer) this.auras.worgenmark.end();
         if (this.auras.gabbar && this.auras.gabbar.firstuse && this.auras.gabbar.timer) this.auras.gabbar.end();
         if (this.auras.earthstrike && this.auras.earthstrike.firstuse && this.auras.earthstrike.timer) this.auras.earthstrike.end();
         if (this.auras.pummeler && this.auras.pummeler.firstuse && this.auras.pummeler.timer) this.auras.pummeler.end();
