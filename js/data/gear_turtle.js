@@ -7811,20 +7811,6 @@ var gear = {
       "id": 19168
     },
     {
-      "name": "Bloodlord's Defender",
-      "Mainhand": true,
-      "sta": 15,
-      "defense": 4,
-      "ac": 80,
-      "mindmg": 64,
-      "maxdmg": 119,
-      "speed": 1.9,
-      "type": "Sword",
-      "source": "ZG",
-      "phase": 4,
-      "id": 19867
-    },
-    {
       "name": "Brutality Blade",
       "crit": 1,
       "str": 9,
@@ -7897,20 +7883,6 @@ var gear = {
       "source": "Crafting",
       "phase": 1,
       "id": 17015
-    },
-    {
-      "name": "Fiery Retributer",
-      "Mainhand": true,
-      "str": 7,
-      "defense": 5,
-      "ac": 60,
-      "mindmg": 56,
-      "maxdmg": 105,
-      "speed": 1.8,
-      "type": "Sword",
-      "source": "ZG",
-      "phase": 4,
-      "id": 19968
     },
     {
       "name": "Gressil, Dawn of Ruin",
@@ -7988,18 +7960,6 @@ var gear = {
       "source": "Taerar",
       "phase": 4,
       "id": 20577
-    },
-    {
-      "name": "Quel'Serrar",
-      "Mainhand": true,
-      "sta": 12,
-      "mindmg": 84,
-      "maxdmg": 126,
-      "speed": 2,
-      "type": "Sword",
-      "source": "Quest",
-      "phase": 2,
-      "id": 18348
     },
     {
       "name": "R14 Longsword",
