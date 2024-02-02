@@ -1,6 +1,16 @@
 var gear = {
   "head": [
     {
+      "name": "Flamescorched Hood",
+      "source": "LowerKara",
+      "agi": 20,
+      "str": 15,
+      "crit": 1,
+      "ac": 163,
+      "phase": 7,
+      "id": 61260
+    },
+    {
       "name": "Rune-Etched Crown",
       "source": "Crafting",
       "agi": 5,
