@@ -2335,7 +2335,7 @@ var gear = {
       "sta": 11,
       "source": "LowerKara",
       "phase": 7,
-      "id": 61274
+      "id": 61449
     },
     {
       "name": "Granitized Bracers",
