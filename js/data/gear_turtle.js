@@ -3786,6 +3786,22 @@ var gear = {
   ],
   "legs": [
     {
+      "name": "Chromatic Leggings",
+      "ac": 390,
+      "resist": {
+        "fire": 7,
+        "frost": 7,
+        "nature": 7,
+        "shadow": 7
+      },
+      "hit": 1,
+      "crit": 1,
+      "ap": 64,
+      "source": "Crafting",
+      "phase": 7,
+      "id": 65036
+    },
+    {
       "name": "Slateplate Leggings",
       "ac": 348,
       "sta": 18,
