@@ -594,17 +594,12 @@ var buffs = [
       consume: true,
    },
    {
-      id: 27669,
-      spellid: true,
-      name: "Orgrimmar Gift of Friendship",
-      iconname: "inv_misc_gift_01",
-      agi: 30
-   },
-   {
       id: 27666,
       spellid: true,
       name: "Darnassus Gift of Friendship",
       iconname: "inv_misc_gift_02",
+      group: "blasted",
+      consume: true,
       agi: 30
    },
    {
@@ -694,6 +689,7 @@ var buffs = [
       name: "Danonzo's Tel'Abim Medley",
       iconname: "inv_misc_food_33",
       group: "food",
+      consume: true,
       haste: 2
    },
    {
