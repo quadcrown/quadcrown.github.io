@@ -1431,7 +1431,7 @@ var gear = {
       "sta": 8,
       "str": 11,
       "agi": 11,
-      "haste": 2,
+      "haste": 1,
       "ac": 50,
       "source": "Other",
       "phase": 7,
@@ -3803,10 +3803,11 @@ var gear = {
       "id": 61279
     },
     {
-      "name": "Fallen Crusader Legguards (Vs Undead)",
+      "name": "Fallen Crusader Legguards",
       "source": "Other",
-      "str": 17,
-      "bonusdmg": 28,
+      "str": 22,
+      "agi": 10,
+      "hit": 1,
       "resist": {
         "shadow": 15
       },

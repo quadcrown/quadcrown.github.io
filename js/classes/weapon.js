@@ -105,8 +105,6 @@ class Weapon {
             this.basebonusdmg += enchant.bonusdmg;
         if (!this.windfury && tempenchant && tempenchant.bonusdmg)
             this.basebonusdmg += tempenchant.bonusdmg;
-        if (this.player.items.includes(81355))
-            this.basebonusdmg += 28;
         if (this.player.items.includes(21189))
             this.basebonusdmg += 4;
         if (this.player.items.includes(19968) || item.id == 19968)
