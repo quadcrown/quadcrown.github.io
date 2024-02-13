@@ -60,18 +60,21 @@ var enchant = {
           "id": 23800,
           "spellid": true,
           "name": "Agility",
+          "r": 41,
           "agi": 15,
        },
        {
           "id": 23799,
           "spellid": true,
           "name": "Strength",
+          "r": 41,
           "str": 15,
        },
        {
           "id": 20034,
           "spellid": true,
           "name": "Crusader",
+          "r": 41,
           "ppm": 1,
           "procspell": "Crusader"
        },
@@ -79,6 +82,7 @@ var enchant = {
           "id": 13898,
           "spellid": true,
           "name": "Fiery",
+          "r": 41,
           "ppm": 6,
           "magicdmg": 44
        },
@@ -86,6 +90,7 @@ var enchant = {
           "id": 20032,
           "spellid": true,
           "name": "Lifestealing",
+          "r": 41,
           "ppm": 6,
           "magicdmg": 33
        },
@@ -93,12 +98,14 @@ var enchant = {
           "id": 20031,
           "spellid": true,
           "name": "Superior Striking",
+          "r": 41,
           "bonusdmg": 5,
        },
        {
          "id": 13943,
          "spellid": true,
          "name": "Greater Striking",
+         "r": 41,
          "bonusdmg": 4,
       },
       {
@@ -125,6 +132,14 @@ var enchant = {
          "name": "Fiery Blaze",
          "chance": 15,
          "magicdmg": 12,
+         "r": 40
+      },
+      {
+         "id": 435481,
+         "spellid": true,
+         "name": "Dismantle (15% chance)",
+         "chance": 15,
+         "magicdmg": 75,
          "r": 40
       },
     ],
@@ -189,18 +204,21 @@ var enchant = {
         "id": 23800,
         "spellid": true,
         "name": "Agility",
+        "r": 41,
         "agi": 15,
      },
      {
         "id": 23799,
         "spellid": true,
         "name": "Strength",
+        "r": 41,
         "str": 15,
      },
      {
         "id": 20034,
         "spellid": true,
         "name": "Crusader",
+        "r": 41,
         "ppm": 1,
         "procspell": "Crusader"
      },
@@ -208,6 +226,7 @@ var enchant = {
         "id": 13898,
         "spellid": true,
         "name": "Fiery",
+        "r": 41,
         "ppm": 6,
         "magicdmg": 44
      },
@@ -215,6 +234,7 @@ var enchant = {
         "id": 20032,
         "spellid": true,
         "name": "Lifestealing",
+        "r": 41,
         "ppm": 6,
         "magicdmg": 33
      },
@@ -222,12 +242,14 @@ var enchant = {
       "id": 20031,
       "spellid": true,
       "name": "Superior Striking",
+      "r": 41,
       "bonusdmg": 5,
    },
    {
      "id": 13943,
      "spellid": true,
      "name": "Greater Striking",
+     "r": 41,
      "bonusdmg": 4,
   },
   {
@@ -254,6 +276,14 @@ var enchant = {
    "name": "Fiery Blaze",
    "chance": 15,
    "magicdmg": 12,
+   "r": 40
+},
+{
+   "id": 435481,
+   "spellid": true,
+   "name": "Dismantle (15% chance)",
+   "chance": 15,
+   "magicdmg": 75,
    "r": 40
 },
     ],
@@ -338,12 +368,14 @@ var enchant = {
           "spellid": true,
           "name": "Crusader",
           "ppm": 1,
-          "procspell": "Crusader"
+          "procspell": "Crusader",
+          "r": 41,
        },
        {
           "id": 13898,
           "spellid": true,
           "name": "Fiery",
+          "r": 41,
           "ppm": 6,
           "magicdmg": 44
        },
@@ -351,6 +383,7 @@ var enchant = {
           "id": 20032,
           "spellid": true,
           "name": "Lifestealing",
+          "r": 41,
           "ppm": 6,
           "magicdmg": 33
        },
@@ -395,6 +428,14 @@ var enchant = {
          "name": "Fiery Blaze",
          "chance": 15,
          "magicdmg": 12,
+         "r": 40
+      },
+      {
+         "id": 435481,
+         "spellid": true,
+         "name": "Dismantle (15% chance)",
+         "chance": 15,
+         "magicdmg": 75,
          "r": 40
       },
     ],
@@ -508,6 +549,7 @@ var enchant = {
              "fire": 5,
              "frost": 5
          },
+         "r": 41,
          "phase": 1,
          "id": 20014
       },
@@ -539,7 +581,8 @@ var enchant = {
          "name": "Greater Stats",
          "agi": 4,
          "str": 4,
-         "phase": 1
+         "phase": 1,
+         "r": 41,
       },
       {
          "id": 13941,
@@ -547,7 +590,8 @@ var enchant = {
          "name": "Stats",
          "agi": 3,
          "str": 3,
-         "phase": 1
+         "phase": 1,
+         "r": 41,
       },
       {
          "id": 13700,
@@ -574,14 +618,16 @@ var enchant = {
          "spellid": true,
          "name": "Superior Strength",
          "str": 9,
-         "phase": 1
+         "phase": 1,
+         "r": 41,
       },
       {
          "id": 13939,
          "spellid": true,
          "name": "Greater Strength",
          "str": 7,
-         "phase": 1
+         "phase": 1,
+         "r": 41,
       },
       {
          "id": 13661,
@@ -611,18 +657,13 @@ var enchant = {
          "str": 1,
          "phase": 1
       },
-
-
-
-
-
-
    ],
    "hands": [
       {
          "id": 25080,
          "spellid": true,
          "name": "Superior Agility",
+         "r": 41,
          "agi": 15,
          "phase": 5
       },
@@ -630,6 +671,7 @@ var enchant = {
          "id": 20012,
          "spellid": true,
          "name": "Greater Agility",
+         "r": 41,
          "agi": 7,
          "phase": 1
       },
@@ -637,6 +679,7 @@ var enchant = {
          "id": 20013,
          "spellid": true,
          "name": "Greater Strength",
+         "r": 41,
          "str": 7,
          "phase": 1
       },
@@ -690,6 +733,7 @@ var enchant = {
          "id": 20023,
          "spellid": true,
          "name": "Greater Agility",
+         "r": 41,
          "agi": 7,
          "phase": 1
       },
@@ -697,6 +741,7 @@ var enchant = {
          "id": 13935,
          "spellid": true,
          "name": "Agility",
+         "r": 41,
          "agi": 5,
          "phase": 1
       },
@@ -853,6 +898,32 @@ var enchant = {
       items: [211506,211504,211505],
       bonus: [
          { count: 2, stats: { ap: 12 } },
+         { count: 3, stats: { hit: 1 } }
+      ]
+   },
+   {
+      id: 1585,
+      name: 'Insulated Leathers',
+      items: [213313,213332,213341],
+      bonus: [
+         { count: 2, stats: { crit: 1 } },
+         { count: 3, stats: { skill_2: 5 } }
+      ]
+   },
+   {
+      id: 1590,
+      name: 'Electromantic Devastator\'s Mail',
+      items: [213314,213339,213333],
+      bonus: [
+         { count: 2, stats: { ap: 24 } }
+      ]
+   },
+   {
+      id: 1589,
+      name: 'H.A.Z.A.R.D. Suit',
+      items: [213316,213330,213335],
+      bonus: [
+         { count: 2, stats: { ap: 16 } },
          { count: 3, stats: { hit: 1 } }
       ]
    },

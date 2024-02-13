@@ -465,7 +465,7 @@ var gear = {
       "proc": {
         "chance": 100,
         "magic": true,
-        "dmg": 3
+        "dmg": 2
       },
       "q": "4",
       "i": "68"
@@ -578,6 +578,17 @@ var gear = {
       "id": 23053,
       "q": "4",
       "i": "92"
+    },
+    {
+      "name": "Medallion of the Dawn",
+      "crit": 1,
+      "sta": 12,
+      "ap": 23,
+      "source": "Quest",
+      "phase": 6,
+      "id": 22659,
+      "q": "4",
+      "i": "60"
     },
     {
       "name": "The Eye of Hakkar",
@@ -1032,6 +1043,18 @@ var gear = {
       "id": 19695,
       "q": "3",
       "i": "65"
+    },
+    {
+      "name": "Wyrmslayer Spaulders",
+      "str": 12,
+      "agi": 8,
+      "sta": 12,
+      "ac": 403,
+      "source": "Other",
+      "phase": 4,
+      "id": 13066,
+      "q": "3",
+      "i": "51"
     }
   ],
   "back": [
@@ -4737,6 +4760,15 @@ var gear = {
       "id": 23041,
       "q": "4",
       "i": "90"
+    },
+    {
+      "name": "Mark of the Champion (vs Undead)",
+      "ap": 150,
+      "source": "Naxx",
+      "phase": "6",
+      "id": 23206,
+      "q": "4",
+      "i": "90"
     }
   ],
   "ranged": [
@@ -5119,6 +5151,22 @@ var gear = {
       },
       "q": "3",
       "i": "63"
+    },
+    {
+      "name": "Bashguuder",
+      "mindmg": 49,
+      "maxdmg": 93,
+      "speed": 1.8,
+      "type": "Mace",
+      "source": "Dungeon",
+      "phase": 1,
+      "id": 13204,
+      "proc": {
+        "ppm": 1,
+        "spell": "Rivenspike"
+      },
+      "q": "3",
+      "i": "60"
     },
     {
       "name": "Rivenspike",
@@ -6694,6 +6742,22 @@ var gear = {
       },
       "q": "4",
       "i": "68"
+    },
+    {
+      "name": "Bashguuder",
+      "mindmg": 49,
+      "maxdmg": 93,
+      "speed": 1.8,
+      "type": "Mace",
+      "source": "Dungeon",
+      "phase": 1,
+      "id": 13204,
+      "proc": {
+        "ppm": 1,
+        "spell": "Rivenspike"
+      },
+      "q": "3",
+      "i": "60"
     },
     {
       "name": "Blessed Qiraji War Axe",

@@ -120,6 +120,13 @@ SIM.PROFILES = {
     deleteProfile(profile) {
         let index = profile.data('index');
         delete localStorage[mode + index];
+        let count = 0;
+        for(let i = 0; i < 40; i++) {
+            if (!localStorage[mode + i]) continue;
+            localStorage[mode + count] = localStorage[mode + i];
+            if (count != i) delete localStorage[mode + i];
+            count++;
+        }
         if (globalThis.profileid == index) globalThis.profileid = 0;
         this.buildProfiles();
         SIM.UI.addAlert(`Profile deleted`);
@@ -171,6 +178,7 @@ SIM.PROFILES = {
 
         let profileid = globalThis.profileid || 0;
         let i = 0;
+        let modeCount = Object.keys(localStorage).filter(d => d.indexOf(mode) > -1).length;
         do {
             if (!localStorage[mode + i]) continue;
             let storage = JSON.parse(localStorage[mode + i]);
@@ -184,7 +192,7 @@ SIM.PROFILES = {
                     <p>${talents}</p>
                     <ul>${items}</ul>
                     <div class="export-profile" title="Export">${svgExport}</div>
-                    ${i > 0 ? `<div class="delete-profile" title="Delete">${svgThrash}</div>` : ''}
+                    ${modeCount > 1 ? `<div class="delete-profile" title="Delete">${svgThrash}</div>`: ''}
                 </div>`);
             view.container.append(profile);
         } while (i++<40);
@@ -192,12 +200,15 @@ SIM.PROFILES = {
         view.container.append(`<div>
             <div class="add-profile">${svgAdd}<p>Add Profile</p></div>
             <div class="import-profile">${svgImport}<p>Import Profile</p>
-            <div class="import-container">
-                <div class="import-th">2H BiS</div>
-                <div class="import-dw">DW BiS</div>
-            </div>
+            ${false && mode == "sod" ? 
+                `<div class="import-container">
+                    <div class="import-th">2H BiS</div>
+                    <div class="import-dw">DW BiS</div>
+                </div>` : ''}
             </div>
             </div>`);
+
+          
     },
 
     getItemsHTML(storage) {
@@ -234,7 +245,7 @@ SIM.PROFILES = {
                 if (rune.selected) {
                     let r = runes[item.slot].filter(a => a.id == rune.id)[0];
                     if (!r) rune.selected = false;
-                    else icon = `<img src="dist/img/${r.iconname}.jpg">`
+                    else icon = `<img src="https://wow.zamimg.com/images/wow/icons/medium/${r.iconname}.jpg">`
                 }
             }
         }
@@ -283,6 +294,9 @@ SIM.PROFILES = {
                 if (typeof spell.duration !== 'undefined') obj.duration = spell.duration;
                 if (typeof spell.durationactive !== 'undefined') obj.durationactive = spell.durationactive;
                 if (typeof spell.timetoend !== 'undefined') obj.timetoend = spell.timetoend;
+                if (typeof spell.timetoendactive !== 'undefined') obj.timetoendactive = spell.timetoendactive;
+                if (typeof spell.timetostart !== 'undefined') obj.timetostart = spell.timetostart;
+                if (typeof spell.timetostartactive !== 'undefined') obj.timetostartactive = spell.timetostartactive;
                 if (typeof spell.crusaders !== 'undefined') obj.crusaders = spell.crusaders;
                 if (typeof spell.haste !== 'undefined') obj.haste = spell.haste;
                 if (typeof spell.procblock !== 'undefined') obj.procblock = spell.procblock;
@@ -306,6 +320,13 @@ SIM.PROFILES = {
                 if (typeof spell.decisive !== 'undefined') obj.decisive = spell.decisive;
                 if (typeof spell.globals !== 'undefined') obj.globals = spell.globals;
                 if (typeof spell.globalsactive !== 'undefined') obj.globalsactive = spell.globalsactive;
+                if (typeof spell.stoptime !== 'undefined') obj.stoptime = spell.stoptime;
+                if (typeof spell.stoptimeactive !== 'undefined') obj.stoptimeactive = spell.stoptimeactive;
+                if (typeof spell.bloodsurge !== 'undefined') obj.bloodsurge = spell.bloodsurge;
+                if (typeof spell.swingreset !== 'undefined') obj.swingreset = spell.swingreset;
+                if (typeof spell.afterswing !== 'undefined') obj.afterswing = spell.afterswing;
+                if (typeof spell.alwaystails !== 'undefined') obj.alwaystails = spell.alwaystails;
+                if (typeof spell.alwaysheads !== 'undefined') obj.alwaysheads = spell.alwaysheads;
                 minified.rotation.push(obj);
             }
         }
@@ -353,6 +374,9 @@ SIM.PROFILES = {
                     if (typeof newspell.duration !== 'undefined') spell.duration = newspell.duration;
                     if (typeof newspell.durationactive !== 'undefined') spell.durationactive = newspell.durationactive;
                     if (typeof newspell.timetoend !== 'undefined') spell.timetoend = newspell.timetoend;
+                    if (typeof newspell.timetoendactive !== 'undefined') spell.timetoendactive = newspell.timetoendactive;
+                    if (typeof newspell.timetostart !== 'undefined') spell.timetostart = newspell.timetostart;
+                    if (typeof newspell.timetostartactive !== 'undefined') spell.timetostartactive = newspell.timetostartactive;
                     if (typeof newspell.crusaders !== 'undefined') spell.crusaders = newspell.crusaders;
                     if (typeof newspell.haste !== 'undefined') spell.haste = newspell.haste;
                     if (typeof newspell.procblock !== 'undefined') spell.procblock = newspell.procblock;
@@ -376,6 +400,13 @@ SIM.PROFILES = {
                     if (typeof newspell.decisive !== 'undefined') spell.decisive = newspell.decisive;
                     if (typeof newspell.globals !== 'undefined') spell.globals = newspell.globals;
                     if (typeof newspell.globalsactive !== 'undefined') spell.globalsactive = newspell.globalsactive;
+                    if (typeof newspell.stoptime !== 'undefined') spell.stoptime = newspell.stoptime;
+                    if (typeof newspell.stoptimeactive !== 'undefined') spell.stoptimeactive = newspell.stoptimeactive;
+                    if (typeof newspell.bloodsurge !== 'undefined') spell.bloodsurge = newspell.bloodsurge;
+                    if (typeof newspell.afterswing !== 'undefined') spell.afterswing = newspell.afterswing;
+                    if (typeof newspell.swingreset !== 'undefined') spell.swingreset = newspell.swingreset;
+                    if (typeof newspell.alwaystails !== 'undefined') spell.alwaystails = newspell.alwaystails;
+                    if (typeof newspell.alwaysheads !== 'undefined') spell.alwaysheads = newspell.alwaysheads;
                 }
                 else {
                     spell.active = false;

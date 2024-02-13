@@ -190,6 +190,7 @@ SIM.UI = {
 
             view.updateSession();
             view.updateSidebar();
+            SIM.SETTINGS.buildSpells();
         });
 
         view.tcontainer.on('click', 'table.enchant td:not(.ppm)', function(e) {
@@ -216,6 +217,7 @@ SIM.UI = {
 
             view.updateSession();
             view.updateSidebar();
+            SIM.SETTINGS.buildSpells();
         });
 
         view.runes.on('click', '.rune .icon', function(e) {
@@ -607,6 +609,12 @@ SIM.UI = {
             for(let i = 0; i < enchant.twohand.length; i++)
                 enchant.twohand[i].selected = false;
         }
+
+        for(let i = 0; i < spells.length; i++) {
+            if (spells[i].item && spells[i].id == tr.data('id') && !spells[i].timetoendactive && !spells[i].timetostartactive) {
+                spells[i].timetoendactive = true;
+            }
+        }
     },
 
     rowHideItem: function(tr) {
@@ -813,6 +821,7 @@ SIM.UI = {
         obj.filter_green = view.main.find('#filter_green').hasClass('active');
         obj.filter_blue = view.main.find('#filter_blue').hasClass('active');
         obj.bleedimmune = view.fight.find('select[name="bleedimmune"]').val();
+        obj.armorprocs = view.fight.find('select[name="armorprocs"]').val();
         
 
         let _buffs = [], _rotation = [], _talents = [], _sources = [], _phases = [], _gear = {}, _enchant = {}, _runes = {}, _resistance = {};
@@ -879,6 +888,12 @@ SIM.UI = {
 
         if (localStorage.level) localStorage.clear(); // clear old style of storage
         if (!localStorage[mode + profileid]) localStorage[mode + profileid] = JSON.stringify(session);
+
+        // update everyone for P2
+        if (mode == "sod" && localStorage.sodPatch !== "2") {
+            localStorage.sodPatch = "2";
+            localStorage.sod0 = JSON.stringify(session);
+        }
 
         let storage = JSON.parse(localStorage[mode + profileid]);
         if (!storage.level) storage.level = session.level;
@@ -980,7 +995,7 @@ SIM.UI = {
 
         for (let item of gear[type]) {
 
-            if (item.r > level || (mode == "sod" && item.q < 4 && item.i < (level - 7))) {
+            if (item.r > level || (mode == "sod" && item.q < 3 && item.i < (level - 7)) || (mode == "sod" && item.q == 3 && item.i < (level - 12))) {
                 item.selected = false;
                 continue;
             }
@@ -1147,7 +1162,7 @@ SIM.UI = {
 
         for (let item of gear[type]) {
             
-            if (item.r > level || (mode == "sod" && item.q < 4 && item.i < (level - 7))) {
+            if (item.r > level || (mode == "sod" && item.q < 3 && item.i < (level - 7)) || (mode == "sod" && item.q == 3 && item.i < (level - 12))) {
                 item.selected = false;
                 continue;
             }
@@ -1413,7 +1428,7 @@ SIM.UI = {
             html.append(`
                 <div data-id="${item.id}" class="rune ${item.selected ? 'active' : ''}">
                     <div class="icon">
-                        <img src="dist/img/${item.iconname}.jpg" alt="${item.name}">
+                        <img src="https://wow.zamimg.com/images/wow/icons/medium/${item.iconname}.jpg" alt="${item.name}">
                         <a href="${WEB_DB_URL}spell=${item.id}" class="wh-tooltip"></a>
                     </div>
                 </div>`);

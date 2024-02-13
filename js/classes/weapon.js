@@ -111,6 +111,8 @@ class Weapon {
             this.basebonusdmg += 4;
         if (this.player.items.includes(19968) || item.id == 19968)
             this.basebonusdmg += 2;
+        if (this.player.items.includes(215166))
+            this.basebonusdmg += 3;
         this.bonusdmg = this.basebonusdmg;
     }
     dmg(heroicstrike) {
@@ -126,7 +128,7 @@ class Weapon {
     }
     use() {
         this.timer = Math.round(this.speed * 1000 / this.player.stats.haste);
-        if (this.player.spells.slam && !this.offhand) this.player.spells.slam.mhthreshold = this.timer - 1000;
+        if (!this.offhand && this.player.spells.slam && this.player.spells.slam.afterswing) this.player.spells.slam.mhthreshold = this.timer - 1000;
     }
     step(next) {
         this.timer -= next;

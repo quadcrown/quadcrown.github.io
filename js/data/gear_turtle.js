@@ -2896,7 +2896,7 @@ var gear = {
       "id": 60791
     },
     {
-      "name": "Hateforge Grips (Used last 15 secs)",
+      "name": "Hateforge Grips",
       "str": 13,
       "sta": 7,
       "crit": 1,
@@ -2904,16 +2904,6 @@ var gear = {
       "source": "Crafting",
       "phase": 7,
       "id": 60577
-    },
-    {
-      "name": "Hateforge Grips (Not used)",
-      "str": 13,
-      "sta": 7,
-      "crit": 1,
-      "ac": 173,
-      "source": "Crafting",
-      "phase": 7,
-      "id": 605771
     },
     {
       "name": "Skulker's Gloves",
@@ -4875,20 +4865,12 @@ var gear = {
       "id": 41062
     },
     {
-      "name": "Mark of the Worgen (Used last 30 secs)",
+      "name": "Mark of the Worgen",
       "ap": 20,
       "arp": 40,
       "source": "Dungeon",
       "phase": 7,
       "id": 61406
-    },
-    {
-      "name": "Mark of the Worgen (Not Used)",
-      "ap": 20,
-      "arp": 40,
-      "source": "Dungeon",
-      "phase": 7,
-      "id": 614061
     },
     {
       "name": "Prismatic Band of Fire Resistance",
@@ -5235,20 +5217,12 @@ var gear = {
       "id": 41062
     },
     {
-      "name": "Mark of the Worgen (Used last 30 secs)",
+      "name": "Mark of the Worgen",
       "ap": 20,
       "arp": 40,
       "source": "Dungeon",
       "phase": 7,
       "id": 61406
-    },
-    {
-      "name": "Mark of the Worgen (Not Used)",
-      "ap": 20,
-      "arp": 40,
-      "source": "Dungeon",
-      "phase": 7,
-      "id": 614061
     },
     {
       "name": "Prismatic Band of Fire Resistance",
