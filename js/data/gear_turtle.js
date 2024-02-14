@@ -1320,6 +1320,14 @@ var gear = {
   ],
   "back": [
     {
+      "name": "Shroud of Haunted Torment",
+      "haste": 2,
+      "ac": 46,
+      "source": "Dungeon",
+      "phase": 7,
+      "id": 83465
+    },
+    {
       "name": "Veil of Nightmare",
       "crit": 1,
       "sta": 12,
@@ -2327,6 +2335,15 @@ var gear = {
     }
   ],
   "wrist": [
+    {
+      "name": "Dreamthread Bracers",
+      "ac": 40,
+      "haste": 2,
+      "sta": 5,
+      "source": "Crafting",
+      "phase": 7,
+      "id": 61362
+    },
     {
       "name": "Searhide Bracers",
       "ac": 106,
@@ -9642,7 +9659,7 @@ var gear = {
       "id": 41076,
       "source": "EmerSanc",
       "phase": 7,
-      "type": "Mace",
+      "type": "Mace"
     },
     {
       "name": "Fist of the Forgotten Order",
@@ -10811,7 +10828,7 @@ var gear = {
         "ppm": 1,
         "magic": true,
         "dmg": 270
-      },
+      }
     },
     {
       "name": "Corruption",
@@ -10828,7 +10845,7 @@ var gear = {
         "ppm": 3,
         "magic": true,
         "dmg": 90
-      },
+      }
     }
   ],
   "custom": [
@@ -10998,4 +11015,4 @@ var gear = {
       "skill_5": 12
     }
   ]
-};
+}
