@@ -308,19 +308,19 @@ class Simulation {
                     else if (player.spells.ragepotion && player.spells.ragepotion.canUse()) { player.spelldelay = 1; delayedspell = player.spells.ragepotion; }
                     else if (player.auras.mildlyirradiated && player.auras.mildlyirradiated.canUse()) { player.spelldelay = 1; delayedspell = player.auras.mildlyirradiated; }
 
-                    else if (player.auras.cloudkeeper && player.auras.cloudkeeper.canUse() && step > this.cloudstep) { player.spelldelay = 1; delayedspell = player.auras.cloudkeeper; }
-                    else if (player.auras.hategrips && player.auras.hategrips.canUse() && step > this.hatestep) { player.spelldelay = 1; delayedspell = player.auras.hategrips; }
-                    else if (player.auras.worgenmark && player.auras.worgenmark.canUse() && step > this.worgenstep) { player.spelldelay = 1; delayedspell = player.auras.worgenmark; }
-                    else if (player.auras.voidmadness && player.auras.voidmadness.canUse() && step > this.voidstep) { player.spelldelay = 1; delayedspell = player.auras.voidmadness; }
+                    else if (player.auras.cloudkeeper && player.auras.cloudkeeper.canUse()) { player.spelldelay = 1; delayedspell = player.auras.cloudkeeper; }
+                    else if (player.auras.hategrips && player.auras.hategrips.canUse()) { player.spelldelay = 1; delayedspell = player.auras.hategrips; }
+                    else if (player.auras.worgenmark && player.auras.worgenmark.canUse()) { player.spelldelay = 1; delayedspell = player.auras.worgenmark; }
+                    else if (player.auras.voidmadness && player.auras.voidmadness.canUse()) { player.spelldelay = 1; delayedspell = player.auras.voidmadness; }
                     else if (player.auras.gyromaticacceleration && player.auras.gyromaticacceleration.canUse()) { player.spelldelay = 1; delayedspell = player.auras.gyromaticacceleration; }
                     else if (player.auras.gneurological && player.auras.gneurological.canUse()) { player.spelldelay = 1; delayedspell = player.auras.gneurological; }
                     else if (player.auras.coinflip && player.auras.coinflip.canUse()) { player.spelldelay = 1; delayedspell = player.auras.coinflip; }
-                    else if (player.auras.pummeler && player.auras.pummeler.canUse() && step > this.pummelstep) { player.spelldelay = 1; delayedspell = player.auras.pummeler; }
-                    else if (player.auras.slayer && player.auras.slayer.canUse() && step > this.slayerstep) { player.spelldelay = 1; delayedspell = player.auras.slayer; }
-                    else if (player.auras.spider && player.auras.spider.canUse() && step > this.spiderstep) { player.spelldelay = 1; delayedspell = player.auras.spider; }
-                    else if (player.auras.gabbar && player.auras.gabbar.canUse() && step > this.gabbarstep) { player.spelldelay = 1; delayedspell = player.auras.gabbar; }
-                    else if (player.auras.earthstrike && player.auras.earthstrike.canUse() && step > this.earthstep) { player.spelldelay = 1; delayedspell = player.auras.earthstrike; }
-                    else if (player.auras.zandalarian && player.auras.zandalarian.canUse() && step > this.zandalarstep) { player.spelldelay = 1; delayedspell = player.auras.zandalarian; }
+                    else if (player.auras.pummeler && player.auras.pummeler.canUse()) { player.spelldelay = 1; delayedspell = player.auras.pummeler; }
+                    else if (player.auras.slayer && player.auras.slayer.canUse()) { player.spelldelay = 1; delayedspell = player.auras.slayer; }
+                    else if (player.auras.spider && player.auras.spider.canUse()) { player.spelldelay = 1; delayedspell = player.auras.spider; }
+                    else if (player.auras.gabbar && player.auras.gabbar.canUse()) { player.spelldelay = 1; delayedspell = player.auras.gabbar; }
+                    else if (player.auras.earthstrike && player.auras.earthstrike.canUse()) { player.spelldelay = 1; delayedspell = player.auras.earthstrike; }
+                    else if (player.auras.zandalarian && player.auras.zandalarian.canUse()) { player.spelldelay = 1; delayedspell = player.auras.zandalarian; }
 
                     // Use GCD spells
                     else if (player.timer) { }
