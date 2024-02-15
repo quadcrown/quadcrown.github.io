@@ -751,7 +751,7 @@ var spells = [
     maincdactive: false,
     swingreset: true,
     afterswing: true,
-    bloodsurge: true,
+    bloodsurge: false,
     active: false,
 },
 {
@@ -768,7 +768,7 @@ var spells = [
     maincdactive: false,
     swingreset: true,
     afterswing: true,
-    bloodsurge: true,
+    bloodsurge: false,
     active: false,
 },
 {
@@ -785,7 +785,7 @@ var spells = [
     maincdactive: false,
     swingreset: true,
     afterswing: true,
-    bloodsurge: true,
+    bloodsurge: false,
     active: false,
 },
 {
@@ -803,7 +803,7 @@ var spells = [
     maincdactive: false,
     swingreset: true,
     afterswing: true,
-    bloodsurge: true,
+    bloodsurge: false,
     active: false,
 },
 
