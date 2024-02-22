@@ -5799,7 +5799,6 @@ var gear = {
     {
       "name": "Rune of the Guard Captain",
       "hit": 1,
-      "ap": 20,
       "source": "Quest",
       "phase": "1",
       "id": 19120
