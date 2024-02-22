@@ -37,6 +37,8 @@ class Spell {
         if (spell.swingreset) this.swingreset = spell.swingreset;
         if (spell.timetoendactive) this.timetoend = parseInt(spell.timetoend) * 1000;
         if (spell.timetostartactive) this.timetostart = parseInt(spell.timetostart) * 1000;
+        if (spell.zerkerpriority) this.zerkerpriority = spell.zerkerpriority;
+        
     }
     dmg() {
         return 0;
@@ -449,7 +451,7 @@ class Slam extends Spell {
     use() {
         if (!this.player.freeslam) this.player.rage -= this.cost;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
-        if (this.swingreset) {
+        if (this.casttime && !this.player.freeslam) {
             this.player.mh.use();
             if (this.player.oh) this.player.oh.use();
         }
@@ -616,7 +618,7 @@ class DeepWounds extends Aura {
             max = this.player.oh.maxdmg + this.player.oh.bonusdmg + (this.player.stats.ap / 14) * this.player.oh.speed;
         }
         let dmg = (min + max) / 2;
-        dmg *= (!offhand ? this.player.mh.modifier : this.player.oh.modifier) * this.player.stats.dmgmod * this.player.talents.deepwounds * (this.player.bleedmod || 1); 
+        dmg *= (!offhand ? this.player.mh.modifier : this.player.oh.modifier) * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod; 
         return dmg;
     }
     step() {
@@ -679,7 +681,7 @@ class OldDeepWounds extends Aura {
             let min = this.player.mh.mindmg + this.player.mh.bonusdmg + (this.player.stats.ap / 14) * this.player.mh.speed;
             let max = this.player.mh.maxdmg + this.player.mh.bonusdmg + (this.player.stats.ap / 14) * this.player.mh.speed;
             let dmg = (min + max) / 2;
-            dmg *= this.player.mh.modifier * this.player.stats.dmgmod * this.player.talents.deepwounds * (this.player.bleedmod || 1);
+            dmg *= this.player.mh.modifier * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod;
             this.idmg += dmg / 4;
             this.totaldmg += dmg / 4;
 
@@ -1623,7 +1625,7 @@ class Rend extends Aura {
     }
     step() {
         while (step >= this.nexttick && this.stacks) {
-            let dmg = this.value1 * this.player.stats.dmgmod * this.dmgmod * (this.player.bleedmod || 1);
+            let dmg = this.value1 * this.player.stats.dmgmod * this.dmgmod * this.player.bleedmod;
             this.idmg += dmg / this.value2;
             this.totaldmg +=dmg / this.value2;
 
@@ -1729,14 +1731,13 @@ class VoidMadness extends Aura {
         this.mult_stats = { haste: 10 };
     }
     use() {
-        this.player.itemtimer = this.duration * 1000;
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
         this.player.updateHaste();
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return this.firstuse && !this.player.itemtimer && !this.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep;
     }
 }
 
@@ -1746,7 +1747,7 @@ class WeaponBleed extends Aura {
         this.duration = parseInt(duration) / 1000;
         this.interval = parseInt(interval);
         this.ticks = duration / interval;
-        this.dmg = parseInt(dmg) * (this.player.bleedmod || 1);
+        this.dmg = parseInt(dmg) * this.player.bleedmod;
         this.idmg = 0;
         this.totaldmg = 0;
     }
@@ -1946,14 +1947,13 @@ class GyromaticAcceleration extends Aura {
         this.mult_stats = { haste: 5 };
     }
     use() {
-        this.player.itemtimer = this.duration * 1000;
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
         this.player.updateHaste();
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return this.firstuse && !this.player.itemtimer && !this.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep;
     }
 }
 
@@ -1996,14 +1996,13 @@ class GneuroLogical extends Aura {
         this.mult_stats = { haste: 20 };
     }
     use() {
-        this.player.itemtimer = this.duration * 1000;
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
         this.player.updateHaste();
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return this.firstuse && !this.player.itemtimer && !this.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep;
     }
 }
 
@@ -2014,7 +2013,6 @@ class CoinFlip extends Aura {
         this.stats = { crit: 3 };
     }
     use() {
-        this.player.itemtimer = this.duration * 1000;
         this.firstuse = false;
         if (this.alwaystails) return;
         if (this.alwaysheads || rng10k() < 5000) {
@@ -2025,6 +2023,6 @@ class CoinFlip extends Aura {
         }
     }
     canUse() {
-        return this.firstuse && !this.player.itemtimer && !this.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep;
     }
 }

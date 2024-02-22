@@ -9433,18 +9433,6 @@ var gear = {
       "sta": 4
     },
     {
-      "id": 16336,
-      "type": "Cloth",
-      "slot": "back",
-      "r": 40,
-      "q": "3",
-      "i": "45",
-      "name": "Sergeant Major's Cape",
-      "agi": 6,
-      "str": 6,
-      "sta": 6
-    },
-    {
       "id": 16337,
       "type": "Cloth",
       "slot": "back",
@@ -51929,7 +51917,8 @@ var gear = {
       "str": 2,
       "proc": {
         "magic": true,
-        "dmg": 31
+        "dmg": 31,
+        "ppm": 5
       }
     },
     {
