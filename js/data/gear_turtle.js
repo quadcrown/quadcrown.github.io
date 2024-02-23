@@ -6418,6 +6418,22 @@ var gear = {
   ],
   "mainhand": [
     {
+      "name": "Letashaz's Right Claw (Unknown PPM)",
+      "ap": 16,
+      "proc": {
+        "ppm": 1,
+        "extra": 1
+      },
+      "mindmg": 81,
+      "maxdmg": 150,
+      "speed": 2.8,
+      "type": "Fist",
+      "source": "Other",
+      "phase": 7,
+      "id": 61541,
+      "Mainhand": true
+    },
+    {
       "name": "Groveslicer Glaive",
       "mindmg": 76,
       "maxdmg": 142,
@@ -6835,7 +6851,7 @@ var gear = {
       }
     },
     {
-      "name": "Ancient Hakkari Flayer",
+      "name": "Ancient Hakkari Flayer (Unknown PPM)",
       "Mainhand": true,
       "skill": 4,
       "proc": {
