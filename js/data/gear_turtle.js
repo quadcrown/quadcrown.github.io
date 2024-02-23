@@ -6837,12 +6837,15 @@ var gear = {
     {
       "name": "Ancient Hakkari Flayer",
       "Mainhand": true,
-      "ap": 24,
-      "hit": 1,
-      "mindmg": 66,
-      "maxdmg": 123,
-      "speed": 1.9,
-      "type": "Dagger",
+      "skill": 4,
+      "proc": {
+        "ppm": 1,
+        "dmg": 102
+      },
+      "mindmg": 56,
+      "maxdmg": 105,
+      "speed": 1.8,
+      "type": "Fist",
       "source": "ZG",
       "phase": 7,
       "id": 81003
