@@ -3868,6 +3868,7 @@ var gear = {
       "sta": 14,
       "str": 36,
       "hit": 1,
+      "haste": 1,
       "arp": 25,
       "source": "Crafting",
       "ac": 648,

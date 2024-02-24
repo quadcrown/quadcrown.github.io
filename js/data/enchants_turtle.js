@@ -783,7 +783,7 @@ var sets = [
       name: 'Dreamsteel Armor',
       items: [61364, 61365, 61366, 61367],
       bonus: [
-         { count: 2, stats: { ap: 26 } },
+         { count: 2, stats: { ap: 18 } },
          { count: 4, stats: { arp: 100 } },
       ]
    },
