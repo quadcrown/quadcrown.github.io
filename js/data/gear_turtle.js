@@ -6924,7 +6924,7 @@ var gear = {
       }
     },
     {
-      "name": "Rivenspike *Classic PPM",
+      "name": "Rivenspike",
       "mindmg": 77,
       "maxdmg": 144,
       "speed": 2.9,
@@ -6933,7 +6933,7 @@ var gear = {
       "phase": 1,
       "id": 13286,
       "proc": {
-        "ppm": 1,
+        "ppm": 5,
         "spell": "Rivenspike"
       }
     },
