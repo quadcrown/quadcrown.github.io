@@ -1759,10 +1759,10 @@ var gear = {
     },
     {
       "name": "Towerforge Breastplate",
-      "crit": 2,
+      "crit": 1,
       "haste": 1,
-      "str": 20,
-      "sta": 23,
+      "str": 23,
+      "sta": 28,
       "ac": 422,
       "source": "Crafting",
       "phase": 7,
