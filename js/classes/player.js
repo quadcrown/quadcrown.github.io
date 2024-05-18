@@ -894,7 +894,7 @@ class Player {
         return r > 0.75 ? 0.75 : r;
     }
     getArpContribution() {
-        let basereduct = this.target.basearmor / (this.target.basearmor + 400 + 85 * this.level);
+        let basereduct = this.target.basearmorbuffed / (this.target.basearmorbuffed + 400 + 85 * this.level);
         let witharpreduct = this.target.armor / (this.target.armor + 400 + 85 * this.level);
         return ((1 - (witharpreduct > 0.75 ? 0.75 : witharpreduct)) / (1 - (basereduct > 0.75 ? 0.75 : basereduct))) - 1;
     }

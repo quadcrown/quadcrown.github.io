@@ -792,7 +792,7 @@ SIM.UI = {
         let mhdmg = player.stats.dmgmod * player.mh.modifier * 100;
         let ohdmg = player.stats.dmgmod * (player.oh ? player.oh.modifier * 100 : 0);
         view.sidebar.find('#dmgmod').html(mhdmg.toFixed(2) + '% <small>MH</small>' + (player.oh ? space + ohdmg.toFixed(2) + '% <small>OH</small>' : ''));
-        view.sidebar.find('#arp').html(player.stats.arp + '/' + player.target.basearmor + ' <small>ArP</small>' + space + '+' + (player.arpContribution * 100).toFixed(2) + '% <small>DPS</small>');
+        view.sidebar.find('#arp').html(player.stats.arp + '/' + player.target.basearmorbuffed + ' <small>ArP</small>' + space + '+' + (player.arpContribution * 100).toFixed(2) + '% <small>DPS</small>');
         view.sidebar.find('#haste').html((player.stats.haste * 100).toFixed(2) + '%');
         view.sidebar.find('#shadow-resist').html(player.stats.resist.shadow);
         view.sidebar.find('#arcane-resist').html(player.stats.resist.arcane);
