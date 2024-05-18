@@ -81,7 +81,24 @@ SIM.SETTINGS = {
         view.talents.on('contextmenu', '.icon', function (e) {
             e.preventDefault();
             let talent = view.getTalent($(this));
-            talent.c = talent.c < 1 ? 0 : talent.c - 1;
+            if (talent.c < 1) return;
+            talent.c--;
+
+            let valid = true;
+            let count = [];
+            let tree = $(this).parents('table').index() - 2;
+            for (let t of talents[tree].t)
+                count[t.y] = (count[t.y] || 0) + t.c;
+            for(let i = 0; i < count.length; i++)
+                count[i] += count[i-1] || 0;
+            for (let t of talents[tree].t)
+                if (t.c && t.y * 5 > count[t.y - 1])
+                    valid = false;
+            if (!valid) {
+                talent.c++;
+                return;
+            }
+
             $(this).attr('data-count', talent.c);
             $(this).removeClass('maxed');
             if (talent.c == 0 && talent.enable) {
@@ -475,7 +492,7 @@ SIM.SETTINGS = {
         if (typeof spell.minrage !== 'undefined' && spell.id == 11597) 
             ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}" data-group="usage">Only use when above <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" /> rage</li>`);
         if (typeof spell.maxrage !== 'undefined') 
-            ul.append(`<li data-id="maxrageactive" class="${spell.maxrageactive ? 'active' : ''}">Don't use when above <input type="text" name="maxrage" value="${spell.maxrage}" data-numberonly="true" /> rage</li>`);
+            ul.append(`<li data-id="maxrageactive" class="${spell.maxrageactive ? 'active' : ''}">Don't switch stance when above <input type="text" name="maxrage" value="${spell.maxrage}" data-numberonly="true" /> rage</li>`);
         if (typeof spell.maincd !== 'undefined') 
             ul.append(`<li data-id="maincdactive" class="${spell.maincdactive ? 'active' : ''}">Don't ${spell.name == "Heroic Strike" ? 'queue' : 'use'} if BT / MS cooldown shorter than <input type="text" name="maincd" value="${spell.maincd}" data-numberonly="true" /> seconds</li>`);
         if (typeof spell.duration !== 'undefined') 
@@ -518,6 +535,8 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="alwaystails" data-group="coinflip" class="${spell.alwaystails ? 'active' : ''}">Always tails</li>`);
         if (spell.zerkerpriority !== undefined)
             ul.append(`<li data-id="zerkerpriority" class="${spell.zerkerpriority ? 'active' : ''}">Prioritize over Bloodrage</li>`);
+        if (typeof spell.swordboard !== 'undefined') 
+            ul.append(`<li data-id="swordboard" class="${spell.swordboard ? 'active' : ''}">Use only after a Sword & Board proc</li>`);
 
         details.css('visibility','hidden');
         details.append(ul);
@@ -557,7 +576,7 @@ SIM.SETTINGS = {
         view.buffs.append('<label class="active">Buffs</label>');
         let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
         let level = parseInt(storage.level);
-        let worldbuffs = '', consumes = '', other = '', armor = '';
+        let worldbuffs = '', consumes = '', other = '', armor = '', stances = '', skills = '';
         for (let buff of buffs) {
 
             // level restrictions
@@ -584,20 +603,42 @@ SIM.SETTINGS = {
                 continue;
             }
 
+            // rune restrictions
+            let rune;
+            if (typeof runes !== 'undefined') {
+                for (let type in runes)
+                    for (let r of runes[type])
+                        if (r.enable == buff.id) rune = r;
+                if (rune && !rune.selected) {
+                    buff.active = false;
+                    continue;
+                }
+            }
+            else if (buff.rune) {
+                buff.active = false;
+                continue;
+            }
+
+            let tooltip = buff.id;
+            if (buff.id == 413479) tooltip = 412513;
+
             let wh = buff.spellid ? 'spell' : 'item';
             let active = buff.active ? 'active' : '';
             let group = buff.group ? `data-group="${buff.group}"` : '';
             let disable = buff.disableSpell ? `data-disable-spell="${buff.disableSpell}"` : '';
             let html = `<div data-id="${buff.id}" class="icon ${active}" ${group} ${disable}>
                             <img src="https://wow.zamimg.com/images/wow/icons/medium/${buff.iconname.toLowerCase()}.jpg " alt="${buff.name}">
-                            <a href="${WEB_DB_URL}${wh}=${buff.id}" class="wh-tooltip"></a>
+                            <a href="${WEB_DB_URL}${wh}=${tooltip}" class="wh-tooltip"></a>
                         </div>`;
             if (buff.worldbuff) worldbuffs += html;
+            else if (buff.stance) stances += html;
             else if (buff.consume) consumes += html;
             else if (buff.other) other += html;
             else if (buff.armor || buff.improvedexposed) armor += html;
+            else if (buff.skill) skills += html;
             else view.buffs.append(html);
         }
+        
         view.buffs.append('<div class="label">Consumables</div>');
         view.buffs.append(consumes);
         view.buffs.append('<div class="label">World Buffs</div>');
@@ -606,6 +647,10 @@ SIM.SETTINGS = {
         view.buffs.append(other);
         view.buffs.append(`<div class="label">Armor (Current: <span id="currentarmor"></span>)</div>`);
         view.buffs.append(armor);
+        view.buffs.append('<div class="label">Default Stance</div>');
+        view.buffs.append(stances);
+        view.buffs.append('<div class="label">Skill</div>');
+        view.buffs.append(skills);
         SIM.UI.updateSession();
         SIM.UI.updateSidebar();
     },
@@ -636,6 +681,10 @@ SIM.SETTINGS = {
                 let rune = runes[type][i];
                 if (rune.enable && rune.selected) view.rotation.find('[data-id="' + rune.enable + '"]').removeClass('hidden');
                 if (rune.enable && !rune.selected) view.rotation.find('[data-id="' + rune.enable + '"]').addClass('hidden');
+
+                // Glad Stance
+                if (rune.selected && rune.gladstance) view.buffs.find('[data-id="' + rune.enable + '"]').removeClass('hidden');
+                if (!rune.selected && rune.gladstance) view.buffs.find('[data-id="' + rune.enable + '"]').addClass('hidden');
             }
         }
         var type_of_runes = $('nav > ul > li').map(function() {
@@ -652,8 +701,10 @@ SIM.SETTINGS = {
                     let td = $('<td>');
                     let rune_div = $(`<div data-id="${this_rune.id}" class="rune"></div>`);
                     let sub_div = $(`<div class="icon ${this_rune.selected ? 'active' : ''}"></div>`);
+                    let tooltip = this_rune.id;
+                    if (tooltip == 413479) tooltip = 412513;
                     sub_div.html(`<img src="https://wow.zamimg.com/images/wow/icons/medium/${this_rune.iconname}.jpg" alt="${this_rune.name}" />`);
-                    sub_div.append(`<a href="${WEB_DB_URL}spell=${this_rune.id}" class="wh-tooltip"></a>`);
+                    sub_div.append(`<a href="${WEB_DB_URL}spell=${tooltip}" class="wh-tooltip"></a>`);
                     rune_div.append(sub_div);
                     td.append(rune_div); 
                     tree.append(td);

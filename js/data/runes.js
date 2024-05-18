@@ -4,14 +4,14 @@ var runes = {
          id: 402877,
          name: 'Flagellation',
          description: "Gain a 25% bonus to physical damage done for 12 sec after activating Bloodrage or Berserker Rage.",
-         iconname: 'inv_mace_1h_stratholme_d_01',
+         iconname: 'ability_warrior_intensifyrage',
          flagellation: true,
      },
      {
          id: 412507,
          name: 'Blood Frenzy',
          description: "Each time you deal Bleed damage, you gain 3 rage.",
-         iconname: 'spell_nature_bloodlust',
+         iconname: 'ability_warrior_bloodfrenzy',
          bleedrage: 3,
      },
      {
@@ -32,8 +32,9 @@ var runes = {
       {
          id: 403219,
          name: 'Furious Thunder',
-         description: "Thunder Clap now increases the time between attacks by an additional 6% and can be used in any stance.",
-         iconname: 'spell_nature_lightning',
+         description: "Thunder Clap now increases the time between attacks by an additional 6%, can be used in any stance, deals 100% increased damage, and deals 50% increased threat.",
+         iconname: 'ability_thunderclap',
+         furiousthunder: true,
      },
      {
          id: 425418,
@@ -48,13 +49,7 @@ var runes = {
          description: "While wielding 2-handed weapons, your attack speed is increased by 20%.",
          iconname: 'ability_warrior_unrelentingassault',
          haste2h: 20,
-     },
-     {
-        id: 403215,
-        name: 'Commanding Shout',
-        description: "",
-        iconname: 'ability_warrior_rallyingcry',
-    },
+     }
    ],
    "hands": [
       {
@@ -68,7 +63,7 @@ var runes = {
          id: 403218,
          name: 'Endless Rage',
          description: "You generate 25% more Rage from all damage you deal.<br />[ASSUMED NO EFFECT ON REFUNDS]",
-         iconname: 'ability_warrior_innerrage',
+         iconname: 'ability_warrior_endlessrage',
          ragemod: 1.25,
      },
      {
@@ -106,7 +101,7 @@ var runes = {
             id: 29787,
             name: 'Focused Rage',
             description: "",
-            iconname: 'ability_druid_enrage',
+            iconname: 'ability_warrior_focusedrage',
             focusedrage: true,
         },
         {
@@ -122,19 +117,73 @@ var runes = {
             id: 426490,
             name: 'Rallying Cry',
             description: "",
-            iconname: 'ability_warrior_rallyingcry',
+            iconname: 'ability_warrior_commandingshout',
         },
         {
             id: 402913,
             name: 'Enraged Regeneration',
             description: "",
-            iconname: 'ability_warrior_focusedrage',
+            iconname: 'ability_hunter_harass',
         },
         {
             id: 403338,
             name: 'Intervene',
             description: "",
             iconname: 'ability_warrior_victoryrush',
+        },
+        {
+            id: 413479,
+            name: 'Gladiator Stance',
+            description: "",
+            iconname: 'achievement_featsofstrength_gladiator_08',
+            gladstance: true,
+            enable: 413479,
+            buffgroup: 'stance'
+        },
+    ],
+    "wrist": [
+        {
+            id: 427070,
+            name: 'Rampage',
+            description: "",
+            iconname: 'ability_warrior_rampage',
+            enable: 427070,
+        },
+        {
+            id: 426978,
+            name: 'Sword and Board',
+            description: "",
+            iconname: 'ability_warrior_swordandboard',
+            swordboard: true,
+        },
+        {
+            id: 427065,
+            name: 'Wrecking Crew',
+            description: "",
+            iconname: 'ability_warrior_trauma',
+            wreckingcrew: true,
+        },
+    ],
+    "head": [
+        {
+            id: 426980,
+            name: 'Shield Mastery',
+            description: "",
+            iconname: 'ability_warrior_shieldguard',
+            dmgshield: 10
+        },
+        {
+            id: 426953,
+            name: 'Taste for Blood',
+            description: "",
+            iconname: 'ability_rogue_hungerforblood',
+            tasteforblood: true,
+        },
+        {
+            id: 426972,
+            name: 'Vigilance',
+            description: "",
+            iconname: 'ability_warrior_vigilance',
         },
     ],
 };

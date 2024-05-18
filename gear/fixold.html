@@ -9,7 +9,8 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap" rel="stylesheet">
 
   <script type="text/javascript" src="/dist/js/libs/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="/js/data/gear.js"></script>
+  <script type="text/javascript" src="/js/data/gear_sod.js"></script>
+  <script type="text/javascript" src="/js/data/enchants.js"></script>
   <script type="text/javascript" src="rawdata.js"></script>
 </head>
 <body>
@@ -33,56 +34,40 @@
         //   session.gear[type] = arr;
         // }
 
-        await loadTable('ItemSparse');
-        
-
-        for(let type in gear) {
-          for(let item of gear[type]) {
-            let id = item.id;
-            if (id == 145541) id = 14554;
-            if (id == 199211) id = 19921;
-            let sparse = getRow('ItemSparse', id);
-            if (!sparse) {
-              console.log(item.id + ' not found');
-              continue;
-            }
-            item.q = sparse.OverallQualityID;
-            item.i = sparse.ItemLevel;
-          }
-        }
 
         // for(let type in gear) {
         //   for(let item of gear[type]) {
-        //     if (item.ppm || item.procchance) {
-        //       item.proc = {};
-        //       if (item.ppm) { item.proc.ppm = item.ppm; }
-        //       if (item.procchance) { item.proc.chance = item.procchance; }
-        //       if (item.magicdmg) { item.proc.magic = true; item.proc.dmg = item.magicdmg; }
-        //       if (item.physdmg) { item.proc.dmg = item.physdmg; }
-        //       if (item.procgcd) { item.proc.procgcd = item.procgcd; }
-        //       if (item.binaryspell) { item.proc.binaryspell = item.binaryspell; }
-        //       if (item.procspell) { item.proc.spell = item.procspell; }
-        //       if (item.coeff) { item.proc.coeff = item.coeff; }
-        //       if (item.procextra) { item.proc.extra = item.procextra; }
-        //       delete item.ppm;
-        //       delete item.magicdmg;
-        //       delete item.physdmg;
-        //       delete item.procgcd;
-        //       delete item.binaryspell;
-        //       delete item.procspell;
-        //       delete item.coeff;
-        //       delete item.procextra;
-        //       delete item.procchance;
+        //     if (!gearsod[type]) continue;
+        //     for(let itemsod of gearsod[type]) {
+        //       if (item.id == itemsod.id) item.p = itemsod.p;
         //     }
         //   }
         // }
 
-        document.querySelector("textarea").value = "var gear = " + JSON.stringify(gear, null, 2) + ";";
+
+        await loadTable('ItemEffect');
+        await loadTable('SpellEffect');
+
+        for(let type in enchant) {
+          for (let item of enchant[type]) {
+            if (item.spellid) {
+              let effects = getRows('SpellEffect', 'SpellID', item.id);
+              item.ench = effects[0]['EffectMiscValue[0]'];
+            }
+            else if (!item.temp) {
+              let spellid = getRows('ItemEffect', 'ParentItemID', item.id)[0].SpellID;
+              let effects = getRows('SpellEffect', 'SpellID', spellid);
+              item.ench = effects[0]['EffectMiscValue[0]'];
+            }
+          }
+        }
+
+        document.querySelector("textarea").value = "var enchant = " + JSON.stringify(enchant, null, 2) + ";";
       });
 
       var loadTable = async function(table) {
         return $.ajax({
-          url: table + '.csv',
+          url: table.toLowerCase() + '.csv',
           dataType: 'text',
         }).done((data) => {
           globalThis[table] = [];
@@ -109,10 +94,17 @@
           });
         });
       }
+      
 
       var getRow = function(table, id) {
-          for(let r of globalThis[table]) if (r.ID == id) return r;
-        }
+        for(let r of globalThis[table]) if (r.ID == id) return r;
+      }
+
+      var getRows = function(table, column, id) {
+        let result = [];
+        for(let r of globalThis[table]) if (r[column] == id) result.push(r);
+        return result;
+      }
     </script>
 
 </body>

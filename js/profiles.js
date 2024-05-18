@@ -61,6 +61,13 @@ SIM.PROFILES = {
             view.importProfile(preset_dw, index);
         });
 
+        view.container.on('click','.import-gl', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let index = view.container.find('.profile').last().data('index') + 1;
+            view.importProfile(preset_gl, index);
+        });
+
         view.container.on('click','.delete-profile', function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -181,6 +188,10 @@ SIM.PROFILES = {
         let modeCount = Object.keys(localStorage).filter(d => d.indexOf(mode) > -1).length;
         do {
             if (!localStorage[mode + i]) continue;
+            if (localStorage[mode + i] === "undefined") {
+                delete localStorage[mode + i];
+                continue;
+            };
             let storage = JSON.parse(localStorage[mode + i]);
             let items = view.getItemsHTML(storage);
             let talents = view.getTalents(storage);
@@ -200,10 +211,11 @@ SIM.PROFILES = {
         view.container.append(`<div>
             <div class="add-profile">${svgAdd}<p>Add Profile</p></div>
             <div class="import-profile">${svgImport}<p>Import Profile</p>
-            ${false && mode == "sod" ? 
+            ${mode == "sod" ? 
                 `<div class="import-container">
-                    <div class="import-th">2H BiS</div>
-                    <div class="import-dw">DW BiS</div>
+                    <div class="import-gl" style="width: 100%;">Gladiator Stance</div>
+                    <div class="import-dw">50 DW Fury</div>
+                    <div class="import-th">50 2H Arms</div>
                 </div>` : ''}
             </div>
             </div>`);
@@ -226,6 +238,7 @@ SIM.PROFILES = {
             }
         }
         for(let type in storage.gear) {
+            if (type == 'custom') continue;
             if (type != "twohand" && type != "mainhand" && type != "offhand") {
                 for  (let item of storage.gear[type]) {
                     if (item.selected) {
@@ -328,6 +341,7 @@ SIM.PROFILES = {
                 if (typeof spell.alwaystails !== 'undefined') obj.alwaystails = spell.alwaystails;
                 if (typeof spell.alwaysheads !== 'undefined') obj.alwaysheads = spell.alwaysheads;
                 if (typeof spell.zerkerpriority !== 'undefined') obj.zerkerpriority = spell.zerkerpriority;
+                if (typeof spell.swordboard !== 'undefined') obj.swordboard = spell.swordboard;
                 minified.rotation.push(obj);
             }
         }
@@ -353,7 +367,8 @@ SIM.PROFILES = {
     importProfile(str, index) {
         const view = this;
         try {
-            let minified = str[0] == '{' ? JSON.parse(str) : JSON.parse(atob(str));
+            let minified = str[0] == '{' ? JSON.parse(str.trim()) : JSON.parse(atob(str.trim()));
+            if (!localStorage[mode + (globalThis.profileid || 0)]) SIM.UI.loadSession();
             let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
 
 
@@ -363,10 +378,15 @@ SIM.PROFILES = {
             storage.buffs = minified.buffs;
             storage.talents = minified.talents;
 
-            for (let type in storage.gear) {
-                for (let item of storage.gear[type])
-                    if (item.id == minified.gear[type]) item.selected = true;
-                    else delete item.selected;
+            storage.gear = {};
+            for (let type in minified.gear) {
+                if (type == 'custom') continue;
+                storage.gear[type] = [{id: minified.gear[type], selected: true}];
+            }
+            for (let spell of spells) {
+                if (!storage.rotation.filter(s => s.id == spell.id).length) {
+                    storage.rotation.push(spell);
+                }
             }
             for (let spell of storage.rotation) {
                 let newspell = minified.rotation.filter(s => s.id == spell.id)[0];
@@ -409,27 +429,24 @@ SIM.PROFILES = {
                     if (typeof newspell.alwaystails !== 'undefined') spell.alwaystails = newspell.alwaystails;
                     if (typeof newspell.alwaysheads !== 'undefined') spell.alwaysheads = newspell.alwaysheads;
                     if (typeof newspell.zerkerpriority !== 'undefined') spell.zerkerpriority = newspell.zerkerpriority;
+                    if (typeof newspell.swordboard !== 'undefined') spell.swordboard = newspell.swordboard;
                 }
                 else {
                     spell.active = false;
                 }
             }
-            for (let type in storage.runes) {
-                for (let item of storage.runes[type])
-                    if (item.id == minified.runes[type]) item.selected = true;
-                    else delete item.selected;
+            storage.runes = {};
+            for (let type in minified.runes) {
+                storage.runes[type] = [{id: minified.runes[type], selected: true}];
+            }
+            storage.enchant = {};
+            for (let type in minified.enchant) {
+                storage.enchant[type] = [];
+                for (let e of minified.enchant[type])
+                    storage.enchant[type].push({id: e, selected: true});
             }
 
-            for (let type in storage.enchant) {
-                for (let item of storage.enchant[type]) {
-                    if (minified.enchant[type] && minified.enchant[type].includes(item.id))
-                        item.selected = true;
-                    else
-                        delete item.selected;
-                }
-            }
-
-            let modei = mode + index;
+            let modei = mode + (index || 0);
             localStorage[modei] = JSON.stringify(storage);
             view.buildProfiles();
             SIM.UI.addAlert(storage.profilename + ' imported');

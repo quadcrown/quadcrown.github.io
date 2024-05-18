@@ -13,6 +13,8 @@ class Spell {
         this.useonly = false;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         this.weaponspell = true;
+        this.defenseType = DEFENSETYPE.MELEE;
+        this.school = SCHOOL.PHYSICAL;
         this.minrage = 0;
 
         let spell = spells.filter(s => s.id == this.id)[0];
@@ -38,6 +40,7 @@ class Spell {
         if (spell.timetoendactive) this.timetoend = parseInt(spell.timetoend) * 1000;
         if (spell.timetostartactive) this.timetostart = parseInt(spell.timetostart) * 1000;
         if (spell.zerkerpriority) this.zerkerpriority = spell.zerkerpriority;
+        if (spell.swordboard) this.swordboard = spell.swordboard;
         
     }
     dmg() {
@@ -73,7 +76,9 @@ class Bloodthirst extends Spell {
         this.weaponspell = false;
     }
     dmg() {
-        return this.player.stats.ap * 0.45;
+        let dmg;
+        dmg = this.player.stats.ap * 0.45 + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.rage >= this.minrage;
@@ -90,14 +95,24 @@ class Whirlwind extends Spell {
     dmg() {
         let dmg;
         dmg = rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
-        return dmg + (this.player.stats.ap / 14) * this.player.mh.normSpeed;
+        dmg += (this.player.stats.ap / 14) * this.player.mh.normSpeed + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
+    }
+    use() {
+        this.player.switch('zerk');
+        this.player.timer = 1500;
+        this.player.rage -= this.cost;
+        this.timer = this.cooldown * 1000;
+        this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && 
-        ((!this.minrage && !this.maincd) ||
-         (this.minrage && this.player.rage >= this.minrage) ||
-         (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
-         (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+        (this.player.stance == 'zerk' || this.player.stance == 'glad' || this.player.talents.rageretained >= this.cost) &&
+        (!this.maxrage || (this.player.stance != 'battle' && this.player.stance != 'def') || this.player.rage <= this.maxrage) &&
+        (!this.minrage || this.player.rage >= this.minrage) &&
+        (!this.maincd || 
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
 
@@ -111,25 +126,24 @@ class Overpower extends Spell {
     dmg() {
         let dmg;
         dmg = this.value1 + rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
-        return dmg + (this.player.stats.ap / 14) * this.player.mh.normSpeed;
+        dmg += (this.player.stats.ap / 14) * this.player.mh.normSpeed + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
     }
     use() {
         this.player.timer = 1500;
         this.player.dodgetimer = 0;
         this.timer = this.cooldown * 1000;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
-        if (this.player.stance && !this.player.gladstance) {
-            this.player.auras.battlestance.use();
-            this.player.rage = Math.min(this.player.rage, this.player.talents.rageretained);
-        }
+        this.player.switch('battle');
         this.player.rage -= this.cost;
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.dodgetimer &&
-        ((!this.maxrage && !this.maincd) ||
-         (this.maxrage && this.player.rage <= this.maxrage) ||
-         (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
-         (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+        (this.player.stance == 'battle' || this.player.stance == 'glad' || this.player.talents.rageretained >= this.cost) &&
+        (!this.maxrage || (this.player.stance != 'zerk' && this.player.stance != 'def') || this.player.rage <= this.maxrage) &&
+        (!this.maincd || 
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
 
@@ -143,7 +157,9 @@ class Execute extends Spell {
         this.weaponspell = false;
     }
     dmg() {
-        return this.value1 + (this.value2 * this.usedrage);
+        let dmg;
+        dmg = this.value1 + (this.value2 * this.usedrage) + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
     }
     use(delayedheroic) {
         // HS + Execute macro
@@ -273,7 +289,8 @@ class MortalStrike extends Spell {
     dmg() {
         let dmg;
         dmg = this.value1 + rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
-        return dmg + (this.player.stats.ap / 14) * this.player.mh.normSpeed;
+        dmg += (this.player.stats.ap / 14) * this.player.mh.normSpeed + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.rage >= this.minrage;
@@ -292,14 +309,15 @@ class SunderArmor extends Spell {
         this.player.rage -= this.cost;
         this.timer = this.cooldown * 1000;
         this.stacks = Math.min(6, this.stacks + 1);
+        if (this.player.homunculi || this.player.exposed) this.stacks = 6;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     dmg() {
         if (!this.devastate) return 0;
-        let mod = 1.5 + 0.1 * (this.stacks - 1);
-        let dmg = (this.player.mh.mindmg + this.player.mh.bonusdmg + this.player.mh.maxdmg + this.player.mh.bonusdmg) / 2;
-        let dps = (dmg  + (this.player.stats.ap / 14) * this.player.mh.speed)  / (this.player.mh.speed / this.player.stats.haste);
-        return dps * mod;
+        let mod = 1.5 * (1 + 0.1 * (this.stacks - 1));
+        let dmg = (this.player.mh.mindmg + this.player.mh.maxdmg) / 2;
+        let dps = (dmg  + (this.player.stats.ap / 14) * this.player.mh.speed)  / this.player.mh.speed;
+        return dps * mod * this.player.stats.dmgmod;
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.rage >= this.minrage &&
@@ -324,7 +342,29 @@ class Hamstring extends Spell {
             this.cost -= 3;
     }
     dmg() {
-        return this.value1;
+        let dmg;
+        dmg = this.value1 + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
+    }
+}
+
+class ThunderClap extends Spell {
+    constructor(player, id) {
+        super(player, id);
+        this.defenseType = DEFENSETYPE.MAGIC
+        this.cost = 20 - player.ragecostbonus - player.talents.impthunderclap;
+    }
+    dmg() {
+        let dmg;
+        dmg = this.value1;
+        if(this.player.furiousthunder)
+            dmg *= 2;
+        return dmg;
+    }
+    canUse() {
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
+            (!this.minrage || this.player.rage >= this.minrage) &&
+            (this.player.furiousthunder || (this.player.stance == 'battle' || this.player.stance == 'glad'));
     }
 }
 
@@ -342,7 +382,9 @@ class VictoryRush extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     dmg() {
-        return this.player.stats.ap * 0.45;
+        let dmg;
+        dmg = this.player.stats.ap * 0.45;
+        return dmg * this.player.stats.dmgmod;
     }
     canUse() {
         return !this.player.timer && !this.stacks;
@@ -358,7 +400,8 @@ class RagingBlow extends Spell {
     dmg() {
         let dmg;
         dmg = rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
-        return (dmg + (this.player.stats.ap / 14) * this.player.mh.normSpeed) * 0.8;
+        dmg += (this.player.stats.ap / 14) * this.player.mh.normSpeed + this.player.stats.moddmgdone;
+        return dmg * 0.8 * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
     }
     canUse(executephase) {
         return !this.timer && !this.player.timer && 
@@ -381,6 +424,7 @@ class BerserkerRage extends Spell {
         this.player.timer = 1500;
         this.timer = this.cooldown * 1000;
         let oldRage = this.player.rage;
+        this.player.switch('zerk');
         this.player.rage = Math.min(this.player.rage + this.rage, 100);
         this.player.auras.berserkerrage.use();
         this.player.auras.flagellation && this.player.auras.flagellation.use();
@@ -390,6 +434,7 @@ class BerserkerRage extends Spell {
     }
     canUse() {
         return this.timer == 0 && !this.player.timer &&
+            (!this.maxrage || this.player.stance == 'zerk' || this.player.rage <= this.maxrage) &&
             (!this.flagellation || !this.player.auras.flagellation || !this.player.auras.flagellation.timer) &&
             (!this.consumedrage || !this.player.auras.consumedrage || this.player.auras.consumedrage.timer);
     }
@@ -402,10 +447,16 @@ class QuickStrike extends Spell {
         this.cooldown = 0;
     }
     dmg() {
-        return ~~rng(this.player.stats.ap * 0.10, this.player.stats.ap * 0.20);
+        let dmg;
+        dmg = ~~rng(this.player.stats.ap * 0.10, this.player.stats.ap * 0.20) + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.rage >= this.minrage;
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+            ((!this.minrage && !this.maincd) ||
+            (this.minrage && this.player.rage >= this.minrage) ||
+            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
 
@@ -446,7 +497,8 @@ class Slam extends Spell {
     dmg() {
         let dmg;
         dmg = (this.decisive && this.player.level == 60 ? this.value2 : this.value1) + rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
-        return dmg + (this.player.stats.ap / 14) * this.player.mh.speed;
+        dmg += (this.player.stats.ap / 14) * this.player.mh.speed + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
     }
     use() {
         if (!this.player.freeslam) this.player.rage -= this.cost;
@@ -462,13 +514,111 @@ class Slam extends Spell {
     canUse() {
         return !this.timer && !this.player.timer && this.player.mh.timer >= this.mhthreshold && (this.player.freeslam || this.cost <= this.player.rage) && 
             (!this.bloodsurge || this.player.freeslam) &&
-            (!this.player.auras.battlestance || !this.player.auras.battlestance.timer) &&
-            ((!this.minrage && !this.maincd) ||
-            (this.minrage && this.player.rage >= this.minrage) ||
-            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
-            (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+            (!this.minrage || this.player.rage >= this.minrage) &&
+            (!this.maincd || 
+                (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+                (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
+
+class Fireball extends Spell {
+    constructor(player, id) {
+        super(player, id);
+        this.useonly = true;
+        this.proc = { magicdmg: 331+40 };
+        this.idmg = 0;
+    }
+    prep(duration) {
+        if (typeof this.timetoend !== 'undefined') this.usestep = Math.max(duration - this.timetoend, 0);
+        if (typeof this.timetostart !== 'undefined') this.usestep = this.timetostart;
+        return 0;
+    }
+    use() {
+        this.timer = 1;
+        let procdmg = this.player.magicproc(this.proc);
+        this.idmg += procdmg;
+        /* start-log */ if (log) this.player.log(`Fireball hit for ${procdmg}`); /* end-log */
+    }
+    canUse() {
+        return !this.timer && step >= this.usestep;
+    }
+}
+
+class GunAxe extends Spell {
+    constructor(player, id) {
+        super(player, id);
+        this.useonly = true;
+        this.proc = { magicdmg: 150 + 75 };
+        this.idmg = 0;
+    }
+    prep(duration) {
+        if (typeof this.timetoend !== 'undefined') this.usestep = Math.max(duration - this.timetoend, 0);
+        if (typeof this.timetostart !== 'undefined') this.usestep = this.timetostart;
+        return 0;
+    }
+    use() {
+        this.timer = 1;
+        let procdmg = this.player.magicproc(this.proc);
+        this.idmg += procdmg;
+        /* start-log */ if (log) this.player.log(`Gun Axe hit for ${procdmg}`); /* end-log */
+    }
+    canUse() {
+        return !this.timer && step >= this.usestep;
+    }
+}
+
+class BlademasterFury extends Spell {
+    constructor(player, id) {
+        super(player, id, 'Blademaster\'s Fury');
+        this.cooldown = 120;
+    }
+    dmg() {
+        let dmg;
+        dmg = rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
+        dmg += (this.player.stats.ap / 14) * this.player.mh.normSpeed + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
+    }
+    use() {
+        this.player.timer = 1500;
+        this.timer = this.cooldown * 1000;
+        this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
+        if (this.player.spells.whirlwind) {
+            this.player.spells.whirlwind.timer = 0;
+            /* start-log */ if (log) this.player.log(`${this.player.spells.whirlwind.name} off cooldown`); /* end-log */
+        }
+    }
+    canUse() {
+        return !this.timer && !this.player.timer && 
+            (!this.player.spells.whirlwind || this.player.spells.whirlwind.timer > 0);
+    }
+}
+
+class ShieldSlam extends Spell {
+    constructor(player, id) {
+        super(player, id, 'Shield Slam');
+        this.cost = 20 - player.ragecostbonus;
+        this.cooldown = 6;
+        if (this.swordboard) this.cost = 0;
+    }
+    dmg() {
+        let dmg;
+        dmg = rng(this.value1, this.value2) + this.player.mh.bonusdmg + (this.player.stats.block * 2) + this.player.stats.moddmgdone;
+        return dmg * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
+    }
+    use() {
+        this.player.timer = 1500;
+        if (!this.player.freeshieldslam) this.player.rage -= this.cost;
+        this.timer = this.cooldown * 1000;
+        this.player.freeshieldslam = false;
+        this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
+    }
+    canUse() {
+        return this.player.shield && !this.timer && !this.player.timer && (this.player.freeshieldslam || this.cost <= this.player.rage) 
+            && (this.player.freeshieldslam || this.player.rage >= this.minrage)
+            && (!this.swordboard || this.player.freeshieldslam);
+    }
+}
+
 
 /**************************************************** AURAS ****************************************************/
 
@@ -510,6 +660,7 @@ class Aura {
         if (spell.alwaysheads) this.alwaysheads = spell.alwaysheads;
         if (spell.item) this.item = spell.item;
         if (spell.noitemcd) this.noitemcd = spell.noitemcd;
+        if (spell.maxrageactive) this.maxrage = parseInt(spell.maxrage);
 
     }
     use() {
@@ -562,6 +713,7 @@ class Recklessness extends Aura {
         this.timer = step + this.duration * 1000;
         this.player.timer = 1500;
         this.starttimer = step;
+        this.player.switch('zerk');
         this.player.updateAuras();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
@@ -610,12 +762,12 @@ class DeepWounds extends Aura {
         let min;
         let max;
         if (!offhand) {
-            min = this.player.mh.mindmg + this.player.mh.bonusdmg + (this.player.stats.ap / 14) * this.player.mh.speed;
-            max = this.player.mh.maxdmg + this.player.mh.bonusdmg + (this.player.stats.ap / 14) * this.player.mh.speed;
+            min = this.player.mh.mindmg + this.player.mh.bonusdmg + this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.mh.speed;
+            max = this.player.mh.maxdmg + this.player.mh.bonusdmg + this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.mh.speed;
         }
         else {
-            min = this.player.oh.mindmg + this.player.oh.bonusdmg + (this.player.stats.ap / 14) * this.player.oh.speed;
-            max = this.player.oh.maxdmg + this.player.oh.bonusdmg + (this.player.stats.ap / 14) * this.player.oh.speed;
+            min = this.player.oh.mindmg + this.player.oh.bonusdmg + this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.oh.speed;
+            max = this.player.oh.maxdmg + this.player.oh.bonusdmg + this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.oh.speed;
         }
         let dmg = (min + max) / 2;
         dmg *= (!offhand ? this.player.mh.modifier : this.player.oh.modifier) * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod; 
@@ -678,8 +830,8 @@ class OldDeepWounds extends Aura {
     }
     step() {
         while (step >= this.nexttick) {
-            let min = this.player.mh.mindmg + this.player.mh.bonusdmg + (this.player.stats.ap / 14) * this.player.mh.speed;
-            let max = this.player.mh.maxdmg + this.player.mh.bonusdmg + (this.player.stats.ap / 14) * this.player.mh.speed;
+            let min = this.player.mh.mindmg + this.player.mh.bonusdmg+ this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.mh.speed;
+            let max = this.player.mh.maxdmg + this.player.mh.bonusdmg+ this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.mh.speed;
             let dmg = (min + max) / 2;
             dmg *= this.player.mh.modifier * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod;
             this.idmg += dmg / 4;
@@ -853,19 +1005,28 @@ class DeathWish extends Aura {
 class BattleStance extends Aura {
     constructor(player, id) {
         super(player, id, 'Battle Stance');
-        this.duration = 2;
-        this.stats = { crit: -3 };
+        this.stats = { };
     }
-    step() {
-        if (step >= this.timer) {
-            this.uptime += (this.timer - this.starttimer);
-            this.timer = 0;
-            this.player.timer = 1500;
-            this.firstuse = false;
-            this.player.updateAuras();
-            this.player.rage = Math.min(this.player.rage, this.player.talents.rageretained);
-            /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
-        }
+}
+
+class DefensiveStance extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Defensive Stance');
+        this.mult_stats = { dmgmod: -10, spelldmgmod: -10, };
+    }
+}
+
+class BerserkerStance extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Berserker Stance');
+        this.stats = { crit: 3 };
+    }
+}
+
+class GladiatorStance extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Gladiator Stance');
+        this.mult_stats = { };
     }
 }
 
@@ -1055,7 +1216,7 @@ class Zeal extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 15;
-        this.stats = { bonusdmg: 10 };
+        this.stats = { moddmgdone: 10 };
     }
     use() {
         if (this.player.timer && this.player.timer < 1500) return;
@@ -1073,6 +1234,12 @@ class Zeal extends Aura {
             this.player.updateBonusDmg();
             /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
         }
+    }
+    end() {
+        this.uptime += (step - this.starttimer);
+        this.timer = 0;
+        this.stacks = 0;
+        this.player.updateBonusDmg();
     }
 }
 
@@ -1267,7 +1434,7 @@ class Swarmguard extends Aura {
         this.duration = 30;
         this.armor = 200;
         this.stacks = 0;
-        this.chance = 5000;
+        this.chance = ~~(player.mh.speed * 10 / 0.006); // 10 PPM
         this.timetoend = 30000;
     }
     use() {
@@ -1444,10 +1611,20 @@ class Gabbar extends Aura {
 
 class PrimalBlessing extends Aura {
     constructor(player, id) {
-        super(player, id);
+        super(player, id, 'Primal Blessing');
         this.duration = 12;
         this.stats = { ap: 300 };
-        this.name = 'Primal Blessing';
+        this.cooldown = 240;
+        this.cooldowntimer = 0;
+    }
+    use() {
+        if (this.cooldowntimer > step) return;
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.cooldowntimer = step + this.cooldown * 1000;
+        this.player.updateAP();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
 }
 
@@ -1492,20 +1669,20 @@ class Zandalarian extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 20;
-        this.stats = { bonusdmg: 40 };
+        this.stats = { moddmgdone: 40 };
     }
     use() {
         this.player.itemtimer = this.duration * 1000;
         this.timer = step + this.duration * 1000;
         this.starttimer = step;
-        this.stats.bonusdmg = 40;
+        this.stats.moddmgdone = 40;
         this.player.updateBonusDmg();
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     proc() {
-        this.stats.bonusdmg -= 2;
+        this.stats.moddmgdone -= 2;
         this.player.updateBonusDmg();
-        if (this.stats.bonusdmg <= 0) {
+        if (this.stats.moddmgdone <= 0) {
             this.timer = step;
             this.step();
         }
@@ -1521,6 +1698,12 @@ class Zandalarian extends Aura {
             this.player.updateBonusDmg();
             /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
         }
+    }
+    end() {
+        this.uptime += (step - this.starttimer);
+        this.timer = 0;
+        this.stacks = 0;
+        this.player.updateBonusDmg();
     }
 }
 
@@ -1620,8 +1803,11 @@ class Rend extends Aura {
         this.cost = 10 - player.ragecostbonus;
         this.idmg = 0;
         this.totaldmg = 0;
-        this.uses = 0;
+        this.data = [0, 0, 0, 0, 0];
+        this.canDodge = true;
+        this.nocrit = true;
         this.dmgmod = 1 + this.player.talents.rendmod / 100;
+        this.tfbstep = -6000;
     }
     step() {
         while (step >= this.nexttick && this.stacks) {
@@ -1646,6 +1832,13 @@ class Rend extends Aura {
                 this.uptime += (step - this.starttimer);
                 /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
             }
+
+            // Taste for Blood
+            if (this.player.tasteforblood && (this.tfbstep + 6000) <= step) {
+                this.player.dodgetimer = 9000;
+                this.tfbstep = step;
+                /* start-log */ if (log) this.player.log(`Taste of Blood applied`); /* end-log */
+            }
         }
 
         if (step >= this.timer) {
@@ -1654,25 +1847,37 @@ class Rend extends Aura {
         }
     }
     use() {
+        let result = this.player.rollmeleespell(this);
+        this.data[result]++;
+        if (result == RESULT.MISS) return;
+        if (result == RESULT.DODGE) {
+            this.player.dodgetimer = 5000;
+            return;
+        }
+
         if (this.timer) this.uptime += (step - this.starttimer);
         this.nexttick = step + 3000;
         this.timer = step + this.duration * 1000;
         this.player.timer = 1500;
         this.starttimer = step;
         this.stacks = this.value2;
+        if (this.player.stance == 'zerk')
+            this.player.switch('battle');
         this.player.rage -= this.cost;
-        this.uses++;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.player.rage >= this.cost;
+        return !this.timer && !this.player.timer && this.player.rage >= this.cost &&
+            (this.player.stance != 'zerk' || this.player.talents.rageretained >= this.cost) && 
+            (!this.maxrage || this.player.stance != 'zerk' || this.player.rage <= this.maxrage);
     }
     end() {
         if (this.stacks)
             this.uptime += (step - this.starttimer);
         this.timer = 0;
         this.stacks = 0;
+        this.tfbstep = -6000;
     }
 }
 
@@ -1810,6 +2015,39 @@ class Ragehammer extends Aura {
     }
 }
 
+class BlisteringRagehammer extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 15;
+        this.stats = { moddmgdone: 30 };
+        this.mult_stats = { haste: 10 };
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateBonusDmg();
+        this.player.updateHaste();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.firstuse = false;
+            this.player.updateBonusDmg();
+            this.player.updateHaste();
+            /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+    end() {
+        this.uptime += (step - this.starttimer);
+        this.timer = 0;
+        this.stacks = 0;
+        this.player.updateBonusDmg();
+    }
+}
+
 class Jackhammer extends Aura {
     constructor(player, id) {
         super(player, id);
@@ -1846,7 +2084,7 @@ class Stoneslayer extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 8;
-        this.stats = { bonusdmg: 10 };
+        this.stats = { moddmgdone: 10 };
     }
     use() {
         if (this.timer) this.uptime += (step - this.starttimer);
@@ -1863,6 +2101,12 @@ class Stoneslayer extends Aura {
             this.player.updateBonusDmg();
             /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
         }
+    }
+    end() {
+        this.uptime += (step - this.starttimer);
+        this.timer = 0;
+        this.stacks = 0;
+        this.player.updateBonusDmg();
     }
 }
 
@@ -1969,7 +2213,8 @@ class Spicy extends Aura {
         this.starttimer = step;
         this.firstuse = false;
         this.player.updateHaste();
-        this.player.attackproc = { chance: 500, magicdmg: 7 };
+        if (!this.player.attackproc1) this.player.attackproc1 = { chance: 500, magicdmg: 7, spicy: true };
+        if (!this.player.attackproc2) this.player.attackproc2 = { chance: 500, magicdmg: 7, spicy: true };
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     step() {
@@ -1977,7 +2222,8 @@ class Spicy extends Aura {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
             this.player.updateHaste();
-            delete this.player.attackproc;
+            if (this.player.attackproc1 && this.player.attackproc1.spicy) delete this.player.attackproc1;
+            if (this.player.attackproc2 && this.player.attackproc2.spicy) delete this.player.attackproc2;
             /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
@@ -1985,7 +2231,8 @@ class Spicy extends Aura {
         this.uptime += (step - this.starttimer);
         this.timer = 0;
         this.stacks = 0;
-        delete this.player.attackproc;
+        if (this.player.attackproc1 && this.player.attackproc1.spicy) delete this.player.attackproc1;
+        if (this.player.attackproc2 && this.player.attackproc2.spicy) delete this.player.attackproc2;
     }
 }
 
@@ -2024,5 +2271,188 @@ class CoinFlip extends Aura {
     }
     canUse() {
         return this.firstuse && !this.timer && step >= this.usestep;
+    }
+}
+
+class Rampage extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 30;
+        this.mult_stats = { apmod: 2 };
+        this.stacks = 0;
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        if (!this.timer) {
+            this.stacks =  1;
+            this.mult_stats.apmod = 2;
+        } 
+        this.timer = step + this.duration * 1000;
+        this.player.rage -= 20;
+        this.player.timer = 1500;
+        this.player.crittimer = 0;
+        this.starttimer = step;
+        this.player.updateAP();
+        this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    proc() {
+        this.stacks++;
+        this.mult_stats.apmod = this.stacks * 2;
+        this.player.updateAP();
+    }
+    canUse() {
+        return (!this.timer || (this.timer - step) < 3000) && !this.player.timer && this.player.crittimer && this.player.rage >= 20;
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.player.updateAP();
+            this.player.crittimer = 0;
+            /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+}
+
+class WreckingCrew extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Wrecking Crew');
+        this.duration = 6;
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.critdmgbonus = 0.1;
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.player.critdmgbonus = 0;
+            /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+}
+
+class SerpentAscension extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Serpent\'s Ascension');
+        this.duration = 12;
+        this.stats = { ap: 150 };
+        this.cooldown = 120;
+        this.cooldowntimer = 0;
+    }
+    use() {
+        if (this.cooldowntimer > step) return;
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.cooldowntimer = step + this.cooldown * 1000;
+        this.player.updateAP();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+}
+
+class VoodooFrenzy extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Voodoo Frenzy');
+        this.duration = 10;
+        this.cooldown = 40;
+        this.cooldowntimer = 0;
+    }
+    use() {
+        if (this.cooldowntimer > step) return;
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.cooldowntimer = step + this.cooldown * 1000;
+        if (this.player.stats.str >= this.player.stats.agi) this.stats = { str: 35 };
+        else this.stats = { agi: 35 };
+        this.player.updateAuras();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+}
+
+class RoarGuardian extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Roar of the Guardian');
+        this.duration = 20;
+        this.stats = { ap: 70 };
+    }
+    use() {
+        this.player.itemtimer = this.duration * 1000;
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateAP();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    canUse() {
+        return this.firstuse && !this.timer && !this.player.itemtimer && step >= this.usestep;
+    }
+}
+
+class RelentlessStrength extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Relentless Strength');
+        this.duration = 20;
+        this.stats = { moddmgdone: 20 };
+    }
+    use() {
+        this.player.itemtimer = this.duration * 1000;
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.stats.moddmgdone = 20;
+        this.player.updateBonusDmg();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    proc() {
+        this.stats.moddmgdone -= 1;
+        this.player.updateBonusDmg();
+        if (this.stats.moddmgdone <= 0) {
+            this.timer = step;
+            this.step();
+        }
+    }
+    canUse() {
+        return this.firstuse && !this.timer && !this.player.itemtimer && step >= this.usestep;
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.firstuse = false;
+            this.player.updateBonusDmg();
+            /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+    end() {
+        this.uptime += (step - this.starttimer);
+        this.timer = 0;
+        this.stacks = 0;
+        this.player.updateBonusDmg();
+    }
+}
+
+class EchoesDread extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Echoes of Dread');
+        this.duration = 10;
+        this.stats = { ap: 50 };
+        this.mult_stats = { haste: 5 };
+        this.cooldown = 40;
+        this.cooldowntimer = 0;
+    }
+    use() {
+        if (this.cooldowntimer > step) return;
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.cooldowntimer = step + this.cooldown * 1000;
+        this.player.updateAP();
+        this.player.updateHaste();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
 }

@@ -1,6 +1,7 @@
 function getGlobalsDelta() {
     const _gear = {};
     for (const type in gear) {
+        if (type == 'custom') continue;
         _gear[type] = gear[type].map((item) => {
             return {
                 id: item.id,
@@ -68,15 +69,24 @@ function updateGlobals(params) {
                     if (prop != 'minlevel' && prop != 'maxlevel' && prop != 'iconname')
                         j[prop] = i[prop];
 
+    for (let type in gear)
+        for (let j of gear[type])
+            if (j.selected) j.selected = false;
+
     for (let type in params.gear)
         for (let i of params.gear[type])
             if (gear[type])
-                for (let j of gear[type])
+                for (let j of gear[type]) {
                     if (i.id == j.id) {
                         j.dps = i.dps;
                         j.selected = i.selected;
                         j.hidden = i.hidden;
                     }
+                }
+
+    for (let type in enchant)
+        for (let j of enchant[type])
+            if (j.selected) j.selected = false;
 
     for (let type in params.enchant)
         for (let i of params.enchant[type])
@@ -87,6 +97,11 @@ function updateGlobals(params) {
                     j.hidden = i.hidden;
                 }
 
+    if (typeof runes !== 'undefined') {
+        for (let type in runes)
+            for (let j of runes[type])
+                if (j.selected) j.selected = false;
+    }
     for (let type in params.runes)
         for (let i of params.runes[type])
             for (let j of runes[type])
@@ -102,4 +117,6 @@ function updateGlobals(params) {
             $(".resistances[data-id='"+type+"-resist']").click()
         }
     }
+
+    delete gear["custom"];
 }

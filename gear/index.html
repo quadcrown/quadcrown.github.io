@@ -49,6 +49,9 @@
         await loadTable('SpellMisc');
         await loadTable('SpellName');
         await loadTable('SpellDuration');
+        await loadTable('SpellShapeshift');
+        await loadTable('ShieldBlockValue');
+        await loadTable('Icons');
 
         for (let item of Item) {
           let obj = {};
@@ -76,6 +79,9 @@
           if (parseInt(sparse["MaxDamage[1]"])) obj.maxdmg += parseInt(sparse["MaxDamage[1]"]);
           if (item.ClassID == "2" && (!obj.mindmg || !obj.maxdmg)) continue;
 
+          let icon = getRow('Icons', item.IconFileDataID);
+          if (icon) obj.p = icon.path;
+
           let agi = getStat(sparse, 3);
           let str = getStat(sparse, 4);
           let sta = getStat(sparse, 7);
@@ -101,6 +107,8 @@
               // stats
               if (spell.TriggerType == "1") { // On Equip
                 effects.forEach(e => {
+                  let shapeshift = getRows('SpellShapeshift', 'SpellID', e.SpellID)[0];
+                  if (shapeshift && shapeshift["ShapeshiftMask[0]"] == 145) return;
                   if (e.Effect == 6 && e.EffectAura == 99)
                     obj.ap = (obj.ap || 0) + parseInt(e.EffectBasePoints) + 1;
                   if (e.Effect == 6 && e.EffectAura == 102 && e["EffectMiscValue[0]"] & 32)
@@ -125,6 +133,8 @@
                       else delete obj.skill;
                     }
                   }
+                  if (e.Effect == 6 && e.EffectAura == 564)
+                    obj.block = parseInt(e.EffectBasePoints) + 1;
                 });
               }
 
@@ -160,6 +170,12 @@
             });
           }
 
+          if (obj.type == "Shield") {
+            let shieldblock = getRows('ShieldBlockValue', 'Level', obj.i)[0];
+            let blockvalue = shieldblock[obj.q == "4" ? "Epic" : obj.q == "3" ? "Superior" : "Good"];
+            obj.block = parseInt(blockvalue);
+          }
+
           if (parseInt(sparse.RandomSelect)) {
             let suffixFound = false;
             let suff = getItemSuffixes(obj.id, sparse.OverallQualityID, "tiger");
@@ -170,10 +186,11 @@
                 if (/[+-]\d+ Agility/.test(s)) { tiger.agi = parseInt(s); }
                 if (/[+-]\d+ Stamina/.test(s)) { tiger.sta = parseInt(s); }
               });
-              tiger.name += " of the Tiger";
               tiger.rand = suff.id;
               tiger.id += '|' + suff.id;
-              addToGear(tiger);
+              tiger.name += " of the Tiger";
+              if (tiger.id == "9640") { }
+              else addToGear(tiger);
               suffixFound = true;
             }
 
@@ -185,7 +202,9 @@
                 if (/[+-]\d+ Agility/.test(s)) { bear.agi = parseInt(s); }
                 if (/[+-]\d+ Stamina/.test(s)) { bear.sta = parseInt(s); }
               });
-              bear.name += " of the Bear";
+
+              if (bear.id == "9640") bear.name += " of the Burr";
+              else bear.name += " of the Bear";
               bear.rand = suff.id;
               bear.id += '|' + suff.id;
               addToGear(bear);
@@ -198,7 +217,8 @@
               suff.s.forEach(s => {
                 if (/[+-]\d+ Strength/.test(s)) { strength.str = parseInt(s); }
               });
-              strength.name += " of Strength";
+              if (strength.id == "9640") strength.name += " of Stronk";
+              else strength.name += " of Strength";
               strength.rand = suff.id;
               strength.id += '|' + suff.id;
               addToGear(strength);
@@ -226,8 +246,13 @@
           if (obj.id == 867) obj.ap = 20;
           if (obj.id == 216497) obj.proc.magic = true;
           if (obj.id == 215166) delete obj.proc;
+          if (obj.id == 220568) delete obj.proc;
           if (obj.id == 209577) obj.ap = 0;
           if (obj.id == 6460) obj.i = 30;
+          if (obj.id == 12548) obj.r = 51;
+          if (obj.id == 211449) obj.i = 40;
+          if (obj.id == 209563) obj.i = 40;
+
 
           let include = false, exclude = false;
           if (obj.id == 21568) include = true;
@@ -242,9 +267,8 @@
           if (obj.id == 14552) include = true;
           if (obj.id == 6746) include = true;
           if (obj.id == 215461) include = true;
-
-          
-          
+          if (obj.id == 221442) include = true;
+          if (obj.id == 220632) include = true;
           
           if (obj.id == 16336) exclude = true;
           if (obj.id == 17780) exclude = true;
@@ -264,11 +288,8 @@
           if (obj.id == 215114) exclude = true;
           if (obj.id == 10577) exclude = true;
           if (obj.id == 211502) exclude = true;
-
-          
-          
-          
-
+          if (obj.id == 20177) exclude = true;
+          if (obj.id == 20179) exclude = true;
 
           
 
@@ -279,20 +300,16 @@
           if (obj.name.indexOf('Darkmantle') > -1) exclude = true;
           if (obj.name.indexOf('Atiesh') > -1) exclude = true;
 
-
+          if (parseInt(sparse.OverallQualityID) >= 3 && obj.type == "Shield") include = true;
           if (parseInt(sparse.OverallQualityID) >= 3 && item.ClassID == "2" && obj.slot != "ranged") include = true;
           if (exclude) continue;
           if (!include && !obj.proc && !obj.str && !obj.agi && !obj.ap && !obj.crit && !obj.hit && !obj.skill) continue;
           if (isUnobtainable(obj.id)) continue;
-          
-          // if (include) continue;
-          // if (exclude || obj.proc || obj.str || obj.agi || obj.ap || obj.crit || obj.hit || obj.skill) continue;
-          // if (isUnobtainable(obj.id)) continue;
-          // if (parseInt(sparse.OverallQualityID) < 2) continue;
-          // if (spells.length == 0) continue;
+
+          if (obj.id == 220743 || obj.id == 220747 || obj.id == 220738) obj.name += ' (with proc)';
+          if (obj.id == 220742) obj.name += ' (no proc)';
 
           addToGear(obj);
-
         }
 
         // custom items
@@ -307,6 +324,75 @@
           "agi": 6,
           "sta": 7,
           "hit": 1,
+          "p": "inv_gauntlets_23",
+        });
+        gear["hands"].push({
+          "id": "9640|1563",
+          "type": "Plate",
+          "slot": "hands",
+          "r": 43,
+          "q": "3",
+          "i": "48",
+          "name": "Vice Grips of Power",
+          "p": "inv_gauntlets_26",
+          "ap": 48,
+          "rand": 1563
+        });
+        gear["hands"].push({
+          "id": "9640|700",
+          "type": "Plate",
+          "slot": "hands",
+          "r": 43,
+          "q": "3",
+          "i": "48",
+          "name": "Vice Grips of the Tigre (12 agi)",
+          "p": "inv_gauntlets_26",
+          "ap": 14,
+          "agi": 12,
+          "str": 11,
+          "rand": 700
+        });
+        gear["hands"].push({
+          "id": "9640|701",
+          "type": "Plate",
+          "slot": "hands",
+          "r": 43,
+          "q": "3",
+          "i": "48",
+          "name": "Vice Grips of the Tigre (12 str)",
+          "p": "inv_gauntlets_26",
+          "ap": 14,
+          "agi": 11,
+          "str": 12,
+          "rand": 701
+        });
+        gear["hands"].push({
+          "id": "9640|699",
+          "type": "Plate",
+          "slot": "hands",
+          "r": 43,
+          "q": "3",
+          "i": "48",
+          "name": "Vice Grips of the Tigre (11 / 11)",
+          "p": "inv_gauntlets_26",
+          "ap": 14,
+          "agi": 11,
+          "str": 11,
+          "rand": 699
+        });
+        gear["shoulder"].push({
+          "id": 2207381,
+          "type": "Plate",
+          "slot": "shoulder",
+          "r": 50,
+          "q": "4",
+          "i": "55",
+          "name": "Shoulderplates of Dread (no proc)",
+          "p": "inv_shoulder_24",
+          "agi": 12,
+          "str": 12,
+          "sta": 12,
+          "hit": 1
         });
 
         document.querySelector("textarea").value = "var gear = " + JSON.stringify(gear, null, 2) + ";";
@@ -349,6 +435,7 @@
         {i:869,s:"Vibroblade"},
         {i:7961,s:"Vibroblade"},
         {i:10626,s:"Ragehammer"},
+        {i:220569,s:"BlisteringRagehammer"},
         {i:9423,s:"Jackhammer"},
         {i:11817,s:"LordGeneral"},
         {i:9418,s:"Stoneslayer"},
@@ -357,6 +444,10 @@
         {i:12790,s:"StrengthChampion"},
         {i:213295,s:"Ultrasonic"},
         {i:213105,s:"Spicy"},
+        {i:220738,s:"EchoesDread"},
+        {i:220747,s:"EchoesDread"},
+        {i:220743,s:"EchoesDread"},
+        
         
       ];
 
@@ -387,6 +478,10 @@
         {i:7284,c:5},
         {i:19968,c:100},
         {i:213409,p:5},
+        {i:9425,p:0.5},
+        {i:220738,c:30},
+        {i:220747,c:30},
+        {i:220743,c:30},
       ];
 
       var getProcFromSpell = function(id) {

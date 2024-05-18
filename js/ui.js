@@ -1,4 +1,4 @@
-const MAX_WORKERS = navigator.hardwareConcurrency || 8;
+const MAX_WORKERS = ~~Math.min(8, (navigator.hardwareConcurrency || 8) / 2);
 const WEB_DB_URL = "https://database.turtle-wow.org/?";
 
 var SIM = SIM || {}
@@ -9,6 +9,7 @@ SIM.UI = {
         var view = this;
         view.variables();
         view.events();
+        view.initLog();
         view.loadSession();
         view.loadWeapons("mainhand");
         view.updateSidebar();
@@ -139,10 +140,15 @@ SIM.UI = {
             view.importProfile();
         });
 
-        view.main.find('nav li p').click(function (e) {
+        view.main.find('nav li a').click(function (e) {
             e.preventDefault();
             e.stopPropagation();
-            let li = $(this).parent();
+        });
+
+        view.main.find('nav li p, nav li img').click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            let li = $(this).parents('li');
             li.addClass('active');
             li.siblings().removeClass('active');
             var type = li.data('type');
@@ -166,6 +172,7 @@ SIM.UI = {
         });
 
         view.tcontainer.on('click', 'table.gear td:not(.ppm)', function(e) {
+            e.preventDefault();
             var table = $(this).parents('table');
             var type = table.data('type');
             var max = table.data('max');
@@ -194,6 +201,7 @@ SIM.UI = {
         });
 
         view.tcontainer.on('click', 'table.enchant td:not(.ppm)', function(e) {
+            e.preventDefault();
             var table = $(this).parents('table');
             var tr = $(this).parent();
             var temp = tr.data('temp');
@@ -221,7 +229,8 @@ SIM.UI = {
         });
 
         view.runes.on('click', '.rune .icon', function(e) {
-            var current_open_page =  $(`nav`).children('ul').children('li.active').find('p:first').text().toLowerCase().replace(/\s/g, '');
+            e.preventDefault();
+            var current_open_page =  $(`nav`).children('ul').children('li.active').data('type');
             var rune_type = $(this).closest('tr[name]').attr('name');
             var rune_id = $(this).parent().attr('data-id').toString();;
             view.loadGear(rune_type);
@@ -238,6 +247,7 @@ SIM.UI = {
             view.updateSession();
             view.updateSidebar();
             SIM.SETTINGS.buildSpells();
+            SIM.SETTINGS.buildBuffs();
 
             if (current_open_page == "mainhand" || current_open_page == "offhand" || current_open_page == "twohand")
                 view.loadWeapons(current_open_page);
@@ -248,6 +258,7 @@ SIM.UI = {
         });
 
         view.tcontainer.on('click', '.runes .icon', function(e) {
+            e.preventDefault();
             var parent = $(this).parents('.runes');
             var rune = $(this).parent();
 
@@ -263,6 +274,7 @@ SIM.UI = {
             view.updateSession();
             view.updateSidebar();
             SIM.SETTINGS.buildSpells();
+            SIM.SETTINGS.buildBuffs();
         });
 
         view.sidebar.find('.menu-button-container').click(function (e) {
@@ -612,7 +624,9 @@ SIM.UI = {
 
         for(let i = 0; i < spells.length; i++) {
             if (spells[i].item && spells[i].id == tr.data('id') && !spells[i].timetoendactive && !spells[i].timetostartactive) {
-                spells[i].timetoendactive = true;
+                // Blademasters Fury
+                if (spells[i].id == 219223) spells[i].active = true;
+                else spells[i].timetoendactive = true;
             }
         }
     },
@@ -698,6 +712,13 @@ SIM.UI = {
                     for (let spell of spells)
                         if (spell.id == runes[type][i].enable)
                             spell.active = false;
+                    for (let buff of buffs) {
+                        if (buff.id == runes[type][i].enable) 
+                            buff.active = false;
+                        if (buff.id == 2458 && runes[type][i].gladstance) 
+                            buff.active = true;
+                    }
+                        
                 }
             }
                
@@ -719,6 +740,12 @@ SIM.UI = {
                     for (let spell of spells)
                         if (spell.id == runes[type][i].enable)
                             spell.active = true;
+                    for (let buff of buffs) {
+                        if (buff.id == runes[type][i].enable)
+                            buff.active = true;
+                        if (runes[type][i].buffgroup && buff.group == runes[type][i].buffgroup && buff.id !== runes[type][i].enable)
+                            buff.active = false;
+                    }
                 }
                 this_spell_id = runes[type][i].id;
             }
@@ -748,6 +775,7 @@ SIM.UI = {
         let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
 
         let space = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+        view.updatePaperdoll();
         if (!player.mh) return;
         view.sidebar.find('#str').text(player.stats.str);
         view.sidebar.find('#agi').text(player.stats.agi);
@@ -791,6 +819,53 @@ SIM.UI = {
             for (let talent of tree.t)
                 count += talent.c;
         view.talents.find("#points").text(player.level - 9 - count);
+    },
+
+    updatePaperdoll: function() {
+        const view = this;
+        let icons = {
+            mainhand: 'inventoryslot_mainhand',
+            offhand: 'inventoryslot_offhand',
+            twohand: 'inventoryslot_mainhand',
+            ranged: 'inventoryslot_ranged',
+            head: 'inventoryslot_head',
+            neck: 'inventoryslot_neck',
+            shoulder: 'inventoryslot_shoulder',
+            back: 'inventoryslot_chest',
+            chest: 'inventoryslot_chest',
+            wrist: 'inventoryslot_wrists',
+            hands: 'inventoryslot_hands',
+            waist: 'inventoryslot_waist',
+            legs: 'inventoryslot_legs',
+            feet: 'inventoryslot_feet',
+            finger1: 'inventoryslot_finger',
+            finger2: 'inventoryslot_finger',
+            trinket1: 'inventoryslot_trinket',
+            trinket2: 'inventoryslot_trinket',
+        }
+        for(let type in gear) {
+            let path = icons[type];
+            let href = '#';
+            let empty = true;
+            let ench;
+            if (enchant[type]) {
+                for (let e of enchant[type])
+                    if (e.selected && e.ench) ench = e.ench;
+            }
+            for (let item of gear[type]) {
+                if (item.selected) {
+                    path = item.p;
+                    let id = item.id.toString().split('|');
+                    href = id[0];
+                    if (ench) href += '?ench=' + ench;
+                    if (id.length == 2) href += (ench ? '&' : '?') + 'rand=' + id[1];
+                    empty = false;
+                }
+            }
+            $(`nav.paperdoll [data-type="${type}"]`).toggleClass('empty', empty);
+            $(`nav.paperdoll [data-type="${type}"] a`).attr('href', `${WEB_DB_URL}item=${href}`);
+            $(`nav.paperdoll [data-type="${type}"] img`).attr('src', `https://wow.zamimg.com/images/wow/icons/medium/${path}.jpg`);
+        }
     },
 
     updateSession: function (i) {
@@ -889,9 +964,9 @@ SIM.UI = {
         if (localStorage.level) localStorage.clear(); // clear old style of storage
         if (!localStorage[mode + profileid]) localStorage[mode + profileid] = JSON.stringify(session);
 
-        // update everyone for P2
-        if (mode == "sod" && localStorage.sodPatch !== "2") {
-            localStorage.sodPatch = "2";
+        // update everyone for P3
+        if (mode == "sod" && localStorage.sodPatch !== "3") {
+            localStorage.sodPatch = "3";
             localStorage.sod0 = JSON.stringify(session);
         }
 
@@ -910,6 +985,9 @@ SIM.UI = {
         globalThis.filter_tiger = storage.filter_tiger;
         globalThis.filter_green = storage.filter_green;
         globalThis.filter_blue = storage.filter_blue;
+
+        if (storage.targetbasearmor === 3731 || storage.targetbasearmor === null)
+            storage.targetbasearmor = 3128;
         
         for (let prop in storage) {
             view.fight.find('input[name="' + prop + '"]').val(storage[prop]);
@@ -1005,23 +1083,25 @@ SIM.UI = {
 
         for (let item of gear[type]) {
 
-            if (item.r > level || (mode == "sod" && item.q < 3 && item.i < (level - 7)) || (mode == "sod" && item.q == 3 && item.i < (level - 12))) {
-                item.selected = false;
+            if (!item.selected && (item.r > level || (mode == "sod" && item.q < 3 && item.i < (level - 7)) || (mode == "sod" && item.q == 3 && item.i < (level - 12)))) {
                 continue;
             }
 
-            if ((globalThis.filter_tiger === false && item.name.toLowerCase().indexOf('of the tiger') > -1) ||
+            if (!item.selected &&
+                ((globalThis.filter_tiger === false && item.name.toLowerCase().indexOf('of the tiger') > -1) ||
                 (globalThis.filter_strength === false && item.name.toLowerCase().indexOf('of strength') > -1) ||
                 (globalThis.filter_bear === false && item.name.toLowerCase().indexOf('of the bear') > -1) ||
                 (globalThis.filter_green === false && item.q == "2") ||
-                (globalThis.filter_blue === false && item.q == "3")) {
-                item.selected = false;
+                (globalThis.filter_blue === false && item.q == "3"))) {
                 continue;
             }
 
             if (filter) {
                 if (filter == "All") {
-                    if (item.type == "Shield") continue;
+                    if (type == "offhand" && (storage.buffs.includes("413479") || storage.buffs.includes("71"))) { // Glad & Def Stance
+                        if (item.type !== "Shield") continue;
+                    }
+                    else if (item.type == "Shield") continue;
                 }
                 else if (filter == "Human Weps") {
                     if (item.type != "Mace" && item.type != "Sword") continue;
@@ -1111,7 +1191,7 @@ SIM.UI = {
             widthFixed: false,
             sortList: editmode ?  [[dpsrow, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
             textSorter : {
-                22 : function(a, b, direction, column, table) {
+                18 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
                     var b = parseFloat(b.substring(0,b.indexOf('.') + 3));
                     if (isNaN(a)) a = 0;
@@ -1120,7 +1200,7 @@ SIM.UI = {
                 },
             },
             headers: {
-                22: { sorter: "text" }
+                18: { sorter: "text" }
             }
         });
 
@@ -1172,17 +1252,16 @@ SIM.UI = {
 
         for (let item of gear[type]) {
             
-            if (item.r > level || (mode == "sod" && item.q < 3 && item.i < (level - 7)) || (mode == "sod" && item.q == 3 && item.i < (level - 12))) {
-                item.selected = false;
+            if (!item.selected && (item.r > level || (mode == "sod" && item.q < 3 && item.i < (level - 7)) || (mode == "sod" && item.q == 3 && item.i < (level - 12)))) {
                 continue;
             }
 
-            if ((globalThis.filter_tiger === false && item.name.toLowerCase().indexOf('of the tiger') > -1) ||
+            if (!item.selected &&
+                ((globalThis.filter_tiger === false && item.name.toLowerCase().indexOf('of the tiger') > -1) ||
                 (globalThis.filter_strength === false && item.name.toLowerCase().indexOf('of strength') > -1) ||
                 (globalThis.filter_bear === false && item.name.toLowerCase().indexOf('of the bear') > -1) ||
                 (globalThis.filter_green === false && item.q == "2") ||
-                (globalThis.filter_blue === false && item.q == "3")) {
-                item.selected = false;
+                (globalThis.filter_blue === false && item.q == "3"))) {
                 continue;
             }
 
@@ -1214,6 +1293,9 @@ SIM.UI = {
             let tooltip = item.id.toString().split('|')[0], rand = '';
             if (tooltip == 145541) tooltip = 14554;
             if (tooltip == 198981) tooltip = 19898;
+            if (tooltip == 2207381) tooltip = 220738;
+
+            
             if (item.rand) rand = '?rand=' + item.rand;
 
             let resist = '';
@@ -1266,7 +1348,7 @@ SIM.UI = {
             widthFixed: false,
             sortList: editmode ? [[dpsrow, 1],[2, 0]] : [[dpsrow-1, 1],[1, 0]],
             textSorter : {
-                15 : function(a, b, direction, column, table) {
+                14 : function(a, b, direction, column, table) {
                     var a = parseFloat(a.substring(0,a.indexOf('.') + 3));
                     var b = parseFloat(b.substring(0,b.indexOf('.') + 3));
                     if (isNaN(a)) a = 0;
@@ -1275,7 +1357,7 @@ SIM.UI = {
                 },
             },
             headers: {
-                15: { sorter: "text" }
+                14: { sorter: "text" }
             }
         });
 
@@ -1431,7 +1513,7 @@ SIM.UI = {
 
         if (typeof runes === 'undefined' || !runes[type] || runes[type].length == 0) return;
 
-        let html = $(`<div class="runes" data-type="${type}"></div>`);
+        let html = $(`<div class="runes" data-type="${type}" style="display: none"></div>`);
         html.append('<label>Runes</label>')
         for (let item of runes[type]) {
 
@@ -1466,8 +1548,61 @@ SIM.UI = {
         console.log('Welcome!');
     },
 
+    initLog: function () {
+        const view = this;
+        $('.modal').each(function() {
+            dragElement($(this).get(0));
+        });
+        $('.modal .btn-close').click(function() {
+            $('.modal').hide();
+        });
+        
+
+    },
+
 };
 
 var eyesvg = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 12c0 1.654-1.346 3-3 3s-3-1.346-3-3 1.346-3 3-3 3 1.346 3 3zm9-.449s-4.252 8.449-11.985 8.449c-7.18 0-12.015-8.449-12.015-8.449s4.446-7.551 12.015-7.551c7.694 0 11.985 7.551 11.985 7.551zm-7 .449c0-2.757-2.243-5-5-5s-5 2.243-5 5 2.243 5 5 5 5-2.243 5-5z"/></svg>';
 var eyesvghidden = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M11.885 14.988l3.104-3.098.011.11c0 1.654-1.346 3-3 3l-.115-.012zm8.048-8.032l-3.274 3.268c.212.554.341 1.149.341 1.776 0 2.757-2.243 5-5 5-.631 0-1.229-.13-1.785-.344l-2.377 2.372c1.276.588 2.671.972 4.177.972 7.733 0 11.985-8.449 11.985-8.449s-1.415-2.478-4.067-4.595zm1.431-3.536l-18.619 18.58-1.382-1.422 3.455-3.447c-3.022-2.45-4.818-5.58-4.818-5.58s4.446-7.551 12.015-7.551c1.825 0 3.456.426 4.886 1.075l3.081-3.075 1.382 1.42zm-13.751 10.922l1.519-1.515c-.077-.264-.132-.538-.132-.827 0-1.654 1.346-3 3-3 .291 0 .567.055.833.134l1.518-1.515c-.704-.382-1.496-.619-2.351-.619-2.757 0-5 2.243-5 5 0 .852.235 1.641.613 2.342z"/></svg>';
 var searchSVG = '<svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="20px" height="20px"><path d="M 21 3 C 11.621094 3 4 10.621094 4 20 C 4 29.378906 11.621094 37 21 37 C 24.710938 37 28.140625 35.804688 30.9375 33.78125 L 44.09375 46.90625 L 46.90625 44.09375 L 33.90625 31.0625 C 36.460938 28.085938 38 24.222656 38 20 C 38 10.621094 30.378906 3 21 3 Z M 21 5 C 29.296875 5 36 11.703125 36 20 C 36 28.296875 29.296875 35 21 35 C 12.703125 35 6 28.296875 6 20 C 6 11.703125 12.703125 5 21 5 Z"/></svg>';
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (elmnt.querySelector('.head')) {
+      // if present, the header is where you move the DIV from:
+      elmnt.querySelector('.head').onmousedown = dragMouseDown;
+    } else {
+      // otherwise, move the DIV from anywhere inside the DIV:
+      elmnt.onmousedown = dragMouseDown;
+    }
+  
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+  
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+  
+    function closeDragElement() {
+      // stop moving when mouse button is released:
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }

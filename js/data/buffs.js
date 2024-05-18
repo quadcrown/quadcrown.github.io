@@ -1,12 +1,20 @@
 var buffs = [
    {
+      id: 2457,
+      spellid: true,
+      name: "Battle Stance",
+      iconname: "ability_warrior_offensivestance",
+      group: "stance",
+      stance: 'battle',
+      minlevel: 1,
+   },
+   {
       id: 71,
       spellid: true,
       name: "Defensive Stance",
       iconname: "ability_warrior_defensivestance",
-      dmgmod: -10,
-      spelldmgmod: -10,
       group: "stance",
+      stance: 'def',
       minlevel: 10,
    },
    {
@@ -14,9 +22,20 @@ var buffs = [
       spellid: true,
       name: "Berserker Stance",
       iconname: "Ability_Racial_Avatar",
-      crit: 3,
       group: "stance",
+      stance: 'zerk',
       minlevel: 30,
+   },
+   {
+      id: 413479,
+      spellid: true,
+      name: "Gladiator Stance",
+      iconname: "achievement_featsofstrength_gladiator_08",
+      dmgshield: 10,
+      group: "stance",
+      stance: 'glad',
+      rune: true,
+      minlevel: 1,
    },
    {
       id: 6673,
@@ -58,7 +77,7 @@ var buffs = [
       iconname: "Ability_Warrior_BattleShout",
       group: "battleshout",
       ap: 85,
-      lvlmod: 0.5,
+      lvlmod: 1,
       minlevel: 32,
       maxlevel: 41,
    },
@@ -69,7 +88,7 @@ var buffs = [
       iconname: "Ability_Warrior_BattleShout",
       group: "battleshout",
       ap: 130,
-      lvlmod: 0.5,
+      lvlmod: 1,
       minlevel: 42,
       maxlevel: 51,
    },
@@ -80,7 +99,7 @@ var buffs = [
       iconname: "Ability_Warrior_BattleShout",
       group: "battleshout",
       ap: 185,
-      lvlmod: 0.5,
+      lvlmod: 1,
       minlevel: 52,
       aq: false,
    },
@@ -271,6 +290,7 @@ var buffs = [
       iconname: "ability_trueshot",
       group: "trueshot",
       ap: 50,
+      apsod: 100,
       minlevel: 40,
       maxlevel: 49
    },
@@ -281,6 +301,7 @@ var buffs = [
       iconname: "ability_trueshot",
       group: "trueshot",
       ap: 75,
+      apsod: 150,
       minlevel: 50,
       maxlevel: 59
    },
@@ -291,6 +312,7 @@ var buffs = [
       iconname: "ability_trueshot",
       group: "trueshot",
       ap: 100,
+      apsod: 200,
       minlevel: 60
    },
    {
@@ -397,8 +419,8 @@ var buffs = [
       name: "Horn of Lordaeron",
       iconname: "inv_misc_horn_03",
       group: "blessingmight",
-      str: 17,
-      agi: 17,
+      str: 45, //17 at lvl 25 - 26 at 40
+      agi: 45,
       sod: true,
    },
    {
@@ -550,13 +572,15 @@ var buffs = [
       consume: true,
    },
    {
-      id: 2457,
-      name: "Elixir of Minor Agility",
-      iconname: "inv_potion_91",
-      group: "elixir",
-      agi: 4,
-      minlevel: 2,
+      id: 221196,
+      name: "Atal\'ai Mojo of War",
+      iconname: "inv_alchemy_potion_02",
+      group: "blasted",
+      ap: 48,
+      minlevel: 50,
+      voodoofrenzy: true,
       consume: true,
+      sod: true,
    },
    {
       id: 3390,
@@ -565,6 +589,7 @@ var buffs = [
       group: "elixir",
       agi: 8,
       minlevel: 18,
+      maxlevel: 49,
       consume: true,
    },
    {
@@ -574,6 +599,7 @@ var buffs = [
       group: "elixir",
       agi: 15,
       minlevel: 27,
+      maxlevel: 50,
       consume: true,
    },
    {
@@ -620,6 +646,7 @@ var buffs = [
       group: "str",
       str: 4,
       minlevel: 1,
+      maxlevel: 49,
       consume: true,
    },
    {
@@ -638,6 +665,7 @@ var buffs = [
       group: "str",
       str: 8,
       minlevel: 8,
+      maxlevel: 49,
       consume: true,
    },
    {
@@ -647,6 +675,7 @@ var buffs = [
       group: "str",
       str: 13,
       minlevel: 40,
+      maxlevel: 49,
       consume: true,
    },
    {
@@ -699,7 +728,7 @@ var buffs = [
       iconname: "inv_misc_fish_13",
       group: "food",
       agi: 10,
-      minlevel: 35,
+      minlevel: 41,
       consume: true,
    },
    {
@@ -721,6 +750,34 @@ var buffs = [
       haste: 5
    },
    {
+      id: 217308,
+      name: "Enchanted Sigil: Innovation",
+      iconname: "inv_sigil_mimiron",
+      minlevel: 40,
+      other: true,
+      ap: 20,
+      maxlevel: 49,
+      sod: true,
+   },
+   {
+      id: 221028,
+      name: "Enchanted Sigil: Living Dreams",
+      iconname: "inv_sigil_freya",
+      minlevel: 50,
+      other: true,
+      ap: 50,
+      sod: true,
+   },
+   {
+      id: 221024,
+      name: "Flask of Everlasting Nightmares",
+      iconname: "inv_alchemy_endlessflask_01",
+      ap: 45,
+      minlevel: 50,
+      other: true,
+      sod: true,
+   },
+   {
       id: 12217,
       name: "Dragonbreath Chili",
       iconname: "inv_drink_17",
@@ -734,16 +791,38 @@ var buffs = [
       spellid: true,
       iconname: "inv_potion_28",
       group: "",
-      bonusdmg: 8,
+      moddmgtaken: 8,
       minlevel: 41,
       other: true,
+   },
+   {
+      id: 449927,
+      name: "Blood Corruption",
+      spellid: true,
+      iconname: "ability_warrior_bloodnova",
+      group: "",
+      moddmgtaken: 7,
+      minlevel: 50,
+      other: true,
+      sod: true,
+   },
+   {
+      id: 210708,
+      name: "Elixir of Coalesced Regret",
+      iconname: "inv_potion_19",
+      str: 1,
+      agi: 1,
+      sta: 1,
+      minlevel: 20,
+      other: true,
+      sod: true,
    },
    {
       id: 5206,
       name: "Bogling Root",
       iconname: "inv_misc_herb_07",
       group: "",
-      bonusdmg: 1,
+      moddmgdone: 1,
       minlevel: 1,
       other: true,
    },
@@ -791,6 +870,7 @@ var buffs = [
       minlevel: 60,
       other: true,
    },
+   
 
    // SoD Extras
    {
@@ -827,6 +907,20 @@ var buffs = [
       haste: 10,
       spellcrit: 4,
       worldbuff: true,
+      maxlevel: 49,
+      sod: true,
+   },
+   {
+      id: 446698,
+      spellid: true,
+      name: "Fervor of the Temple Explorer",
+      iconname: "achievement_bg_killxenemies_generalsroom",
+      group: "",
+      crit: 5,
+      strmod: 8,
+      agimod: 8,
+      worldbuff: true,
+      maxlevel: 59,
       sod: true,
    },
    {
@@ -834,9 +928,11 @@ var buffs = [
       spellid: true,
       name: "Curse of Vulnerability",
       iconname: "Ability_creature_cursed_02",
+      maxlevel: 40,
       group: "",
-      bonusdmg: 2,
+      moddmgtaken: 2,
       sod: true,
+      other: true,
    },
    {
       id: 6532,
@@ -844,6 +940,7 @@ var buffs = [
       iconname: "inv_misc_gem_variety_02",
       group: "bauble",
       skill_7: 75,
+      maxlevel: 49,
       other: true,
       sod: true,
    },
@@ -853,6 +950,7 @@ var buffs = [
       iconname: "inv_misc_food_26",
       group: "bauble",
       skill_7: 100,
+      maxlevel: 49,
       other: true,
       sod: true,
    },
@@ -1070,6 +1168,59 @@ var buffs = [
       minlevel: 53,
    },
 
-
-
+   {
+      id: 7344,
+      name: "Torch of Holy Flame",
+      iconname: "inv_staff_05",
+      armor: 50,
+      minlevel: 20,
+   },
+   {
+      id: 20597,
+      name: "Increased Swords",
+      iconname: "ability_meleedamage",
+      spellid: true,
+      skill: true,
+      skill_1: 5
+   },
+   {
+      id: 20574,
+      name: "Increased Axes",
+      iconname: "inv_axe_02",
+      spellid: true,
+      skill: true,
+      skill_3: 5
+   },
+   {
+      id: 20864,
+      name: "Increased Maces",
+      iconname: "inv_hammer_05",
+      spellid: true,
+      skill: true,
+      skill_0: 5
+   },
+   {
+      id: 7576,
+      name: "Increased Daggers",
+      iconname: "inv_weapon_shortblade_14",
+      spellid: true,
+      skill: true,
+      skill_2: 5
+   },
+   {
+      id: 436285,
+      name: "Increased Fist",
+      iconname: "inv_gauntlets_04",
+      spellid: true,
+      skill: true,
+      skill_4: 5
+   },
+   {
+      id: 200,
+      name: "Increased Polearms",
+      iconname: "inv_spear_06",
+      spellid: true,
+      skill: true,
+      skill_5: 5
+   },
 ];
