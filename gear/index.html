@@ -111,6 +111,8 @@
                     obj.hit = parseInt(e.EffectBasePoints) + 1;
                   if (e.Effect == 6 && e.EffectAura == 52)
                     obj.crit = parseInt(e.EffectBasePoints) + 1;
+                  if (e.Effect == 6 && e.EffectAura == 71)
+                    obj.spellcrit = parseInt(e.EffectBasePoints) + 1;
                   if (e.Effect == 6 && e.EffectAura == 30 && e["EffectMiscValue[0]"] != 95 && e["EffectMiscValue[0]"] != 226 && e["EffectMiscValue[0]"] != 393 && e["EffectMiscValue[0]"] != 45 && e["EffectMiscValue[0]"] != 46) {
                     obj.skill = parseInt(e.EffectBasePoints) + 1;
                     if (item.ClassID != "2") {
@@ -221,11 +223,11 @@
           }
 
           if (obj.id == 19970) obj.r = 35;
-          if (obj.id == 8708) obj.r = 41;
           if (obj.id == 867) obj.ap = 20;
           if (obj.id == 216497) obj.proc.magic = true;
           if (obj.id == 215166) delete obj.proc;
           if (obj.id == 209577) obj.ap = 0;
+          if (obj.id == 6460) obj.i = 30;
 
           let include = false, exclude = false;
           if (obj.id == 21568) include = true;
@@ -294,18 +296,18 @@
         }
 
         // custom items
-        // gear["head"].push({
-        //   "id": 215161,
-        //   "type": "Plate",
-        //   "slot": "head",
-        //   "r": 40,
-        //   "q": "4",
-        //   "i": "45",
-        //   "name": "Tempered Interference-Negating Helmet",
-        //   "str": 16,
-        //   "sta": 16,
-        //   "crit": 1
-        // });
+        gear["hands"].push({
+          "id": '213319a',
+          "type": "Leather",
+          "slot": "hands",
+          "r": 40,
+          "q": "3",
+          "i": "45",
+          "name": "Machinist's Gloves (no AP)",
+          "agi": 6,
+          "sta": 7,
+          "hit": 1,
+        });
 
         document.querySelector("textarea").value = "var gear = " + JSON.stringify(gear, null, 2) + ";";
       }

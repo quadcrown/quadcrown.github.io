@@ -17,7 +17,7 @@ var enchant = {
            "id": 12404,
            "name": "Dense Stone",
            "bonusdmg": 8,
-           "r": 35,
+           "r": 41,
            "temp": true
         },
         {
@@ -137,8 +137,8 @@ var enchant = {
       {
          "id": 435481,
          "spellid": true,
-         "name": "Dismantle (15% chance)",
-         "chance": 15,
+         "name": "Dismantle (Assumed 2 PPM)",
+         "ppm": 2, 
          "magicdmg": 75,
          "r": 40
       },
@@ -161,7 +161,7 @@ var enchant = {
          "id": 12404,
          "name": "Dense Stone",
          "bonusdmg": 8,
-         "r": 35,
+         "r": 41,
          "temp": true
       },
       {
@@ -281,8 +281,8 @@ var enchant = {
 {
    "id": 435481,
    "spellid": true,
-   "name": "Dismantle (15% chance)",
-   "chance": 15,
+   "name": "Dismantle (Assumed 2 PPM)",
+   "ppm": 2, 
    "magicdmg": 75,
    "r": 40
 },
@@ -312,7 +312,7 @@ var enchant = {
          "id": 12404,
          "name": "Dense Stone",
          "bonusdmg": 8,
-         "r": 35,
+         "r": 41,
          "temp": true
       },
       {
@@ -355,12 +355,14 @@ var enchant = {
           "id": 27837,
           "spellid": true,
           "name": "2H Agility",
+          "r": 41,
           "agi": 25,
        },
        {
           "id": 23799,
           "spellid": true,
           "name": "Strength",
+          "r": 41,
           "str": 15,
        },
        {
@@ -396,12 +398,14 @@ var enchant = {
          "id": 20030,
          "spellid": true,
          "name": "Superior Impact",
+         "r": 41,
          "bonusdmg": 9,
       },
       {
          "id": 13937,
          "spellid": true,
          "name": "Greater Impact",
+         "r": 41,
          "bonusdmg": 7,
       },
       {
@@ -433,8 +437,8 @@ var enchant = {
       {
          "id": 435481,
          "spellid": true,
-         "name": "Dismantle (15% chance)",
-         "chance": 15,
+         "name": "Dismantle (Assumed 2 PPM)",
+         "ppm": 2, 
          "magicdmg": 75,
          "r": 40
       },
@@ -906,8 +910,8 @@ var enchant = {
       name: 'Insulated Leathers',
       items: [213313,213332,213341],
       bonus: [
-         { count: 2, stats: { crit: 1 } },
-         { count: 3, stats: { skill_2: 5 } }
+         { count: 2, stats: { crit: 1, spellcrit: 1 } },
+         { count: 3, stats: { skill_2: 3 } }
       ]
    },
    {

@@ -10,16 +10,13 @@ class Player {
             mode: globalThis.mode,
             target: {
                 level: parseInt($('input[name="targetlevel"]').val()),
-                basearmor: parseInt($('input[name="targetarmor"]').val()),
-                armor: parseInt($('input[name="targetarmor"]').val()),
+                basearmor: parseInt($('select[name="targetbasearmor"]').val() || $('input[name="targetcustomarmor"]').val()),
                 defense: parseInt($('input[name="targetlevel"]').val()) * 5,
-                mitigation: 1 - 15 * (parseInt($('input[name="targetresistance"]').val()) / 6000),
-                binaryresist: parseInt(10000 - (8300 * (1 - (parseInt($('input[name="targetresistance"]').val()) * 0.15 / 60)))),
+                resistance: parseInt($('input[name="targetresistance"]').val()),
                 speed: parseFloat($('input[name="targetspeed"]').val()) * 1000,
                 mindmg: parseInt($('input[name="targetmindmg"]').val()),
                 maxdmg: parseInt($('input[name="targetmaxdmg"]').val()),
                 bleedreduction: $('select[name="bleedreduction"]').val(),
-                armorprocs: $('select[name="armorprocs"]').val() == "Yes",
             },
         };
     }
@@ -50,6 +47,9 @@ class Player {
         this.target = config.target;
         this.mode = config.mode;
         this.bleedmod = parseFloat(this.target.bleedreduction);
+        this.target.misschance = this.getTargetSpellMiss();
+        this.target.mitigation = this.getTargetSpellMitigation();
+        this.target.binaryresist = this.getTargetSpellBinaryResist();
         this.base = {
             ap: 0,
             agi: 0,
@@ -70,6 +70,7 @@ class Player {
             strmod: 1,
             agimod: 1,
             dmgmod: 1,
+            spelldmgmod: 1,
             apmod: 1,
             baseapmod: 1,
             resist: {
@@ -442,6 +443,12 @@ class Player {
         }
     }
     addBuffs() {
+        this.target.basearmorbuffed = this.target.basearmor;
+        for (let buff of buffs) {
+            if (buff.active && buff.improvedexposed) {
+                this.improvedexposed = true;
+            }
+        }
         for (let buff of buffs) {
             if (buff.active) {
                 let ap = 0, str = 0, agi = 0;
@@ -471,6 +478,12 @@ class Player {
                     this.defstance = true;
                 if (buff.bleedmod)
                     this.bleedmod *= buff.bleedmod;
+                if (buff.armor) 
+                    this.target.basearmorbuffed -= buff.armor + (buff.name == "Expose Armor" && this.improvedexposed ? buff.armor * 0.5 : 0);
+                if (buff.armorperlevel) 
+                    this.target.basearmorbuffed -= (buff.armorperlevel * this.level);
+                if (buff.name == "Faerie Fire")
+                    this.faeriefire = true;
 
                 this.base.ap += ap || buff.ap || 0;
                 this.base.agi += agi || buff.agi || 0;
@@ -481,10 +494,14 @@ class Player {
                 this.base.agimod *= (1 + buff.agimod / 100) || 1;
                 this.base.strmod *= (1 + buff.strmod / 100) || 1;
                 this.base.dmgmod *= (1 + buff.dmgmod / 100) || 1;
+                this.base.spelldmgmod *= (1 + buff.spelldmgmod / 100) || 1;
                 this.base.haste *= (1 + buff.haste / 100) || 1;
                 this.base.skill_7 += buff.skill_7 || 0;
             }
         }
+        this.target.basearmorbuffed = Math.max(this.target.basearmorbuffed, 0);
+        if (typeof $ !== 'undefined')
+            $("#currentarmor").text(this.target.basearmorbuffed);
     }
     addSpells(testItem) {
         this.preporder = [];
@@ -600,6 +617,25 @@ class Player {
         let table = [0.2500, 0.2381, 0.2381, 0.2273, 0.2174, 0.2083, 0.2083, 0.2000, 0.1923, 0.1923,0.1852, 0.1786, 0.1667, 0.1613, 0.1563, 0.1515, 0.1471, 0.1389, 0.1351, 0.1282,0.1282, 0.1250, 0.1190, 0.1163, 0.1111, 0.1087, 0.1064, 0.1020, 0.1000, 0.0962,0.0943, 0.0926, 0.0893, 0.0877, 0.0847, 0.0833, 0.0820, 0.0794, 0.0781, 0.0758,0.0735, 0.0725, 0.0704, 0.0694, 0.0676, 0.0667, 0.0649, 0.0633, 0.0625, 0.0610,0.0595, 0.0588, 0.0575, 0.0562, 0.0549, 0.0543, 0.0532, 0.0521, 0.0510, 0.0500];
         return table[parseInt(level) - 1];
     }
+    getTargetSpellMiss() {
+        let resist = 100;
+        let diff = this.target.level - this.level;
+        if (diff == -2) resist = 200;
+        if (diff == -1) resist = 300;
+        if (diff == 0) resist = 400;
+        if (diff == 1) resist = 500;
+        if (diff == 2) resist = 600;
+        if (diff == 3) resist = 1700;
+        if (diff == 4) resist = 2800;
+        if (diff > 4) resist = 2800 + (1100 * (diff - 4));
+        return resist;
+    }
+    getTargetSpellMitigation() {
+        return 1 - 15 * (this.target.resistance / (this.level * 100));
+    }
+    getTargetSpellBinaryResist() {
+        return parseInt(10000 - ((10000 - this.target.misschance) * (1 - (this.target.resistance * 0.15 / (this.level * 100)))))
+    }
     updateStrength() {
         this.stats.str = this.base.str;
         this.stats.ap = this.base.ap;
@@ -693,7 +729,7 @@ class Player {
     }
     updateArmorReduction() {
         this.stats.arp = this.base.arp;
-        this.target.armor = Math.max(this.target.basearmor - this.stats.arp, 0)
+        this.target.armor = Math.max(this.target.basearmorbuffed - this.stats.arp, 0)
         if (this.auras.annihilator && this.auras.annihilator.timer)
             this.target.armor = Math.max(this.target.armor - (this.auras.annihilator.stacks * this.auras.annihilator.armor), 0);
         if (this.auras.rivenspike && this.auras.rivenspike.timer)
@@ -713,6 +749,7 @@ class Player {
     }
     updateDmgMod() {
         this.stats.dmgmod = this.base.dmgmod;
+        this.stats.spelldmgmod = this.base.spelldmgmod;
         for (let name in this.auras) {
             if (this.auras[name].timer && this.auras[name].mult_stats.dmgmod)
                 this.stats.dmgmod *= (1 + this.auras[name].mult_stats.dmgmod / 100);
@@ -1004,7 +1041,7 @@ class Player {
             weapon.data[result]++;
         }
         weapon.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`${spell ? spell.name + ' for' : 'Main hand attack for'} ${done + procdmg} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}`); /* end-log */
+        /* start-log */ if (log) this.log(`${spell ? spell.name + ' for' : 'Main hand attack for'} ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}`); /* end-log */
 
         if (spell instanceof Cleave && !adjacent) {
             this.nextswinghs = true;
@@ -1071,7 +1108,7 @@ class Player {
         if (!adjacent) spell.data[result]++;
         spell.totaldmg += done;
         this.mh.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`${spell.name} for ${done + procdmg} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}.`); /* end-log */
+        /* start-log */ if (log) this.log(`${spell.name} for ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}.`); /* end-log */
         return done + procdmg;
     }
     dealdamage(dmg, result, weapon, spell, adjacent) {
@@ -1079,7 +1116,7 @@ class Player {
             dmg *= this.stats.dmgmod;
             dmg *= (1 - this.armorReduction);
             if (!adjacent) this.addRage(dmg, result, weapon, spell);
-            return ~~dmg;
+            return dmg;
         }
         else {
             if (!adjacent) this.addRage(dmg, result, weapon, spell);
@@ -1088,7 +1125,7 @@ class Player {
     }
     proccrit(offhand, adjacent, spell) {
         if (this.auras.flurry) this.auras.flurry.use();
-        if (this.auras.deepwounds && !(spell instanceof SunderArmor)) {
+        if (this.auras.deepwounds) {
             if (!adjacent) this.auras.deepwounds.use(offhand);
             else this.auras['deepwounds' + (~~rng(1,adjacent) + 1)].use(offhand);
         }
@@ -1102,19 +1139,19 @@ class Player {
                 if (weapon.proc1.spell) weapon.proc1.spell.use();
                 if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1);
                 if (weapon.proc1.physdmg) procdmg += this.physproc(weapon.proc1.physdmg);
-                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + procdmg : ''}`); /* end-log */
+                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             // Extra attacks roll only once per multi target attack
             if (weapon.proc1 && weapon.proc1.extra && !damageSoFar && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
                 // Multiple extras procs off a non spel will only grant extra attack(s) from one source
                 if (spell) this.extraattacks += weapon.proc1.extra;
                 else extras = weapon.proc1.extra;
-                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + procdmg : ''}`); /* end-log */
+                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             if (weapon.proc2 && rng10k() < weapon.proc2.chance) {
                 if (weapon.proc2.spell) weapon.proc2.spell.use();
                 if (weapon.proc2.magicdmg) procdmg += this.magicproc(weapon.proc2);
-                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + procdmg : ''}`); /* end-log */
+                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             if (this.trinketproc1 && !this.trinketproc1.extra && rng10k() < this.trinketproc1.chance) {
                 if (this.trinketproc1.magicdmg) procdmg += this.magicproc(this.trinketproc1);
@@ -1187,14 +1224,14 @@ class Player {
     }
     magicproc(proc) {
         let mod = 1;
-        let miss = 1700;
+        let miss = this.target.misschance;
         let dmg = proc.magicdmg;
         if (proc.binaryspell) miss = this.target.binaryresist;
         else mod *= this.target.mitigation;
         if (rng10k() < miss) return 0;
         if (rng10k() < (this.stats.spellcrit * 100)) mod *= 1.5;
         if (proc.coeff) dmg += this.spelldamage * proc.coeff;
-        return ~~(dmg * mod);
+        return (dmg * mod * this.stats.spelldmgmod);
     }
     physproc(dmg) {
         let tmp = 0;

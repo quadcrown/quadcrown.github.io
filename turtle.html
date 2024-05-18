@@ -223,12 +223,20 @@
             <input type="text" name="startrage" value="0" data-numberonly="true">
           </li>
           <li>
-            <label>Target Resistance</label>
+            <label>Target Magic Resistance</label>
             <input type="text" name="targetresistance" value="24" data-numberonly="true">
           </li>
           <li>
-            <label><a href="https://docs.google.com/spreadsheets/d/1WIHs3aDT5LHZyVKSXZkC5_J9A1Od0jowhc89AdAu_Yo/" target="_blank">Target Armor</a></label>
-            <input type="text" name="targetarmor" value="816" data-numberonly="true">
+            <label><a href="https://docs.google.com/spreadsheets/d/1WIHs3aDT5LHZyVKSXZkC5_J9A1Od0jowhc89AdAu_Yo/" target="_blank">Target Base Armor</a></label>
+            <input type="text" name="targetcustomarmor" value="" />
+            <select dir="rtl" name="targetbasearmor">
+              <option value="4211">Most 40man/AQ20/WBosses [4211]</option>
+              <option value="4611">Patch/Thadd/Loatheb [4611]</option>
+              <option value="3850">Faerlina/Noth [3850]</option>
+              <option value="3402">Most ZG Bosses/Gothik/KT [3402]</option>
+              <option value="5980">Ostarius [5980]</option>
+              <option value="" data-custom="true">Custom Value</option>
+            </select>
           </li>
           <li>
             <label>Target Attack Speed</label>

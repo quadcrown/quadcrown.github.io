@@ -704,6 +704,7 @@ var spells = [
     active: false,
     aura: true,
     buff: true,
+    sod: false,
 },
 
 // Berserking

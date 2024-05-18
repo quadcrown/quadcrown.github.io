@@ -211,12 +211,6 @@ SIM.SETTINGS = {
             SIM.UI.updateSidebar();
         });
 
-        view.fight.on('change', 'select[name="armorprocs"]', function (e) {
-            e.stopPropagation();
-            SIM.UI.updateSession();
-            SIM.UI.updateSidebar();
-        });
-
         view.fight.on('keyup', 'input[type="text"]', function (e) {
             e.stopPropagation();
             if (!view.body.find('.active[data-type="profiles"]').length)
@@ -229,6 +223,35 @@ SIM.SETTINGS = {
 
         view.fight.on('change', 'select[name="batching"]', function (e) {
             e.stopPropagation();
+            SIM.UI.updateSession();
+            SIM.UI.updateSidebar();
+        });
+
+        view.fight.on('input', 'input[name="targetcustomarmor"]', function (e) {
+            e.stopPropagation();
+            let base = $('select[name="targetbasearmor"]').get(0);
+            base.options[base.options.length - 1].innerHTML = $(this).val();
+
+            SIM.UI.updateSession();
+            SIM.UI.updateSidebar();
+        });
+
+        view.fight.on('change', 'select[name="targetbasearmor"]', function (e) {
+            e.stopPropagation();
+            let custom = $('input[name="targetcustomarmor"]');
+
+            if (this.selectedOptions[0].dataset.custom) {
+                this.selectedOptions[0].innerHTML = '';
+                custom.val(0);
+                custom.addClass('focus');
+                custom.focus();
+            }
+            else {
+                this.options[this.options.length - 1].innerHTML = 'Custom Value';
+                custom.val('');
+                custom.removeClass('focus');
+            }
+
             SIM.UI.updateSession();
             SIM.UI.updateSidebar();
         });
@@ -325,6 +348,11 @@ SIM.SETTINGS = {
         let buffs = '';
         let items = '';
         for (let spell of spells) {
+
+            if (spell.sod && mode !== "sod") {
+                spell.active = false;
+                continue;
+            }
 
             // race restriction
             if (spell.id == 26296 && storage.race !== "Troll") {
@@ -529,7 +557,7 @@ SIM.SETTINGS = {
         view.buffs.append('<label class="active">Buffs</label>');
         let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
         let level = parseInt(storage.level);
-        let worldbuffs = '', consumes = '', other = '';
+        let worldbuffs = '', consumes = '', other = '', armor = '';
         for (let buff of buffs) {
 
             // level restrictions
@@ -567,6 +595,7 @@ SIM.SETTINGS = {
             if (buff.worldbuff) worldbuffs += html;
             else if (buff.consume) consumes += html;
             else if (buff.other) other += html;
+            else if (buff.armor || buff.improvedexposed) armor += html;
             else view.buffs.append(html);
         }
         view.buffs.append('<div class="label">Consumables</div>');
@@ -575,6 +604,8 @@ SIM.SETTINGS = {
         view.buffs.append(worldbuffs);
         view.buffs.append('<div class="label">Other</div>');
         view.buffs.append(other);
+        view.buffs.append(`<div class="label">Armor (Current: <span id="currentarmor"></span>)</div>`);
+        view.buffs.append(armor);
         SIM.UI.updateSession();
         SIM.UI.updateSidebar();
     },
