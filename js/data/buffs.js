@@ -1167,6 +1167,15 @@ var buffs = [
       armor: 600,
       minlevel: 53,
    },
+   {
+      id: 3396,
+      spellid: true,
+      name: "The Ripper / Vile Sting",
+      iconname: "spell_nature_corrosivebreath",
+      group: "",
+      armor: 163,
+      minlevel: 32,
+   },
 
    {
       id: 7344,

@@ -864,12 +864,11 @@ var spells = [
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
+    aura: true,
     minlevel: 50,
     value1: 5,
     active: false,
-    aura: true,
     buff: true,
-    sod: false,
 },
 
 // Berserking
