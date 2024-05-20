@@ -8162,7 +8162,8 @@ var gear = {
     {
       "name": "Widow's Remorse",
       "hit": 1,
-      "sta": 17,
+      "sta": 15,
+      "agi": 8,
       "ac": 100,
       "mindmg": 76,
       "maxdmg": 133,
@@ -9589,7 +9590,8 @@ var gear = {
     {
       "name": "Widow's Remorse",
       "hit": 1,
-      "sta": 17,
+      "sta": 15,
+      "agi": 8,
       "ac": 100,
       "mindmg": 76,
       "maxdmg": 133,
