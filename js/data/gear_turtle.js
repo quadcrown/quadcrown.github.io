@@ -1320,6 +1320,16 @@ var gear = {
   ],
   "back": [
     {
+      "name": "Drape of the Herd",
+      "crit": 1,
+      "str": 10,
+      "ap": 10,
+      "ac": 47,
+      "source": "Other",
+      "phase": 7,
+      "id": 60488
+    },
+    {
       "name": "Shroud of Haunted Torment",
       "haste": 2,
       "ac": 46,
@@ -8200,7 +8210,7 @@ var gear = {
       "id": 19554
     },
     {
-      "name": "Bonechill Hammer *Classic PPM",
+      "name": "Bonechill Hammer",
       "mindmg": 68,
       "maxdmg": 127,
       "speed": 2.4,
@@ -8209,7 +8219,7 @@ var gear = {
       "phase": 1,
       "id": 14487,
       "proc": {
-        "ppm": 1,
+        "ppm": 1.7,
         "magic": true,
         "dmg": 99
       }
@@ -9628,7 +9638,7 @@ var gear = {
       "id": 19554
     },
     {
-      "name": "Bonechill Hammer *Classic PPM",
+      "name": "Bonechill Hammer",
       "mindmg": 68,
       "maxdmg": 127,
       "speed": 2.4,
@@ -9637,7 +9647,7 @@ var gear = {
       "phase": 1,
       "id": 14487,
       "proc": {
-        "ppm": 1,
+        "ppm": 1.7,
         "magic": true,
         "dmg": 99
       }
