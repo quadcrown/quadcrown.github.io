@@ -3255,6 +3255,7 @@ var gear = {
     {
       "name": "Chromatic Gauntlets",
       "crit": 1,
+      "hit": 1,
       "ap": 44,
       "ac": 279,
       "source": "Crafting",
