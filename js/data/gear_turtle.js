@@ -6863,11 +6863,11 @@ var gear = {
       }
     },
     {
-      "name": "Ancient Hakkari Flayer (Unknown PPM)",
+      "name": "Ancient Hakkari Flayer",
       "Mainhand": true,
       "skill": 4,
       "proc": {
-        "ppm": 1,
+        "ppm": 6.6,
         "dmg": 102
       },
       "mindmg": 56,
