@@ -871,7 +871,7 @@ var spells = [
     buff: true,
 },
 {
-    id: 17528,
+    id: 45509,
     name: 'Bloodlust',
     classname: 'Bloodlust',
     iconname: 'spell_nature_bloodlust',
@@ -881,9 +881,9 @@ var spells = [
     timetostartactive: false,
     aura: true,
     minlevel: 40,
-    value1: 20,
+    value1: 15,
     active: false,
-    buff: false,
+    buff: true,
 },
 
 // Berserking
