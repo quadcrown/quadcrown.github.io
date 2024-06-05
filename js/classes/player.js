@@ -778,6 +778,8 @@ class Player {
             this.stats.haste *= (1 + this.auras.flurry.mult_stats.haste / 100);
         if (this.auras.quicknesspotion && this.auras.quicknesspotion.timer)
             this.stats.haste *= (1 + this.auras.quicknesspotion.mult_stats.haste / 100);
+        if (this.auras.bloodlust && this.auras.bloodlust.timer)
+            this.stats.haste *= (1 + this.auras.bloodlust.mult_stats.haste / 100);
         if (this.auras.berserking && this.auras.berserking.timer)
             this.stats.haste *= (1 + this.auras.berserking.mult_stats.haste / 100);
         if (this.auras.empyrean && this.auras.empyrean.timer)
@@ -964,6 +966,7 @@ class Player {
 
         if (this.auras.mightyragepotion && this.auras.mightyragepotion.firstuse && this.auras.mightyragepotion.timer) this.auras.mightyragepotion.step();
         if (this.auras.quicknesspotion && this.auras.quicknesspotion.firstuse && this.auras.quicknesspotion.timer) this.auras.quicknesspotion.step();
+        if (this.auras.bloodlust && this.auras.bloodlust.firstuse && this.auras.bloodlust.timer) this.auras.bloodlust.step();
         if (this.auras.mildlyirradiated && this.auras.mildlyirradiated.firstuse && this.auras.mildlyirradiated.timer) this.auras.mildlyirradiated.step();
         if (this.auras.recklessness && this.auras.recklessness.firstuse && this.auras.recklessness.timer) this.auras.recklessness.step();
         if (this.auras.deathwish && this.auras.deathwish.firstuse && this.auras.deathwish.timer) this.auras.deathwish.step();
@@ -1020,6 +1023,7 @@ class Player {
 
         if (this.auras.mightyragepotion && this.auras.mightyragepotion.firstuse && this.auras.mightyragepotion.timer) this.auras.mightyragepotion.end();
         if (this.auras.quicknesspotion && this.auras.quicknesspotion.firstuse && this.auras.quicknesspotion.timer) this.auras.quicknesspotion.end();
+        if (this.auras.bloodlust && this.auras.bloodlust.firstuse && this.auras.bloodlust.timer) this.auras.bloodlust.end();
         if (this.auras.mildlyirradiated && this.auras.mildlyirradiated.firstuse && this.auras.mildlyirradiated.timer) this.auras.mildlyirradiated.end();
         if (this.auras.recklessness && this.auras.recklessness.firstuse && this.auras.recklessness.timer) this.auras.recklessness.end();
         if (this.auras.deathwish && this.auras.deathwish.firstuse && this.auras.deathwish.timer) this.auras.deathwish.end();

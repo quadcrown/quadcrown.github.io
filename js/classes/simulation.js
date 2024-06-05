@@ -327,6 +327,7 @@ class Simulation {
                     if (player.auras.swarmguard && player.auras.swarmguard.canUse()) { player.spelldelay = 1; delayedspell = player.auras.swarmguard; }
                     else if (player.auras.mightyragepotion && player.auras.mightyragepotion.canUse()) { player.spelldelay = 1; delayedspell = player.auras.mightyragepotion; }
                     else if (player.auras.quicknesspotion && player.auras.quicknesspotion.canUse()) { player.spelldelay = 1; delayedspell = player.auras.quicknesspotion; }
+                    else if (player.auras.bloodlust && player.auras.bloodlust.canUse()) { player.spelldelay = 1; delayedspell = player.auras.bloodlust; }
                     else if (player.spells.ragepotion && player.spells.ragepotion.canUse()) { player.spelldelay = 1; delayedspell = player.spells.ragepotion; }
                     else if (player.spells.fireball && player.spells.fireball.canUse()) { player.spelldelay = 1; delayedspell = player.spells.fireball; }
                     else if (player.spells.gunaxe && player.spells.gunaxe.canUse()) { player.spelldelay = 1; delayedspell = player.spells.gunaxe; }
