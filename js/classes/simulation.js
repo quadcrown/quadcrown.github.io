@@ -305,19 +305,19 @@ class Simulation {
                     this.idmg += player.attackmh(player.mh);
                     spellcheck = true;
 
-                    // https://github.com/vmangos/core/blob/6f5865accea9c7ef46b073305539c4c0f680a8e5/src/game/Objects/Unit.cpp#L382
-                    if (player.oh && player.oh.timer <= 200) {
-                        player.oh.timer = 200;
-                    }
+                    // // https://github.com/vmangos/core/blob/6f5865accea9c7ef46b073305539c4c0f680a8e5/src/game/Objects/Unit.cpp#L382
+                    // if (player.oh && player.oh.timer <= 200) {
+                    //     player.oh.timer = 200;
+                    // }
                 }
                 if (player.oh && player.oh.timer <= 0) {
                     this.idmg += player.attackoh(player.oh);
                     spellcheck = true;
 
-                    // https://github.com/vmangos/core/blob/6f5865accea9c7ef46b073305539c4c0f680a8e5/src/game/Objects/Unit.cpp#L393
-                    if (player.mh.timer <= 200) {
-                        player.mh.timer = 200;
-                    }
+                    // // https://github.com/vmangos/core/blob/6f5865accea9c7ef46b073305539c4c0f680a8e5/src/game/Objects/Unit.cpp#L393
+                    // if (player.mh.timer <= 200) {
+                    //     player.mh.timer = 200;
+                    // }
                 }
 
                 // Spells
