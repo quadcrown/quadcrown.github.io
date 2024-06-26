@@ -12,7 +12,7 @@ var runes = {
          name: 'Blood Frenzy',
          description: "Each time you deal Bleed damage, you gain 3 rage.",
          iconname: 'ability_warrior_bloodfrenzy',
-         bleedrage: 3,
+         bloodfrenzy: true,
      },
      {
          id: 402911,
@@ -74,11 +74,11 @@ var runes = {
          devastate: true,
      },
      {
-         id: 430472,
+         id: 413404,
          name: 'Single-Minded Fury',
          description: "While dual-wielding, your Physical damage and movement speed are increased by 10%.",
-         iconname: 'inv_relics_totemofrage',
-         dmgdw: 10
+         iconname: 'ability_warrior_incite',
+         singleminded: true,
      },
      {
          id: 429765,
@@ -184,6 +184,29 @@ var runes = {
             name: 'Vigilance',
             description: "",
             iconname: 'ability_warrior_vigilance',
+        },
+    ],
+    "back": [
+        {
+            id: 440484,
+            name: 'Fresh Meat',
+            description: "",
+            iconname: 'spell_deathknight_butcher',
+            freshmeat: true,
+        },
+        {
+            id: 440113,
+            name: 'Sudden Death',
+            description: "",
+            iconname: 'ability_warrior_improveddisciplines',
+            suddendeath: true,
+        },
+        {
+            id: 440488,
+            name: 'Shockwave',
+            description: "",
+            iconname: 'ability_warrior_shockwave',
+            enable: 440488,
         },
     ],
 };

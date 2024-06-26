@@ -228,6 +228,12 @@ SIM.SETTINGS = {
             SIM.UI.updateSidebar();
         });
 
+        view.fight.on('change', 'select[name="spellqueueing"]', function (e) {
+            e.stopPropagation();
+            SIM.UI.updateSession();
+            SIM.UI.updateSidebar();
+        });
+
         view.fight.on('keyup', 'input[type="text"]', function (e) {
             e.stopPropagation();
             if (!view.body.find('.active[data-type="profiles"]').length)
@@ -437,6 +443,7 @@ SIM.SETTINGS = {
                 for (let type in gear)
                     for (let g of gear[type])
                         if (spell.id == g.id && g.selected) item = g;
+
                 if (!item) {
                     spell.active = false;
                     continue;
@@ -446,13 +453,27 @@ SIM.SETTINGS = {
                 }
             }
 
+            // Might set bonus
+            if (spell.itemblock) { 
+                let count = 0;
+                let items = [226499,226497,226494,226495,226493,226492,226498,226496];
+                for (let type in gear)
+                    for (let g of gear[type])
+                        if (g.selected && items.includes(g.id)) count++;
+                if (count < 6) {
+                    spell.active = false;
+                    continue;
+                }
+                spell.active = true;
+            }
+
             let div = $(`<div data-id="${spell.id}" data-name="${spell.name}" class="spell ${spell.active ? 'active' : ''}"><div class="icon">
             <img src="https://wow.zamimg.com/images/wow/icons/medium/${spell.iconname.toLowerCase()}.jpg " alt="${spell.name}">
             <a href="${WEB_DB_URL}${spell.item ? 'item' : 'spell'}=${spell.id}" class="wh-tooltip"></a>
             </div></div>`);
 
             if (spell.buff) buffs += div[0].outerHTML;
-            else if (spell.item) items += div[0].outerHTML;
+            else if (spell.item || spell.itemblock) items += div[0].outerHTML;
             else container.append(div);
 
         }
@@ -481,7 +502,7 @@ SIM.SETTINGS = {
         if (spell.haste !== undefined)
             ul.append(`<li class="nobox ${spell.haste ? 'active' : ''}">Attack speed set at <input type="text" name="haste" value="${spell.haste}" data-numberonly="true" /> %</li>`);
 
-        if (typeof spell.timetoend === 'undefined')
+        if (typeof spell.timetoend === 'undefined' && !spell.noactiveoption)
             ul.append(`<li data-id="active" class="${spell.active ? 'active' : ''}">Enabled ${note ? ` - ${note}` : ''}</li>`);
         if (typeof spell.afterswing !== 'undefined') 
             ul.append(`<li data-id="afterswing" class="${spell.afterswing ? 'active' : ''}">Use only after a swing reset</li>`);
@@ -513,10 +534,6 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="procblock" class="${spell.procblock ? 'active' : ''}">Don't use rage until it procs</li>`);
         if (spell.rageblock !== undefined)
             ul.append(`<li data-id="rageblockactive" class="${spell.rageblockactive ? 'active' : ''}">Don't use rage below <input type="text" name="rageblock" value="${spell.rageblock}" data-numberonly="true" /> rage</li>`);
-        if (spell.flagellation !== undefined)
-            ul.append(`<li data-id="flagellation" class="${spell.flagellation ? 'active' : ''}">Don't use when Flagellation is up</li>`);
-        if (spell.consumedrage !== undefined)
-            ul.append(`<li data-id="consumedrage" class="${spell.consumedrage ? 'active' : ''}">Use only when Consumed by Rage procs</li>`);
         if (spell.execute !== undefined)
             ul.append(`<li data-id="execute" class="${spell.execute ? 'active' : ''}">Use during Execute phase</li>`);
         if (typeof spell.globals !== 'undefined') 
@@ -527,16 +544,25 @@ SIM.SETTINGS = {
             ul.append(`<div class="label">Execute Phase:</div><li data-id="erageblockactive" class="${spell.erageblockactive ? 'active' : ''}">Don't use rage below <input type="text" name="erageblock" value="${spell.erageblock}" data-numberonly="true" /> rage</li>`);
         if (spell.echargeblock !== undefined)
             ul.append(`<li data-id="echargeblockactive" class="${spell.echargeblockactive ? 'active' : ''}">Don't use rage below <input type="text" name="echargeblock" value="${spell.echargeblock}" data-numberonly="true" /> CbR charges</li>`);
-        if (typeof spell.stoptime !== 'undefined') 
-            ul.append(`<li data-id="stoptimeactive" class="${spell.stoptimeactive ? 'active' : ''}">Stop everything when <input type="text" name="stoptime" value="${spell.stoptime}" data-numberonly="true" /> seconds are left</li>`);
         if (spell.alwaysheads !== undefined)
             ul.append(`<li data-id="alwaysheads" data-group="coinflip" class="${spell.alwaysheads ? 'active' : ''}">Always heads</li>`);
         if (spell.alwaystails !== undefined)
             ul.append(`<li data-id="alwaystails" data-group="coinflip" class="${spell.alwaystails ? 'active' : ''}">Always tails</li>`);
         if (spell.zerkerpriority !== undefined)
             ul.append(`<li data-id="zerkerpriority" class="${spell.zerkerpriority ? 'active' : ''}">Prioritize over Bloodrage</li>`);
+        if (typeof spell.resolve !== 'undefined') 
+            ul.append(`<li data-id="resolve" class="${spell.resolve ? 'active' : ''}">Only use if Defender's Resolve is not up</li>`);
         if (typeof spell.swordboard !== 'undefined') 
-            ul.append(`<li data-id="swordboard" class="${spell.swordboard ? 'active' : ''}">Use only after a Sword & Board proc</li>`);
+            ul.append(`<li data-id="swordboard" class="${spell.swordboard ? 'active' : ''}">Only use after a Sword & Board proc</li>`);
+
+        // Might set
+        if (typeof spell.switchstart !== 'undefined')
+            ul.append(`<li data-id="switchstart" class="${spell.switchstart ? 'active' : ''}">Switch stance at fight start</li>`);
+        if (typeof spell.switchtimeactive !== 'undefined')
+            ul.append(`<li data-id="switchtimeactive" class="${spell.switchtimeactive ? 'active' : ''}">Switch if Forecast shorter than <input type="text" name="switchtime" value="${spell.switchtime}" data-numberonly="true" /> secs and rage below <input type="text" name="switchrage" value="${spell.switchrage}" data-numberonly="true" /></li>`);
+        if (typeof spell.switchdefault !== 'undefined')
+            ul.append(`<li data-id="switchdefault" class="${spell.switchdefault ? 'active' : ''}">Switch back to default stance as soon as possible</li>`);
+
 
         details.css('visibility','hidden');
         details.append(ul);
@@ -649,7 +675,7 @@ SIM.SETTINGS = {
         view.buffs.append(armor);
         view.buffs.append('<div class="label">Default Stance</div>');
         view.buffs.append(stances);
-        view.buffs.append('<div class="label">Skill</div>');
+        view.buffs.append('<div class="label">Skill Specialization</div>');
         view.buffs.append(skills);
         SIM.UI.updateSession();
         SIM.UI.updateSidebar();
@@ -710,10 +736,10 @@ SIM.SETTINGS = {
                     tree.append(td);
                 }
                 let tr = $('<tr>');
-                let tree_header = $(`<th style="text-align:left; padding-left: 4px;">${tree_name.toString().charAt(0).toUpperCase()}${tree_name.slice(1).toString()}</th>`)
+                let tree_header = $(`<th style="text-align:left; padding-left: 4px;">${tree_name.toString().charAt(0).toUpperCase()}${tree_name.slice(1).toString().replace('1','')}</th>`)
                 tr.append(tree_header)
-                if (tree_name == "legs")
-                    tree.append('<td><div id="move" class="rune" style="position: absolute; z-index: 999; margin-top: -23px;"><div class="icon"><img src="https://wow.zamimg.com/images/wow/icons/medium/ability_warrior_titansgrip.jpg" alt="" /></div></div></td>');
+                // if (tree_name == "legs")
+                //     tree.append('<td><div id="move" class="rune" style="position: absolute; z-index: 999; margin-top: -23px;"><div class="icon"><img src="https://wow.zamimg.com/images/wow/icons/medium/ability_warrior_titansgrip.jpg" alt="" /></div></div></td>');
                 
                 table.append(tr).append(tree);
                 tbody.append(table)

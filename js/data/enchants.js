@@ -1077,4 +1077,90 @@ var enchant = {
          { count: 2, stats: { procspell: "SerpentAscension", procchance: 3 } }
       ]
    },
+   {
+    id: 1682,
+    name: 'Battlegear of Valor',
+    items: [226765,226764,226766,226770,226771,226769,226767,226768],
+    bonus: [
+       { count: 4, stats: { ap: 40 } },
+       { count: 6, stats: { procspell: "WarriorsResolve", procchance: 6 } }
+    ]
+   },
+   {
+    id: 1719,
+    name: 'Immoveable Might',
+    items: [226485,226484,226489,226486,226488,226490,226491,226487],
+    bonus: [
+       { count: 2, stats: { block: 30 } },
+       { count: 6, stats: { gladdmg: 4 } },
+    ]
+ },
+ {
+  id: 1761,
+  name: 'Champion\'s Battlegear',
+  items: [227050,227051,227043,227042,227049,227048],
+  bonus: [
+     { count: 2, stats: { ap: 40 } }
+  ]
+},
+{
+  id: 1775,
+  name: 'Lieutenant Commander\'s Battlegear',
+  items: [227046,227047,227053,227052,227044,227045],
+  bonus: [
+     { count: 2, stats: { ap: 40 } }
+  ]
+},
+{
+  id: 1778,
+  name: 'Battlegear of Heroism',
+  items: [226879,226880,226878,226877,226876,226875,226874,226873,226869,226860,226858,226867,226872,226862,226865,226863,226870,226861,226864,226866,226859,226868,226871,226857],
+  bonus: [
+     { count: 2, stats: { ap: 40 } },
+     { count: 4, stats: { procspell: "WarriorsResolve", procchance: 6 } }
+  ]
+},
+{
+  id: 1720,
+  name: 'Unstoppable Might',
+  items: [226499,226497,226494,226495,226493,226492,226498,226496],
+  bonus: [
+     { count: 2, stats: { switchrage: true } },
+     { count: 4, stats: { switchdelay: true } },
+     { count: 6, stats: { switchbonus: true } },
+  ]
+},
+{
+  id: 383,
+  name: 'Warlord\'s Battlegear',
+  items: [16541,16542,16544,16545,16548,16543],
+  bonus: [
+     { count: 6, stats: { ap: 40 } }
+  ]
+},
+{
+  id: 1,
+  name: 'The Gladiator',
+  items: [11729,11726,11728,11731,11730],
+  bonus: [
+     { count: 4, stats: { ap: 10 } },
+     { count: 5, stats: { crit: 1 } }
+  ]
+},
+{
+  id: 124,
+  name: 'Deathbone Guardian',
+  items: [14624,14622,14620,14623,14621],
+  bonus: [
+     { count: 2, stats: { defense: 3 } }
+  ]
+},
+{
+  id: 1779,
+  name: 'Core Hound\'s Call',
+  items: [228145,228146,228147],
+  bonus: [
+     { count: 3, stats: { procspell: "MagmadarsReturn", procchance: 1 } }
+  ]
+},
 ];
