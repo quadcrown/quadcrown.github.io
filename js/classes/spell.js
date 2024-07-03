@@ -1708,7 +1708,7 @@ class PrimalBlessing extends Aura {
         super(player, id, 'Primal Blessing');
         this.duration = 12;
         this.stats = { ap: 300 };
-        this.cooldown = 240;
+        this.cooldown = 0;
         this.cooldowntimer = 0;
     }
     use() {
