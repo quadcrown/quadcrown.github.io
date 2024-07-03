@@ -3274,6 +3274,15 @@ var gear = {
   ],
   "waist": [
     {
+      "name": "Marksman's Girdle",
+      "source": "Dungeon",
+      "ac": 202,
+      "agi": 21,
+      "hit": 1,
+      "phase": 1,
+      "id": 22232,
+    },
+    {
       "name": "Greatfather Winter's Belt",
       "hit": 1,
       "haste": 1,
