@@ -117,9 +117,9 @@
                   if (e.Effect == 6 && e.EffectAura == 102 && e["EffectMiscValue[0]"] & 256)
                     obj.ap = (obj.ap || 0) + parseInt(e.EffectBasePoints) + 1;
                   if (e.Effect == 6 && e.EffectAura == 54)
-                    obj.hit = parseInt(e.EffectBasePoints) + 1;
+                    obj.hit = parseInt(e.EffectBasePoints) + parseInt(e.EffectDieSides);
                   if (e.Effect == 6 && e.EffectAura == 52)
-                    obj.crit = parseInt(e.EffectBasePoints) + 1;
+                    obj.crit = parseInt(e.EffectBasePoints) + parseInt(e.EffectDieSides);
                   if (e.Effect == 6 && e.EffectAura == 71)
                     obj.spellcrit = parseInt(e.EffectBasePoints) + 1;
                   if (e.Effect == 6 && e.EffectAura == 30 && e["EffectMiscValue[0]"] != 95 && e["EffectMiscValue[0]"] != 226 && e["EffectMiscValue[0]"] != 393 && e["EffectMiscValue[0]"] != 45 && e["EffectMiscValue[0]"] != 46) {
@@ -145,7 +145,9 @@
               let proc = getProcFromSpell(spell.SpellID), proc2;
               let triggerSpell = effects.filter(e => !!parseInt(e.EffectTriggerSpell));
               if (triggerSpell.length) {
-                if (item.ClassID != "2" && item.ID != 11815 && item.ID != 227989 && item.ID != 19949 && item.ID != 22321 && item.ID != 23570 && item.ID != 22194 && item.ID != 21670 && item.ID != 19289 && item.ID != 17111 && item.ID != 12631 && item.ID != 227865 && item.ID != 7284) {
+                if (item.ClassID != "2" && item.ID != 11815 && item.ID != 227989 && item.ID != 228722 && item.ID != 19949 && item.ID != 22321 && item.ID != 23570 &&
+                 item.ID != 22194 && item.ID != 21670 && item.ID != 19289 && item.ID != 17111 && item.ID != 228354 && item.ID != 12631 && item.ID != 227865 && 
+                 item.ID != 7284) {
                   //console.log("check: " + obj.name);
                 }
                 else {
@@ -255,6 +257,7 @@
           if (obj.id == 12548) obj.r = 51;
           if (obj.id == 211449) obj.i = 40;
           if (obj.id == 209563) obj.i = 40;
+          if (obj.id == 19120) obj.i = 60;
 
 
           let include = false, exclude = false;
@@ -275,9 +278,11 @@
           if (obj.id == 228089) include = true;
           if (obj.id == 228122) include = true;
           if (obj.id == 228147) include = true;
+          if (obj.id == 228465) include = true;
           
-          
-          
+
+
+
           if (obj.id == 16336) exclude = true;
           if (obj.id == 17780) exclude = true;
           if (obj.id == 11905) exclude = true;
@@ -299,6 +304,7 @@
           if (obj.id == 20177) exclude = true;
           if (obj.id == 20179) exclude = true;
           if (obj.id == 22736) exclude = true;
+          if (obj.id == 228576) exclude = true;
           if (obj.id == 21244) exclude = true; // REMOVE WHEN AQ
           if (obj.id == 21268) exclude = true; // REMOVE WHEN AQ
           if (obj.id == 21244) exclude = true; // REMOVE WHEN AQ
@@ -362,19 +368,19 @@
         }
 
         // custom items
-        gear["head"].push({
-          "id": 215161,
-          "type": "Plate",
-          "slot": "head",
-          "r": 40,
-          "q": "4",
-          "i": "45",
-          "name": "Tempered Interference-Negating Helmet",
-          "p": "inv_helmet_49",
-          "str": 20,
-          "sta": 14,
-          "crit": 1
-        });
+        // gear["head"].push({
+        //   "id": 215161,
+        //   "type": "Plate",
+        //   "slot": "head",
+        //   "r": 40,
+        //   "q": "4",
+        //   "i": "45",
+        //   "name": "Tempered Interference-Negating Helmet",
+        //   "p": "inv_helmet_49",
+        //   "str": 20,
+        //   "sta": 14,
+        //   "crit": 1
+        // });
         gear["hands"].push({
           "id": '213319a',
           "type": "Leather",
@@ -482,7 +488,7 @@
       var removeDupe = function(obj, slot) {
         let i = gear[slot].length;
         while (i--) {
-          if (obj.name == gear[slot][i].name && obj.id > gear[slot][i].id && obj.id > 100000) { 
+          if (obj.name == gear[slot][i].name && obj.id > gear[slot][i].id && obj.id > 100000 && obj.r != 25) { 
             if (obj.id == 224409) return;
             gear[slot].splice(i, 1);
           } 
@@ -512,13 +518,16 @@
         {i:12798,s:"Annihilator"},
         {i:13286,s:"Rivenspike"},
         {i:12590,s:"Felstriker"},
+        {i:228757,s:"Felstriker"},
         {i:18203,s:"Eskhandar"},
+        {i:228350,s:"Eskhandar"},
         {i:17112,s:"Empyrean"},
+        {i:228397,s:"Empyrean"},
         {i:6622,s:"Zeal"},
         {i:13246,s:"Avenger"},
-        {i:12590,s:"Felstriker"},
         {i:13204,s:"Rivenspike"},
         {i:17076,s:"Bonereaver"},
+        {i:228461,s:"Bonereaver"},
         {i:647,s:"Destiny"},
         {i:19334,s:"Untamed"},
         {i:9465,s:"Vibroblade"},
@@ -564,11 +573,14 @@
         {i:17182,p:0.7},
         {i:227683,p:0.7},
         {i:17076,p:2},
+        {i:228461,p:2},
         {i:11815,c:2},
         {i:227989,c:2},
+        {i:228722,c:2},
         {i:19289,c:2},
         {i:22321,c:2},
         {i:17111,c:100},
+        {i:228354,c:100},
         {i:12631,c:100},
         {i:7284,c:5},
         {i:19968,c:100},

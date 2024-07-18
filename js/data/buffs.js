@@ -269,7 +269,7 @@ var buffs = [
       iconname: "ability_trueshot",
       group: "trueshot",
       ap: 100,
-      apsod: 200,
+      apsod: 0,
       minlevel: 60
    },
    {
@@ -280,6 +280,7 @@ var buffs = [
       group: "kings",
       strmod: 10,
       agimod: 10,
+      ap: 200,
       sod: true,
    },
    {
@@ -525,6 +526,7 @@ var buffs = [
       group: "blasted",
       ap: 48,
       minlevel: 50,
+      maxlevel: 59,
       voodoofrenzy: true,
       consume: true,
       sod: true,

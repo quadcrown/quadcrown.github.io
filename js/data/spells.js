@@ -1057,6 +1057,7 @@ var spells = [
     swingreset: true,
     afterswing: true,
     bloodsurge: false,
+    execute: false,
     active: false,
 },
 {
@@ -1074,6 +1075,7 @@ var spells = [
     swingreset: true,
     afterswing: true,
     bloodsurge: false,
+    execute: false,
     active: false,
 },
 {
@@ -1091,6 +1093,7 @@ var spells = [
     swingreset: true,
     afterswing: true,
     bloodsurge: false,
+    execute: false,
     active: false,
 },
 {
@@ -1109,6 +1112,7 @@ var spells = [
     swingreset: true,
     afterswing: true,
     bloodsurge: false,
+    execute: false,
     active: false,
 },
 
@@ -1118,7 +1122,7 @@ var spells = [
     name: 'Raging Blow',
     classname: 'RagingBlow',
     iconname: 'ability_hunter_swiftstrike',
-    execute: true,
+    execute: false,
     rune: true,
 },
 {
@@ -1467,6 +1471,21 @@ var spells = [
     switchtime: 1,
     switchrage: 100,
     switchdefault: true,
+},
+
+{
+    id: 16322,
+    name: 'Juju Flurry',
+    classname: 'JujuFlurry',
+    iconname: 'inv_misc_monsterscales_17',
+    minlevel: 55,
+    timetoend: 11,
+    timetoendactive: false,
+    timetostart: 0,
+    timetostartactive: false,
+    active: true,
+    aura: true,
+    buff: true,
 },
 
 

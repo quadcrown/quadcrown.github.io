@@ -16,6 +16,7 @@ class Spell {
         this.defenseType = DEFENSETYPE.MELEE;
         this.school = SCHOOL.PHYSICAL;
         this.minrage = 0;
+        this.offensive = true;
 
         let spell = spells.filter(s => s.id == this.id)[0];
         if (!spell) return;
@@ -83,7 +84,7 @@ class Bloodthirst extends Spell {
     }
     dmg() {
         let dmg;
-        dmg = this.player.stats.ap * 0.45 + this.player.stats.moddmgdone;
+        dmg = this.player.stats.ap * 0.45;
         return dmg * this.player.stats.dmgmod * this.player.mainspelldmg;
     }
     canUse() {
@@ -99,6 +100,7 @@ class Whirlwind extends Spell {
         this.refund = false;
     }
     dmg() {
+        if (this.player.auras.consumedrage && this.player.auras.consumedrage.timer) this.offhandhit = true;
         let dmg;
         dmg = rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
         dmg += (this.player.stats.ap / 14) * this.player.mh.normSpeed + this.player.stats.moddmgdone;
@@ -164,7 +166,7 @@ class Execute extends Spell {
     }
     dmg() {
         let dmg;
-        dmg = this.value1 + (this.value2 * this.usedrage) + this.player.stats.moddmgdone;
+        dmg = this.value1 + (this.value2 * this.usedrage);
         return dmg * this.player.stats.dmgmod;
     }
     use(delayedheroic) {
@@ -211,6 +213,7 @@ class Bloodrage extends Spell {
         this.rage = 10 + player.talents.bloodragebonus;
         this.cooldown = 60;
         this.useonly = true;
+        this.offensive = false;
     }
     use() {
         this.timer = this.cooldown * 1000;
@@ -319,7 +322,7 @@ class SunderArmor extends Spell {
         if (!this.devastate) return 0;
         let mod = 1.5 * (1 + 0.1 * (this.stacks - 1));
         let dmg = (this.player.mh.mindmg + this.player.mh.maxdmg) / 2;
-        let dps = (dmg  + (this.player.stats.ap / 14) * this.player.mh.speed)  / this.player.mh.speed;
+        let dps = (dmg  + (this.player.stats.ap / 14) * this.player.mh.speed) / this.player.mh.speed;
         return dps * mod * this.player.stats.dmgmod;
     }
     canUse() {
@@ -346,7 +349,7 @@ class Hamstring extends Spell {
     }
     dmg() {
         let dmg;
-        dmg = this.value1 + this.player.stats.moddmgdone;
+        dmg = this.value1;
         return dmg * this.player.stats.dmgmod;
     }
 }
@@ -359,10 +362,10 @@ class ThunderClap extends Spell {
     }
     dmg() {
         let dmg;
-        dmg = this.value1;
+        dmg = this.value1 + (this.player.mode == "sod" ? ~~(this.player.stats.ap * 0.05) : 0);
         if(this.player.furiousthunder)
             dmg *= 2;
-        return dmg;
+        return dmg * this.player.stats.dmgmod;
     }
     canUse() {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
@@ -404,12 +407,18 @@ class RagingBlow extends Spell {
         let dmg;
         dmg = rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
         dmg += (this.player.stats.ap / 14) * this.player.mh.normSpeed + this.player.stats.moddmgdone;
-        return dmg * 0.8 * this.player.stats.dmgmod;
+        return dmg * this.player.stats.dmgmod;
     }
     canUse(executephase) {
         return !this.timer && !this.player.timer && 
             (!executephase || this.execute) &&
             this.player.isEnraged();
+    }
+    reduce(spell) {
+        // Raging blow cooldown is reduced by 1 second when you use another melee ability while enraged.
+        if (this.timer && this.player.isEnraged() && spell && spell != this && spell.offensive) {
+            this.timer = Math.max(0, this.timer - 1000);
+        }
     }
 }
 
@@ -420,6 +429,7 @@ class BerserkerRage extends Spell {
         this.rage = player.talents.berserkerbonus;
         this.cooldown = 30;
         this.useonly = true;
+        this.offensive = false;
     }
     use() {
         this.player.timer = 1500;
@@ -465,6 +475,7 @@ class RagePotion extends Spell {
         this.minrage = 80;
         this.cooldown = 120;
         this.useonly = true;
+        this.offensive = false;
     }
     prep(duration) {
         if (typeof this.timetoend !== 'undefined') this.usestep = Math.max(duration - this.timetoend, 0);
@@ -492,13 +503,15 @@ class Slam extends Spell {
         this.cooldown = player.precisetiming ? 6 : 0;
         this.mhthreshold = 0;
     }
-    dmg() {
+    dmg(weapon) {
+        if (!weapon) weapon = this.player.mh;
         let dmg;
-        dmg = (this.decisive && this.player.level == 60 ? this.value2 : this.value1) + rng(this.player.mh.mindmg + this.player.mh.bonusdmg, this.player.mh.maxdmg + this.player.mh.bonusdmg);
-        dmg += (this.player.stats.ap / 14) * this.player.mh.speed + this.player.stats.moddmgdone;
+        dmg = (this.decisive && this.player.level == 60 ? this.value2 : this.value1) + rng(weapon.mindmg + weapon.bonusdmg, weapon.maxdmg + weapon.bonusdmg);
+        dmg += (this.player.stats.ap / 14) * weapon.speed + this.player.stats.moddmgdone;
         return dmg * this.player.stats.dmgmod;
     }
     use() {
+        if (this.player.freeslam) this.offhandhit = true;
         if (!this.player.freeslam) this.player.rage -= this.cost;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         if (this.casttime && !this.player.freeslam) {
@@ -509,8 +522,9 @@ class Slam extends Spell {
         this.timer = this.cooldown * 1000;
         /* start-log */ if (log) this.player.log(`${this.name} done casting`); /* end-log */
     }
-    canUse() {
+    canUse(executephase) {
         return !this.timer && !this.player.timer && this.player.mh.timer >= this.mhthreshold && (this.player.freeslam || this.cost <= this.player.rage) && 
+            (!executephase || this.execute) &&
             (!this.bloodsurge || this.player.freeslam) &&
             (!this.minrage || this.player.rage >= this.minrage) &&
             (!this.maincd || 
@@ -525,6 +539,7 @@ class Fireball extends Spell {
         this.useonly = true;
         this.proc = { magicdmg: 331+40 };
         this.idmg = 0;
+        this.offensive = false;
     }
     prep(duration) {
         if (typeof this.timetoend !== 'undefined') this.usestep = Math.max(duration - this.timetoend, 0);
@@ -548,6 +563,7 @@ class GunAxe extends Spell {
         this.useonly = true;
         this.proc = { magicdmg: 150 + 75 };
         this.idmg = 0;
+        this.offensive = false;
     }
     prep(duration) {
         if (typeof this.timetoend !== 'undefined') this.usestep = Math.max(duration - this.timetoend, 0);
@@ -629,7 +645,7 @@ class Shockwave extends Spell {
         this.canDodge = false;
     }
     dmg() {
-        let dmg = this.player.stats.ap / 2 + this.player.stats.moddmgdone;
+        let dmg = this.player.stats.ap / 2;
         return dmg * this.player.stats.dmgmod;
     }
     use() {
@@ -640,7 +656,7 @@ class Shockwave extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+        return this.player.shield && !this.timer && !this.player.timer && this.cost <= this.player.rage && 
         (this.player.isValidStance('def') || this.player.talents.rageretained >= this.cost) &&
         (!this.maxrage || this.player.isValidStance('def') || this.player.rage <= this.maxrage) &&
         (!this.minrage || this.player.rage >= this.minrage) &&
@@ -656,6 +672,7 @@ class TheMoltenCore extends Spell {
         this.useonly = true;
         this.proc = { magicdmg: 20 };
         this.idmg = 0;
+        this.offensive = false;
     }
     use() {
         let procdmg = this.player.magicproc(this.proc);
@@ -671,14 +688,16 @@ class UnstoppableMight extends Spell {
     constructor(player, id) {
         super(player, id, 'Unstoppable Might');
         this.useonly = true;
+        this.offensive = false;
     }
     use() {
         if (this.player.stance != 'battle') this.player.switch('battle');
         else this.player.switch(this.player.basestance == 'battle' ? 'zerk' : this.player.basestance);
     }
     canUse() {
+        if (!this.player.auras.battleforecast) return false;
         //Switch if Forecast shorter than X secs and rage below Y
-        let forecast = Math.max(this.player.auras.battleforecast.timer - step, this.player.auras.berserkerforecast.timer - step);
+        let forecast = Math.max(this.player.auras.battleforecast.timer - step, this.player.auras.berserkerforecast.timer - step, this.player.auras.defensiveforecast.timer - step);
         return (this.switchtimeactive && this.player.rage <= this.switchrage && forecast <= this.switchtime);
     }
 }
@@ -687,6 +706,7 @@ class StanceSwitch extends Spell {
     constructor(player, id) {
         super(player, id, 'Stance Switch');
         this.useonly = true;
+        this.offensive = false;
     }
     use() {
         this.player.switch(this.player.basestance);
@@ -714,6 +734,7 @@ class Aura {
         this.name = name || this.constructor.name;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         this.useonly = true;
+        this.offensive = false;
 
         let spell = spells.filter(s => s.id == this.id)[0];
         if (!spell) spell = buffs.filter(s => s.id == this.id)[0];
@@ -1899,17 +1920,14 @@ class Rend extends Aura {
         this.nocrit = true;
         this.dmgmod = 1 + this.player.talents.rendmod / 100;
         this.tfbstep = -6000;
+        this.offensive = true;
     }
     step() {
         while (step >= this.nexttick && this.stacks) {
-            let basedmg = this.value1;
-            if (this.player.bloodfrenzy)
-                basedmg += this.value1 + ~~(this.player.stats.ap * 0.03);
-            let dmg = basedmg * this.player.stats.dmgmod * this.dmgmod * this.player.bleedmod;
-            this.idmg += dmg / this.value2;
-            this.totaldmg +=dmg / this.value2;
+            this.idmg += this.tickdmg;
+            this.totaldmg += this.tickdmg;
 
-            /* start-log */ if (log) this.player.log(`${this.name} tick for ${(dmg / this.value2).toFixed(2)}`); /* end-log */
+            /* start-log */ if (log) this.player.log(`${this.name} tick for ${this.tickdmg.toFixed(2)}`); /* end-log */
 
             this.nexttick += 3000;
             this.stacks--;
@@ -1950,6 +1968,13 @@ class Rend extends Aura {
         if (!this.player.isValidStance('battle', true))
             this.player.switch('battle');
         this.player.rage -= this.cost;
+
+        let basedmg = this.value1;
+        if (this.player.bloodfrenzy)
+            basedmg += this.value1 + ~~(this.player.stats.ap * 0.03 * this.value2);
+       let dmg = basedmg * this.player.stats.dmgmod * this.dmgmod * this.player.bleedmod;
+       this.tickdmg = dmg / this.value2;
+
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
@@ -2106,6 +2131,7 @@ class BlisteringRagehammer extends Aura {
         this.starttimer = step;
         this.player.updateBonusDmg();
         this.player.updateHaste();
+        this.player.updateHasteDamage();
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
     }
     step() {
@@ -2115,6 +2141,7 @@ class BlisteringRagehammer extends Aura {
             this.firstuse = false;
             this.player.updateBonusDmg();
             this.player.updateHaste();
+            this.player.updateHasteDamage();
             /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
         }
     }
@@ -2123,6 +2150,7 @@ class BlisteringRagehammer extends Aura {
         this.timer = 0;
         this.stacks = 0;
         this.player.updateBonusDmg();
+        this.player.updateHasteDamage();
     }
 }
 
@@ -2291,6 +2319,7 @@ class Spicy extends Aura {
         this.starttimer = step;
         this.firstuse = false;
         this.player.updateHaste();
+        this.player.updateHasteDamage();
         if (!this.player.attackproc1) this.player.attackproc1 = { chance: 500, magicdmg: 7, spicy: true };
         if (!this.player.attackproc2) this.player.attackproc2 = { chance: 500, magicdmg: 7, spicy: true };
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
@@ -2300,6 +2329,7 @@ class Spicy extends Aura {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
             this.player.updateHaste();
+            this.player.updateHasteDamage();
             if (this.player.attackproc1 && this.player.attackproc1.spicy) delete this.player.attackproc1;
             if (this.player.attackproc2 && this.player.attackproc2.spicy) delete this.player.attackproc2;
             /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
@@ -2309,6 +2339,7 @@ class Spicy extends Aura {
         this.uptime += (step - this.starttimer);
         this.timer = 0;
         this.stacks = 0;
+        this.player.updateHasteDamage();
         if (this.player.attackproc1 && this.player.attackproc1.spicy) delete this.player.attackproc1;
         if (this.player.attackproc2 && this.player.attackproc2.spicy) delete this.player.attackproc2;
     }
@@ -2640,6 +2671,13 @@ class BerserkerForecast extends Aura {
     }
 }
 
+class DefensiveForecast extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Defensive Forecast');
+        this.duration = 10;
+    }
+}
+
 class DefendersResolve extends Aura {
     constructor(player, id) {
         super(player, id, 'Defender\'s Resolve');
@@ -2784,5 +2822,42 @@ class MagmadarsReturn extends Aura {
         this.cooldowntimer = step + this.cooldown * 1000;
         this.player.updateHaste();
         /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+}
+
+class JujuFlurry extends Aura {
+    constructor(player, id) {
+        super(player, id, 'Juju Flurry');
+        this.duration = 20;
+        this.cooldown = 60;
+        this.mult_stats = { haste: 3 };
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateHasteDamage();
+        this.player.updateHaste();
+        /* start-log */ if (log) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    canUse() {
+        return !this.timer && step >= this.usestep;
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.firstuse = false;
+            this.usestep = this.starttimer + (this.cooldown * 1000);
+            this.player.updateHasteDamage();
+            this.player.updateHaste();
+            /* start-log */ if (log) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+    end() {
+        this.uptime += (step - this.starttimer);
+        this.timer = 0;
+        this.stacks = 0;
+        this.player.updateHasteDamage();
     }
 }

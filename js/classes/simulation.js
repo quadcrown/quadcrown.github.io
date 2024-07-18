@@ -277,7 +277,7 @@ class Simulation {
                 if (player.auras.consumedrage && player.rage >= 60)
                     player.auras.consumedrage.use();
             }
-            if (player.spells.themoltencore && next != 0 && step % 1000 == 0) {
+            if (player.spells.themoltencore && next != 0 && step % 2000 == 0) {
                 player.spells.themoltencore.use();
             }
 
@@ -334,7 +334,8 @@ class Simulation {
                     else if (player.spells.fireball && player.spells.fireball.canUse()) { player.spelldelay = 1; delayedspell = player.spells.fireball; }
                     else if (player.spells.gunaxe && player.spells.gunaxe.canUse()) { player.spelldelay = 1; delayedspell = player.spells.gunaxe; }
                     else if (player.auras.mildlyirradiated && player.auras.mildlyirradiated.canUse()) { player.spelldelay = 1; delayedspell = player.auras.mildlyirradiated; }
-                    
+                    else if (player.auras.jujuflurry && player.auras.jujuflurry.canUse()) { player.spelldelay = 1; delayedspell = player.auras.jujuflurry; }
+
                     else if (!player.timer && player.spells.berserkerrage && player.spells.berserkerrage.zerkerpriority && player.spells.berserkerrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.berserkerrage; }
                     else if (player.spells.bloodrage && player.spells.bloodrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.bloodrage; }
 
@@ -378,7 +379,7 @@ class Simulation {
                         else if (player.spells.berserkerrage && player.spells.berserkerrage.canUse()) { 
                             player.spelldelay = 1; delayedspell = player.spells.berserkerrage; 
                         }
-                        else if (player.spells.slam && player.freeslam && player.spells.slam.canUse()) { 
+                        else if (player.spells.slam && player.freeslam && player.spells.slam.canUse(true)) { 
                             player.spelldelay = 1; delayedspell = player.spells.slam; 
                         }
                         else if (player.spells.shieldslam && player.freeshieldslam && player.spells.shieldslam.canUse()) { 
@@ -386,13 +387,11 @@ class Simulation {
                         }
                         else if (player.auras.consumedrage && player.auras.consumedrage.erageblock && player.rage < player.auras.consumedrage.erageblock) { } 
                         else if (player.auras.consumedrage && player.auras.consumedrage.echargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.echargeblock && player.rage < 60) { } 
-                        else if (player.stats.ap >= player.spells.execute.priorityap) {
-                            if (player.spells.bloodthirst && player.spells.bloodthirst.canUse()) {
-                                player.spelldelay = 1; delayedspell = player.spells.bloodthirst;
-                            }
-                            else if (player.spells.mortalstrike && player.spells.mortalstrike.canUse()) {
-                                player.spelldelay = 1; delayedspell = player.spells.mortalstrike;
-                            }
+                        else if (player.spells.bloodthirst && player.spells.bloodthirst.canUse()) {
+                            player.spelldelay = 1; delayedspell = player.spells.bloodthirst;
+                        }
+                        else if (player.spells.mortalstrike && player.spells.mortalstrike.canUse()) {
+                            player.spelldelay = 1; delayedspell = player.spells.mortalstrike;
                         }
                         else if (player.spells.execute.canUse()) {
                             player.spelldelay = 1; delayedspell = player.spells.execute;
@@ -401,7 +400,6 @@ class Simulation {
 
                     // Normal phase - no cost
                     else if (player.auras.rampage && player.auras.rampage.canUse()) { player.spelldelay = 1; delayedspell = player.auras.rampage; }
-                    else if (player.spells.ragingblow && player.spells.ragingblow.canUse(false)) { player.spelldelay = 1; delayedspell = player.spells.ragingblow; }
                     else if (player.spells.slam && player.freeslam && player.spells.slam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.slam; }
                     else if (player.spells.shieldslam && player.freeshieldslam && player.spells.shieldslam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.shieldslam; }
                     else if (player.spells.blademasterfury && player.spells.blademasterfury.canUse()) { player.spelldelay = 1; delayedspell = player.spells.blademasterfury; }
@@ -422,6 +420,7 @@ class Simulation {
                     else if (player.spells.shockwave && player.spells.shockwave.canUse()) { player.spelldelay = 1; delayedspell = player.spells.shockwave; }
                     else if (!player.precisetiming && player.spells.slam && player.spells.slam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.slam; }
                     else if (player.spells.thunderclap && player.spells.thunderclap.canUse()) { player.spelldelay = 1; delayedspell = player.spells.thunderclap; }
+                    else if (player.spells.ragingblow && player.spells.ragingblow.canUse(false)) { player.spelldelay = 1; delayedspell = player.spells.ragingblow; }
                     else if (player.spells.quickstrike && player.spells.quickstrike.canUse()) { player.spelldelay = 1; delayedspell = player.spells.quickstrike; }
                     else if (player.spells.sunderarmor && player.spells.sunderarmor.canUse()) { player.spelldelay = 1; delayedspell = player.spells.sunderarmor; }
                     else if (player.spells.hamstring && player.spells.hamstring.canUse()) { player.spelldelay = 1; delayedspell = player.spells.hamstring; }
@@ -473,10 +472,19 @@ class Simulation {
                         player.spelldelay = 0;
                         spellcheck = true;
 
+                        if (delayedspell.offhandhit && player.oh) {
+                            done = player.castoh(delayedspell);
+                            this.idmg += done;
+                        }
+
                         if (delayedspell instanceof Whirlwind || delayedspell instanceof BlademasterFury || delayedspell instanceof ThunderClap || delayedspell instanceof Shockwave) {
                             for (let i = 0; i < player.adjacent; i++) {
                                 done = player.cast(delayedspell, delayedheroic, player.adjacent, done);
                                 this.idmg += done;
+                                if (delayedspell.offhandhit && player.oh) {
+                                    done = player.castoh(delayedspell, player.adjacent, done);
+                                    this.idmg += done;
+                                }
                             }
                         }
                     }
@@ -518,6 +526,10 @@ class Simulation {
             if (slamstep && step == slamstep) {
                 let done = player.cast(delayedspell, delayedheroic)
                 this.idmg += done;
+                if (delayedspell.offhandhit && player.oh) {
+                    done = player.castoh(delayedspell);
+                    this.idmg += done;
+                }
                 spellcheck = true;
                 slamstep = 0;
             }
@@ -552,7 +564,7 @@ class Simulation {
             if (player.target.speed && (player.target.speed - (step % player.target.speed)) < next) next = player.target.speed - (step % player.target.speed);
             if (player.talents.angermanagement && (3000 - (step % 3000)) < next) next = 3000 - (step % 3000);
             if (player.vaelbuff && (1000 - (step % 1000)) < next) next = 1000 - (step % 1000);
-            if (player.spells.themoltencore && (1000 - (step % 1000)) < next) next = 1000 - (step % 1000);
+            if (player.spells.themoltencore && (2000 - (step % 2000)) < next) next = 2000 - (step % 2000);
             if (player.auras.bloodrage && player.auras.bloodrage.timer && (1000 - ((step - player.auras.bloodrage.starttimer) % 1000)) < next)
                 next = 1000 - ((step - player.auras.bloodrage.starttimer) % 1000);
             if (player.auras.gabbar && player.auras.gabbar.timer && (2000 - ((step - player.auras.gabbar.starttimer) % 2000)) < next)
