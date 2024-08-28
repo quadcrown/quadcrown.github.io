@@ -516,7 +516,17 @@ var enchant = {
        "phase": 1,
        "r": 50,
        "ench": "1506"
-     }
+     },
+     {
+      "id": 11644,
+      "name": "Lesser Arcanum of Resilience (Fire Resist)",
+      "resist": {
+         "fire": 20
+       },
+      "phase": 1,
+      "r": 50,
+      "ench": "1505"
+    }
    ],
    "shoulder": [
      {
@@ -526,6 +536,30 @@ var enchant = {
        "r": 50,
        "ench": "7328"
      },
+     {
+      "name": "Blessed Flame Mantle of the Dawn",
+      "source": "Quest",
+      "subsource": "fire",
+      "resist": {
+        "fire": 15
+      },
+      "phase": "1",
+      "id": 227819,
+      "r": 55,
+      "ench": "7563"
+    },
+    {
+      "name": "Flame Mantle of the Dawn",
+      "source": "Quest",
+      "subsource": "fire",
+      "resist": {
+        "fire": 5
+      },
+      "phase": "1",
+      "id": 18169,
+      "r": 55,
+      "ench": "2483"
+    },
      {
        "name": "Frost Mantle of the Dawn",
        "source": "Quest",
@@ -571,6 +605,17 @@ var enchant = {
      }
    ],
    "back": [
+      {
+        "name": "Hydraxian Coronation",
+        "source": "Quest",
+        "subsource": "fire",
+        "resist": {
+          "fire": 20
+        },
+        "phase": 1,
+        "id": 227926,
+        "ench": "7564"
+      },
      {
        "spellid": true,
        "name": "Greater Fire Resistance",
@@ -805,7 +850,17 @@ var enchant = {
        "phase": 1,
        "r": 50,
        "ench": "1506"
-     }
+     },
+     {
+      "id": 11644,
+      "name": "Lesser Arcanum of Resilience (Fire Resist)",
+      "resist": {
+         "fire": 20
+       },
+      "phase": 1,
+      "r": 50,
+      "ench": "1505"
+    }
    ],
    "feet": [
      {
@@ -883,6 +938,7 @@ var enchant = {
       bonus: [
          { count: 2, stats: { hit: 1 } },
          { count: 3, stats: { crit: 2 } },
+         { count: 4, stats: { resist: { fire: 10 }}},
       ]
    },
    {
@@ -923,6 +979,7 @@ var enchant = {
       name: 'Battlegear of Heroism',
       items: [21994, 21995, 21996, 21997, 21998, 21999, 22000, 22001],
       bonus: [
+         { count: 2, stats: { resist: { fire: 8, frost: 8, nature: 8, shadow: 8 }}},
          { count: 6, stats: { ap: 40 } }
       ]
    },
@@ -1083,7 +1140,8 @@ var enchant = {
     items: [226765,226764,226766,226770,226771,226769,226767,226768],
     bonus: [
        { count: 4, stats: { ap: 40 } },
-       { count: 6, stats: { procspell: "WarriorsResolve", procchance: 6 } }
+       { count: 6, stats: { procspell: "WarriorsResolve", procchance: 6 } },
+       { count: 8, stats: { resist: { fire: 8, frost: 8, nature: 8, shadow: 8 }}},
     ]
    },
    {
@@ -1117,7 +1175,8 @@ var enchant = {
   items: [226879,226880,226878,226877,226876,226875,226874,226873,226869,226860,226858,226867,226872,226862,226865,226863,226870,226861,226864,226866,226859,226868,226871,226857],
   bonus: [
      { count: 2, stats: { ap: 40 } },
-     { count: 4, stats: { procspell: "WarriorsResolve", procchance: 6 } }
+     { count: 4, stats: { procspell: "WarriorsResolve", procchance: 6 } },
+     { count: 6, stats: { resist: { fire: 8, frost: 8, nature: 8, shadow: 8 }}},
   ]
 },
 {
@@ -1231,7 +1290,7 @@ var enchant = {
   name: 'Devilsaur Armor',
   items: [227848,227847],
   bonus: [
-     { count: 2, stats: { hit: 2 } },
+     { count: 2, stats: { hit: 2, resist: { fire: 10 }}},
   ]
 },
 {
@@ -1241,6 +1300,7 @@ var enchant = {
   bonus: [
      { count: 2, stats: { hit: 1 } },
      { count: 3, stats: { crit: 2, spellcrit: 2 } },
+     { count: 4, stats: { resist: { fire: 10 }}},
   ]
 },
 ];

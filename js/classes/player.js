@@ -184,7 +184,7 @@ class Player {
 
         // Might set bonus
         if (this.spells.unstoppablemight && this.spells.unstoppablemight.switchstart) {
-            this.switch(this.stance);
+            this.switch(this.stance == 'zerk' || this.stance == 'def' ? 'battle' : 'zerk');
         }
     }
     addRace() {
@@ -503,8 +503,17 @@ class Player {
                 continue;
             for (let bonus of set.bonus) {
                 if (counter >= bonus.count) {
-                    for (let prop in bonus.stats)
-                        this.base[prop] += bonus.stats[prop] || 0;
+                    for (let prop in bonus.stats) {
+                        if (typeof bonus.stats[prop] === 'object') {
+                            for (let subprop in bonus.stats[prop]) {
+                                this.base[prop][subprop] += bonus.stats[prop][subprop] || 0;
+                            }
+                        }
+                        else {
+                            this.base[prop] += bonus.stats[prop] || 0;
+                        }
+                    }
+
                     if (bonus.stats.procchance) {
                         let proc = {}
                         proc.chance = bonus.stats.procchance * 100;
@@ -617,6 +626,17 @@ class Player {
                 this.base.skill_5 += buff.skill_5 || 0;
                 this.base.skill_6 += buff.skill_6 || 0;
                 this.base.skill_7 += buff.skill_7 || 0;
+
+                if (buff.resist) {
+                    let impmotw = buff.name == "Mark of the Wild" && buffs.filter(s => s.motwmod && s.active)[0];
+                    if (buff.name == "Mark of the Wild" && buffs.filter(s => s.mrp && s.active)[0]) continue;
+                    if ((buff.name == "Mark of the Wild" || buff.mrp) && buffs.filter(s => s.fra && s.active)[0]) continue;
+                    this.base.resist.fire += ~~(buff.resist.fire * (impmotw ? impmotw.motwmod : 1) || 0);
+                    this.base.resist.frost += ~~(buff.resist.frost * (impmotw ? impmotw.motwmod : 1) || 0);
+                    this.base.resist.nature += ~~(buff.resist.nature * (impmotw ? impmotw.motwmod : 1) || 0);
+                    this.base.resist.shadow += ~~(buff.resist.shadow * (impmotw ? impmotw.motwmod : 1) || 0);
+                }
+                
             }
         }
         this.target.basearmorbuffed = Math.max(this.target.basearmorbuffed, 0);
@@ -869,6 +889,7 @@ class Player {
             this.stats.haste *= (1 + this.auras.magmadarsreturn.mult_stats.haste / 100);
         if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
             this.stats.haste *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
+
     }
     updateHasteDamage() {
         // MOD_ATTACKSPEED works differently than regular haste, lowers dmg
@@ -1641,22 +1662,16 @@ class Player {
         
         if (this.auras.echoesstance) this.auras.echoesstance.use(prev);
         if (this.auras.battleforecast && (this.stance == 'battle' || this.stance == 'glad')) {
-            this.auras.berserkerforecast.remove();
-            this.auras.defensiveforecast.remove();
             this.auras.battleforecast.use();
         } 
         if (this.auras.berserkerforecast && this.stance == 'zerk') {
-            this.auras.battleforecast.remove();
-            this.auras.defensiveforecast.remove();
             this.auras.berserkerforecast.use();
         }
         if (this.auras.defensiveforecast && this.stance == 'def') {
-            this.auras.battleforecast.remove();
-            this.auras.berserkerforecast.remove();
             this.auras.defensiveforecast.use();
         }
         if (this.switchrage) this.ragetimer = 10; // Rage gain is batched to prevent switching stance + casting BT on the same step
-        this.stancetimer = 1500 + rng(this.reactionmin, this.reactionmax);
+        this.stancetimer = 1500;
         this.updateAuras();
         /* start-log */ if (log) this.log(`Switched to ${stance} stance`); /* end-log */
     }

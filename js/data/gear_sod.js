@@ -4583,6 +4583,20 @@ var gear = {
       "ap": 26
     },
     {
+      "id": 16309,
+      "type": "Miscellaneous",
+      "slot": "neck",
+      "r": 50,
+      "q": "3",
+      "i": "63",
+      "name": "Drakefire Amulet",
+      "p": "inv_jewelry_talisman_11",
+      "sta": 10,
+      "resist": {
+        "fire": 15
+      }
+    },
+    {
       "id": 17044,
       "type": "Miscellaneous",
       "slot": "neck",
@@ -4653,19 +4667,6 @@ var gear = {
       "agi": 9,
       "str": 6,
       "sta": 10
-    },
-    {
-      "id": 19383,
-      "type": "Miscellaneous",
-      "slot": "neck",
-      "r": 60,
-      "q": "4",
-      "i": "83",
-      "name": "Master Dragonslayer's Medallion",
-      "p": "inv_jewelry_necklace_18",
-      "agi": 14,
-      "sta": 24,
-      "d": 7
     },
     {
       "id": 19491,
@@ -4928,19 +4929,6 @@ var gear = {
       "sta": 7,
       "ap": 24,
       "hit": 1
-    },
-    {
-      "id": 22659,
-      "type": "Miscellaneous",
-      "slot": "neck",
-      "r": 55,
-      "q": "4",
-      "i": "60",
-      "name": "Medallion of the Dawn",
-      "p": "inv_jewelry_amulet_04",
-      "sta": 12,
-      "ap": 24,
-      "crit": 1
     },
     {
       "id": 209422,
@@ -9579,6 +9567,19 @@ var gear = {
       }
     },
     {
+      "id": 12905,
+      "type": "Cloth",
+      "slot": "back",
+      "r": 56,
+      "q": "3",
+      "i": "61",
+      "name": "Wildfire Cape",
+      "p": "inv_chest_cloth_16",
+      "resist": {
+        "fire": 20
+      }
+    },
+    {
       "id": 13108,
       "type": "Cloth",
       "slot": "back",
@@ -9896,6 +9897,20 @@ var gear = {
       "agi": 3,
       "str": 7,
       "sta": 10
+    },
+    {
+      "id": 15138,
+      "type": "Cloth",
+      "slot": "back",
+      "r": 55,
+      "q": "3",
+      "i": "60",
+      "name": "Onyxia Scale Cloak",
+      "p": "inv_misc_cape_05",
+      "sta": 7,
+      "resist": {
+        "fire": 16
+      }
     },
     {
       "id": "15165|1194",
@@ -10648,45 +10663,6 @@ var gear = {
       "p": "inv_misc_cape_02",
       "str": 8,
       "sta": 8
-    },
-    {
-      "id": 21187,
-      "type": "Cloth",
-      "slot": "back",
-      "r": 60,
-      "q": "3",
-      "i": "62",
-      "name": "Earthweave Cloak",
-      "p": "inv_misc_cape_07",
-      "agi": 15,
-      "hit": 1
-    },
-    {
-      "id": 21394,
-      "type": "Cloth",
-      "slot": "back",
-      "r": 60,
-      "q": "4",
-      "i": "67",
-      "name": "Drape of Unyielding Strength",
-      "p": "inv_misc_cape_20",
-      "agi": 9,
-      "str": 15,
-      "sta": 9,
-      "hit": 1
-    },
-    {
-      "id": 21710,
-      "type": "Cloth",
-      "slot": "back",
-      "r": 60,
-      "q": "4",
-      "i": "88",
-      "name": "Cloak of the Fallen God",
-      "p": "inv_misc_cape_10",
-      "agi": 26,
-      "str": 11,
-      "sta": 15
     },
     {
       "id": 22269,
@@ -40943,7 +40919,7 @@ var gear = {
       "d": 8
     },
     {
-      "id": 228927,
+      "id": 228924,
       "type": "Plate",
       "slot": "feet",
       "r": 60,
@@ -40951,6 +40927,7 @@ var gear = {
       "i": "71",
       "name": "Tempered Dark Iron Boots",
       "p": "inv_boots_chain_08",
+      "agi": 15,
       "str": 15,
       "resist": {
         "fire": 30
@@ -42365,19 +42342,6 @@ var gear = {
       "ap": 16
     },
     {
-      "id": 19384,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "83",
-      "name": "Master Dragonslayer's Ring",
-      "p": "inv_jewelry_ring_41",
-      "sta": 14,
-      "ap": 48,
-      "hit": 1
-    },
-    {
       "id": 19510,
       "type": "Miscellaneous",
       "slot": "finger",
@@ -42567,136 +42531,6 @@ var gear = {
       "name": "Might of Cenarius",
       "p": "inv_jewelry_ring_41",
       "sta": 8,
-      "hit": 1
-    },
-    {
-      "id": 21196,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "60",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 10,
-      "sta": 18,
-      "d": 5
-    },
-    {
-      "id": 21197,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "65",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 11,
-      "sta": 19,
-      "d": 5
-    },
-    {
-      "id": 21198,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "70",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 12,
-      "sta": 21,
-      "d": 6
-    },
-    {
-      "id": 21199,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "75",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 12,
-      "sta": 22,
-      "d": 6
-    },
-    {
-      "id": 21200,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "80",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 13,
-      "sta": 24,
-      "d": 7
-    },
-    {
-      "id": 21201,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "60",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 18,
-      "sta": 8,
-      "hit": 1
-    },
-    {
-      "id": 21202,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "65",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 19,
-      "sta": 9,
-      "hit": 1
-    },
-    {
-      "id": 21203,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "70",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 21,
-      "sta": 11,
-      "hit": 1
-    },
-    {
-      "id": 21204,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "75",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 22,
-      "sta": 11,
-      "hit": 1
-    },
-    {
-      "id": 21205,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "80",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 24,
-      "sta": 13,
       "hit": 1
     },
     {
@@ -44485,19 +44319,6 @@ var gear = {
       "ap": 16
     },
     {
-      "id": 19384,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "83",
-      "name": "Master Dragonslayer's Ring",
-      "p": "inv_jewelry_ring_41",
-      "sta": 14,
-      "ap": 48,
-      "hit": 1
-    },
-    {
       "id": 19510,
       "type": "Miscellaneous",
       "slot": "finger",
@@ -44687,136 +44508,6 @@ var gear = {
       "name": "Might of Cenarius",
       "p": "inv_jewelry_ring_41",
       "sta": 8,
-      "hit": 1
-    },
-    {
-      "id": 21196,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "60",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 10,
-      "sta": 18,
-      "d": 5
-    },
-    {
-      "id": 21197,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "65",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 11,
-      "sta": 19,
-      "d": 5
-    },
-    {
-      "id": 21198,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "70",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 12,
-      "sta": 21,
-      "d": 6
-    },
-    {
-      "id": 21199,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "75",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 12,
-      "sta": 22,
-      "d": 6
-    },
-    {
-      "id": 21200,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "80",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "str": 13,
-      "sta": 24,
-      "d": 7
-    },
-    {
-      "id": 21201,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "60",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 18,
-      "sta": 8,
-      "hit": 1
-    },
-    {
-      "id": 21202,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "65",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 19,
-      "sta": 9,
-      "hit": 1
-    },
-    {
-      "id": 21203,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "70",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 21,
-      "sta": 11,
-      "hit": 1
-    },
-    {
-      "id": 21204,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "75",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 22,
-      "sta": 11,
-      "hit": 1
-    },
-    {
-      "id": 21205,
-      "type": "Miscellaneous",
-      "slot": "finger",
-      "r": 60,
-      "q": "4",
-      "i": "80",
-      "name": "Signet Ring of the Bronze Dragonflight",
-      "p": "inv_jewelry_ring_40",
-      "agi": 24,
-      "sta": 13,
       "hit": 1
     },
     {
@@ -45254,6 +44945,19 @@ var gear = {
       "ap": 22
     },
     {
+      "id": 18638,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 53,
+      "q": "3",
+      "i": "58",
+      "name": "Hyper-Radiant Flame Reflector",
+      "p": "inv_misc_enggizmos_04",
+      "resist": {
+        "fire": 18
+      }
+    },
+    {
       "id": 19024,
       "type": "Miscellaneous",
       "slot": "trinket",
@@ -45269,7 +44973,7 @@ var gear = {
       "slot": "trinket",
       "r": 46,
       "q": "2",
-      "i": "60",
+      "i": 60,
       "name": "Rune of the Guard Captain",
       "p": "inv_misc_rune_07",
       "ap": 20,
@@ -45478,6 +45182,20 @@ var gear = {
       "hit": 1
     },
     {
+      "id": 227915,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 0,
+      "q": "4",
+      "i": "65",
+      "name": "Duke's Domain",
+      "p": "inv_elemental_primal_water",
+      "sta": 22,
+      "resist": {
+        "fire": 20
+      }
+    },
+    {
       "id": 228078,
       "type": "Miscellaneous",
       "slot": "trinket",
@@ -45498,6 +45216,19 @@ var gear = {
       "name": "Germinating Poisonseed",
       "p": "inv_misc_herb_nightmareseed",
       "hit": 1
+    },
+    {
+      "id": 228084,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 57,
+      "q": "3",
+      "i": "62",
+      "name": "Miniaturized Fire Extinguisher",
+      "p": "inv_misc_enggizmos_essencedistiller",
+      "resist": {
+        "fire": 20
+      }
     },
     {
       "id": 228089,
@@ -45626,6 +45357,19 @@ var gear = {
       "ap": 22
     },
     {
+      "id": 18638,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 53,
+      "q": "3",
+      "i": "58",
+      "name": "Hyper-Radiant Flame Reflector",
+      "p": "inv_misc_enggizmos_04",
+      "resist": {
+        "fire": 18
+      }
+    },
+    {
       "id": 19024,
       "type": "Miscellaneous",
       "slot": "trinket",
@@ -45641,7 +45385,7 @@ var gear = {
       "slot": "trinket",
       "r": 46,
       "q": "2",
-      "i": "60",
+      "i": 60,
       "name": "Rune of the Guard Captain",
       "p": "inv_misc_rune_07",
       "ap": 20,
@@ -45850,6 +45594,20 @@ var gear = {
       "hit": 1
     },
     {
+      "id": 227915,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 0,
+      "q": "4",
+      "i": "65",
+      "name": "Duke's Domain",
+      "p": "inv_elemental_primal_water",
+      "sta": 22,
+      "resist": {
+        "fire": 20
+      }
+    },
+    {
       "id": 228078,
       "type": "Miscellaneous",
       "slot": "trinket",
@@ -45870,6 +45628,19 @@ var gear = {
       "name": "Germinating Poisonseed",
       "p": "inv_misc_herb_nightmareseed",
       "hit": 1
+    },
+    {
+      "id": 228084,
+      "type": "Miscellaneous",
+      "slot": "trinket",
+      "r": 57,
+      "q": "3",
+      "i": "62",
+      "name": "Miniaturized Fire Extinguisher",
+      "p": "inv_misc_enggizmos_essencedistiller",
+      "resist": {
+        "fire": 20
+      }
     },
     {
       "id": 228089,
@@ -46705,6 +46476,20 @@ var gear = {
       "ap": 20
     },
     {
+      "id": 21135,
+      "type": "Thrown",
+      "slot": "ranged",
+      "r": 58,
+      "q": "3",
+      "i": "63",
+      "name": "Assassin's Throwing Axe",
+      "speed": 3,
+      "mindmg": 78,
+      "maxdmg": 146,
+      "p": "inv_throwingaxe_06",
+      "agi": 11
+    },
+    {
       "id": 22318,
       "type": "Bows",
       "slot": "ranged",
@@ -46733,36 +46518,6 @@ var gear = {
       "p": "inv_weapon_crossbow_04",
       "agi": 4,
       "hit": 1
-    },
-    {
-      "id": 22656,
-      "type": "Guns",
-      "slot": "ranged",
-      "r": 55,
-      "q": "4",
-      "i": "60",
-      "name": "The Purifier",
-      "speed": 3,
-      "mindmg": 71,
-      "maxdmg": 132,
-      "p": "inv_weapon_rifle_06",
-      "crit": 1
-    },
-    {
-      "id": 22811,
-      "type": "Bows",
-      "slot": "ranged",
-      "r": 60,
-      "q": "4",
-      "i": "83",
-      "name": "Soulstring",
-      "speed": 2.9,
-      "mindmg": 103,
-      "maxdmg": 192,
-      "p": "inv_weapon_bow_13",
-      "sta": 6,
-      "crit": 1,
-      "ap": 16
     },
     {
       "id": 209563,
@@ -46966,6 +46721,21 @@ var gear = {
       "agi": 6,
       "sta": 5,
       "ap": 12
+    },
+    {
+      "id": 228165,
+      "type": "Thrown",
+      "slot": "ranged",
+      "r": 60,
+      "q": "4",
+      "i": "74",
+      "name": "Dragonslayer's Javelin",
+      "speed": 3,
+      "mindmg": 104,
+      "maxdmg": 195,
+      "p": "inv_spear_07",
+      "str": 7,
+      "crit": 1
     },
     {
       "id": 228270,
@@ -51546,22 +51316,6 @@ var gear = {
       }
     },
     {
-      "id": 12584,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Longsword",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_sword_11",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
       "id": 12621,
       "type": "Axe",
       "slot": "mainhand",
@@ -54069,22 +53823,6 @@ var gear = {
       "ap": 20
     },
     {
-      "id": 16345,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Blade",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_sword_11",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
       "id": "16792|681",
       "type": "Mace",
       "slot": "mainhand",
@@ -54564,134 +54302,6 @@ var gear = {
       "maxdmg": 96,
       "p": "inv_weapon_shortblade_18",
       "ap": 45
-    },
-    {
-      "id": 18827,
-      "type": "Axe",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Handaxe",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_axe_24",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18828,
-      "type": "Axe",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Cleaver",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_axe_02",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18838,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Dirk",
-      "speed": 2,
-      "mindmg": 95,
-      "maxdmg": 143,
-      "p": "inv_weapon_shortblade_26",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18840,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Razor",
-      "speed": 2,
-      "mindmg": 95,
-      "maxdmg": 143,
-      "p": "inv_weapon_shortblade_13",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18843,
-      "type": "Fist",
-      "slot": "mainhand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Right Hand Blade",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_weapon_shortblade_07",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18844,
-      "type": "Fist",
-      "slot": "mainhand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Right Claw",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_misc_monsterclaw_03",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18865,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Punisher",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_mace_13",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18866,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Bludgeon",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_hammer_20",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
     },
     {
       "id": 19019,
@@ -55666,94 +55276,6 @@ var gear = {
       "p": "inv_weapon_shortblade_07"
     },
     {
-      "id": 23451,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Mageblade",
-      "speed": 2,
-      "mindmg": 59,
-      "maxdmg": 107,
-      "p": "inv_weapon_shortblade_26",
-      "sta": 14
-    },
-    {
-      "id": 23454,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Warhammer",
-      "speed": 2.9,
-      "mindmg": 86,
-      "maxdmg": 155,
-      "p": "inv_hammer_02",
-      "sta": 14
-    },
-    {
-      "id": 23456,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Swiftblade",
-      "speed": 1.8,
-      "mindmg": 85,
-      "maxdmg": 129,
-      "p": "inv_sword_05",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 23464,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Battle Mace",
-      "speed": 2.9,
-      "mindmg": 86,
-      "maxdmg": 155,
-      "p": "inv_hammer_02",
-      "sta": 14
-    },
-    {
-      "id": 23466,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Spellblade",
-      "speed": 2,
-      "mindmg": 59,
-      "maxdmg": 107,
-      "p": "inv_weapon_shortblade_26",
-      "sta": 14
-    },
-    {
-      "id": 23467,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Quickblade",
-      "speed": 1.8,
-      "mindmg": 85,
-      "maxdmg": 129,
-      "p": "inv_sword_05",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
       "id": 24222,
       "type": "Dagger",
       "slot": "onehand",
@@ -55954,6 +55476,20 @@ var gear = {
       "sta": 3
     },
     {
+      "id": 229376,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "q": "4",
+      "i": "68",
+      "name": "Sorcerous Dagger",
+      "speed": 1.4,
+      "mindmg": 37,
+      "maxdmg": 79,
+      "p": "inv_weapon_shortblade_07",
+      "sta": 8
+    },
+    {
       "id": 213105,
       "type": "Mace",
       "slot": "onehand",
@@ -55967,6 +55503,41 @@ var gear = {
       "p": "inv_misc_food_13",
       "proc": {
         "spell": "Spicy"
+      }
+    },
+    {
+      "id": 229374,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "68",
+      "name": "Fist of the Firesworn",
+      "speed": 1.7,
+      "mindmg": 59,
+      "maxdmg": 110,
+      "p": "spell_fire_flametounge",
+      "sta": 10,
+      "proc": {
+        "magic": true,
+        "dmg": 71
+      }
+    },
+    {
+      "id": 229372,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "71",
+      "name": "Gutgore Ripper",
+      "speed": 1.8,
+      "mindmg": 66,
+      "maxdmg": 123,
+      "p": "inv_weapon_shortblade_18",
+      "proc": {
+        "magic": true,
+        "dmg": 151
       }
     },
     {
@@ -57017,8 +56588,8 @@ var gear = {
       "mindmg": 76,
       "maxdmg": 142,
       "p": "inv_misc_wrench_01",
-      "ap": 26,
-      "hit": 1
+      "hit": 1,
+      "ap": 26
     },
     {
       "id": 228185,
@@ -57080,7 +56651,8 @@ var gear = {
       "p": "inv_misc_monsterclaw_04",
       "agi": 7,
       "proc": {
-        "spell": "Eskhandar"
+        "spell": "Eskhandar",
+        "ppm": 2
       }
     },
     {
@@ -62490,22 +62062,6 @@ var gear = {
       }
     },
     {
-      "id": 12584,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Longsword",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_sword_11",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
       "id": 12602,
       "type": "Shield",
       "slot": "offhand",
@@ -65621,22 +65177,6 @@ var gear = {
       "block": 36
     },
     {
-      "id": 16345,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Blade",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_sword_11",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
       "id": 16660,
       "type": "Shield",
       "slot": "offhand",
@@ -66044,160 +65584,6 @@ var gear = {
       "maxdmg": 96,
       "p": "inv_weapon_shortblade_18",
       "ap": 45
-    },
-    {
-      "id": 18825,
-      "type": "Shield",
-      "slot": "offhand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Aegis",
-      "p": "inv_shield_05",
-      "str": 10,
-      "sta": 23,
-      "block": 55
-    },
-    {
-      "id": 18826,
-      "type": "Shield",
-      "slot": "offhand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Shield Wall",
-      "p": "inv_shield_19",
-      "str": 10,
-      "sta": 23,
-      "block": 55
-    },
-    {
-      "id": 18827,
-      "type": "Axe",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Handaxe",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_axe_24",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18828,
-      "type": "Axe",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Cleaver",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_axe_02",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18838,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Dirk",
-      "speed": 2,
-      "mindmg": 95,
-      "maxdmg": 143,
-      "p": "inv_weapon_shortblade_26",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18840,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Razor",
-      "speed": 2,
-      "mindmg": 95,
-      "maxdmg": 143,
-      "p": "inv_weapon_shortblade_13",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18847,
-      "type": "Fist",
-      "slot": "offhand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Left Hand Blade",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "ability_rogue_rupture",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18848,
-      "type": "Fist",
-      "slot": "offhand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Left Claw",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_misc_monsterclaw_04",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18865,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Punisher",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_mace_13",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 18866,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Bludgeon",
-      "speed": 2.9,
-      "mindmg": 138,
-      "maxdmg": 207,
-      "p": "inv_hammer_20",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
     },
     {
       "id": 19019,
@@ -67006,94 +66392,6 @@ var gear = {
       "block": 39
     },
     {
-      "id": 23451,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Mageblade",
-      "speed": 2,
-      "mindmg": 59,
-      "maxdmg": 107,
-      "p": "inv_weapon_shortblade_26",
-      "sta": 14
-    },
-    {
-      "id": 23454,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Warhammer",
-      "speed": 2.9,
-      "mindmg": 86,
-      "maxdmg": 155,
-      "p": "inv_hammer_02",
-      "sta": 14
-    },
-    {
-      "id": 23456,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Swiftblade",
-      "speed": 1.8,
-      "mindmg": 85,
-      "maxdmg": 129,
-      "p": "inv_sword_05",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
-      "id": 23464,
-      "type": "Mace",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Battle Mace",
-      "speed": 2.9,
-      "mindmg": 86,
-      "maxdmg": 155,
-      "p": "inv_hammer_02",
-      "sta": 14
-    },
-    {
-      "id": 23466,
-      "type": "Dagger",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Spellblade",
-      "speed": 2,
-      "mindmg": 59,
-      "maxdmg": 107,
-      "p": "inv_weapon_shortblade_26",
-      "sta": 14
-    },
-    {
-      "id": 23467,
-      "type": "Sword",
-      "slot": "onehand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Quickblade",
-      "speed": 1.8,
-      "mindmg": 85,
-      "maxdmg": 129,
-      "p": "inv_sword_05",
-      "sta": 7,
-      "crit": 1,
-      "ap": 28
-    },
-    {
       "id": 24222,
       "type": "Dagger",
       "slot": "onehand",
@@ -67263,6 +66561,41 @@ var gear = {
       "p": "inv_misc_food_13",
       "proc": {
         "spell": "Spicy"
+      }
+    },
+    {
+      "id": 229374,
+      "type": "Mace",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "68",
+      "name": "Fist of the Firesworn",
+      "speed": 1.7,
+      "mindmg": 59,
+      "maxdmg": 110,
+      "p": "spell_fire_flametounge",
+      "sta": 10,
+      "proc": {
+        "magic": true,
+        "dmg": 71
+      }
+    },
+    {
+      "id": 229372,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "71",
+      "name": "Gutgore Ripper",
+      "speed": 1.8,
+      "mindmg": 66,
+      "maxdmg": 123,
+      "p": "inv_weapon_shortblade_18",
+      "proc": {
+        "magic": true,
+        "dmg": 151
       }
     },
     {
@@ -67982,8 +67315,8 @@ var gear = {
       "mindmg": 76,
       "maxdmg": 142,
       "p": "inv_misc_wrench_01",
-      "ap": 26,
-      "hit": 1
+      "hit": 1,
+      "ap": 26
     },
     {
       "id": 228267,
@@ -74100,162 +73433,6 @@ var gear = {
       "d": 7
     },
     {
-      "id": 18830,
-      "type": "Axe",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Sunderer",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_axe_10",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
-      "id": 18831,
-      "type": "Axe",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Battle Axe",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_axe_21",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
-      "id": 18867,
-      "type": "Mace",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Battle Hammer",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_hammer_03",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
-      "id": 18868,
-      "type": "Mace",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Pulverizer",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_hammer_10",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
-      "id": 18869,
-      "type": "Polearm",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Glaive",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_spear_08",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
-      "id": 18871,
-      "type": "Polearm",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Pig Sticker",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_spear_01",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
-      "id": 18873,
-      "type": "Staff",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Stave",
-      "speed": 3,
-      "mindmg": 131,
-      "maxdmg": 225,
-      "p": "inv_staff_14",
-      "sta": 41
-    },
-    {
-      "id": 18874,
-      "type": "Staff",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's War Staff",
-      "speed": 3,
-      "mindmg": 131,
-      "maxdmg": 225,
-      "p": "inv_misc_bone_elfskull_01",
-      "sta": 41
-    },
-    {
-      "id": 18876,
-      "type": "Sword",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Claymore",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_sword_39",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
-      "id": 18877,
-      "type": "Sword",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Greatsword",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_sword_48",
-      "str": 26,
-      "sta": 41,
-      "crit": 1
-    },
-    {
       "id": 19022,
       "type": "Fishing Pole",
       "slot": "twohand",
@@ -74873,34 +74050,6 @@ var gear = {
       "str": 14
     },
     {
-      "id": 23455,
-      "type": "Mace",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "Grand Marshal's Demolisher",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_hammer_23",
-      "sta": 28
-    },
-    {
-      "id": 23465,
-      "type": "Mace",
-      "slot": "twohand",
-      "r": 60,
-      "q": "4",
-      "i": "78",
-      "name": "High Warlord's Destroyer",
-      "speed": 3.8,
-      "mindmg": 235,
-      "maxdmg": 353,
-      "p": "inv_mace_09",
-      "sta": 28
-    },
-    {
       "id": 204807,
       "type": "Sword",
       "slot": "twohand",
@@ -74922,13 +74071,13 @@ var gear = {
       "id": 208222,
       "type": "Axe",
       "slot": "twohand",
-      "r": 58,
+      "r": 55,
       "q": "3",
       "i": "61",
       "name": "Old Guard Retaliator",
       "speed": 3.9,
-      "mindmg": 189,
-      "maxdmg": 264,
+      "mindmg": 163,
+      "maxdmg": 245,
       "p": "inv_axe_22",
       "agi": 10,
       "str": 8,
@@ -75128,6 +74277,78 @@ var gear = {
       "maxdmg": 87,
       "p": "inv_staff_25",
       "sta": 10
+    },
+    {
+      "id": 229382,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 60,
+      "q": "4",
+      "i": "71",
+      "name": "Hyperthermically Insulated Lava Dredger",
+      "speed": 3.2,
+      "mindmg": 140,
+      "maxdmg": 227,
+      "p": "inv_gizmo_02",
+      "sta": 25,
+      "resist": {
+        "fire": 15
+      }
+    },
+    {
+      "id": 229381,
+      "type": "Polearm",
+      "slot": "twohand",
+      "r": 58,
+      "q": "4",
+      "i": "71",
+      "name": "Thunderstrike",
+      "speed": 3.4,
+      "mindmg": 186,
+      "maxdmg": 279,
+      "p": "inv_spear_08",
+      "agi": 13,
+      "sta": 33,
+      "proc": {
+        "magic": true,
+        "dmg": 250
+      }
+    },
+    {
+      "id": 229380,
+      "type": "Polearm",
+      "slot": "twohand",
+      "r": 58,
+      "q": "4",
+      "i": "71",
+      "name": "Shadowstrike",
+      "speed": 3.4,
+      "mindmg": 186,
+      "maxdmg": 279,
+      "p": "inv_spear_08",
+      "agi": 33,
+      "sta": 13,
+      "proc": {
+        "magic": true,
+        "dmg": 200,
+        "coeff": 1
+      }
+    },
+    {
+      "id": 229373,
+      "type": "Mace",
+      "slot": "twohand",
+      "r": 60,
+      "q": "4",
+      "i": "71",
+      "name": "Faithbringer",
+      "speed": 3.7,
+      "mindmg": 202,
+      "maxdmg": 303,
+      "p": "inv_hammer_04",
+      "str": 17,
+      "sta": 14,
+      "crit": 1
     },
     {
       "id": 213289,
@@ -76135,7 +75356,9 @@ var gear = {
       "mindmg": 145,
       "maxdmg": 242,
       "p": "inv_misc_key_15",
-      "sta": 23
+      "sta": 31,
+      "hit": 1,
+      "crit": 1
     },
     {
       "id": 228170,
@@ -76254,14 +75477,14 @@ var gear = {
       "mindmg": 145,
       "maxdmg": 229,
       "p": "inv_staff_goldfeathered_01",
-      "sta": 19,
+      "sta": 17,
       "resist": {
         "fire": 5,
         "nature": 5,
         "frost": 5,
         "shadow": 5
       },
-      "hit": 1
+      "hit": 2
     },
     {
       "id": 228459,
@@ -76593,8 +75816,8 @@ var gear = {
       "mindmg": 125,
       "maxdmg": 204,
       "p": "inv_staff_13",
-      "sta": 16,
-      "crit": 1
+      "sta": 15,
+      "crit": 2
     }
   ]
 };

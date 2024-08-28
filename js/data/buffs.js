@@ -52,7 +52,7 @@ var buffs = [
       id: 461475,
       spellid: true,
       name: "Valor of Azeroth",
-      iconname: "spell_holy_summonchampion",
+      iconname: "ability_warrior_innerrage",
       group: "rallying",
       ap: 90,
       crit: 5,
@@ -69,17 +69,6 @@ var buffs = [
       strmod: 15,
       agimod: 15,
       worldbuff: true,
-   },
-   {
-      id: 459610,
-      spellid: true,
-      name: "Wanderer's Resolve",
-      iconname: "ability_creature_poison_05",
-      group: "zandalar",
-      strmod: 15,
-      agimod: 15,
-      worldbuff: true,
-      sod: true
    },
    {
       id: 23768,
@@ -111,6 +100,19 @@ var buffs = [
       sod: true
    },
    {
+      id: 15366,
+      spellid: true,
+      name: "Songflower Serenade",
+      iconname: "spell_holy_mindvision",
+      group: "",
+      crit: 5,
+      str: 15,
+      agi: 15,
+      spellcrit: 5,
+      minlevel: 50,
+      worldbuff: true,
+   },
+   {
       id: 22817,
       spellid: true,
       name: "Fengus' Ferocity",
@@ -131,15 +133,12 @@ var buffs = [
       worldbuff: true,
    },
    {
-      id: 15366,
+      id: 22818,
       spellid: true,
-      name: "Songflower Serenade",
-      iconname: "spell_holy_mindvision",
+      name: "Mol'dar's Moxie",
+      iconname: "spell_nature_massteleport",
       group: "",
-      crit: 5,
-      str: 15,
-      agi: 15,
-      spellcrit: 5,
+      stamod: 15,
       minlevel: 50,
       worldbuff: true,
    },
@@ -171,7 +170,7 @@ var buffs = [
       agi: 2,
       int: 2,
       minlevel: 10,
-      maxlevel: 19
+      maxlevel: 19,
    },
    {
       id: 6756,
@@ -195,7 +194,13 @@ var buffs = [
       agi: 6,
       int: 6,
       minlevel: 30,
-      maxlevel: 39
+      maxlevel: 39,
+      resist: {
+         fire: 5,
+         frost: 5,
+         nature: 5,
+         shadow: 5
+       },
    },
    {
       id: 8907,
@@ -207,7 +212,13 @@ var buffs = [
       agi: 8,
       int: 8,
       minlevel: 40,
-      maxlevel: 49
+      maxlevel: 49,
+      resist: {
+         fire: 10,
+         frost: 10,
+         nature: 10,
+         shadow: 10
+       },
    },
    {
       id: 9884,
@@ -219,7 +230,13 @@ var buffs = [
       agi: 10,
       int: 10,
       minlevel: 50,
-      maxlevel: 59
+      maxlevel: 59,
+      resist: {
+         fire: 15,
+         frost: 15,
+         nature: 15,
+         shadow: 15
+       },
    },
    {
       id: 9885,
@@ -230,7 +247,13 @@ var buffs = [
       str: 12,
       agi: 12,
       int: 12,
-      minlevel: 60
+      minlevel: 60,
+      resist: {
+        fire: 20,
+        frost: 20,
+        nature: 20,
+        shadow: 20
+      },
    },
    {
       id: 17055,
@@ -718,11 +741,21 @@ var buffs = [
       sod: true,
    },
    {
+      id: 228978,
+      name: "Sigil of Flowing Waters",
+      iconname: "inv_sigil_hodir",
+      minlevel: 60,
+      other: true,
+      ap: 30,
+      sod: true,
+   },
+   {
       id: 221024,
       name: "Flask of Everlasting Nightmares",
       iconname: "inv_alchemy_endlessflask_01",
       ap: 45,
       minlevel: 50,
+      maxlevel: 59,
       other: true,
       sod: true,
    },
@@ -819,6 +852,85 @@ var buffs = [
       minlevel: 60,
       other: true,
    },
+   {
+      id: 27666,
+      spellid: true,
+      name: "Darnassus Gift of Friendship",
+      iconname: "inv_misc_gift_02",
+      minlevel: 1,
+      other: true,
+      agi: 30,
+   },
+   // {
+   //    id: 29232,
+   //    spellid: true,
+   //    name: "Fungal Bloom",
+   //    iconname: "spell_nature_unyeildingstamina",
+   //    crit: 50,
+   //    spellcrit: 60,
+   //    minlevel: 60,
+   //    other: true,
+   // },
+   {
+      id: 13510,
+      name: "Flask of the Titans",
+      iconname: "inv_potion_62",
+      minlevel: 50,
+      other: true,
+      group: 'flask'
+   },
+   {
+      id: 13513,
+      name: "Flask of Chromatic Resistance",
+      iconname: "inv_potion_48",
+      minlevel: 50,
+      other: true,
+      group: 'flask',
+      resist: {
+         fire: 25,
+         frost: 25,
+         nature: 25,
+         shadow: 25
+      }
+   },
+   {
+      id: 12455,
+      name: "Juju Ember",
+      iconname: "inv_misc_monsterscales_15",
+      minlevel: 55,
+      other: true,
+      resist: {
+         fire: 15
+      }
+   },
+   {
+      id: 9036,
+      name: "Magic Resistance Potion",
+      iconname: "inv_potion_16",
+      minlevel: 32,
+      other: true,
+      mrp: true,
+      resist: {
+         fire: 50,
+         frost: 50,
+         shadow: 50,
+         nature: 50,
+      }
+   },
+   {
+      id: 19900,
+      spellid: true,
+      name: "Fire Resistance Aura",
+      iconname: "spell_fire_sealoffire",
+      minlevel: 60,
+      other: true,
+      fra: true,
+      resist: {
+         fire: 60,
+      }
+   },
+ 
+   
    
 
    // SoD Extras
@@ -1067,6 +1179,15 @@ var buffs = [
       group: "faerie",
       armor: 505,
       minlevel: 54,
+   },
+   {
+      id: 455864,
+      spellid: true,
+      name: "Faerie Fire Hit",
+      iconname: "spell_nature_faeriefire",
+      armor: true,
+      hit: 1,
+      minlevel: 60,
    },
    {
       id: 704,

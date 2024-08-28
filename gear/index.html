@@ -58,6 +58,7 @@
           let obj = {};
           obj.id = parseInt(item.ID);
 
+          if (obj.id == 228165) debugger;
           obj.type = getType(item.ClassID, item.SubclassID);
           if (!obj.type) continue;
           obj.slot = getSlot(item.InventoryType);
@@ -279,6 +280,16 @@
           if (obj.id == 228122) include = true;
           if (obj.id == 228147) include = true;
           if (obj.id == 228465) include = true;
+          if (obj.id == 12905) include = true;
+          if (obj.id == 227915) include = true;
+          if (obj.id == 228084) include = true;
+          if (obj.id == 18638) include = true;
+          if (obj.id == 16309) include = true;
+          if (obj.id == 15138) include = true;
+          
+          
+
+          
           
 
 
@@ -305,10 +316,40 @@
           if (obj.id == 20179) exclude = true;
           if (obj.id == 22736) exclude = true;
           if (obj.id == 228576) exclude = true;
+          if (obj.id == 229377) exclude = true;
+          if (obj.id == 229378) exclude = true;
+          if (obj.id == 229379) exclude = true;
+
+          if (obj.id == 20577) exclude = true; // REMOVE WHEN emerald dragons
+
+
+          if (obj.id == 19384) exclude = true; // REMOVE WHEN bwl
+          if (obj.id == 19383) exclude = true; // REMOVE WHEN bwl
+          
           if (obj.id == 21244) exclude = true; // REMOVE WHEN AQ
           if (obj.id == 21268) exclude = true; // REMOVE WHEN AQ
           if (obj.id == 21244) exclude = true; // REMOVE WHEN AQ
           if (obj.id == 21242) exclude = true; // REMOVE WHEN AQ
+          if (obj.id == 21394) exclude = true; // REMOVE WHEN AQ
+          if (obj.id == 21710) exclude = true; // REMOVE WHEN AQ
+          if (obj.id == 21187) exclude = true; // REMOVE WHEN AQ
+          if (obj.id == 21520) exclude = true; // REMOVE WHEN AQ
+          if (obj.id == 21522) exclude = true; // REMOVE WHEN AQ
+          if (obj.id == 21392) exclude = true; // REMOVE WHEN AQ
+          
+          if (obj.name == "Signet Ring of the Bronze Dragonflight") exclude = true; // REMOVE WHEN AQ
+
+          if (obj.id == 22656) exclude = true; // REMOVE WHEN NAXX
+          if (obj.id == 22659) exclude = true; // REMOVE WHEN NAXX
+          if (obj.id == 22811) exclude = true; // REMOVE WHEN NAXX
+
+
+          if (obj.name.indexOf("Grand Marshal'") > -1) exclude = true; // REMOVE WHEN R14
+          if (obj.name.indexOf("High Warlord'") > -1) exclude = true; // REMOVE WHEN R14
+          
+          
+          
+          
           
 
 
@@ -336,6 +377,9 @@
           if (obj.name.indexOf('Lieutenant Commander\'s Plate') > -1 && obj.id < 100000) exclude = true;
           if (obj.name.indexOf('Knight-Lieutenant\'s Plat') > -1 && obj.id < 100000) exclude = true;
           if (obj.name.indexOf('of Might') > -1 && obj.id < 100000) exclude = true;
+
+          if (obj.name == "Tempered Dark Iron Boots" && obj.id == 228924) include = true;
+          if (obj.name == "Tempered Dark Iron Boots" && obj.id != 228924) exclude = true;
 
 
 
@@ -590,6 +634,8 @@
         {i:220747,c:30},
         {i:220743,c:30},
         {i:220569,p:2.7},
+        {i:228350,p:2},
+        
       ];
 
       var getProcFromSpell = function(id) {
@@ -727,6 +773,7 @@
           case "20": return "chest";
           case "21": return "mainhand";
           case "22": return "offhand";
+          case "25": return "ranged";
           case "26": return "ranged";
         }
       }
@@ -764,6 +811,7 @@
             case "13": return "Fist";
             case "14": return "Miscellaneous";
             case "15": return "Dagger";
+            case "16": return "Thrown";
             case "18": return "Crossbow";
             case "20": return "Fishing Pole";
           }

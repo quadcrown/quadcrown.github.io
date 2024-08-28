@@ -943,6 +943,7 @@ var spells = [
     timetostart: 0,
     timetostartactive: false,
     minlevel: 26,
+    maxlevel: 59,
     value1: 30,
     value2: 60,
     active: true,
@@ -1009,6 +1010,24 @@ var spells = [
     value1: 20,
     active: false,
     buff: true,
+},
+
+// Rejuv Potion
+{
+    id: 435973,
+    name: 'Mildly Irradiated Rejuvenation Potion',
+    classname: 'MildlyIrradiated',
+    iconname: 'inv_alchemy_elixir_03',
+    minlevel: 35,
+    maxlevel: 59,
+    timetoend: 16,
+    timetoendactive: false,
+    timetostart: 0,
+    timetostartactive: false,
+    active: true,
+    aura: true,
+    buff: true,
+    sod: true,
 },
 
 // Berserking
