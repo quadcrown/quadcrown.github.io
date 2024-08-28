@@ -1,6 +1,15 @@
 var gear = {
   "head": [
     {
+      "name": "Ragereaver's Helm",
+      "source": "Dungeon",
+      "str": 10,
+      "crit": 2,
+      "ac": 484,
+      "phase": 7,
+      "id": 60562
+    },
+    {
       "name": "Flamescorched Hood",
       "source": "LowerKara",
       "agi": 20,
@@ -9690,6 +9699,21 @@ var gear = {
     }
   ],
   "twohand": [
+    {
+      "name": "Shadowbringer",
+      "mindmg": 170,
+      "maxdmg": 258,
+      "speed": 3.3,
+      "id": 61247,
+      "source": "LowerKara",
+      "phase": 7,
+      "type": "Sword",
+      "proc": {
+        "ppm": 1.2,
+        "magic": true,
+        "dmg": 286
+      }
+    },
     {
       "name": "Aspect of Seradane",
       "agi": 28,
