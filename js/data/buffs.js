@@ -1077,6 +1077,7 @@ var buffs = [
    },
    {
       id: 439462,
+      sod: true,
       spellid: true,
       name: "Sebacious Poison",
       iconname: "ability_creature_poison_06",
@@ -1182,6 +1183,7 @@ var buffs = [
    },
    {
       id: 455864,
+      sod: true,
       spellid: true,
       name: "Faerie Fire Hit",
       iconname: "spell_nature_faeriefire",
