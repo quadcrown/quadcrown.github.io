@@ -600,6 +600,14 @@ var gear = {
   ],
   "neck": [
     {
+      "name": "Crocolist Tooth Necklace",
+      "source": "Dungeon",
+      "ap": 24,
+      "str": 10,
+      "phase": 7,
+      "id": 61029
+    },
+    {
       "name": "Feralkin Necklace",
       "source": "Quest",
       "skill": 4,
@@ -3339,7 +3347,7 @@ var gear = {
       "sta": 15,
       "crit": 1,
       "arp": 25,
-      "ap": 44,
+      "ap": 40,
       "source": "LowerKara",
       "ac": 237,
       "phase": 7,
