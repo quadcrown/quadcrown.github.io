@@ -600,7 +600,7 @@ var gear = {
   ],
   "neck": [
     {
-      "name": "Crocolist Tooth Necklace",
+      "name": "Crocolisk Tooth Necklace",
       "source": "Dungeon",
       "ap": 24,
       "str": 10,
@@ -4913,6 +4913,15 @@ var gear = {
   ],
   "finger1": [
     {
+      "name": "Tarnished Lancelot Ring",
+      "crit": 1,
+      "ap": 10,
+      "agi": 2,
+      "source": "Quest",
+      "phase": 7,
+      "id": 60739
+    },
+    {
       "name": "Peering Eyeball",
       "hit": 1,
       "arp": 35,
@@ -5264,6 +5273,15 @@ var gear = {
     }
   ],
   "finger2": [
+    {
+      "name": "Tarnished Lancelot Ring",
+      "crit": 1,
+      "ap": 10,
+      "agi": 2,
+      "source": "Quest",
+      "phase": 7,
+      "id": 60739
+    },
     {
       "name": "Peering Eyeball",
       "hit": 1,
@@ -6085,7 +6103,6 @@ var gear = {
     {
       "name": "Rune of the Guard Captain",
       "hit": 1,
-      "ap": 20,
       "source": "Quest",
       "phase": "1",
       "id": 19120
