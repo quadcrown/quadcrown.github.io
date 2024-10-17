@@ -48,7 +48,7 @@ class Spell {
         if (spell.switchtimeactive) this.switchtimeactive = spell.switchtimeactive;
         if (spell.switchdefault) this.switchdefault = spell.switchdefault;
         if (spell.durationactive) this.duration = parseInt(spell.duration);
-        
+
     }
     dmg() {
         return 0;
@@ -78,13 +78,13 @@ class Spell {
 class Bloodthirst extends Spell {
     constructor(player, id) {
         super(player, id);
-        this.cost = 30 - player.ragecostbonus;
+        this.cost = 30;
         this.cooldown = 6;
         this.weaponspell = false;
     }
     dmg() {
         let dmg;
-        dmg = this.player.stats.ap * 0.45;
+        dmg = 150 + this.player.stats.ap * 0.30;  // TODO lower levels
         return dmg * this.player.stats.dmgmod * this.player.mainspelldmg;
     }
     canUse() {
@@ -114,12 +114,12 @@ class Whirlwind extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
         (this.player.isValidStance('zerk') || this.player.talents.rageretained >= this.cost) &&
         (!this.maxrage || this.player.isValidStance('zerk') || this.player.rage <= this.maxrage) &&
         (!this.minrage || this.player.rage >= this.minrage) &&
-        (!this.maincd || 
-            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -149,8 +149,8 @@ class Overpower extends Spell {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.dodgetimer &&
         (this.player.isValidStance('battle') || this.player.talents.rageretained >= this.cost) &&
         (!this.maxrage || this.player.isValidStance('battle') || this.player.rage <= this.maxrage) &&
-        (!this.maincd || 
-            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -158,7 +158,7 @@ class Overpower extends Spell {
 class Execute extends Spell {
     constructor(player, id) {
         super(player, id);
-        this.cost = 15 - player.talents.executecost - player.ragecostbonus;
+        this.cost = 15;
         this.usedrage = 0;
         this.totalusedrage = 0;
         this.refund = false;
@@ -243,10 +243,10 @@ class HeroicStrike extends Spell {
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.player.nextswinghs && this.cost <= this.player.rage && 
+        return !this.player.nextswinghs && this.cost <= this.player.rage &&
             ((!this.minrage && !this.maincd) ||
             (this.minrage && this.player.rage >= this.minrage) ||
-            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd))
             && (!this.unqueue || (this.player.mh.timer > this.unqueuetimer));
     }
@@ -277,10 +277,10 @@ class Cleave extends Spell {
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.player.nextswinghs && this.cost <= this.player.rage && 
+        return !this.player.nextswinghs && this.cost <= this.player.rage &&
             ((!this.minrage && !this.maincd) ||
             (this.minrage && this.player.rage >= this.minrage) ||
-            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd))
             && (!this.unqueue || (this.player.mh.timer > this.unqueuetimer));
     }
@@ -410,7 +410,7 @@ class RagingBlow extends Spell {
         return dmg * this.player.stats.dmgmod;
     }
     canUse(executephase) {
-        return !this.timer && !this.player.timer && 
+        return !this.timer && !this.player.timer &&
             (!executephase || this.execute) &&
             this.player.isEnraged();
     }
@@ -460,10 +460,10 @@ class QuickStrike extends Spell {
         return dmg * this.player.stats.dmgmod;
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
             ((!this.minrage && !this.maincd) ||
             (this.minrage && this.player.rage >= this.minrage) ||
-            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -523,12 +523,12 @@ class Slam extends Spell {
         /* start-log */ if (log) this.player.log(`${this.name} done casting`); /* end-log */
     }
     canUse(executephase) {
-        return !this.timer && !this.player.timer && this.player.mh.timer >= this.mhthreshold && (this.player.freeslam || this.cost <= this.player.rage) && 
+        return !this.timer && !this.player.timer && this.player.mh.timer >= this.mhthreshold && (this.player.freeslam || this.cost <= this.player.rage) &&
             (!executephase || this.execute) &&
             (!this.bloodsurge || this.player.freeslam) &&
             (!this.minrage || this.player.rage >= this.minrage) &&
-            (!this.maincd || 
-                (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (!this.maincd ||
+                (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
                 (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -602,7 +602,7 @@ class BlademasterFury extends Spell {
         }
     }
     canUse() {
-        return !this.timer && !this.player.timer && 
+        return !this.timer && !this.player.timer &&
             (!this.player.spells.whirlwind || this.player.spells.whirlwind.timer > 0);
     }
 }
@@ -630,7 +630,7 @@ class ShieldSlam extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return this.player.shield && !this.timer && !this.player.timer && (this.player.freeshieldslam || this.cost <= this.player.rage) 
+        return this.player.shield && !this.timer && !this.player.timer && (this.player.freeshieldslam || this.cost <= this.player.rage)
             && (this.player.freeshieldslam || this.player.rage >= this.minrage)
             && (!this.resolve || (this.player.auras.defendersresolve && !this.player.auras.defendersresolve.timer))
             && (!this.swordboard || this.player.freeshieldslam);
@@ -656,12 +656,12 @@ class Shockwave extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return this.player.shield && !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+        return this.player.shield && !this.timer && !this.player.timer && this.cost <= this.player.rage &&
         (this.player.isValidStance('def') || this.player.talents.rageretained >= this.cost) &&
         (!this.maxrage || this.player.isValidStance('def') || this.player.rage <= this.maxrage) &&
         (!this.minrage || this.player.rage >= this.minrage) &&
-        (!this.maincd || 
-            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -947,7 +947,7 @@ class DeepWounds extends Aura {
             max = this.player.oh.maxdmg + this.player.oh.bonusdmg + this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.oh.speed;
         }
         let dmg = (min + max) / 2;
-        dmg *= (!offhand ? this.player.mh.modifier : this.player.oh.modifier) * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod; 
+        dmg *= (!offhand ? this.player.mh.modifier : this.player.oh.modifier) * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod;
         return dmg;
     }
     step() {
@@ -2040,7 +2040,7 @@ class Rend extends Aura {
     }
     canUse() {
         return !this.timer && !this.player.timer && this.player.rage >= this.cost &&
-            (this.player.isValidStance('battle', true) || this.player.talents.rageretained >= this.cost) && 
+            (this.player.isValidStance('battle', true) || this.player.talents.rageretained >= this.cost) &&
             (!this.maxrage || this.player.isValidStance('battle', true) || this.player.rage <= this.maxrage);
     }
     end() {
