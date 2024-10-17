@@ -143,6 +143,8 @@ class Player {
         this.addSpells(testItem);
         this.addRunes();
         this.initStances();
+
+        if (this.race == "High Elf")
         if (this.talents.flurry) this.auras.flurry = new Flurry(this);
         if (this.talents.deepwounds && this.mode !== 'classic') this.auras.deepwounds = this.mode == "sod" ? new DeepWounds(this) : new OldDeepWounds(this);
         if (this.adjacent && this.talents.deepwounds && this.mode !== 'classic') {
@@ -208,12 +210,18 @@ class Player {
                 this.base.ap += (this.level * 3) - 20;
                 this.base.str += parseInt(stats[3]);
                 this.base.agi += parseInt(stats[4]);
+
                 let rp = 5 // racial potency
                 if (this.mode == "turtle") rp = 3;
                 this.base.skill_0 += raceid == "1" || raceid == "10" ? rp : 0;
                 this.base.skill_1 += raceid == "1" ? rp : 0;
                 this.base.skill_2 += raceid == "10" ? rp : 0;
                 this.base.skill_3 += raceid == "2" ? rp : 0;
+
+                if (this.race == "Night Elf")
+                    this.base.haste *= 1.01;
+                if (this.race == "High Elf")
+                    this.base.agimod = 1.02;
             }
         }
     }

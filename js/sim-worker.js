@@ -3,7 +3,6 @@ importScripts(
     './data/talents.min.js',
     './classes/player.min.js',
     './classes/simulation.min.js',
-    './classes/spell.min.js',
     './classes/weapon.min.js',
     './globals.min.js',
 );
@@ -11,7 +10,6 @@ importScripts(
 onmessage = (event) => {
     const params = event.data;
     if (params.globals.turtle) {
-    './data/buffs.min.js',
         importScripts('./data/spells_turtle.min.js');
         importScripts('./data/buffs_turtle.min.js');
         importScripts('./classes/spell_turtle.min.js');
