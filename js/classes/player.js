@@ -960,14 +960,15 @@ class Player {
         }
     }
     getGlanceReduction(weapon) {
+        let diff, high, low;
         if (this.mode == "turtle") {
-            let diff = this.target.defense - this.stats['skill_' + weapon.type];
-            let low = Math.max(Math.min(0.9 - 0.023 * diff, 0.9), 0.01);
-            let high = Math.max(Math.min(1.0 - 0.017 * diff, 1.0), 0.20);
+            diff = this.target.defense - this.stats['skill_' + weapon.type];
+            low = Math.max(Math.min(0.9 - 0.023 * diff, 0.9), 0.01);
+            high = Math.max(Math.min(1.0 - 0.017 * diff, 1.0), 0.20);
         } else {
-            let diff = this.target.defense - this.stats['skill_' + weapon.type];
-            let low = Math.max(Math.min(1.3 - 0.05 * diff, 0.91), 0.01);
-            let high = Math.max(Math.min(1.2 - 0.03 * diff, 0.99), 0.2);
+            diff = this.target.defense - this.stats['skill_' + weapon.type];
+            low = Math.max(Math.min(1.3 - 0.05 * diff, 0.91), 0.01);
+            high = Math.max(Math.min(1.2 - 0.03 * diff, 0.99), 0.2);
         }
         return Math.random() * (high - low) + low;
     }
@@ -977,12 +978,12 @@ class Player {
     getMissChance(weapon) {
         let diff = this.target.defense - this.stats['skill_' + weapon.type];
 
+        let miss;
         if (this.mode == "turtle") {
-            let miss = 5 + Math.max(diff * 0.2, 0);
+            miss = 5 + Math.max(diff * 0.2, 0);
             miss -= this.stats.hit;
         } else {
-
-            let miss = 5 + (diff > 10 ? diff * 0.2 : diff * 0.1);
+            miss = 5 + (diff > 10 ? diff * 0.2 : diff * 0.1);
             miss -= (diff > 10 ? this.stats.hit - 1 : this.stats.hit);
         }
         return miss;
@@ -990,12 +991,13 @@ class Player {
     getDWMissChance(weapon) {
         let diff = this.target.defense - this.stats['skill_' + weapon.type];
 
+        let miss;
         if (this.mode == "turtle") {
-            let miss = 5 + Math.max(diff * 0.2, 0);
+            miss = 5 + Math.max(diff * 0.2, 0);
             miss = miss * 0.8 + 20;
             miss -= this.stats.hit;
         } else {
-            let miss = 5 + (diff > 10 ? diff * 0.2 : diff * 0.1);
+            miss = 5 + (diff > 10 ? diff * 0.2 : diff * 0.1);
             miss = miss * 0.8 + 20;
             miss -= (diff > 10 ? this.stats.hit - 1 : this.stats.hit);
         }
