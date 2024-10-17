@@ -208,10 +208,12 @@ class Player {
                 this.base.ap += (this.level * 3) - 20;
                 this.base.str += parseInt(stats[3]);
                 this.base.agi += parseInt(stats[4]);
-                this.base.skill_0 += raceid == "1" || raceid == "10" ? 3 : 0;
-                this.base.skill_1 += raceid == "1" ? 3 : 0;
-                this.base.skill_2 += raceid == "10" ? 3 : 0;
-                this.base.skill_3 += raceid == "2" ? 3 : 0;
+                let rp = 5 // racial potency
+                if (this.mode == "turtle") rp = 3;
+                this.base.skill_0 += raceid == "1" || raceid == "10" ? rp : 0;
+                this.base.skill_1 += raceid == "1" ? rp : 0;
+                this.base.skill_2 += raceid == "10" ? rp : 0;
+                this.base.skill_3 += raceid == "2" ? rp : 0;
             }
         }
     }
@@ -958,7 +960,7 @@ class Player {
         }
     }
     getGlanceReduction(weapon) {
-        if (params.globals.turtle) {
+        if (this.mode == "turtle") {
             let diff = this.target.defense - this.stats['skill_' + weapon.type];
             let low = Math.max(Math.min(0.9 - 0.023 * diff, 0.9), 0.01);
             let high = Math.max(Math.min(1.0 - 0.017 * diff, 1.0), 0.20);
@@ -975,7 +977,7 @@ class Player {
     getMissChance(weapon) {
         let diff = this.target.defense - this.stats['skill_' + weapon.type];
 
-        if (params.globals.turtle) {
+        if (this.mode == "turtle") {
             let miss = 5 + Math.max(diff * 0.2, 0);
             miss -= this.stats.hit;
         } else {
@@ -988,7 +990,7 @@ class Player {
     getDWMissChance(weapon) {
         let diff = this.target.defense - this.stats['skill_' + weapon.type];
 
-        if (params.globals.turtle) {
+        if (this.mode == "turtle") {
             let miss = 5 + Math.max(diff * 0.2, 0);
             miss = miss * 0.8 + 20;
             miss -= this.stats.hit;
