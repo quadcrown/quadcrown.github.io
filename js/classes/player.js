@@ -620,10 +620,10 @@ class Player {
                 this.base.moddmgtaken += buff.moddmgtaken || 0;
                 this.base.defense += buff.defense || 0;
 
-                this.base.skill_0 += this.race == "Human" ? 0 : (buff.skill_0 || 0);
-                this.base.skill_1 += this.race == "Human" ? 0 : (buff.skill_1 || 0);
+                this.base.skill_0 += buff.skill_0 || 0;
+                this.base.skill_1 += buff.skill_1 || 0;
                 this.base.skill_2 += buff.skill_2 || 0;
-                this.base.skill_3 += this.race == "Orc" ? 0 : (buff.skill_3 || 0);
+                this.base.skill_3 += buff.skill_3 || 0;
                 this.base.skill_4 += buff.skill_4 || 0;
                 this.base.skill_5 += buff.skill_5 || 0;
                 this.base.skill_6 += buff.skill_6 || 0;
