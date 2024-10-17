@@ -1,7 +1,6 @@
 importScripts(
     './data/buffs.min.js',
     './data/levelstats.min.js',
-    './data/spells.min.js',
     './data/talents.min.js',
     './classes/player.min.js',
     './classes/simulation.min.js',
@@ -12,6 +11,11 @@ importScripts(
 
 onmessage = (event) => {
     const params = event.data;
+    if (params.globals.turtle) {
+        importScripts('./data/spells_turtle.min.js');
+    } else {
+        importScripts('./data/spells.min.js');
+    }
     if (params.globals.turtle || params.globals.turtleclassic) importScripts('./data/gear_turtle.min.js','./data/enchants_turtle.min.js'); else
     if (params.globals.sod) importScripts('./data/gear_sod.min.js','./data/runes.min.js');
     else importScripts('./data/gear.min.js');
