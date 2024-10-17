@@ -765,7 +765,7 @@ var buffs = [
       iconname: "inv_drink_17",
       group: "dragonbreath",
       minlevel: 35,
-      other: true,
+      consume: true,
    },
    {
       id: 11371,

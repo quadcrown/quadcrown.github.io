@@ -43,6 +43,13 @@ var enchant = {
            "temp": true
         },
        {
+          "id": 3594,
+          "spellid": true,
+          "name": "Shadow Oil",
+          "ppm": 4,
+          "magicdmg": 105,
+       },
+       {
           "id": 23800,
           "spellid": true,
           "name": "Agility",
