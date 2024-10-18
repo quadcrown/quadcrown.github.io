@@ -156,6 +156,7 @@ class Overpower extends Spell {
 }
 
 class Execute extends Spell {
+    // more info in procattack()
     constructor(player, id) {
         super(player, id);
         this.cost = 15;
@@ -163,6 +164,9 @@ class Execute extends Spell {
         this.totalusedrage = 0;
         this.refund = false;
         this.weaponspell = false;
+        this.cooldown = 5.5;
+        if (this.player.talents.recklessexecute == 1) this.cooldown = 3.5;
+        if (this.player.talents.recklessexecute == 2) this.cooldown = 0;
     }
     dmg() {
         let dmg;
@@ -185,24 +189,12 @@ class Execute extends Spell {
         this.player.timer = 1500;
         this.player.rage -= this.cost;
         this.usedrage = ~~this.player.rage;
-        this.totalusedrage += this.usedrage - (this.player.auras.suddendeath && this.player.auras.suddendeath.timer ? 10 : 0);
-        this.timer = 1 - (step % 1);
+        this.totalusedrage += this.usedrage;
+        this.timer = this.cooldown * 1000;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
-    step(a) {
-        if (this.timer <= a) {
-            this.timer = 0;
-            if (this.result != RESULT.MISS && this.result != RESULT.DODGE) {
-                // moved to procattack
-            }
-        }
-        else {
-            this.timer -= a;
-        }
-        return this.timer;
-    }
     canUse() {
-        return !this.player.timer && this.cost <= this.player.rage;
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage;
     }
 }
 
