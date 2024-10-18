@@ -635,27 +635,23 @@ var talents = [
          },
          {
             i: 168,
-            n: 'Improved Slam',
-            m: 5,
+            n: 'Improved Whirlwind',
+            m: 3,
             s: [
                12862,
                12330,
                20497,
-               20498,
-               20499
             ],
             d: [
-               'Decreases the casting time of your Slam ability by 0.1 sec.',
-               'Decreases the casting time of your Slam ability by 0.2 sec.',
-               'Decreases the casting time of your Slam ability by 0.3 sec.',
-               'Decreases the casting time of your Slam ability by 0.4 sec.',
-               'Decreases the casting time of your Slam ability by 0.5 sec.'
+               'Decreases the cooldown of Whirlwind by 1 second.',
+               'Decreases the cooldown of Whirlwind by 1.5 seconds.',
+               'Decreases the cooldown of Whirlwind by 2 second.',
             ],
             x: 0,
             y: 4,
             c: 0,
-            iconname: 'Ability_Warrior_DecisiveStrike',
-            aura: function (count) { return { impslam: count } },
+            iconname: 'ability_whirlwind',
+            aura: function (count) { return { impwhirlwind: count } },
          },
          {
             i: 165,

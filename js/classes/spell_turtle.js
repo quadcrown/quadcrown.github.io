@@ -97,6 +97,9 @@ class Whirlwind extends Spell {
         super(player, id);
         this.cost = 25 - player.ragecostbonus;
         this.cooldown = 10;
+        if (this.player.talents.impwhirlwind == 1) this.cooldown -= 1;
+        if (this.player.talents.impwhirlwind == 2) this.cooldown -= 1.5;
+        if (this.player.talents.impwhirlwind == 3) this.cooldown -= 2;
         this.refund = false;
     }
     dmg() {
