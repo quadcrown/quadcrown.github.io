@@ -330,7 +330,8 @@ class SunderArmor extends Spell {
 class Hamstring extends Spell {
     constructor(player, id) {
         super(player, id);
-        this.cost = 10 - player.ragecostbonus;
+        this.cost = 10;
+        this.cooldown = 6;
         if (player.items.includes(19577))
             this.cost -= 2;
         if (player.items.includes(16548) ||
