@@ -589,7 +589,7 @@ var talents = [
             y: 3,
             c: 0,
             iconname: 'Ability_DualWield',
-            aura: function (count) { return { offmod: count * 0.05 } },
+            aura: function (count) { return { offmod: count * 0.05, offhit: count * 2 } },
          },
          {
             i: 1542,
