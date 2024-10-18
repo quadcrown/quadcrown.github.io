@@ -1,6 +1,8 @@
 importScripts(
     './data/levelstats.min.js',
     './data/talents.min.js',
+    './data/gear_turtle.min.js',
+    './data/enchants_turtle.min.js',
     './classes/player.min.js',
     './classes/simulation.min.js',
     './classes/weapon.min.js',
@@ -18,9 +20,6 @@ onmessage = (event) => {
         importScripts('./data/buffs.min.js');
         importScripts('./classes/spell.min.js');
     }
-    if (params.globals.turtle || params.globals.turtleclassic) importScripts('./data/gear_turtle.min.js','./data/enchants_turtle.min.js'); else
-    if (params.globals.sod) importScripts('./data/gear_sod.min.js','./data/runes.min.js');
-    else importScripts('./data/gear.min.js');
     updateGlobals(params.globals);
     const player = new Player(...params.player);
     const sim = new Simulation(player, (report) => {
