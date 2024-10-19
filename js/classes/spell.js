@@ -57,7 +57,7 @@ class Spell {
         if (spell.switchoractive) this.switchorrage = parseInt(spell.switchorrage);
         if (spell.switchoractive) this.switchoractive = spell.switchoractive;
         if (spell.secondarystance) this.secondarystance = spell.secondarystance;
-        
+
     }
     dmg() {
         return 0;
@@ -135,12 +135,12 @@ class Whirlwind extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
         (this.player.isValidStance('zerk') || this.player.talents.rageretained >= this.cost) &&
         (!this.maxrage || this.player.isValidStance('zerk') || this.player.rage <= this.maxrage) &&
         (!this.minrage || this.player.rage >= this.minrage) &&
-        (!this.maincd || 
-            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -177,8 +177,8 @@ class Overpower extends Spell {
         return !this.timer && !this.player.timer && this.cost <= this.player.rage && this.player.dodgetimer &&
         (this.player.isValidStance('battle') || this.player.talents.rageretained >= this.cost) &&
         (!this.maxrage || this.player.isValidStance('battle') || this.player.rage <= this.maxrage) &&
-        (!this.maincd || 
-            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -216,7 +216,7 @@ class Execute extends Spell {
             else if (this.player.spells.unstoppablemight && this.player.spells.unstoppablemight.secondarystance == 'battle') stance = 'battle';
             this.player.switch(stance);
         }
-        
+
         // HS + Execute macro
         if (delayedheroic && delayedheroic.exmacro) {
             if (delayedheroic.canUse()) {
@@ -287,10 +287,10 @@ class HeroicStrike extends Spell {
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.player.nextswinghs && this.cost <= this.player.rage && 
+        return !this.player.nextswinghs && this.cost <= this.player.rage &&
             ((!this.minrage && !this.maincd) ||
             (this.minrage && this.player.rage >= this.minrage) ||
-            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd))
             && (!this.unqueue || (this.player.mh.timer > this.unqueuetimer));
     }
@@ -321,10 +321,10 @@ class Cleave extends Spell {
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.player.nextswinghs && this.cost <= this.player.rage && 
+        return !this.player.nextswinghs && this.cost <= this.player.rage &&
             ((!this.minrage && !this.maincd) ||
             (this.minrage && this.player.rage >= this.minrage) ||
-            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd))
             && (!this.unqueue || (this.player.mh.timer > this.unqueuetimer));
     }
@@ -529,10 +529,10 @@ class QuickStrike extends Spell {
         return dmg * this.player.stats.dmgmod * mod;
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
             ((!this.minrage && !this.maincd) ||
             (this.minrage && this.player.rage >= this.minrage) ||
-            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (this.maincd && this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.maincd && this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -593,11 +593,11 @@ class Slam extends Spell {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} done casting`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.player.mh.timer >= this.mhthreshold && (this.player.freeslam || this.cost <= this.player.rage) && 
+        return !this.timer && !this.player.timer && this.player.mh.timer >= this.mhthreshold && (this.player.freeslam || this.cost <= this.player.rage) &&
             (!this.player.bloodsurge || this.player.freeslam) &&
             (!this.minrage || this.player.rage >= this.minrage) &&
-            (!this.maincd || 
-                (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+            (!this.maincd ||
+                (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
                 (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -671,7 +671,7 @@ class BlademasterFury extends Spell {
         }
     }
     canUse() {
-        return !this.timer && !this.player.timer && 
+        return !this.timer && !this.player.timer &&
             (!this.player.spells.whirlwind || this.player.spells.whirlwind.timer > 0);
     }
 }
@@ -702,7 +702,7 @@ class ShieldSlam extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return this.player.shield && !this.timer && !this.player.timer && (this.player.freeshieldslam || this.cost <= this.player.rage) 
+        return this.player.shield && !this.timer && !this.player.timer && (this.player.freeshieldslam || this.cost <= this.player.rage)
             && (this.player.freeshieldslam || this.player.rage >= this.minrage)
             && (!this.resolve || (this.player.auras.defendersresolve && !this.player.auras.defendersresolve.timer))
             && (!this.swordboard || this.player.freeshieldslam);
@@ -728,12 +728,12 @@ class Shockwave extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return this.player.shield && !this.timer && !this.player.timer && this.cost <= this.player.rage && 
+        return this.player.shield && !this.timer && !this.player.timer && this.cost <= this.player.rage &&
         (this.player.isValidStance('def') || this.player.talents.rageretained >= this.cost) &&
         (!this.maxrage || this.player.isValidStance('def') || this.player.rage <= this.maxrage) &&
         (!this.minrage || this.player.rage >= this.minrage) &&
-        (!this.maincd || 
-            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) || 
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
             (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
     }
 }
@@ -951,6 +951,30 @@ class Aura {
     }
 }
 
+
+class TwowEnrageAura extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 8;
+        this.mult_stats = { dmgmod: player.talents.enrage };
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000;
+        this.starttimer = step;
+        this.player.updateDmgMod();
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied. dmgmod ${this.player.stats.dmgmod}`); /* end-log */
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.player.updateDmgMod();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed. dmgmod ${this.player.stats.dmgmod}`); /* end-log */
+        }
+    }
+}
+
 class Recklessness extends Aura {
     constructor(player, id) {
         super(player, id);
@@ -1029,7 +1053,7 @@ class DeepWounds extends Aura {
             max = this.player.oh.maxdmg + this.player.oh.bonusdmg + this.player.stats.moddmgdone + (this.player.stats.ap / 14) * this.player.oh.speed;
         }
         let dmg = (min + max) / 2;
-        dmg *= (!offhand ? this.player.mh.modifier : this.player.oh.modifier) * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod; 
+        dmg *= (!offhand ? this.player.mh.modifier : this.player.oh.modifier) * this.player.stats.dmgmod * this.player.talents.deepwounds * this.player.bleedmod;
         return dmg;
     }
     step() {
@@ -2150,7 +2174,7 @@ class Rend extends Aura {
     }
     canUse() {
         return !this.timer && !this.player.timer && this.player.rage >= this.cost &&
-            (this.player.isValidStance('battle', true) || this.player.isValidStance('def', true) || this.player.talents.rageretained >= this.cost) && 
+            (this.player.isValidStance('battle', true) || this.player.isValidStance('def', true) || this.player.talents.rageretained >= this.cost) &&
             (!this.maxrage || this.player.isValidStance('battle', true) || this.player.isValidStance('def', true) || this.player.rage <= this.maxrage);
     }
     end() {
