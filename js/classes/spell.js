@@ -956,7 +956,7 @@ class TwowEnrageAura extends Aura {
     constructor(player, id) {
         super(player, id);
         this.duration = 8;
-        this.mult_stats = { dmgmod: player.talents.enrage };
+        this.mult_stats = { dmgmod: this.player.talents.enrage };
     }
     use() {
         if (this.timer) this.uptime += (step - this.starttimer);
