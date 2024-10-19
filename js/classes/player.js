@@ -147,6 +147,8 @@ class Player {
         this.addRunes();
         this.initStances();
 
+
+        if (this.mode == 'turtle' && this.talents.enrage) this.auras.enrage = new TwowEnrageAura(this);
         if (this.talents.flurry) this.auras.flurry = new Flurry(this);
         if (this.talents.deepwounds && this.mode !== 'classic') this.auras.deepwounds = this.mode == "sod" ? new DeepWounds(this) : new OldDeepWounds(this);
         if (this.adjacent && this.talents.deepwounds && this.mode !== 'classic') {
@@ -1220,6 +1222,7 @@ class Player {
         if (this.attackproc1 && this.attackproc1.spell && this.attackproc1.spell.timer) this.attackproc1.spell.step();
         if (this.attackproc2 && this.attackproc2.spell && this.attackproc2.spell.timer) this.attackproc2.spell.step();
 
+        if (this.auras.enrage && this.auras.enrage.timer) this.auras.enrage.step();
         if (this.auras.potentvenoms && this.auras.potentvenoms.timer) this.auras.potentvenoms.step();
         if (!nobleeds && this.auras.deepwounds && this.auras.deepwounds.timer) this.auras.deepwounds.step();
         if (!nobleeds && this.auras.rend && this.auras.rend.timer) this.auras.rend.step();
@@ -1296,6 +1299,7 @@ class Player {
         if (this.attackproc1 && this.attackproc1.spell && this.attackproc1.spell.timer) this.attackproc1.spell.end();
         if (this.attackproc2 && this.attackproc2.spell && this.attackproc2.spell.timer) this.attackproc2.spell.end();
 
+        if (this.auras.enrage && this.auras.enrage.timer) this.auras.enrage.end();
         if (this.auras.flurry && this.auras.flurry.timer) this.auras.flurry.end();
         if (this.auras.deepwounds && this.auras.deepwounds.timer) this.auras.deepwounds.end();
         if (this.auras.deepwounds2 && this.auras.deepwounds2.timer) this.auras.deepwounds2.end();
@@ -1558,6 +1562,12 @@ class Player {
         }
         if (this.auras.wreckingcrew) this.auras.wreckingcrew.use();
         if (this.overpowerrend && this.auras.rend && this.auras.rend.timer && spell instanceof Overpower) this.auras.rend.refresh();
+        if (spell instanceof Bloodthirst) {
+            let enragechance = this.crit * 100;
+            if (this.talents.enrage && rng10k() < enragechance) {
+                this.auras.enrage.use();
+            }
+        }
     }
     procattack(spell, weapon, result, adjacent, damageSoFar) {
         let procdmg = 0;
