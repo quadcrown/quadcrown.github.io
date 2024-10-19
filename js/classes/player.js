@@ -44,6 +44,7 @@ class Player {
         this.nextswingcl = false;
         this.freeslam = false;
         this.ragecostbonus = 0;
+        this.logging = config.logging;
         this.race = config.race;
         this.aqbooks = config.aqbooks;
         this.reactionmin = config.reactionmin;
@@ -57,6 +58,7 @@ class Player {
         this.target.misschance = this.getTargetSpellMiss();
         this.target.mitigation = this.getTargetSpellMitigation();
         this.target.binaryresist = this.getTargetSpellBinaryResist();
+        this.target.dodge = 0;
         this.base = {
             ap: 0,
             agi: 0,
@@ -141,6 +143,7 @@ class Player {
         this.preAddRunes();
         this.addBuffs();
         this.addSpells(testItem);
+        this.sortSpells();
         this.addRunes();
         this.initStances();
 
@@ -185,7 +188,7 @@ class Player {
 
         // Might set bonus
         if (this.spells.unstoppablemight && this.spells.unstoppablemight.switchstart) {
-            this.switch(this.stance == 'zerk' || this.stance == 'def' ? 'battle' : 'zerk');
+            this.switch(this.spells.unstoppablemight.secondarystance);
         }
     }
     addRace() {
@@ -210,17 +213,19 @@ class Player {
                 this.base.str += parseInt(stats[3]);
                 this.base.agi += parseInt(stats[4]);
 
-                let rp = 5 // racial potency
+                let rp = 5 // skill-racial potency
                 if (this.mode == "turtle") rp = 3;
                 this.base.skill_0 += raceid == "1" || raceid == "10" ? rp : 0;
                 this.base.skill_1 += raceid == "1" ? rp : 0;
                 this.base.skill_2 += raceid == "10" ? rp : 0;
                 this.base.skill_3 += raceid == "2" ? rp : 0;
 
-                if (this.race == "Night Elf")
-                    this.base.haste *= 1.01;
-                if (this.race == "High Elf")
-                    this.base.agimod = 1.02;
+                if (this.mode == "turtle") {
+                    if (this.race == "Night Elf")
+                        this.base.haste *= 1.01;
+                    if (this.race == "High Elf")
+                        this.base.agimod = 1.02;
+                }
             }
         }
     }
@@ -310,6 +315,8 @@ class Player {
                         this.base['moddmgdone'] += 4;
                     if (item.id == 227809)
                         this.base['moddmgdone'] += 3;
+                    if (item.id == 230003 || item.id == 23000399)
+                        this.base['moddmgdone'] += 4;
                     
                     if (item.id == 228122)
                         this.spells.themoltencore = new TheMoltenCore(this);
@@ -456,11 +463,13 @@ class Player {
                     }
                     // Endless Rage
                     if (item.ragemod) {
-                        this.ragemod = (this.ragemod || 1) * item.ragemod;
+                        this.base.ragemod = (this.base.ragemod || 1) * item.ragemod;
                     }
                     // Frenzied Assault
                     if (item.haste2h && this.mh.twohand) {
                         this.base.haste *= (1 + item.haste2h / 100) || 1;
+                        this.extrarage = 2;
+                        this.extracritrage = 4;
                     }
                     if (item.furiousthunder) {
                         this.furiousthunder = item.furiousthunder;
@@ -538,21 +547,34 @@ class Player {
                     if (bonus.stats.enhancedbs) {
                         this.enhancedbs = true;
                     }
-                    if (bonus.stats.extra) {
-                        this.setextra = bonus.stats.extra;
+                    if (bonus.stats.wailingextra) {
+                        this.wailingextra = bonus.stats.wailingextra;
+                    }
+                    if (bonus.stats.hakkariextra) {
+                        this.hakkariextra = bonus.stats.hakkariextra;
                     }
                     if (bonus.stats.switchrage) {
                         this.switchrage = bonus.stats.switchrage;
                     }
                     if (bonus.stats.switchdelay) {
                         this.switchdelay = bonus.stats.switchdelay;
-                        this.auras.echoesstance = new EchoesStance(this);
+                        this.auras.echoesbattle = new EchoesBattle(this);
+                        this.auras.echoeszerk = new EchoesZerk(this);
+                        this.auras.echoesglad = new EchoesGlad(this);
+                        this.auras.echoesdef = new EchoesDef(this);
                     }
                     if (bonus.stats.switchbonus) {
                         this.auras.battleforecast = new BattleForecast(this);
-                        this.auras.berserkerforecast = new BerserkerForecast(this);
-                        this.auras.defensiveforecast = new DefensiveForecast(this);
+                        this.auras.zerkforecast = new ZerkForecast(this);
+                        this.auras.defforecast = new DefForecast(this);
+                        this.auras.gladforecast = new GladForecast(this);
                     }
+                    if (bonus.stats.overpowerrend) this.overpowerrend = bonus.stats.overpowerrend;
+                    if (bonus.stats.heroicbonus) this.heroicbonus = bonus.stats.heroicbonus;
+                    if (bonus.stats.slammainreset) this.slammainreset = bonus.stats.slammainreset;
+                    if (bonus.stats.shieldslamcd) this.shieldslamcd = bonus.stats.shieldslamcd;
+                    if (bonus.stats.gladbloodrage) this.gladbloodrage = bonus.stats.gladbloodrage;
+                    if (bonus.stats.whirlwindcost) this.whirlwindcost = bonus.stats.whirlwindcost;
                 }
             }
         }
@@ -600,16 +622,15 @@ class Player {
                     this.auras.voodoofrenzy = new VoodooFrenzy(this);
                 if (buff.stance) {
                     this.basestance = buff.stance;
-                    if (buff.stance == 'glad' && !this.shield)
-                        this.basestance = 'battle';
-                    if (buff.stance == 'glad' && this.gladdmg)
+                    if (buff.stance == 'glad' && this.gladdmg && this.shield)
                         this.base.dmgmod *= (1 + this.gladdmg / 100);
-                    if (this.basestance == "glad" && !this.target.speed)
-                        this.ragemod = 1.5;
                     continue;
                 }
                 if (buff.group == "trueshot" && this.mode == "sod") {
                     buff.ap = buff.apsod;
+                }
+                if (buff.dodge) {
+                    this.target.dodge += buff.dodge;
                 }
                     
                 this.base.ap += ap || buff.ap || 0;
@@ -670,6 +691,25 @@ class Player {
         }
         // sort by timetoend to prepare for usestep calculations
         this.preporder.sort((a, b) => { return a.timetoend - b.timetoend; });
+    }
+    sortSpells() {
+        this.normalspells = [];
+        this.executespells = [];
+
+        for(let i = 10; i > 0; i--) {
+            for(let s in this.spells) {
+                if (this.spells[s].priority == i) this.normalspells.push(this.spells[s]);
+                if (this.spells[s].expriority == i) this.executespells.push(this.spells[s]);
+            }
+            for(let a in this.auras) {
+                if (this.auras[a].priority == i) this.normalspells.push(this.auras[a]);
+                if (this.auras[a].expriority == i) this.executespells.push(this.auras[a]);
+            }
+        }
+
+        this.normalspells_c = this.normalspells.length;
+        this.executespells_c = this.executespells.length;
+
     }
     reset(rage) {
         this.rage = rage;
@@ -778,7 +818,7 @@ class Player {
         this.stats.ap += this.stats.str * 2;
         this.stats.crit += this.stats.agi * this.agipercrit;
         this.crit = this.getCritChance();
-        this.stats.block = this.base.block + ~~(this.stats.str / 20);
+        this.stats.block = this.stats.block + ~~(this.stats.str / 20);
 
         if (this.stats.baseapmod != 1)
             this.stats.ap += ~~((this.base.aprace + this.stats.str * 2) * (this.stats.baseapmod - 1));
@@ -898,13 +938,13 @@ class Player {
             this.stats.haste *= (1 + this.auras.magmadarsreturn.mult_stats.haste / 100);
         if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
             this.stats.haste *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
+        if (this.auras.crusaderzeal && this.auras.crusaderzeal.timer)
+            this.stats.haste *= (1 + this.auras.crusaderzeal.mult_stats.haste / 100);
 
     }
     updateHasteDamage() {
         // MOD_ATTACKSPEED works differently than regular haste, lowers dmg
         let mod = 1;
-        if (this.auras.blisteringragehammer && this.auras.blisteringragehammer.timer)
-            mod *= (1 + this.auras.blisteringragehammer.mult_stats.haste / 100);
         if (this.auras.spicy && this.auras.spicy.timer)
             mod *= (1 + this.auras.spicy.mult_stats.haste / 100);
         if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
@@ -932,6 +972,8 @@ class Player {
             bonus += this.auras.blisteringragehammer.stats.moddmgdone;
         if (this.auras.meltarmor && this.auras.meltarmor.timer)
             taken += this.auras.meltarmor.stats.moddmgtaken;
+        if (this.auras.crusaderzeal && this.auras.crusaderzeal.timer)
+            bonus += this.auras.crusaderzeal.stats.moddmgdone;
         this.stats.moddmgdone = this.base.moddmgdone + bonus;
         this.stats.moddmgtaken = this.base.moddmgtaken + taken;
         this.mh.bonusdmg = this.mh.basebonusdmg;
@@ -1020,7 +1062,7 @@ class Player {
         return Math.max(crit, 0);
     }
     getDodgeChance(weapon) {
-        return Math.max(5 + (this.target.defense - this.stats['skill_' + weapon.type]) * 0.1, 0);
+        return Math.max(5 - this.target.dodge + (this.target.defense - this.stats['skill_' + weapon.type]) * 0.1, 0);
     }
     getArmorReduction() {
         if (isNaN(this.target.armor)) this.target.armor = 0;
@@ -1054,6 +1096,9 @@ class Player {
                 this.rage += (dmg / this.rageconversion) * 7.5 * this.ragemod;
             }
         }
+        if (this.extrarage && result == RESULT.HIT) this.rage += this.extrarage;
+        if (this.extracritrage && result == RESULT.CRIT) this.rage += this.extracritrage;
+        
         if (this.rage > 100) this.rage = 100;
 
         if (this.auras.consumedrage && oldRage < 60 && this.rage >= 60)
@@ -1062,7 +1107,7 @@ class Player {
     steptimer(a) {
         if (this.timer <= a) {
             this.timer = 0;
-            /* start-log */ if (log) this.log('Global CD off'); /* end-log */
+            /* start-log */ if (this.logging) this.log('Global CD off'); /* end-log */
             return true;
         }
         else {
@@ -1073,7 +1118,7 @@ class Player {
     stepitemtimer(a) {
         if (this.itemtimer <= a) {
             this.itemtimer = 0;
-            /* start-log */ if (log) this.log('Item CD off'); /* end-log */
+            /* start-log */ if (this.logging) this.log('Item CD off'); /* end-log */
             return true;
         }
         else {
@@ -1084,7 +1129,7 @@ class Player {
     stepstancetimer(a) {
         if (this.stancetimer <= a) {
             this.stancetimer = 0;
-            /* start-log */ if (log) this.log('Stance CD off'); /* end-log */
+            /* start-log */ if (this.logging) this.log('Stance CD off'); /* end-log */
             return true;
         }
         else {
@@ -1096,7 +1141,7 @@ class Player {
         if (this.ragetimer <= a) {
             this.ragetimer = 0;
             this.rage += 10;
-            /* start-log */ if (log) this.log('10 rage gained'); /* end-log */
+            /* start-log */ if (this.logging) this.log('10 rage gained'); /* end-log */
             return true;
         }
         else {
@@ -1149,15 +1194,21 @@ class Player {
         if (this.auras.suddendeath && this.auras.suddendeath.timer) this.auras.suddendeath.step();
         if (this.auras.voodoofrenzy && this.auras.voodoofrenzy.timer) this.auras.voodoofrenzy.step();
         if (this.auras.battleshout && this.auras.battleshout.timer) this.auras.battleshout.step();
-        if (this.auras.echoesstance && this.auras.echoesstance.timer) this.auras.echoesstance.step();
+        if (this.auras.echoeszerk && this.auras.echoeszerk.timer) this.auras.echoeszerk.step();
+        if (this.auras.echoesbattle && this.auras.echoesbattle.timer) this.auras.echoesbattle.step();
+        if (this.auras.echoesdef && this.auras.echoesdef.timer) this.auras.echoesdef.step();
+        if (this.auras.echoesglad && this.auras.echoesglad.timer) this.auras.echoesglad.step();
         if (this.auras.battleforecast && this.auras.battleforecast.timer) this.auras.battleforecast.step();
-        if (this.auras.berserkerforecast && this.auras.berserkerforecast.timer) this.auras.berserkerforecast.step();
-        if (this.auras.defensiveforecast && this.auras.defensiveforecast.timer) this.auras.defensiveforecast.step();
+        if (this.auras.zerkforecast && this.auras.zerkforecast.timer) this.auras.zerkforecast.step();
+        if (this.auras.defforecast && this.auras.defforecast.timer) this.auras.defforecast.step();
+        if (this.auras.gladforecast && this.auras.gladforecast.timer) this.auras.gladforecast.step();
         if (this.auras.defendersresolve && this.auras.defendersresolve.timer) this.auras.defendersresolve.step();
         if (this.auras.singleminded && this.auras.singleminded.timer) this.auras.singleminded.step();
         if (this.auras.demontaintedblood && this.auras.demontaintedblood.timer) this.auras.demontaintedblood.step();
+        if (this.auras.wrathwray && this.auras.wrathwray.timer) this.auras.wrathwray.step();
         if (this.auras.moonstalkerfury && this.auras.moonstalkerfury.timer) this.auras.moonstalkerfury.step();
         if (this.auras.jujuflurry && this.auras.jujuflurry.timer) this.auras.jujuflurry.step();
+        if (this.auras.grilekguard && this.auras.grilekguard.timer) this.auras.grilekguard.step();
 
         if (this.mh.windfury && this.mh.windfury.timer) this.mh.windfury.step();
         if (this.trinketproc1 && this.trinketproc1.spell && this.trinketproc1.spell.timer) this.trinketproc1.spell.step();
@@ -1218,14 +1269,21 @@ class Player {
         if (this.auras.suddendeath && this.auras.suddendeath.timer) this.auras.suddendeath.end();
         if (this.auras.voodoofrenzy && this.auras.voodoofrenzy.timer) this.auras.voodoofrenzy.end();
         if (this.auras.battleshout && this.auras.battleshout.timer) this.auras.battleshout.end();
-        if (this.auras.echoesstance && this.auras.echoesstance.timer) this.auras.echoesstance.end();
+        if (this.auras.echoeszerk && this.auras.echoeszerk.timer) this.auras.echoeszerk.end();
+        if (this.auras.echoesbattle && this.auras.echoesbattle.timer) this.auras.echoesbattle.end();
+        if (this.auras.echoesdef && this.auras.echoesdef.timer) this.auras.echoesdef.end();
+        if (this.auras.echoesglad && this.auras.echoesglad.timer) this.auras.echoesglad.end();
         if (this.auras.battleforecast && this.auras.battleforecast.timer) this.auras.battleforecast.end();
-        if (this.auras.berserkerforecast && this.auras.berserkerforecast.timer) this.auras.berserkerforecast.end();
+        if (this.auras.zerkforecast && this.auras.zerkforecast.timer) this.auras.zerkforecast.end();
+        if (this.auras.defforecast && this.auras.defforecast.timer) this.auras.defforecast.end();
+        if (this.auras.gladforecast && this.auras.gladforecast.timer) this.auras.gladforecast.end();
         if (this.auras.defendersresolve && this.auras.defendersresolve.timer) this.auras.defendersresolve.end();
         if (this.auras.singleminded && this.auras.singleminded.timer) this.auras.singleminded.end();
         if (this.auras.moonstalkerfury && this.auras.moonstalkerfury.timer) this.auras.moonstalkerfury.end();
         if (this.auras.demontaintedblood && this.auras.demontaintedblood.timer) this.auras.demontaintedblood.end();
+        if (this.auras.wrathwray && this.auras.wrathwray.timer) this.auras.wrathwray.end();
         if (this.auras.jujuflurry && this.auras.jujuflurry.timer) this.auras.jujuflurry.end();
+        if (this.auras.grilekguard && this.auras.grilekguard.timer) this.auras.grilekguard.end();
         
 
         if (this.mh.windfury && this.mh.windfury.timer) this.mh.windfury.end();
@@ -1315,7 +1373,7 @@ class Player {
             }
             else {
                 result = this.rollweapon(weapon);
-                /* start-log */ if (log) this.log(`Heroic Strike auto canceled`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`Heroic Strike auto canceled`); /* end-log */
             }
         }
         else {
@@ -1351,7 +1409,7 @@ class Player {
             weapon.data[result]++;
         }
         weapon.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`${spell ? spell.name + ' for' : 'Main hand attack for'} ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}`); /* end-log */
+        /* start-log */ if (this.logging) this.log(`${spell ? spell.name + ' for' : 'Main hand attack for'} ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}`); /* end-log */
 
         if (spell instanceof Cleave && !adjacent) {
             this.nextswinghs = true;
@@ -1386,7 +1444,7 @@ class Player {
         weapon.data[result]++;
         weapon.totaldmg += done;
         weapon.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`Off hand attack for ${done + procdmg} (${Object.keys(RESULT)[result]})${this.nextswinghs ? ' (HS queued)' : ''}`); /* end-log */
+        /* start-log */ if (this.logging) this.log(`Off hand attack for ${done + procdmg} (${Object.keys(RESULT)[result]})${this.nextswinghs ? ' (HS queued)' : ''}`); /* end-log */
         return done + procdmg;
     }
     cast(spell, delayedheroic, adjacent, damageSoFar) {
@@ -1395,7 +1453,7 @@ class Player {
             spell.use(delayedheroic);
         }
         if (spell.useonly) {
-            /* start-log */ if (log) this.log(`${spell.name} used`); /* end-log */
+            /* start-log */ if (this.logging) this.log(`${spell.name} used`); /* end-log */
             return 0;
         }
         if (this.spells.ragingblow) this.spells.ragingblow.reduce(spell);
@@ -1437,7 +1495,7 @@ class Player {
         if (!adjacent) spell.data[result]++;
         spell.totaldmg += done;
         this.mh.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`${spell.name} for ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}.`); /* end-log */
+        /* start-log */ if (this.logging) this.log(`${spell.name} for ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}.`); /* end-log */
         return done + procdmg;
     }
     castoh(spell, adjacent, damageSoFar) {
@@ -1460,11 +1518,10 @@ class Player {
         }
 
         let done = this.dealdamage(dmg, result, this.oh, spell, adjacent);
-        if (!adjacent) spell.data[result]++;
         spell.totaldmg += done;
         spell.offhandhit = false;
         this.oh.totalprocdmg += procdmg;
-        /* start-log */ if (log) this.log(`${spell.name} (OH) for ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}.`); /* end-log */
+        /* start-log */ if (this.logging) this.log(`${spell.name} (OH) for ${~~done} (${Object.keys(RESULT)[result]})${adjacent ? ' (Adjacent)' : ''}.`); /* end-log */
         return done + procdmg;
     }
     dealdamage(dmg, result, weapon, spell, adjacent) {
@@ -1487,6 +1544,7 @@ class Player {
             else this.auras['deepwounds' + (~~rng(1,adjacent) + 1)].use(offhand);
         }
         if (this.auras.wreckingcrew) this.auras.wreckingcrew.use();
+        if (this.overpowerrend && this.auras.rend && this.auras.rend.timer && spell instanceof Overpower) this.auras.rend.refresh();
     }
     procattack(spell, weapon, result, adjacent, damageSoFar) {
         let procdmg = 0;
@@ -1512,61 +1570,71 @@ class Player {
                     this.auras.suddendeath.remove();
                 }
             }
+            if (spell instanceof Slam && this.slammainreset) {
+                if (this.spells.mortalstrike) this.spells.mortalstrike.timer = 0;
+                if (this.spells.bloodthirst) this.spells.bloodthirst.timer = 0;
+                if (this.spells.shieldslam) this.spells.shieldslam.timer = 0;
+                /* start-log */ if (this.logging) this.log(`T2 Slam reset`); /* end-log */
+            }
             if (weapon.proc1 && !weapon.proc1.extra && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
                 if (weapon.proc1.spell) weapon.proc1.spell.use();
                 if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1);
-                if (weapon.proc1.physdmg) procdmg += this.physproc(weapon.proc1.physdmg);
-                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
+                if (weapon.proc1.physdmg) {
+                    let dmg = this.physproc(weapon.proc1.physdmg);
+                    if (dmg > 0 && weapon.proc1.phantom) dmg += this.phantomproc(weapon)
+                    procdmg += dmg
+                }
+                /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             // Extra attacks roll only once per multi target attack
             if (weapon.proc1 && weapon.proc1.extra && !damageSoFar && rng10k() < weapon.proc1.chance && !(weapon.proc1.gcd && this.timer && this.timer < 1500)) {
                 // Multiple extras procs off a non spel will only grant extra attack(s) from one source
                 if (spell) this.extraattacks += weapon.proc1.extra;
                 else extras = weapon.proc1.extra;
-                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             if (weapon.proc2 && rng10k() < weapon.proc2.chance) {
                 if (weapon.proc2.spell) weapon.proc2.spell.use();
                 if (weapon.proc2.magicdmg) procdmg += this.magicproc(weapon.proc2);
-                /* start-log */ if (log) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
             }
             if (this.trinketproc1 && !this.trinketproc1.extra && rng10k() < this.trinketproc1.chance) {
                 if (this.trinketproc1.magicdmg) procdmg += this.magicproc(this.trinketproc1);
                 if (this.trinketproc1.spell) this.trinketproc1.spell.use();
-                /* start-log */ if (log) this.log(`Trinket 1 proc`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`Trinket 1 proc`); /* end-log */
             }
             if (this.trinketproc1 && this.trinketproc1.extra && !damageSoFar && rng10k() < this.trinketproc1.chance) {
                 if (!this.trinketproc1.cooldown || !this.trinketproc1.usestep || step > this.trinketproc1.usestep) {
                     if (this.trinketproc1.cooldown) this.trinketproc1.usestep = step + this.trinketproc1.cooldown;
                     if (spell) this.batchedextras += this.trinketproc1.extra;
                     else batchedextras = this.trinketproc1.extra;
-                    /* start-log */ if (log) this.log(`Trinket 1 proc`); /* end-log */
+                    /* start-log */ if (this.logging) this.log(`Trinket 1 proc`); /* end-log */
                 }
             }
             if (this.trinketproc2 && !this.trinketproc2.extra  && rng10k() < this.trinketproc2.chance) {
                 if (this.trinketproc2.magicdmg) procdmg += this.magicproc(this.trinketproc2);
                 if (this.trinketproc2.spell) this.trinketproc2.spell.use();
-                /* start-log */ if (log) this.log(`Trinket 2 proc`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`Trinket 2 proc`); /* end-log */
             }
             if (this.trinketproc2 && this.trinketproc2.extra && !damageSoFar && rng10k() < this.trinketproc2.chance) {
                 if (!this.trinketproc2.cooldown || !this.trinketproc2.usestep || step > this.trinketproc2.usestep) {
                     if (this.trinketproc2.cooldown) this.trinketproc2.usestep = step + this.trinketproc2.cooldown;
                     if (spell) this.batchedextras += this.trinketproc2.extra;
                     else batchedextras = this.trinketproc2.extra;
-                    /* start-log */ if (log) this.log(`Trinket 2 proc`); /* end-log */
+                    /* start-log */ if (this.logging) this.log(`Trinket 2 proc`); /* end-log */
                 }
             }
             if (this.attackproc1 && rng10k() < this.attackproc1.chance) {
                 if (this.attackproc1.magicdmg) { 
                     procdmg += this.attackproc1.chance == 10000 ? this.attackproc1.magicdmg : this.magicproc(this.attackproc1);
-                    /* start-log */ if (log) this.log(`Attack proc for ${procdmg}`); /* end-log */
+                    /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc1.spell) this.attackproc1.spell.use();
             }
             if (this.attackproc2 && rng10k() < this.attackproc2.chance) {
                 if (this.attackproc2.magicdmg) { 
                     procdmg += this.attackproc2.chance == 10000 ? this.attackproc2.magicdmg : this.magicproc(this.attackproc2);
-                    /* start-log */ if (log) this.log(`Attack proc for ${procdmg}`); /* end-log */
+                    /* start-log */ if (this.logging) this.log(`Attack proc for ${procdmg}`); /* end-log */
                 }
                 if (this.attackproc2.spell) this.attackproc2.spell.use();
             }
@@ -1575,25 +1643,32 @@ class Player {
                 this.swordspecstep = step;
                 if (spell) this.extraattacks++;
                 else extras++;
-                /* start-log */ if (log) this.log(`Sword talent proc`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`Sword talent proc`); /* end-log */
             }
             // Wailing set bonus extra
-            if (this.setextra && !damageSoFar && this.setextrastep != step && rng10k() < 500) {
-                this.setextrastep = step;
+            if (this.wailingextra && !damageSoFar && this.wailingextrastep != step && rng10k() < 300) {
+                this.wailingextrastep = step;
                 if (spell) this.extraattacks++;
                 else extras++;
-                /* start-log */ if (log) this.log(`Set bonus extra attack proc`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`Wailing set extra attack proc`); /* end-log */
+            }
+            // Hakkari set bonus extra
+            if (this.hakkariextra && !damageSoFar && this.hakkariextrastep != step && rng10k() < 200) {
+                this.hakkariextrastep = step;
+                if (spell) this.extraattacks++;
+                else extras++;
+                /* start-log */ if (this.logging) this.log(`Hakkari set extra attack proc`); /* end-log */
             }
             // Blood Surge
             if (this.bloodsurge && (spell instanceof Whirlwind || spell instanceof Bloodthirst || spell instanceof HeroicStrike || spell instanceof QuickStrike) && rng10k() < 3000) {
                 this.freeslam = true;
-                /* start-log */ if (log) this.log(`Blood Surge proc`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`Blood Surge proc`); /* end-log */
             }
             // Sword and Board
             if (this.swordboard && this.spells.shieldslam && (spell instanceof SunderArmor) && rng10k() < 3000) {
                 this.freeshieldslam = true;
                 this.spells.shieldslam.timer = 0;
-                /* start-log */ if (log) this.log(`Sword and Board proc`); /* end-log */
+                /* start-log */ if (this.logging) this.log(`Sword and Board proc`); /* end-log */
             }
             // Voodoo Frenzy
             if (this.auras.voodoofrenzy && rng10k() < 1500) {
@@ -1604,7 +1679,7 @@ class Player {
                 this.auras.suddendeath.use();
             }
             // Fresh Meat
-            if (spell instanceof Bloodthirst && this.freshmeat && (this.auras.freshmeat.firstuse || rng10k() < 1000)) {
+            if (this.freshmeat && (spell instanceof Bloodthirst || spell instanceof MortalStrike || spell instanceof ShieldSlam) && (this.auras.freshmeat.firstuse || rng10k() < 1000)) {
                 this.auras.freshmeat.use();
             }
             // Single Minded
@@ -1628,7 +1703,7 @@ class Player {
             if (this.auras.relentlessstrength && this.auras.relentlessstrength.timer) {
                 this.auras.relentlessstrength.proc();
             }
-            if (this.dragonbreath && rng10k() < 400) {
+            if (this.dragonbreath && rng10k() < 500) {
                 procdmg += this.magicproc({ magicdmg: 60, coeff: 1 });
             }
             if (extras) this.extraattacks += extras;
@@ -1639,6 +1714,19 @@ class Player {
         if (!spell && this.mh.windfury && this.mh.windfury.stacks)
             this.mh.windfury.proc();
         return procdmg;
+    }
+    phantomproc(weapon) {
+        let dmg = 0;
+        if (rng10k() < weapon.proc1.chance) {
+            dmg += this.physproc(weapon.proc1.physdmg);
+            if (dmg > 0) dmg += this.phantomproc(weapon)
+        }
+        if (weapon.proc2 && rng10k() < weapon.proc2.chance) {
+            if (weapon.proc2.spell) weapon.proc2.spell.use();
+            if (weapon.proc2.magicdmg) dmg += this.magicproc(weapon.proc2);
+            /* start-log */ if (this.logging) this.log(`${weapon.name} proc`); /* end-log */
+        }
+        return dmg;
     }
     magicproc(proc) {
         let mod = 1;
@@ -1677,7 +1765,7 @@ class Player {
         else if (msg.indexOf('tick') > 1) color = 'Tomato';
         else if (msg.indexOf(' for ') > -1) color = 'DarkOrchid';
         else if (msg.indexOf('applied') > 1 || msg.indexOf('removed') > -1) color = '#17A8B6';
-        console.log(`%c ${step.toString().padStart(5,' ')} | ${this.rage.toFixed(2).padStart(6,' ')} | ${msg}`, `color: ${color}`);
+        console.log(`%c ${(step / 1000).toFixed(3).padStart(6,' ')} | ${this.rage.toFixed(2).padStart(6,' ')} | ${msg}`, `color: ${color}`);
     }
     switch(stance) {
         let prev = this.stance;
@@ -1692,24 +1780,21 @@ class Player {
         if (stance == 'glad') this.auras.gladiatorstance.timer = 1;
         this.rage = Math.min(this.rage, this.talents.rageretained);
         
-        if (this.auras.echoesstance) this.auras.echoesstance.use(prev);
-        if (this.auras.battleforecast && (this.stance == 'battle' || this.stance == 'glad')) {
-            this.auras.battleforecast.use();
-        } 
-        if (this.auras.berserkerforecast && this.stance == 'zerk') {
-            this.auras.berserkerforecast.use();
-        }
-        if (this.auras.defensiveforecast && this.stance == 'def') {
-            this.auras.defensiveforecast.use();
-        }
+        if (this.auras["echoes" + prev]) this.auras["echoes" + prev].use();
+        if (this.auras[this.stance + "forecast"]) this.auras[this.stance + "forecast"].use();
+       
+        this.ragemod = (this.base.ragemod || 1) * (this.stance == 'glad' && !this.target.speed ? 1.5 : 1);
         if (this.switchrage) this.ragetimer = 10; // Rage gain is batched to prevent switching stance + casting BT on the same step
-        this.stancetimer = 1500;
+        this.stancetimer = 1000;
         this.updateAuras();
-        /* start-log */ if (log) this.log(`Switched to ${stance} stance`); /* end-log */
+        /* start-log */ if (this.logging) this.log(`Switched to ${stance} stance`); /* end-log */
     }
     isValidStance(stance, isRend) {
-        return this.stance == stance || this.stance == 'glad' ||
-            (this.auras.echoesstance && this.auras.echoesstance.timer && (this.auras.echoesstance.stance == stance || this.auras.echoesstance.stance == 'glad')) ||
+        return this.stance == stance || (this.stance == 'glad' && this.shield) ||
+            (stance == 'zerk' && this.auras.echoeszerk && this.auras.echoeszerk.timer) || 
+            (stance == 'battle' && this.auras.echoesbattle && this.auras.echoesbattle.timer) || 
+            (stance == 'def' && this.auras.echoesdef && this.auras.echoesdef.timer) || 
+            (this.auras.echoesglad && this.auras.echoesglad.timer) ||
             (isRend && this.stance == 'zerk' && this.bloodfrenzy);
     }
     isEnraged() {

@@ -336,6 +336,7 @@ SIM.UI = {
             view.endLoading();
             return;
         }
+        console.clear()
         let dps = view.sidebar.find('.dps');
         let error = view.sidebar.find('#dpserr');
         let stats = view.sidebar.find('#stats');
@@ -857,6 +858,10 @@ SIM.UI = {
                     path = item.p;
                     let id = item.id.toString().split('|');
                     href = id[0];
+                    if (item.id == 23000399) href = "230003";
+                    if (item.id == 22839799) href = "228397";
+                    if (item.id == 22835099) href = "228350";
+                    if (item.id == 23024299) href = "230242";
                     if (ench) href += '?ench=' + ench;
                     if (id.length == 2) href += (ench ? '&' : '?') + 'rand=' + id[1];
                     empty = false;
@@ -1099,7 +1104,7 @@ SIM.UI = {
 
             if (filter) {
                 if (filter == "All") {
-                    if (type == "offhand" && (storage.buffs.includes("413479") || storage.buffs.includes("71"))) { // Glad & Def Stance
+                    if (type == "offhand" && (storage.buffs.includes("71"))) { // Glad & Def Stance
                         if (item.type !== "Shield") continue;
                     }
                     else if (item.type == "Shield") continue;
@@ -1137,6 +1142,10 @@ SIM.UI = {
 
             let tooltip = item.id.toString().split('|')[0], rand = '';
             if (tooltip == 199211) tooltip = 19921;
+            if (tooltip == 23000399) tooltip = 230003;
+            if (tooltip == 22839799) tooltip = 228397;
+            if (tooltip == 22835099) tooltip = 228350;
+            if (tooltip == 23024299) tooltip = 230242;
             if (item.rand) rand = '?rand=' + item.rand;
 
             let resist = '';

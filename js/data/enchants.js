@@ -526,6 +526,24 @@ var enchant = {
       "phase": 1,
       "r": 50,
       "ench": "1505"
+    },
+    {
+      "id": 231379,
+      "name": "Presence of Might",
+      "r": 60,
+      "sta": 20,
+      "str": 10,
+      "agi": 10,
+      "ench": "7632"
+    },
+    {
+      "id": 231381,
+      "name": "Presence of Valor",
+      "r": 60,
+      "sta": 20,
+      "defense": 7,
+      "block": 15,
+      "ench": "7633"
     }
    ],
    "shoulder": [
@@ -860,6 +878,24 @@ var enchant = {
       "phase": 1,
       "r": 50,
       "ench": "1505"
+    },
+    {
+      "id": 231379,
+      "name": "Presence of Might",
+      "r": 60,
+      "sta": 20,
+      "str": 10,
+      "agi": 10,
+      "ench": "7632"
+    },
+    {
+      "id": 231381,
+      "name": "Presence of Valor",
+      "r": 60,
+      "sta": 20,
+      "defense": 7,
+      "block": 15,
+      "ench": "7633"
     }
    ],
    "feet": [
@@ -1105,7 +1141,7 @@ var enchant = {
       items: [220653,220654,220656],
       bonus: [
          { count: 2, stats: { hit: 1 } },
-         { count: 3, stats: { extra: 1 } },
+         { count: 3, stats: { wailingextra: 1 } },
       ]
    },
    {
@@ -1147,7 +1183,7 @@ var enchant = {
    {
     id: 1719,
     name: 'Immoveable Might',
-    items: [226485,226484,226489,226486,226488,226490,226491,226487],
+    items: [226485,226484,226489,226486,226488,226490,226491,226487,232259,232257,232262,232255,232260,232256,232258,232261],
     bonus: [
        { count: 2, stats: { block: 30 } },
        { count: 6, stats: { gladdmg: 4 } },
@@ -1182,7 +1218,7 @@ var enchant = {
 {
   id: 1720,
   name: 'Unstoppable Might',
-  items: [226499,226497,226494,226495,226493,226492,226498,226496],
+  items: [226499,226497,226494,226495,226493,226492,226498,226496,232251,232249,232254,232247,232252,232248,232250,232253],
   bonus: [
      { count: 2, stats: { switchrage: true } },
      { count: 4, stats: { switchdelay: true } },
@@ -1225,7 +1261,7 @@ var enchant = {
 {
   id: 1781,
   name: 'Spirit of Eskhandar',
-  items: [228350,228349,228360,228759],
+  items: [228350,228349,228360,228759,22835099],
   bonus: [
      { count: 2, stats: { hit: 1 } },
      { count: 3, stats: { crit: 1, spellcrit: 1 } },
@@ -1303,4 +1339,97 @@ var enchant = {
      { count: 4, stats: { resist: { fire: 10 }}},
   ]
 },
+{
+  id: 1721,
+  name: 'Warlord\'s Battlegear',
+  items: [231535,231534,231530,231533,231531,231532],
+  bonus: [
+     { count: 2, stats: { sta: 20 }},
+     { count: 6, stats: { ap: 40 }},
+  ]
+},
+{
+  id: 1747,
+  name: 'Field Marshal\'s Battlegear',
+  items: [231538,231537,231536,231540,231539,231541],
+  bonus: [
+     { count: 2, stats: { sta: 20 }},
+     { count: 6, stats: { ap: 40 }},
+  ]
+},
+{
+  id: 1799,
+  name: 'Overlord\'s Resolution',
+  items: [230943,230999],
+  bonus: [
+    { count: 2, stats: { defense: 8 }},
+  ]
+},
+{
+  id: 1797,
+  name: 'Major Mojo Infusion',
+  items: [230921,230929],
+  bonus: [
+    { count: 2, stats: { ap: 30 }},
+  ]
+},
+{
+  id: 1800,
+  name: 'The Twin Blades of Hakkari',
+  items: [231853,231869],
+  bonus: [
+    { count: 2, stats: { skill_1: 3, hakkariextra: 1 } }
+  ]
+},
+{
+  id: 1798,
+  name: 'Primal Blessing',
+  items: [231875,231851],
+  bonus: [
+    { count: 2, stats: { procspell: "PrimalBlessing2", procchance: 5 } }
+  ]
+},
+
+{
+  id: 474,
+  name: 'Vindicator\'s Battlegear',
+  items: [19951,19577,19824,19823,19822],
+  bonus: [
+     { count: 2, stats: { }},
+     { count: 5, stats: { whirlwindcost: 3 }},
+  ]
+},
+
+{
+  id: 1832,
+  name: 'Vindicator\'s Battlegear',
+  items: [231353,231352,231351,231350,231286],
+  bonus: [
+     { count: 2, stats: { defense: 7 }},
+     { count: 3, stats: { shieldslamcd: 2 }},
+     { count: 5, stats: { gladbloodrage: 30 }},
+  ]
+},
+
+{
+  id: 1823,
+  name: 'Unstoppable Wrath',
+  items: [231038,231037,231036,231035,231034,231033,231032,231031],
+  bonus: [
+     { count: 2, stats: { overpowerrend: true } },
+     { count: 4, stats: { heroicbonus: true } },
+     { count: 6, stats: { slammainreset: true } },
+  ]
+},
+
+{
+  id: 1822,
+  name: 'Immoveable Wrath',
+  items: [231030,231029,231028,231027,231026,231025,231024,231023],
+  bonus: [
+    { count: 2, stats: {  } },
+  ]
+},
+
+
 ];

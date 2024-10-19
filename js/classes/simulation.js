@@ -27,7 +27,6 @@ var SCHOOL = {
 
 var batching = 0;
 var step = 0;
-var log = false;
 var version = 4;
 
 const TYPE = {
@@ -168,6 +167,7 @@ class SimulationWorkerParallel {
         this.workers.forEach((worker, i) => {
             const current = Math.round(remain / (this.workers.length - i));
             remain -= current;
+            params.player[3].logging = i == 0 && params.fullReport;
             worker.start({...params, sim: {...params.sim, iterations: current}});
         });
     }
@@ -206,9 +206,6 @@ class Simulation {
         this.cb_update = callback_update;
         this.cb_finished = callback_finished;
         this.spread = [];
-
-        if (this.iterations == 1) log = true;
-        else log = false;
     }
     startSync() {
         this.starttime = new Date().getTime();
@@ -246,6 +243,7 @@ class Simulation {
         this.maxsteps = rng(this.timesecsmin * 1000, this.timesecsmax * 1000);
         this.duration = this.maxsteps / 1000;
         this.executestep = this.maxsteps - parseInt(this.maxsteps * (this.executeperc / 100));
+        if (player.spells.execute) player.spells.execute.executestep = this.executestep;
         let delayedspell, delayedheroic;
         let spellcheck = false;
         let canSpellQueue = false;
@@ -261,6 +259,24 @@ class Simulation {
             else if (player.spells[spell.classname.toLowerCase()].prep)
                 player.spells[spell.classname.toLowerCase()].prep(this.maxsteps);
         }
+
+        // prepull actions
+        let prepull = [];
+        for(let aura of Object.values(player.auras)) {
+            if (aura.usestep < 0) prepull.push(aura);
+        }
+        prepull.sort((a,b) => (b.usestep - a.usestep));
+        let counter = 1500;
+        for(let aura of prepull) {
+            if (aura.canUse()) {
+                aura.use(false, counter);
+                counter += 1500;
+                this.player.timer = 0;
+                this.player.itemtimer = 0;
+            }
+        }
+        if (player.auras.battleshout) player.auras.battleshout.use(true);
+        this.player.timer = 0;
 
         while (step < this.maxsteps) {
 
@@ -289,7 +305,7 @@ class Simulation {
                 spellcheck = true;
                 if (player.auras.consumedrage && player.rage >= 60 && oldRage < 60)
                     player.auras.consumedrage.use();
-                /* start-log */ if (log) this.player.log(`Target attack for ${dmg} gained ${gained.toFixed(2)} rage `); /* end-log */
+                /* start-log */ if (player.logging) this.player.log(`Target attack for ${dmg} gained ${gained.toFixed(2)} rage `); /* end-log */
             }
 
             // Stop everything
@@ -335,10 +351,12 @@ class Simulation {
                     else if (player.spells.gunaxe && player.spells.gunaxe.canUse()) { player.spelldelay = 1; delayedspell = player.spells.gunaxe; }
                     else if (player.auras.mildlyirradiated && player.auras.mildlyirradiated.canUse()) { player.spelldelay = 1; delayedspell = player.auras.mildlyirradiated; }
                     else if (player.auras.jujuflurry && player.auras.jujuflurry.canUse()) { player.spelldelay = 1; delayedspell = player.auras.jujuflurry; }
+                    else if (player.spells.grilekfury && player.spells.grilekfury.canUse()) { player.spelldelay = 1; delayedspell = player.spells.grilekfury; }
 
                     else if (!player.timer && player.spells.berserkerrage && player.spells.berserkerrage.zerkerpriority && player.spells.berserkerrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.berserkerrage; }
                     else if (player.spells.bloodrage && player.spells.bloodrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.bloodrage; }
 
+                    else if (player.auras.rampage && player.auras.rampage.canUse()) { player.spelldelay = 1; delayedspell = player.auras.rampage; }
                     else if (player.auras.cloudkeeper && player.auras.cloudkeeper.canUse()) { player.spelldelay = 1; delayedspell = player.auras.cloudkeeper; }
                     else if (player.auras.hategrips && player.auras.hategrips.canUse()) { player.spelldelay = 1; delayedspell = player.auras.hategrips; }
                     else if (player.auras.worgenmark && player.auras.worgenmark.canUse()) { player.spelldelay = 1; delayedspell = player.auras.worgenmark; }
@@ -355,8 +373,10 @@ class Simulation {
                     else if (player.auras.zandalarian && player.auras.zandalarian.canUse()) { player.spelldelay = 1; delayedspell = player.auras.zandalarian; }
                     else if (player.auras.relentlessstrength && player.auras.relentlessstrength.canUse()) { player.spelldelay = 1; delayedspell = player.auras.relentlessstrength; }
                     else if (player.auras.demontaintedblood && player.auras.demontaintedblood.canUse()) { player.spelldelay = 1; delayedspell = player.auras.demontaintedblood; }
+                    else if (player.auras.wrathwray && player.auras.wrathwray.canUse()) { player.spelldelay = 1; delayedspell = player.auras.wrathwray; }
                     else if (player.auras.moonstalkerfury && player.auras.moonstalkerfury.canUse()) { player.spelldelay = 1; delayedspell = player.auras.moonstalkerfury; }
-
+                    else if (player.auras.grilekguard && player.auras.grilekguard.canUse()) { player.spelldelay = 1; delayedspell = player.auras.grilekguard; }
+                    
                     // Use GCD spells
                     else if (player.spells.unstoppablemight && player.spells.unstoppablemight.canUse()) { player.spelldelay = 1; delayedspell = player.spells.unstoppablemight; }
                     else if (player.spells.stanceswitch.canUse()) { player.spelldelay = 1; delayedspell = player.spells.stanceswitch; }
@@ -369,61 +389,27 @@ class Simulation {
                     else if (player.auras.berserking && player.auras.berserking.canUse()) { player.spelldelay = 1; delayedspell = player.auras.berserking; }
                     else if (player.spells.berserkerrage && player.spells.berserkerrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.berserkerrage; }
                     else if (player.auras.battleshout && player.auras.battleshout.canUse()) { player.spelldelay = 1; delayedspell = player.auras.battleshout; }
-
-                    // Execute phase
-                    else if (player.spells.execute && (step >= this.executestep || (player.auras.suddendeath && player.auras.suddendeath.timer))) {
-
-                        if (player.spells.ragingblow && player.spells.ragingblow.canUse(true)) { 
-                            player.spelldelay = 1; delayedspell = player.spells.ragingblow; 
-                        }
-                        else if (player.spells.berserkerrage && player.spells.berserkerrage.canUse()) { 
-                            player.spelldelay = 1; delayedspell = player.spells.berserkerrage; 
-                        }
-                        else if (player.spells.slam && player.freeslam && player.spells.slam.canUse(true)) { 
-                            player.spelldelay = 1; delayedspell = player.spells.slam; 
-                        }
-                        else if (player.spells.shieldslam && player.freeshieldslam && player.spells.shieldslam.canUse()) { 
-                            player.spelldelay = 1; delayedspell = player.spells.shieldslam; 
-                        }
-                        else if (player.auras.consumedrage && player.auras.consumedrage.erageblock && player.rage < player.auras.consumedrage.erageblock) { } 
-                        else if (player.auras.consumedrage && player.auras.consumedrage.echargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.echargeblock && player.rage < 60) { } 
-                        else if (player.spells.bloodthirst && player.spells.bloodthirst.canUse()) {
-                            player.spelldelay = 1; delayedspell = player.spells.bloodthirst;
-                        }
-                        else if (player.spells.mortalstrike && player.spells.mortalstrike.canUse()) {
-                            player.spelldelay = 1; delayedspell = player.spells.mortalstrike;
-                        }
-                        else if (player.spells.execute.canUse()) {
-                            player.spelldelay = 1; delayedspell = player.spells.execute;
-                        }
-                    }
-
-                    // Normal phase - no cost
-                    else if (player.auras.rampage && player.auras.rampage.canUse()) { player.spelldelay = 1; delayedspell = player.auras.rampage; }
-                    else if (player.spells.slam && player.freeslam && player.spells.slam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.slam; }
-                    else if (player.spells.shieldslam && player.freeshieldslam && player.spells.shieldslam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.shieldslam; }
                     else if (player.spells.blademasterfury && player.spells.blademasterfury.canUse()) { player.spelldelay = 1; delayedspell = player.spells.blademasterfury; }
-                    
+                   
                     // prevent using spells while waiting for consumed by rage proc
                     else if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 60) { } 
                     else if (player.auras.consumedrage && player.auras.consumedrage.rageblock && player.rage < player.auras.consumedrage.rageblock) { } 
                     else if (player.auras.consumedrage && player.auras.consumedrage.chargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.chargeblock && player.rage < 60) { } 
                     
-                    // Normal phase - rage cost
-                    else if (player.spells.overpower && player.spells.overpower.canUse()) { player.spelldelay = 1; delayedspell = player.spells.overpower; }
-                    else if (player.auras.rend && player.auras.rend.canUse()) { player.spelldelay = 1; delayedspell = player.auras.rend; }
-                    else if (player.spells.bloodthirst && player.spells.bloodthirst.canUse()) { player.spelldelay = 1; delayedspell = player.spells.bloodthirst; }
-                    else if (player.spells.mortalstrike && player.spells.mortalstrike.canUse()) { player.spelldelay = 1; delayedspell = player.spells.mortalstrike; }
-                    else if (player.spells.shieldslam && player.spells.shieldslam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.shieldslam; }
-                    else if (player.precisetiming && player.spells.slam && player.spells.slam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.slam; }
-                    else if (player.spells.whirlwind && player.spells.whirlwind.canUse()) { player.spelldelay = 1; delayedspell = player.spells.whirlwind; }
-                    else if (player.spells.shockwave && player.spells.shockwave.canUse()) { player.spelldelay = 1; delayedspell = player.spells.shockwave; }
-                    else if (!player.precisetiming && player.spells.slam && player.spells.slam.canUse()) { player.spelldelay = 1; delayedspell = player.spells.slam; }
-                    else if (player.spells.thunderclap && player.spells.thunderclap.canUse()) { player.spelldelay = 1; delayedspell = player.spells.thunderclap; }
-                    else if (player.spells.ragingblow && player.spells.ragingblow.canUse(false)) { player.spelldelay = 1; delayedspell = player.spells.ragingblow; }
-                    else if (player.spells.quickstrike && player.spells.quickstrike.canUse()) { player.spelldelay = 1; delayedspell = player.spells.quickstrike; }
-                    else if (player.spells.sunderarmor && player.spells.sunderarmor.canUse()) { player.spelldelay = 1; delayedspell = player.spells.sunderarmor; }
-                    else if (player.spells.hamstring && player.spells.hamstring.canUse()) { player.spelldelay = 1; delayedspell = player.spells.hamstring; }
+                    // Execute phase
+                    else if (step >= this.executestep) {
+                        for(let i = 0; i < player.executespells_c; i++) {
+                            if (player.executespells[i].canUse()) { player.spelldelay = 1; delayedspell = player.executespells[i]; break; }
+                        }
+                    }
+
+                    // Normal phase
+                    else {
+                        for(let i = 0; i < player.normalspells_c; i++) {
+                            if (player.normalspells[i].canUse()) { player.spelldelay = 1; delayedspell = player.normalspells[i]; break; }
+                        }
+                    }
+
 
                     if (player.heroicdelay) spellcheck = false;
                 }
@@ -463,7 +449,7 @@ class Simulation {
                             player.heroicdelay = 0;
                             player.nextswinghs = false;
                             next = 0;
-                            /* start-log */ if (log) this.player.log(`Casting Slam`); /* end-log */
+                            /* start-log */ if (player.logging) this.player.log(`Casting Slam`); /* end-log */
                             continue;
                         }
 
@@ -510,12 +496,12 @@ class Simulation {
                     if (player.spells.heroicstrike && player.spells.heroicstrike.unqueue && player.nextswinghs &&
                         player.rage < player.spells.heroicstrike.unqueue && player.mh.timer <= player.spells.heroicstrike.unqueuetimer) {
                         this.player.nextswinghs = false;
-                        /* start-log */ if (log) this.player.log(`Heroic Strike unqueued`); /* end-log */
+                        /* start-log */ if (player.logging) this.player.log(`Heroic Strike unqueued`); /* end-log */
                     }
                     else if (player.spells.cleave && player.spells.cleave.unqueue && player.nextswinghs &&
                         player.rage < player.spells.cleave.unqueue && player.mh.timer <= player.spells.cleave.unqueuetimer) {
                         this.player.nextswinghs = false;
-                        /* start-log */ if (log) this.player.log(`Cleave unqueued`); /* end-log */
+                        /* start-log */ if (player.logging) this.player.log(`Cleave unqueued`); /* end-log */
                     }
                 }
 
@@ -605,6 +591,15 @@ class Simulation {
             if (player.spells.execute && player.spells.execute.timer && player.spells.execute.timer < next) next = player.spells.execute.timer;
             if (player.spells.slam && player.spells.slam.timer && player.spells.slam.timer < next) next = player.spells.slam.timer;
 
+            if (player.auras.zerkforecast && player.auras.zerkforecast.timer && (player.auras.zerkforecast.timer - step) < next) next = player.auras.zerkforecast.timer - step;
+            if (player.auras.battleforecast && player.auras.battleforecast.timer && (player.auras.battleforecast.timer - step) < next) next = player.auras.battleforecast.timer - step;
+            if (player.auras.defforecast && player.auras.defforecast.timer && (player.auras.defforecast.timer - step) < next) next = player.auras.defforecast.timer - step;
+            if (player.auras.gladforecast && player.auras.gladforecast.timer && (player.auras.gladforecast.timer - step) < next) next = player.auras.gladforecast.timer - step;  
+            if (player.auras.echoeszerk && player.auras.echoeszerk.timer && (player.auras.echoeszerk.timer - step) < next) next = player.auras.echoeszerk.timer - step;
+            if (player.auras.echoesbattle && player.auras.echoesbattle.timer && (player.auras.echoesbattle.timer - step) < next) next = player.auras.echoesbattle.timer - step;
+            if (player.auras.echoesdef && player.auras.echoesdef.timer && (player.auras.echoesdef.timer - step) < next) next = player.auras.echoesdef.timer - step;
+            if (player.auras.echoesglad && player.auras.echoesglad.timer && (player.auras.echoesglad.timer - step) < next) next = player.auras.echoesglad.timer - step;
+
             if (!player.spells.execute || (step < this.executestep && (!player.auras.suddendeath || !player.auras.suddendeath.timer))) {
                 if (player.spells.heroicstrike && player.spells.heroicstrike.unqueue) {
                     let timeleft = Math.max(player.mh.timer - player.spells.heroicstrike.unqueuetimer);
@@ -615,6 +610,8 @@ class Simulation {
                     if (timeleft > 0 && timeleft < next) next = timeleft;
                 }
             }
+
+            //if (Math.floor(step / 200) < Math.floor((step+next) / 200)) next = 200 - step % 200;
 
             step += next;
             if (step > this.maxsteps) break;
@@ -664,10 +661,23 @@ class Simulation {
                 if (player.auras.deepwounds4 && player.auras.deepwounds4.timer && !player.auras.deepwounds4.step() && !player.spelldelay) spellcheck = true;
                 if (player.auras.potentvenoms2 && player.auras.potentvenoms2.timer && !player.auras.potentvenoms2.step() && !player.spelldelay) spellcheck = true;
             }
+
+            if (player.auras.zerkforecast && player.auras.zerkforecast.timer && !player.auras.zerkforecast.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.battleforecast && player.auras.battleforecast.timer && !player.auras.battleforecast.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.defforecast && player.auras.defforecast.timer && !player.auras.defforecast.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.gladforecast && player.auras.gladforecast.timer && !player.auras.gladforecast.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.echoeszerk && player.auras.echoeszerk.timer && !player.auras.echoeszerk.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.echoesbattle && player.auras.echoesbattle.timer && !player.auras.echoesbattle.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.echoesdef && player.auras.echoesdef.timer && !player.auras.echoesdef.step() && !player.spelldelay) spellcheck = true;
+            if (player.auras.echoesglad && player.auras.echoesglad.timer && !player.auras.echoesglad.step() && !player.spelldelay) spellcheck = true;
+
+            //if (step % 200 == 0) spellcheck = true;
+
         }
 
         // Fight done
         player.endauras();
+        player.logging = false;
 
         if (player.auras.deepwounds) {
             this.idmg += player.auras.deepwounds.idmg;

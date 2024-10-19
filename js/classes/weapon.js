@@ -46,6 +46,7 @@ class Weapon {
             if (item.proc.coeff) this.proc1.coeff = parseInt(item.proc.coeff);
             if (item.proc.procgcd) this.proc1.gcd = item.proc.procgcd;
             if (item.proc.extra) this.proc1.extra = item.proc.extra;
+            if (item.proc.dmg && !item.proc.magic && !item.proc.tick && item.id != 231848) this.proc1.phantom = true;
 
             // dont need an aura, just add the dmg
             if (item.proc.tick && !item.proc.bleed) {
@@ -111,9 +112,11 @@ class Weapon {
     }
     dmg(heroicstrike) {
         let dmg;
+        let mod = 1;
         dmg = rng(this.mindmg + this.bonusdmg, this.maxdmg + this.bonusdmg) + (this.player.stats.ap / 14) * this.speed + this.player.stats.moddmgdone;
         if (heroicstrike) dmg += heroicstrike.bonus;
-        return dmg * this.modifier * this.player.stats.dmgmod + this.player.stats.moddmgtaken;
+        if (heroicstrike && this.player.heroicbonus) mod = 1.25;
+        return dmg * this.modifier * this.player.stats.dmgmod * mod + this.player.stats.moddmgtaken;
     }
     avgdmg() {
         let dmg = ((this.mindmg + this.bonusdmg + this.maxdmg + this.bonusdmg)/2) + (this.player.stats.ap / 14) * this.normSpeed + this.player.stats.moddmgdone;

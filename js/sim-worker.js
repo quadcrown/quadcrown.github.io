@@ -4,6 +4,7 @@ importScripts(
     './data/enchants_turtle.min.js',
     './classes/player.min.js',
     './classes/simulation.min.js',
+    './classes/spell.min.js',
     './classes/weapon.min.js',
     './globals.min.js',
 );
@@ -14,12 +15,10 @@ onmessage = (event) => {
         importScripts('./data/talents_turtle.min.js');
         importScripts('./data/spells_turtle.min.js');
         importScripts('./data/buffs_turtle.min.js');
-        importScripts('./classes/spell_turtle.min.js');
     } else {
         importScripts('./data/talents.min.js');
         importScripts('./data/spells.min.js');
         importScripts('./data/buffs.min.js');
-        importScripts('./classes/spell.min.js');
     }
     updateGlobals(params.globals);
     const player = new Player(...params.player);

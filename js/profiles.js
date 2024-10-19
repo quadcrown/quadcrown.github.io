@@ -62,26 +62,26 @@ SIM.PROFILES = {
             view.importProfile(preset_dw, index);
         });
 
-        view.presets.on('click','.import-gl', function (e) {
+        view.presets.on('click','.import-thmc', function (e) {
             e.preventDefault();
             e.stopPropagation();
             let index = view.container.find('.profile').last().data('index') + 1;
-            view.importProfile(preset_gl, index);
+            view.importProfile(preset_thmc, index);
         });
 
-        view.presets.on('click','.import-pb', function (e) {
+        view.presets.on('click','.import-dwmc', function (e) {
             e.preventDefault();
             e.stopPropagation();
             let index = view.container.find('.profile').last().data('index') + 1;
-            view.importProfile(preset_pb, index);
+            view.importProfile(preset_dwmc, index);
         });
 
-        view.presets.on('click','.import-fr', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            let index = view.container.find('.profile').last().data('index') + 1;
-            view.importProfile(preset_fr, index);
-        });
+        // view.presets.on('click','.import-fr', function (e) {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     let index = view.container.find('.profile').last().data('index') + 1;
+        //     view.importProfile(preset_fr, index);
+        // });
 
         view.container.on('click','.delete-profile', function (e) {
             e.preventDefault();
@@ -232,11 +232,10 @@ SIM.PROFILES = {
             view.presets.empty();
             view.presets.append(`
                 <label>Presets:</label>
-                <div class="import-fr">Heat 3 BiS</div>
-                <div class="import-dw">60 DW Fury</div>
-                <div class="import-pb">60 DW Fury Pre-Bis</div>
-                <div class="import-th">60 2H Arms</div>
-                <div class="import-gl">60 Gladiator</div>`);
+                <div class="import-th">P5 2H Fury</div>
+                <div class="import-dw">P5 DW Fury</div>
+                <div class="import-thmc">Pre-BWL 2H Fury</div>
+                <div class="import-dwmc">Pre-BWL DW Fury</div>`);
         }
             
         },
@@ -333,8 +332,6 @@ SIM.PROFILES = {
                 if (typeof spell.procblock !== 'undefined') obj.procblock = spell.procblock;
                 if (typeof spell.rageblock !== 'undefined') obj.rageblock = spell.rageblock;
                 if (typeof spell.rageblockactive !== 'undefined') obj.rageblockactive = spell.rageblockactive;
-                if (typeof spell.executestacks !== 'undefined') obj.executestacks = spell.executestacks;
-                if (typeof spell.executestacksactive !== 'undefined') obj.executestacksactive = spell.executestacksactive;
                 if (typeof spell.minrage !== 'undefined') obj.minrage = spell.minrage;
                 if (typeof spell.minrageactive !== 'undefined') obj.minrageactive = spell.minrageactive;
                 if (typeof spell.maxrage !== 'undefined') obj.maxrage = spell.maxrage;
@@ -349,7 +346,6 @@ SIM.PROFILES = {
                 if (typeof spell.decisive !== 'undefined') obj.decisive = spell.decisive;
                 if (typeof spell.globals !== 'undefined') obj.globals = spell.globals;
                 if (typeof spell.globalsactive !== 'undefined') obj.globalsactive = spell.globalsactive;
-                if (typeof spell.bloodsurge !== 'undefined') obj.bloodsurge = spell.bloodsurge;
                 if (typeof spell.swingreset !== 'undefined') obj.swingreset = spell.swingreset;
                 if (typeof spell.afterswing !== 'undefined') obj.afterswing = spell.afterswing;
                 if (typeof spell.alwaystails !== 'undefined') obj.alwaystails = spell.alwaystails;
@@ -362,6 +358,17 @@ SIM.PROFILES = {
                 if (typeof spell.switchrage !== 'undefined') obj.switchrage = spell.switchrage;
                 if (typeof spell.switchdefault !== 'undefined') obj.switchdefault = spell.switchdefault;
                 if (typeof spell.switchtimeactive !== 'undefined') obj.switchtimeactive = spell.switchtimeactive;
+                if (typeof spell.swingtimeractive !== 'undefined') obj.swingtimeractive = spell.swingtimeractive;
+                if (typeof spell.swingtimer !== 'undefined') obj.swingtimer = spell.swingtimer;
+                if (typeof spell.priority !== 'undefined') obj.priority = spell.priority;
+                if (typeof spell.expriority !== 'undefined') obj.expriority = spell.expriority;
+                if (typeof spell.switchechoesactive !== 'undefined') obj.switchechoesactive = spell.switchechoesactive;
+                if (typeof spell.switchechoestime !== 'undefined') obj.switchechoestime = spell.switchechoestime;
+                if (typeof spell.switchechoesrage !== 'undefined') obj.switchechoesrage = spell.switchechoesrage;
+                if (typeof spell.switchoractive !== 'undefined') obj.switchoractive = spell.switchoractive;
+                if (typeof spell.switchortime !== 'undefined') obj.switchortime = spell.switchortime;
+                if (typeof spell.switchorrage !== 'undefined') obj.switchorrage = spell.switchorrage;
+                if (typeof spell.secondarystance !== 'undefined') obj.secondarystance = spell.secondarystance;
                 minified.rotation.push(obj);
             }
         }
@@ -423,8 +430,6 @@ SIM.PROFILES = {
                     if (typeof newspell.procblock !== 'undefined') spell.procblock = newspell.procblock;
                     if (typeof newspell.rageblock !== 'undefined') spell.rageblock = newspell.rageblock;
                     if (typeof newspell.rageblockactive !== 'undefined') spell.rageblockactive = newspell.rageblockactive;
-                    if (typeof newspell.executestacks !== 'undefined') spell.executestacks = newspell.executestacks;
-                    if (typeof newspell.executestacksactive !== 'undefined') spell.executestacksactive = newspell.executestacksactive;
                     if (typeof newspell.minrage !== 'undefined') spell.minrage = newspell.minrage;
                     if (typeof newspell.minrageactive !== 'undefined') spell.minrageactive = newspell.minrageactive;
                     if (typeof newspell.maxrage !== 'undefined') spell.maxrage = newspell.maxrage;
@@ -439,7 +444,6 @@ SIM.PROFILES = {
                     if (typeof newspell.decisive !== 'undefined') spell.decisive = newspell.decisive;
                     if (typeof newspell.globals !== 'undefined') spell.globals = newspell.globals;
                     if (typeof newspell.globalsactive !== 'undefined') spell.globalsactive = newspell.globalsactive;
-                    if (typeof newspell.bloodsurge !== 'undefined') spell.bloodsurge = newspell.bloodsurge;
                     if (typeof newspell.afterswing !== 'undefined') spell.afterswing = newspell.afterswing;
                     if (typeof newspell.swingreset !== 'undefined') spell.swingreset = newspell.swingreset;
                     if (typeof newspell.alwaystails !== 'undefined') spell.alwaystails = newspell.alwaystails;
@@ -452,7 +456,17 @@ SIM.PROFILES = {
                     if (typeof newspell.switchrage !== 'undefined') spell.switchrage = newspell.switchrage;
                     if (typeof newspell.switchdefault !== 'undefined') spell.switchdefault = newspell.switchdefault;
                     if (typeof newspell.switchtimeactive !== 'undefined') spell.switchtimeactive = newspell.switchtimeactive;
-                    
+                    if (typeof newspell.swingtimeractive !== 'undefined') spell.swingtimeractive = newspell.swingtimeractive;
+                    if (typeof newspell.swingtimer !== 'undefined') spell.swingtimer = newspell.swingtimer;
+                    if (typeof newspell.priority !== 'undefined') spell.priority = newspell.priority;
+                    if (typeof newspell.expriority !== 'undefined') spell.expriority = newspell.expriority;
+                    if (typeof newspell.switchechoesactive !== 'undefined') spell.switchechoesactive = newspell.switchechoesactive;
+                    if (typeof newspell.switchechoestime !== 'undefined') spell.switchechoestime = newspell.switchechoestime;
+                    if (typeof newspell.switchechoesrage !== 'undefined') spell.switchechoesrage = newspell.switchechoesrage;
+                    if (typeof newspell.switchoractive !== 'undefined') spell.switchoractive = newspell.switchoractive;
+                    if (typeof newspell.switchortime !== 'undefined') spell.switchortime = newspell.switchortime;
+                    if (typeof newspell.switchorrage !== 'undefined') spell.switchorrage = newspell.switchorrage;
+                    if (typeof newspell.secondarystance !== 'undefined') spell.secondarystance = newspell.secondarystance;
                 }
                 else {
                     spell.active = false;

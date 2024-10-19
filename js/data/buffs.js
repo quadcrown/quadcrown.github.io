@@ -395,6 +395,18 @@ var buffs = [
       minlevel: 4,
    },
    {
+      id: 425600,
+      spellid: true,
+      name: "Horn of Lordaeron",
+      iconname: "inv_misc_horn_03",
+      group: "blessingmight",
+      str: 74,
+      agi: 74,
+      minlevel: 60,
+      aq: false,
+      sod: true,
+   },
+   {
       id: 8512,
       spellid: true,
       name: "Windfury Totem",
@@ -713,15 +725,6 @@ var buffs = [
       consume: true,
    },
    {
-      id: 23060,
-      spellid: true,
-      name: "Battle Squawk",
-      iconname: "inv_misc_birdbeck_01",
-      minlevel: 40,
-      other: true,
-      haste: 5
-   },
-   {
       id: 217308,
       name: "Enchanted Sigil: Innovation",
       iconname: "inv_sigil_mimiron",
@@ -778,17 +781,6 @@ var buffs = [
       other: true,
    },
    {
-      id: 449927,
-      name: "Blood Corruption",
-      spellid: true,
-      iconname: "ability_warrior_bloodnova",
-      group: "",
-      moddmgtaken: 7,
-      minlevel: 50,
-      other: true,
-      sod: true,
-   },
-   {
       id: 210708,
       name: "Elixir of Coalesced Regret",
       iconname: "inv_potion_19",
@@ -807,6 +799,28 @@ var buffs = [
       moddmgdone: 1,
       minlevel: 1,
       other: true,
+   },
+   {
+      id: 456389,
+      name: "Stalked",
+      spellid: true,
+      iconname: "ability_hunter_goforthethroat",
+      group: "",
+      dodge: 1,
+      minlevel: 60,
+      other: true,
+      sod: true,
+   },
+   {
+      id: 449927,
+      name: "Blood Corruption",
+      spellid: true,
+      iconname: "ability_warrior_bloodnova",
+      group: "",
+      moddmgtaken: 7,
+      minlevel: 50,
+      other: true,
+      sod: true,
    },
    {
       id: 22237,
@@ -856,6 +870,7 @@ var buffs = [
       id: 27666,
       spellid: true,
       name: "Darnassus Gift of Friendship",
+      group: "blasted",
       iconname: "inv_misc_gift_02",
       minlevel: 1,
       other: true,
@@ -928,6 +943,52 @@ var buffs = [
       resist: {
          fire: 60,
       }
+   },
+
+   {
+      id: 23060,
+      spellid: true,
+      name: "Battle Squawk",
+      iconname: "inv_misc_birdbeck_01",
+      minlevel: 40,
+      other: true,
+      haste: 5
+   },
+   {
+      id: 9923060,
+      spellid: true,
+      name: "Battle Squawk",
+      iconname: "inv_misc_birdbeck_01",
+      minlevel: 40,
+      other: true,
+      haste: 5
+   },
+   {
+      id: 9823060,
+      spellid: true,
+      name: "Battle Squawk",
+      iconname: "inv_misc_birdbeck_01",
+      minlevel: 40,
+      other: true,
+      haste: 5
+   },
+   {
+      id: 9723060,
+      spellid: true,
+      name: "Battle Squawk",
+      iconname: "inv_misc_birdbeck_01",
+      minlevel: 40,
+      other: true,
+      haste: 5
+   },
+   {
+      id: 9623060,
+      spellid: true,
+      name: "Battle Squawk",
+      iconname: "inv_misc_birdbeck_01",
+      minlevel: 40,
+      other: true,
+      haste: 5
    },
  
    

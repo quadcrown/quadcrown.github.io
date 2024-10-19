@@ -358,6 +358,16 @@ SIM.SETTINGS = {
             SIM.UI.updateSession();
         });
 
+        view.rotation.on('change', '.details select', function (e) {
+            let id = $(this).parents('.details').data('id');
+
+            for (let spell of spells)
+                if (spell.id == id)
+                    spell[$(this).attr('name')] = $(this).val();
+
+            SIM.UI.updateSession();
+        });
+
     },
 
     buildSpells: function () {
@@ -456,11 +466,11 @@ SIM.SETTINGS = {
             // Might set bonus
             if (spell.itemblock) { 
                 let count = 0;
-                let items = [226499,226497,226494,226495,226493,226492,226498,226496];
+                let items = [226499,226497,226494,226495,226493,226492,226498,226496,232251,232249,232254,232247,232252,232248,232250,232253];
                 for (let type in gear)
                     for (let g of gear[type])
                         if (g.selected && items.includes(g.id)) count++;
-                if (count < 6) {
+                if (count < 4) {
                     spell.active = false;
                     continue;
                 }
@@ -502,12 +512,40 @@ SIM.SETTINGS = {
         if (spell.haste !== undefined)
             ul.append(`<li class="nobox ${spell.haste ? 'active' : ''}">Attack speed set at <input type="text" name="haste" value="${spell.haste}" data-numberonly="true" /> %</li>`);
 
+        if (typeof spell.priority !== 'undefined')
+            ul.append(`<li data-id="priority" class="nobox active">Priority <select name="priority">
+              <option value="0" ${spell.priority == 0 ? 'selected' : ''}>Not used</option>
+              <option value="1" ${spell.priority == 1 ? 'selected' : ''}>1</option>
+              <option value="2" ${spell.priority == 2 ? 'selected' : ''}>2</option>
+              <option value="3" ${spell.priority == 3 ? 'selected' : ''}>3</option>
+              <option value="4" ${spell.priority == 4 ? 'selected' : ''}>4</option>
+              <option value="5" ${spell.priority == 5 ? 'selected' : ''}>5</option>
+              <option value="6" ${spell.priority == 6 ? 'selected' : ''}>6</option>
+              <option value="7" ${spell.priority == 7 ? 'selected' : ''}>7</option>
+              <option value="8" ${spell.priority == 8 ? 'selected' : ''}>8</option>
+              <option value="9" ${spell.priority == 9 ? 'selected' : ''}>9</option>
+              <option value="10" ${spell.priority == 10 ? 'selected' : ''}>Highest</option>
+            </select></li>`);
+
+        if (typeof spell.expriority !== 'undefined')
+            ul.append(`<li data-id="expriority" class="nobox active">Execute phase <select name="expriority">
+                <option value="0" ${spell.expriority == 0 ? 'selected' : ''}>Not used</option>
+                <option value="1" ${spell.expriority == 1 ? 'selected' : ''}>1</option>
+                <option value="2" ${spell.expriority == 2 ? 'selected' : ''}>2</option>
+                <option value="3" ${spell.expriority == 3 ? 'selected' : ''}>3</option>
+                <option value="4" ${spell.expriority == 4 ? 'selected' : ''}>4</option>
+                <option value="5" ${spell.expriority == 5 ? 'selected' : ''}>5</option>
+                <option value="6" ${spell.expriority == 6 ? 'selected' : ''}>6</option>
+                <option value="7" ${spell.expriority == 7 ? 'selected' : ''}>7</option>
+                <option value="8" ${spell.expriority == 8 ? 'selected' : ''}>8</option>
+                <option value="9" ${spell.expriority == 9 ? 'selected' : ''}>9</option>
+                <option value="10" ${spell.expriority == 10 ? 'selected' : ''}>Highest</option>
+            </select></li>`);
+
         if (typeof spell.timetoend === 'undefined' && !spell.noactiveoption)
             ul.append(`<li data-id="active" class="${spell.active ? 'active' : ''}">Enabled ${note ? ` - ${note}` : ''}</li>`);
         if (typeof spell.afterswing !== 'undefined') 
             ul.append(`<li data-id="afterswing" class="${spell.afterswing ? 'active' : ''}">Use only after a swing reset</li>`);
-        if (typeof spell.bloodsurge !== 'undefined') 
-            ul.append(`<li data-id="bloodsurge" class="${spell.bloodsurge ? 'active' : ''}">Use only when Blood Surge procs</li>`);
         if (typeof spell.minrage !== 'undefined' && spell.id != 11597) 
             ul.append(`<li data-id="minrageactive" class="${spell.minrageactive ? 'active' : ''}">${spell.name == "Heroic Strike" ? 'Queue' : 'Use'} when above <input type="text" name="minrage" value="${spell.minrage}" data-numberonly="true" /> rage</li>`);
         if (typeof spell.minrage !== 'undefined' && spell.id == 11597) 
@@ -534,8 +572,6 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="procblock" class="${spell.procblock ? 'active' : ''}">Don't use rage until it procs</li>`);
         if (spell.rageblock !== undefined)
             ul.append(`<li data-id="rageblockactive" class="${spell.rageblockactive ? 'active' : ''}">Don't use rage below <input type="text" name="rageblock" value="${spell.rageblock}" data-numberonly="true" /> rage</li>`);
-        if (spell.execute !== undefined)
-            ul.append(`<li data-id="execute" class="${spell.execute ? 'active' : ''}">Use during Execute phase / Sudden Death</li>`);
         if (typeof spell.globals !== 'undefined') 
             ul.append(`<li data-id="globalsactive" class="${spell.globalsactive ? 'active' : ''}" data-group="usage">Only use on first <input type="text" name="globals" value="${spell.globals}" data-numberonly="true" /> globals</li>`);
         if (spell.chargeblock !== undefined)
@@ -554,12 +590,27 @@ SIM.SETTINGS = {
             ul.append(`<li data-id="resolve" class="${spell.resolve ? 'active' : ''}">Only use if Defender's Resolve is not up</li>`);
         if (typeof spell.swordboard !== 'undefined') 
             ul.append(`<li data-id="swordboard" class="${spell.swordboard ? 'active' : ''}">Only use after a Sword & Board proc</li>`);
+        if (typeof spell.swingtimer !== 'undefined') 
+            ul.append(`<li data-id="swingtimeractive" class="${spell.swingtimeractive ? 'active' : ''}">Don't use if swing timer longer than <input type="text" name="swingtimer" value="${spell.swingtimer}" data-numberonly="true" /> secs</li>`);
+
 
         // Might set
+        if (typeof spell.secondarystance !== 'undefined')
+            ul.append(`<li data-id="secondarystance" class="nobox active">Secondary stance <select name="secondarystance">
+                <option value="battle" ${spell.secondarystance == 'battle' ? 'selected' : ''}>Battle Stance</option>
+                <option value="def" ${spell.secondarystance == 'def' ? 'selected' : ''}>Defensive Stance</option>
+                <option value="zerk" ${spell.secondarystance == 'zerk' ? 'selected' : ''}>Berserker Stance</option>
+                <option value="glad" ${spell.secondarystance == 'glad' ? 'selected' : ''}>Gladiator Stance</option></option>
+            </select></li>`);
+
         if (typeof spell.switchstart !== 'undefined')
             ul.append(`<li data-id="switchstart" class="${spell.switchstart ? 'active' : ''}">Switch stance at fight start</li>`);
         if (typeof spell.switchtimeactive !== 'undefined')
-            ul.append(`<li data-id="switchtimeactive" class="${spell.switchtimeactive ? 'active' : ''}">Switch if any Forecast shorter than <input type="text" name="switchtime" value="${spell.switchtime}" data-numberonly="true" /> secs and rage below <input type="text" name="switchrage" value="${spell.switchrage}" data-numberonly="true" /></li>`);
+            ul.append(`<li data-id="switchtimeactive" class="${spell.switchtimeactive ? 'active' : ''}">Switch if any Forecast shorter than <input type="text" name="switchtime" value="${spell.switchtime}" data-numberonly="true" /> secs AND rage below <input type="text" name="switchrage" value="${spell.switchrage}" data-numberonly="true" /></li>`);
+        if (typeof spell.switchoractive !== 'undefined')
+            ul.append(`<li data-id="switchoractive" class="${spell.switchoractive ? 'active' : ''}">Switch if any Forecast shorter than <input type="text" name="switchortime" value="${spell.switchortime}" data-numberonly="true" /> secs OR rage below <input type="text" name="switchorrage" value="${spell.switchorrage}" data-numberonly="true" /></li>`);
+        if (typeof spell.switchechoesactive !== 'undefined')
+            ul.append(`<li data-id="switchechoesactive" class="${spell.switchechoesactive ? 'active' : ''}">Switch if any Echoes shorter than <input type="text" name="switchechoestime" value="${spell.switchechoestime}" data-numberonly="true" /> secs and rage below <input type="text" name="switchechoesrage" value="${spell.switchechoesrage}" data-numberonly="true" /></li>`);
         if (typeof spell.switchdefault !== 'undefined')
             ul.append(`<li data-id="switchdefault" class="${spell.switchdefault ? 'active' : ''}">Switch back to default stance as soon as possible</li>`);
 
