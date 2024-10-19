@@ -1081,6 +1081,8 @@ class Player {
         if (!spell || spell instanceof HeroicStrike || spell instanceof Cleave) {
             if (result != RESULT.MISS && result != RESULT.DODGE && this.talents.umbridledwrath && rng10k() < this.talents.umbridledwrath * 100) {
                 this.rage += 1;
+                if (this.mode == 'turtle' && weapon.twohand) this.rage += 1;
+                /* start-log */ if (this.logging) this.log(`Unbridled Wrath rage ${Math.floor(oldRage)} -> ${Math.floor(this.rage)}`); /* end-log */
             }
         }
         if (spell) {
@@ -1100,7 +1102,7 @@ class Player {
         }
         if (this.extrarage && result == RESULT.HIT) this.rage += this.extrarage;
         if (this.extracritrage && result == RESULT.CRIT) this.rage += this.extracritrage;
-        
+
         if (this.rage > 100) this.rage = 100;
 
         if (this.auras.consumedrage && oldRage < 60 && this.rage >= 60)
@@ -1286,7 +1288,7 @@ class Player {
         if (this.auras.wrathwray && this.auras.wrathwray.timer) this.auras.wrathwray.end();
         if (this.auras.jujuflurry && this.auras.jujuflurry.timer) this.auras.jujuflurry.end();
         if (this.auras.grilekguard && this.auras.grilekguard.timer) this.auras.grilekguard.end();
-        
+
 
         if (this.mh.windfury && this.mh.windfury.timer) this.mh.windfury.end();
         if (this.trinketproc1 && this.trinketproc1.spell && this.trinketproc1.spell.timer) this.trinketproc1.spell.end();
@@ -1790,10 +1792,10 @@ class Player {
         if (stance == 'def') this.auras.defensivestance.timer = 1;
         if (stance == 'glad') this.auras.gladiatorstance.timer = 1;
         this.rage = Math.min(this.rage, this.talents.rageretained);
-        
+
         if (this.auras["echoes" + prev]) this.auras["echoes" + prev].use();
         if (this.auras[this.stance + "forecast"]) this.auras[this.stance + "forecast"].use();
-       
+
         this.ragemod = (this.base.ragemod || 1) * (this.stance == 'glad' && !this.target.speed ? 1.5 : 1);
         if (this.switchrage) this.ragetimer = 10; // Rage gain is batched to prevent switching stance + casting BT on the same step
         this.stancetimer = 1000;
@@ -1802,9 +1804,9 @@ class Player {
     }
     isValidStance(stance, isRend) {
         return this.stance == stance || (this.stance == 'glad' && this.shield) ||
-            (stance == 'zerk' && this.auras.echoeszerk && this.auras.echoeszerk.timer) || 
-            (stance == 'battle' && this.auras.echoesbattle && this.auras.echoesbattle.timer) || 
-            (stance == 'def' && this.auras.echoesdef && this.auras.echoesdef.timer) || 
+            (stance == 'zerk' && this.auras.echoeszerk && this.auras.echoeszerk.timer) ||
+            (stance == 'battle' && this.auras.echoesbattle && this.auras.echoesbattle.timer) ||
+            (stance == 'def' && this.auras.echoesdef && this.auras.echoesdef.timer) ||
             (this.auras.echoesglad && this.auras.echoesglad.timer) ||
             (isRend && this.stance == 'zerk' && this.bloodfrenzy);
     }

@@ -254,7 +254,7 @@ class Simulation {
         // determine when to use on use items
         let itemdelay = 0;
         for(let spell of player.preporder) {
-            if (spell.aura) 
+            if (spell.aura)
                 itemdelay += player.auras[spell.classname.toLowerCase()].prep(this.maxsteps, itemdelay);
             else if (player.spells[spell.classname.toLowerCase()].prep)
                 player.spells[spell.classname.toLowerCase()].prep(this.maxsteps);
@@ -376,7 +376,7 @@ class Simulation {
                     else if (player.auras.wrathwray && player.auras.wrathwray.canUse()) { player.spelldelay = 1; delayedspell = player.auras.wrathwray; }
                     else if (player.auras.moonstalkerfury && player.auras.moonstalkerfury.canUse()) { player.spelldelay = 1; delayedspell = player.auras.moonstalkerfury; }
                     else if (player.auras.grilekguard && player.auras.grilekguard.canUse()) { player.spelldelay = 1; delayedspell = player.auras.grilekguard; }
-                    
+
                     // Use GCD spells
                     else if (player.spells.unstoppablemight && player.spells.unstoppablemight.canUse()) { player.spelldelay = 1; delayedspell = player.spells.unstoppablemight; }
                     else if (player.spells.stanceswitch.canUse()) { player.spelldelay = 1; delayedspell = player.spells.stanceswitch; }
@@ -390,12 +390,12 @@ class Simulation {
                     else if (player.spells.berserkerrage && player.spells.berserkerrage.canUse()) { player.spelldelay = 1; delayedspell = player.spells.berserkerrage; }
                     else if (player.auras.battleshout && player.auras.battleshout.canUse()) { player.spelldelay = 1; delayedspell = player.auras.battleshout; }
                     else if (player.spells.blademasterfury && player.spells.blademasterfury.canUse()) { player.spelldelay = 1; delayedspell = player.spells.blademasterfury; }
-                   
+
                     // prevent using spells while waiting for consumed by rage proc
-                    else if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 60) { } 
-                    else if (player.auras.consumedrage && player.auras.consumedrage.rageblock && player.rage < player.auras.consumedrage.rageblock) { } 
-                    else if (player.auras.consumedrage && player.auras.consumedrage.chargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.chargeblock && player.rage < 60) { } 
-                    
+                    else if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 60) { }
+                    else if (player.auras.consumedrage && player.auras.consumedrage.rageblock && player.rage < player.auras.consumedrage.rageblock) { }
+                    else if (player.auras.consumedrage && player.auras.consumedrage.chargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.chargeblock && player.rage < 60) { }
+
                     // Execute phase
                     else if (step >= this.executestep) {
                         for(let i = 0; i < player.executespells_c; i++) {
@@ -418,14 +418,14 @@ class Simulation {
                 if (spellcheck && !player.heroicdelay) {
                     if (!player.spells.execute || (step < this.executestep && (!player.auras.suddendeath || !player.auras.suddendeath.timer))) {
                         // prevent using spells while waiting for consumed by rage proc
-                        if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 60) { } 
-                        else if (player.auras.consumedrage && player.auras.consumedrage.rageblock && player.rage < player.auras.consumedrage.rageblock) { } 
-                        else if (player.auras.consumedrage && player.auras.consumedrage.chargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.chargeblock && player.rage < 60) { } 
+                        if (player.auras.consumedrage && player.auras.consumedrage.procblock && !player.auras.consumedrage.timer && player.rage < 60) { }
+                        else if (player.auras.consumedrage && player.auras.consumedrage.rageblock && player.rage < player.auras.consumedrage.rageblock) { }
+                        else if (player.auras.consumedrage && player.auras.consumedrage.chargeblock && player.auras.consumedrage.stacks < player.auras.consumedrage.chargeblock && player.rage < 60) { }
 
-                        else if (player.spells.heroicstrike && player.spells.heroicstrike.canUse()) { 
+                        else if (player.spells.heroicstrike && player.spells.heroicstrike.canUse()) {
                             player.heroicdelay = 1; delayedheroic = player.spells.heroicstrike;
                         }
-                        else if (player.spells.cleave && player.spells.cleave.canUse()) { 
+                        else if (player.spells.cleave && player.spells.cleave.canUse()) {
                             player.heroicdelay = 1; delayedheroic = player.spells.cleave;
                         }
                     }
@@ -505,7 +505,7 @@ class Simulation {
                     }
                 }
 
-                
+
             }
 
             // Slam casting done
@@ -594,7 +594,7 @@ class Simulation {
             if (player.auras.zerkforecast && player.auras.zerkforecast.timer && (player.auras.zerkforecast.timer - step) < next) next = player.auras.zerkforecast.timer - step;
             if (player.auras.battleforecast && player.auras.battleforecast.timer && (player.auras.battleforecast.timer - step) < next) next = player.auras.battleforecast.timer - step;
             if (player.auras.defforecast && player.auras.defforecast.timer && (player.auras.defforecast.timer - step) < next) next = player.auras.defforecast.timer - step;
-            if (player.auras.gladforecast && player.auras.gladforecast.timer && (player.auras.gladforecast.timer - step) < next) next = player.auras.gladforecast.timer - step;  
+            if (player.auras.gladforecast && player.auras.gladforecast.timer && (player.auras.gladforecast.timer - step) < next) next = player.auras.gladforecast.timer - step;
             if (player.auras.echoeszerk && player.auras.echoeszerk.timer && (player.auras.echoeszerk.timer - step) < next) next = player.auras.echoeszerk.timer - step;
             if (player.auras.echoesbattle && player.auras.echoesbattle.timer && (player.auras.echoesbattle.timer - step) < next) next = player.auras.echoesbattle.timer - step;
             if (player.auras.echoesdef && player.auras.echoesdef.timer && (player.auras.echoesdef.timer - step) < next) next = player.auras.echoesdef.timer - step;

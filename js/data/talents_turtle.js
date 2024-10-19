@@ -485,7 +485,7 @@ var talents = [
             y: 1,
             c: 0,
             iconname: 'Spell_Nature_StoneClawTotem',
-            aura: function (count) { return { umbridledwrath: count * 8 } },
+            aura: function (count) { return { umbridledwrath: count * 15 } },
          },
          {
             i: 166,
