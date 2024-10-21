@@ -16,6 +16,8 @@ var spells = [
     maxrageactive: false,
     active: false,
     aura: true,
+    priority: 5,
+    expriority: 5,
 },
 {
     id: 6546,
@@ -32,6 +34,8 @@ var spells = [
     maxrageactive: false,
     active: false,
     aura: true,
+    priority: 5,
+    expriority: 5,
 },
 {
     id: 6547,
@@ -48,6 +52,8 @@ var spells = [
     maxrageactive: false,
     active: false,
     aura: true,
+    priority: 5,
+    expriority: 5,
 },
 {
     id: 6548,
@@ -64,6 +70,8 @@ var spells = [
     maxrageactive: false,
     active: false,
     aura: true,
+    priority: 5,
+    expriority: 5,
 },
 {
     id: 11572,
@@ -80,6 +88,8 @@ var spells = [
     maxrageactive: false,
     active: false,
     aura: true,
+    priority: 5,
+    expriority: 5,
 },
 {
     id: 11573,
@@ -96,6 +106,8 @@ var spells = [
     maxrageactive: false,
     active: false,
     aura: true,
+    priority: 5,
+    expriority: 5,
 },
 {
     id: 11574,
@@ -111,6 +123,8 @@ var spells = [
     maxrageactive: false,
     active: false,
     aura: true,
+    priority: 5,
+    expriority: 5,
 },
 
 // Heroic Strike
@@ -458,6 +472,8 @@ var spells = [
     globals: 1,
     globalsactive: false,
     active: false,
+    priority: 4,
+    expriority: 0,
 },
 
 // Overpower
@@ -474,6 +490,8 @@ var spells = [
     minlevel: 12,
     maxlevel: 27,
     active: false,
+    priority: 7,
+    expriority: 0,
 },
 {
     id: 7887,
@@ -488,6 +506,8 @@ var spells = [
     minlevel: 28,
     maxlevel: 43,
     active: false,
+    priority: 7,
+    expriority: 0,
 },
 {
     id: 11584,
@@ -502,6 +522,8 @@ var spells = [
     minlevel: 44,
     maxlevel: 59,
     active: false,
+    priority: 7,
+    expriority: 0,
 },
 {
     id: 11585,
@@ -515,6 +537,8 @@ var spells = [
     value1: 35,
     minlevel: 60,
     active: false,
+    priority: 7,
+    expriority: 0,
 },
 
 // Hamstring
@@ -530,7 +554,9 @@ var spells = [
     minlevel: 8,
     maxlevel: 31,
     value1: 5,
-    active: false
+    active: false,
+    priority: 1,
+    expriority: 0,
 },
 {
     id: 7372,
@@ -544,7 +570,9 @@ var spells = [
     minlevel: 32,
     maxlevel: 53,
     value1: 18,
-    active: false
+    active: false,
+    priority: 1,
+    expriority: 0,
 },
 {
     id: 7373,
@@ -557,7 +585,9 @@ var spells = [
     durationactive: false,
     minlevel: 54,
     value1: 45,
-    active: false
+    active: false,
+    priority: 1,
+    expriority: 0,
 },
 
 // Thunder Clap
@@ -574,7 +604,9 @@ var spells = [
     minlevel: 6,
     maxlevel: 17,
     value1: 10,
-    active: false
+    active: false,
+    priority: 2,
+    expriority: 0,
 },
 {
     id: 8198,
@@ -589,7 +621,9 @@ var spells = [
     minlevel: 18,
     maxlevel: 27,
     value1: 23,
-    active: false
+    active: false,
+    priority: 2,
+    expriority: 0,
 },
 {
     id: 8204,
@@ -604,7 +638,9 @@ var spells = [
     minlevel: 28,
     maxlevel: 37,
     value1: 37,
-    active: false
+    active: false,
+    priority: 2,
+    expriority: 0,
 },
 {
     id: 8205,
@@ -619,7 +655,9 @@ var spells = [
     minlevel: 38,
     maxlevel: 47,
     value1: 55,
-    active: false
+    active: false,
+    priority: 2,
+    expriority: 0,
 },
 {
     id: 11580,
@@ -634,7 +672,9 @@ var spells = [
     minlevel: 48,
     maxlevel: 57,
     value1: 82,
-    active: false
+    active: false,
+    priority: 2,
+    expriority: 0,
 },
 {
     id: 11581,
@@ -648,7 +688,9 @@ var spells = [
     durationactive: true,
     minlevel: 58,
     value1: 103,
-    active: false
+    active: false,
+    priority: 2,
+    expriority: 0,
 },
 
 // Execute
@@ -659,11 +701,15 @@ var spells = [
     iconname: 'inv_sword_48',
     minlevel: 24,
     maxlevel: 31,
-    priorityap: 2000,
-    priorityapactive: 2000,
+    swingtimer: 2.5,
+    swingtimeractive: false,
     value1: 75,
     value2: 4,
     active: true,
+    priority: 8,
+    expriority: 8,
+    minrageactive: false,
+    minrage: 50,
 },
 {
     id: 20658,
@@ -672,9 +718,15 @@ var spells = [
     iconname: 'inv_sword_48',
     minlevel: 32,
     maxlevel: 39,
+    swingtimer: 2.5,
+    swingtimeractive: false,
     value1: 150,
     value2: 8,
     active: true,
+    priority: 8,
+    expriority: 8,
+    minrageactive: false,
+    minrage: 50,
 },
 {
     id: 20660,
@@ -683,9 +735,15 @@ var spells = [
     iconname: 'inv_sword_48',
     minlevel: 40,
     maxlevel: 47,
+    swingtimer: 2.5,
+    swingtimeractive: false,
     value1: 225,
     value2: 12,
     active: true,
+    priority: 8,
+    expriority: 8,
+    minrageactive: false,
+    minrage: 50,
 },
 {
     id: 20661,
@@ -694,9 +752,15 @@ var spells = [
     iconname: 'inv_sword_48',
     minlevel: 48,
     maxlevel: 55,
+    swingtimer: 2.5,
+    swingtimeractive: false,
     value1: 300,
     value2: 16,
     active: true,
+    priority: 8,
+    expriority: 8,
+    minrageactive: false,
+    minrage: 50,
 },
 {
     id: 20662,
@@ -704,9 +768,15 @@ var spells = [
     classname: 'Execute',
     iconname: 'inv_sword_48',
     minlevel: 56,
+    swingtimer: 2.5,
+    swingtimeractive: false,
     value1: 375,
     value2: 20,
     active: true,
+    priority: 8,
+    expriority: 8,
+    minrageactive: false,
+    minrage: 50,
 },
 
 // Berserker Rage
@@ -737,6 +807,8 @@ var spells = [
     maincdactive: false,
     minlevel: 36,
     active: false,
+    priority: 7,
+    expriority: 0,
 },
 
 // Shockwave
@@ -765,6 +837,8 @@ var spells = [
     minrage: 30,
     minrageactive: false,
     active: false,
+    priority: 9,
+    expriority: 9,
 },
 
 // Mortal Strike
@@ -779,6 +853,8 @@ var spells = [
     minlevel: 40,
     maxlevel: 47,
     active: false,
+    priority: 9,
+    expriority: 9,
 },
 {
     id: 21551,
@@ -791,6 +867,8 @@ var spells = [
     minlevel: 48,
     maxlevel: 53,
     active: false,
+    priority: 9,
+    expriority: 9,
 },
 {
     id: 21552,
@@ -803,6 +881,8 @@ var spells = [
     minlevel: 54,
     maxlevel: 59,
     active: false,
+    priority: 9,
+    expriority: 9,
 },
 {
     id: 27580,
@@ -814,6 +894,8 @@ var spells = [
     value1: 160,
     minlevel: 60,
     active: false,
+    priority: 9,
+    expriority: 9,
 },
 
 // Recklessness
@@ -849,6 +931,8 @@ var spells = [
     durationactive: false,
     resolve: false,
     active: false,
+    priority: 9,
+    expriority: 0,
 },
 {
     id: 23923,
@@ -866,6 +950,8 @@ var spells = [
     durationactive: false,
     resolve: false,
     active: false,
+    priority: 9,
+    expriority: 0,
 },
 {
     id: 23924,
@@ -883,6 +969,8 @@ var spells = [
     durationactive: false,
     resolve: false,
     active: false,
+    priority: 9,
+    expriority: 0,
 },
 {
     id: 23925,
@@ -899,6 +987,8 @@ var spells = [
     durationactive: false,
     resolve: false,
     active: false,
+    priority: 9,
+    expriority: 0,
 },
 
 // Death Wish
@@ -1079,6 +1169,8 @@ var spells = [
     bloodsurge: false,
     execute: false,
     active: false,
+    priority: 6,
+    expriority: 0,
 },
 {
     id: 8820,
@@ -1097,6 +1189,8 @@ var spells = [
     bloodsurge: false,
     execute: false,
     active: false,
+    priority: 6,
+    expriority: 0,
 },
 {
     id: 11604,
@@ -1115,6 +1209,8 @@ var spells = [
     bloodsurge: false,
     execute: false,
     active: false,
+    priority: 6,
+    expriority: 0,
 },
 {
     id: 11605,
@@ -1134,6 +1230,8 @@ var spells = [
     bloodsurge: false,
     execute: false,
     active: false,
+    priority: 6,
+    expriority: 0,
 },
 
 // Runes
