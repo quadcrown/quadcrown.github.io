@@ -6,6 +6,12 @@ var RESULT = {
     GLANCE: 4
 }
 
+var RESULT2STR = {}
+for (const [key, value] of Object.entries(RESULT)) {
+    RESULT2STR[value] = key;
+}
+
+
 var DEFENSETYPE = {
     NONE: 0,
     MAGIC: 1,
