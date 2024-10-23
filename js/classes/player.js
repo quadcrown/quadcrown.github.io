@@ -1744,7 +1744,7 @@ class Player {
         let dmg = 0;
         if (rng10k() < weapon.proc1.chance) {
             dmg += this.physproc(weapon.proc1.physdmg);
-            if (dmg > 0) dmg += this.phantomproc(weapon)
+            // if (dmg > 0) dmg += this.phantomproc(weapon) // no recursive phantom strikes on twow
         }
         if (weapon.proc2 && rng10k() < weapon.proc2.chance) {
             if (weapon.proc2.spell) weapon.proc2.spell.use();
