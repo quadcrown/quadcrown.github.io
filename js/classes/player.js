@@ -137,6 +137,15 @@ class Player {
         this.addTalents();
         this.addGear();
         if (!this.mh) return;
+        if (enchtype == 3) { // i know this is cringe and messy, but needs to be done below this.addGear();
+            if (testType == 7) {
+                this.base['skill_' + this.mh.type] += testItem;
+            }
+            else if (testType == 8) {
+                if (this.oh)
+                    this.base['skill_' + this.oh.type] += testItem;
+            }
+        }
         this.addSets();
         this.addEnchants();
         this.addTempEnchants();
@@ -146,6 +155,7 @@ class Player {
         this.sortSpells();
         this.addRunes();
         this.initStances();
+
 
 
         if (this.mode == 'turtle' && this.talents.enrage) this.auras.enrage = new TwowEnrageAura(this);

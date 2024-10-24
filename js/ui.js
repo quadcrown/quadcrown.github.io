@@ -433,6 +433,8 @@ SIM.UI = {
             updateStat("hit", await simulateWeight(2, 1));
             updateStat("haste", await simulateWeight(5, 1.01));
             updateStat("arp", await simulateWeight(6, 100));
+            updateStat("mhskill", await simulateWeight(7, 1));
+            updateStat("ohskill", await simulateWeight(8, 1));
         }
 
         simulateAll().then(
