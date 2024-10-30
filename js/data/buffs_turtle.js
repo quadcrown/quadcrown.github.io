@@ -1236,7 +1236,7 @@ var buffs = [
       name: "Annihilator",
       iconname: "inv_axe_12",
       group: "",
-      armor: 600,
+      armor: 300,
       minlevel: 58,
    },
    {
