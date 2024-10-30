@@ -1574,8 +1574,8 @@ var gear = {
     },
     {
       "name": "Cloak of the Honor Guard",
-      "sta": 11,
-      "agi": 5,
+      "sta": 13,
+      "agi": 9,
       "ap": 34,
       "ac": 50,
       "source": "PVP",
@@ -1797,11 +1797,11 @@ var gear = {
     },
     {
       "name": "Breastplate of Earthen Might",
+      "ac": 446,
       "crit": 2,
-      "ap": 44,
+      "ap": 36,
       "arp": 50,
       "sta": 18,
-      "ac": 458,
       "source": "LowerKara",
       "phase": 7,
       "id": 61275
@@ -2595,8 +2595,8 @@ var gear = {
     {
       "name": "Berserker Bracers",
       "str": 19,
-      "sta": 11,
-      "agi": 8,
+      "sta": 13,
+      "agi": 11,
       "ac": 323,
       "source": "PVP",
       "phase": 3,
@@ -2770,6 +2770,34 @@ var gear = {
     }
   ],
   "hands": [
+    {
+      "name": "Blooddrenched Grips",
+      "ac": 122,
+      "sta": 12,
+      "ap": 34,
+      "crit": 1,
+      "skill": 5,
+      "type": "Axe",
+      "source": "ZG",
+      "phase": 4,
+      "id": 19869,
+      "i": 71,
+      "q": 3,
+    },
+    {
+      "name": "Bile-Covered Gauntlets",
+      "ac": 203,
+      "sta": 21,
+      "agi": 17,
+      "str": 10,
+      "skill": 7,
+      "type": "Axe",
+      "source": "AQ40",
+      "phase": 5,
+      "id": 21682,
+      "i": 78,
+      "q": 4,
+    },
     {
       "name": "Pulverizer Gauntlets",
       "ac": 129,
@@ -3108,9 +3136,11 @@ var gear = {
     {
       "name": "Flameguard Gauntlets",
       "crit": 1,
-      "sta": 13,
+      "sta": 6,
       "ap": 54,
       "ac": 488,
+      "skill": 7,
+      "type": "Axe",
       "source": "MC",
       "phase": 1,
       "id": 19143
@@ -3830,6 +3860,22 @@ var gear = {
   ],
   "legs": [
     {
+      "name": "Slime-coated Leggings",
+      "ac": 432,
+      "sta": 28,
+      "resist": {
+        "nature": 28,
+      },
+      "ap": 40,
+      "skill": 5,
+      "type": "Polearm",
+      "source": "LowerKara",
+      "phase": 7,
+      "id": 61279,
+      "i": 78,
+      "q": 4,
+    },
+    {
       "name": "Chromatic Leggings",
       "ac": 390,
       "resist": {
@@ -4021,7 +4067,7 @@ var gear = {
       },
       "str": 16,
       "sta": 22,
-      "agi": 22,
+      "agi": 20,
       "ac": 169,
       "source": "LowerKara",
       "phase": 7,
@@ -4334,9 +4380,11 @@ var gear = {
     {
       "name": "Legplates of the Qiraji Command",
       "crit": 2,
-      "str": 20,
+      "str": 16,
       "sta": 13,
       "ac": 644,
+      "skill": 2,
+      "type": "Sword",
       "source": "AQ20",
       "phase": 5,
       "id": 21495
@@ -4397,9 +4445,9 @@ var gear = {
       "name": "Sentinel's Plate Legguards",
       "crit": 1,
       "hit": 1,
-      "str": 28,
-      "sta": 27,
-      "ac": 646,
+      "str": 31,
+      "sta": 30,
+      "ac": 656,
       "source": "PVP",
       "phase": 6,
       "id": 22672
@@ -5167,8 +5215,8 @@ var gear = {
     {
       "name": "Protector's Band",
       "str": 12,
-      "sta": 8,
-      "agi": 11,
+      "sta": 10,
+      "agi": 12,
       "source": "PVP",
       "phase": 3,
       "id": 19514
@@ -5528,8 +5576,8 @@ var gear = {
     {
       "name": "Protector's Band",
       "str": 12,
-      "sta": 8,
-      "agi": 11,
+      "sta": 10,
+      "agi": 12,
       "source": "PVP",
       "phase": 3,
       "id": 19514
@@ -6304,8 +6352,8 @@ var gear = {
     },
     {
       "name": "Outrunner's Bow",
-      "sta": 10,
-      "agi": 4,
+      "sta": 11,
+      "agi": 5,
       "source": "PVP",
       "phase": "2",
       "id": 19562
@@ -6473,6 +6521,19 @@ var gear = {
   ],
   "mainhand": [
     {
+      "name": "Hedgecutter",
+      "str": 5,
+      "sta": 10,
+      "mindmg": 60,
+      "maxdmg": 90,
+      "speed": 1.9,
+      "skill": 3,
+      "type": "Axe",
+      "source": "Dungeon",
+      "phase": 7,
+      "id": 18498,
+    },
+    {
       "name": "Letashaz's Right Claw (Unknown PPM)",
       "ap": 16,
       "proc": {
@@ -6541,10 +6602,10 @@ var gear = {
     {
       "name": "Anasterian's Legacy",
       "sta": 12,
-      "agi": 12,
+      "agi": 9,
       "skill": 4,
-      "mindmg": 57,
-      "maxdmg": 104,
+      "mindmg": 54,
+      "maxdmg": 101,
       "speed": 1.5,
       "type": "Sword",
       "source": "LowerKara",
@@ -6668,6 +6729,7 @@ var gear = {
       "mindmg": 59,
       "maxdmg": 110,
       "speed": 1.7,
+      "skill": 4,
       "type": "Sword",
       "source": "Other",
       "phase": 7,
@@ -6973,7 +7035,7 @@ var gear = {
       "phase": 1,
       "id": 12798,
       "proc": {
-        "ppm": 1,
+        "ppm": 2,
         "spell": "Annihilator"
       }
     },
@@ -7078,10 +7140,11 @@ var gear = {
       "name": "Doom's Edge",
       "str": 9,
       "sta": 7,
-      "agi": 16,
+      "agi": 12,
       "mindmg": 83,
       "maxdmg": 154,
       "speed": 2.3,
+      "skill": 4,
       "type": "Axe",
       "source": "BWL",
       "phase": 3,
@@ -7306,10 +7369,11 @@ var gear = {
     {
       "name": "Dragonfang Blade",
       "sta": 13,
-      "agi": 16,
+      "agi": 13,
       "mindmg": 69,
       "maxdmg": 130,
       "speed": 1.8,
+      "skill": 5,
       "type": "Dagger",
       "source": "BWL",
       "phase": 3,
@@ -7614,19 +7678,6 @@ var gear = {
       "id": 22317
     },
     {
-      "name": "Silithid Claw",
-      "Mainhand": true,
-      "crit": 1,
-      "ap": 30,
-      "mindmg": 64,
-      "maxdmg": 120,
-      "speed": 1.6,
-      "type": "Fist",
-      "source": "AQ40",
-      "phase": 5,
-      "id": 21673
-    },
-    {
       "name": "Thekal's Grasp (1% chance on set)",
       "Mainhand": true,
       "crit": 1,
@@ -7655,8 +7706,8 @@ var gear = {
     {
       "name": "Anubisath Warhammer",
       "sta": 7,
-      "ap": 32,
-      "skill": 4,
+      "ap": 26,
+      "skill": 5,
       "mindmg": 66,
       "maxdmg": 123,
       "speed": 1.8,
@@ -7828,11 +7879,11 @@ var gear = {
       "name": "Spineshatter",
       "Mainhand": true,
       "str": 9,
-      "sta": 16,
-      "defense": 5,
+      "sta": 13,
       "mindmg": 99,
       "maxdmg": 184,
       "speed": 2.6,
+      "skill": 5,
       "type": "Mace",
       "source": "BWL",
       "phase": 3,
@@ -8243,10 +8294,10 @@ var gear = {
     },
     {
       "name": "Protector's Sword",
-      "str": 13,
-      "sta": 5,
-      "mindmg": 78,
-      "maxdmg": 146,
+      "str": 14,
+      "sta": 7,
+      "mindmg": 0,
+      "maxdmg": 0,
       "speed": 2.7,
       "type": "Sword",
       "source": "PVP",
@@ -8283,6 +8334,32 @@ var gear = {
   ],
   "offhand": [
     {
+      "name": "Silithid Claw",
+      "offhand": true,
+      "crit": 1,
+      "ap": 30,
+      "mindmg": 64,
+      "maxdmg": 120,
+      "speed": 1.6,
+      "type": "Fist",
+      "source": "AQ40",
+      "phase": 5,
+      "id": 21673
+    },
+    {
+      "name": "Hedgecutter",
+      "str": 5,
+      "sta": 10,
+      "mindmg": 60,
+      "maxdmg": 90,
+      "speed": 1.9,
+      "skill": 3,
+      "type": "Axe",
+      "source": "Dungeon",
+      "phase": 7,
+      "id": 18498,
+    },
+    {
       "name": "Annihilator",
       "mindmg": 49,
       "maxdmg": 92,
@@ -8292,7 +8369,7 @@ var gear = {
       "phase": 1,
       "id": 12798,
       "proc": {
-        "ppm": 1,
+        "ppm": 2,
         "spell": "Annihilator"
       }
     },
@@ -8321,10 +8398,10 @@ var gear = {
     {
       "name": "Anasterian's Legacy",
       "sta": 12,
-      "agi": 12,
+      "agi": 9,
       "skill": 4,
-      "mindmg": 57,
-      "maxdmg": 104,
+      "mindmg": 54,
+      "maxdmg": 101,
       "speed": 1.5,
       "type": "Sword",
       "source": "LowerKara",
@@ -8427,6 +8504,7 @@ var gear = {
       "mindmg": 59,
       "maxdmg": 110,
       "speed": 1.7,
+      "skill": 4,
       "type": "Sword",
       "source": "Other",
       "phase": 7,
@@ -8685,10 +8763,11 @@ var gear = {
       "name": "Doom's Edge",
       "str": 9,
       "sta": 7,
-      "agi": 16,
+      "agi": 12,
       "mindmg": 83,
       "maxdmg": 154,
       "speed": 2.3,
+      "skill": 4,
       "type": "Axe",
       "source": "BWL",
       "phase": 3,
@@ -8917,10 +8996,11 @@ var gear = {
     {
       "name": "Dragonfang Blade",
       "sta": 13,
-      "agi": 16,
+      "agi": 13,
       "mindmg": 69,
       "maxdmg": 130,
       "speed": 1.8,
+      "skill": 5,
       "type": "Dagger",
       "source": "BWL",
       "phase": 3,
@@ -9230,8 +9310,8 @@ var gear = {
     {
       "name": "Anubisath Warhammer",
       "sta": 7,
-      "ap": 32,
-      "skill": 4,
+      "ap": 26,
+      "skill": 5,
       "mindmg": 66,
       "maxdmg": 123,
       "speed": 1.8,
@@ -9671,10 +9751,10 @@ var gear = {
     },
     {
       "name": "Protector's Sword",
-      "str": 13,
-      "sta": 5,
-      "mindmg": 78,
-      "maxdmg": 146,
+      "str": 14,
+      "sta": 7,
+      "mindmg": 0,
+      "maxdmg": 0,
       "speed": 2.7,
       "type": "Sword",
       "source": "PVP",
@@ -9761,8 +9841,8 @@ var gear = {
         "dmg": 212,
         "spell": "ForgottenOrder"
       },
-      "mindmg": 194,
-      "maxdmg": 297,
+      "mindmg": 190,
+      "maxdmg": 293,
       "speed": 3.6,
       "id": 61277,
       "source": "LowerKara",
@@ -10115,7 +10195,7 @@ var gear = {
     },
     {
       "name": "Drake Talon Cleaver",
-      "str": 22,
+      "str": 17,
       "sta": 17,
       "mindmg": 199,
       "maxdmg": 300,
@@ -10123,6 +10203,7 @@ var gear = {
       "id": 19353,
       "source": "BWL",
       "phase": 3,
+      "skill": 8,
       "type": "Axe",
       "proc": {
         "ppm": 2,
@@ -10254,11 +10335,10 @@ var gear = {
     {
       "name": "Treant's Bane",
       "crit": 2,
-      "str": 25,
-      "sta": 15,
-      "mindmg": 128,
-      "maxdmg": 193,
-      "speed": 2.7,
+      "str": 22,
+      "mindmg": 0,
+      "maxdmg": 0,
+      "speed": 3.5,
       "id": 18538,
       "source": "Dungeon",
       "phase": 2,
@@ -10629,6 +10709,7 @@ var gear = {
       "id": 23039,
       "source": "Naxx",
       "phase": 6,
+      "skill": 5,
       "type": "Polearm"
     },
     {
@@ -10705,7 +10786,7 @@ var gear = {
       "type": "Sword",
       "arpv": "0–2100",
       "proc": {
-        "ppm": 3,
+        "ppm": 2,
         "spell": "Bonereaver"
       }
     },
@@ -10719,6 +10800,7 @@ var gear = {
       "id": 22813,
       "source": "Naxx",
       "phase": 6,
+      "skill": 7,
       "type": "Sword"
     },
     {
