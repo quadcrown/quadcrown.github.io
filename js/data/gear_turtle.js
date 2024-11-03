@@ -1,6 +1,43 @@
 var gear = {
   "head": [
     {
+      "name": "Crown of Might",
+      "str": 30,
+      "agi": 14,
+      "sta": 16,
+      "ac": 608,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47240
+    },
+    {
+      "name": "Crown of Wrath",
+      "str": 32,
+      "sta": 23,
+      "ac": 696,
+      "crit": 1,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47248
+    },
+    {
+      "name": "Dreadnaught Crown",
+      "str": 26,
+      "agi": 29,
+      "ac": 800,
+      "hit": 2,
+      "arp": 40,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47261
+    },
+    {
       "name": "Ragereaver's Helm",
       "source": "Dungeon",
       "str": 10,
@@ -894,6 +931,43 @@ var gear = {
   ],
   "shoulder": [
     {
+      "name": "Pauldrons of Might",
+      "sta": 16,
+      "ap": 38,
+      "crit": 1,
+      "ac": 562,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47241
+    },
+    {
+      "name": "Pauldrons of Wrath",
+      "str": 21,
+      "agi": 16,
+      "sta": 17,
+      "arp": 25,
+      "ac": 642,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47249
+    },
+    {
+      "name": "Dreadnaught Pauldrons",
+      "ac": 722,
+      "str": 21,
+      "agi": 24,
+      "hit": 1,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47262
+    },
+    {
       "name": "Rune-Etched Mantle",
       "str": 20,
       "agi": 5,
@@ -1752,6 +1826,42 @@ var gear = {
   ],
   "chest": [
     {
+      "name": "Chestplate of Might",
+      "str": 32,
+      "sta": 18,
+      "hit": 1,
+      "ac": 749,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47242
+    },
+    {
+      "name": "Chestplate of Wrath",
+      "str": 27,
+      "sta": 19,
+      "ac": 857,
+      "crit": 2,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47250
+    },
+    {
+      "name": "Dreadnaught Chestplate",
+      "sta": 21,
+      "ac": 1027,
+      "crit": 2,
+      "ap": 80,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47263
+    },
+    {
       "name": "Centaur Battle Harness",
       "source": "Crafting",
       "str": 5,
@@ -2363,6 +2473,41 @@ var gear = {
   ],
   "wrist": [
     {
+      "name": "Bracers of Might",
+      "str": 16,
+      "agi": 12,
+      "sta": 9,
+      "ac": 328,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47243
+    },
+    {
+      "name": "Bindings of Wrath",
+      "str": 20,
+      "agi": 16,
+      "ac": 375,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47251
+    },
+    {
+      "name": "Dreadnaught Bindings",
+      "sta": 18,
+      "str": 20,
+      "ac": 431,
+      "haste": 1,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47264
+    },
+    {
       "name": "Dreamthread Bracers",
       "ac": 40,
       "haste": 2,
@@ -2770,6 +2915,69 @@ var gear = {
     }
   ],
   "hands": [
+    {
+      "name": "Gauntlets of Might",
+      "str": 19,
+      "sta": 13,
+      "crit": 1,
+      "hit": 1,
+      "ac": 468,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47244
+    },
+    {
+      "name": "Gloves of Wrath",
+      "str": 21,
+      "agi": 12,
+      "hit": 1,
+      "ac": 535,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47252
+    },
+    {
+      "name": "Dreadnaught Gloves",
+      "str": 29,
+      "agi": 15,
+      "ac": 615,
+      "hit": 1,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47265
+    },
+    {
+      "name": "Gloves of the Primordial Burrower",
+      "str": 15,
+      "sta": 10,
+      "ac": 248,
+      "crit": 1,
+      "skill": 6,
+      "type": "Ouro1H",
+      "phase": 7,
+      "source": "AQ40",
+      "q": 4,
+      "id": 55553
+    },
+    {
+      "name": "Carapace Handguards",
+      "str": 15,
+      "sta": 10,
+      "ac": 320,
+      "skill": 6,
+      "type": "Ouro2H",
+      "crit": 1,
+      "phase": 7,
+      "source": "AQ40",
+      "q": 4,
+      "id": 55554
+    },
     {
       "name": "Blooddrenched Grips",
       "ac": 122,
@@ -3321,6 +3529,43 @@ var gear = {
   ],
   "waist": [
     {
+      "name": "Girdle of Might",
+      "str": 25,
+      "sta": 10,
+      "hit": 1,
+      "ac": 421,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47245
+    },
+    {
+      "name": "Girdle of Wrath",
+      "str": 26,
+      "sta": 14,
+      "crit": 1,
+      "ac": 482,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47253
+    },
+    {
+      "name": "Dreadnaught Girdle",
+      "str": 21,
+      "agi": 16,
+      "sta": 22,
+      "ac": 554,
+      "hit": 2,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47266
+    },
+    {
       "name": "Marksman's Girdle",
       "source": "Dungeon",
       "ac": 202,
@@ -3859,6 +4104,43 @@ var gear = {
     }
   ],
   "legs": [
+    {
+      "name": "Leggings of Might",
+      "sta": 22,
+      "crit": 1,
+      "ap": 52,
+      "ac": 655,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47246
+    },
+    {
+      "name": "Leggings of Wrath",
+      "agi": 14,
+      "sta": 20,
+      "hit": 2,
+      "ap": 50,
+      "ac": 749,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47254
+    },
+    {
+      "name": "Dreadnaught Leggings",
+      "sta": 23,
+      "ac": 861,
+      "crit": 2,
+      "ap": 72,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47267
+    },
     {
       "name": "Slime-coated Leggings",
       "ac": 432,
@@ -4475,6 +4757,44 @@ var gear = {
   ],
   "feet": [
     {
+      "name": "Sabatons of Might",
+      "str": 20,
+      "sta": 14,
+      "hit": 1,
+      "ac": 515,
+      "phase": 7,
+      "source": "MC",
+      "q": 4,
+      "i": 66,
+      "id": 47247
+    },
+    {
+      "name": "Sabatons of Wrath",
+      "str": 21,
+      "sta": 16,
+      "agi": 19,
+      "arp": 25,
+      "ac": 589,
+      "phase": 7,
+      "source": "BWL",
+      "q": 4,
+      "i": 76,
+      "id": 47255
+    },
+    {
+      "name": "Dreadnaught Sabatons",
+      "str": 26,
+      "agi": 23,
+      "ac": 662,
+      "hit": 1,
+      "arp": 40,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47268
+    },
+    {
       "name": "Boots of Blazing Steps",
       "haste": 1,
       "agi": 14,
@@ -4961,6 +5281,18 @@ var gear = {
   ],
   "finger1": [
     {
+      "name": "Ring of the Dreadnaught",
+      "str": 22,
+      "crit": 1,
+      "hit": 1,
+      "sta": 11,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47269
+    },
+    {
       "name": "Tarnished Lancelot Ring",
       "crit": 1,
       "ap": 10,
@@ -5321,6 +5653,18 @@ var gear = {
     }
   ],
   "finger2": [
+    {
+      "name": "Ring of the Dreadnaught",
+      "str": 22,
+      "crit": 1,
+      "hit": 1,
+      "sta": 11,
+      "phase": 7,
+      "source": "Naxx",
+      "q": 4,
+      "i": 86,
+      "id": 47269
+    },
     {
       "name": "Tarnished Lancelot Ring",
       "crit": 1,
