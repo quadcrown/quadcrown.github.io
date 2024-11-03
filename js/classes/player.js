@@ -276,6 +276,18 @@ class Player {
                             this.base['skill_2'] += item.skill;
                             this.base['skill_3'] += item.skill;
                         }
+                        else if (item.type == 'Ouro1H') {
+                            this.base['skill_0'] += item.skill;
+                            this.base['skill_1'] += item.skill;
+                            this.base['skill_2'] += item.skill;
+                            this.base['skill_3'] += item.skill;
+                        }
+                        else if (item.type == 'Ouro2H') {
+                            this.base['skill_0'] += item.skill;
+                            this.base['skill_1'] += item.skill;
+                            this.base['skill_3'] += item.skill;
+                            this.base['skill_5'] += item.skill;
+                        }
                         else if (item.type == 'FistMace') {
                             this.base['skill_0'] += item.skill;
                             this.base['skill_4'] += item.skill;
