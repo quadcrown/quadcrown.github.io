@@ -567,7 +567,7 @@ var gear = {
     },
     {
       "id": 9375,
-      "type": "Axe",
+      "type": "Leather",
       "slot": "head",
       "r": 33,
       "q": "3",
@@ -576,7 +576,9 @@ var gear = {
       "p": "inv_helmet_18",
       "agi": 5,
       "sta": 6,
-      "skill": 7
+      "skills": {
+        "13": 7
+      }
     },
     {
       "id": 9394,
@@ -3078,7 +3080,7 @@ var gear = {
     },
     {
       "id": 20623,
-      "type": "Dagger",
+      "type": "Leather",
       "slot": "head",
       "r": 60,
       "q": "4",
@@ -3087,7 +3089,9 @@ var gear = {
       "p": "inv_helmet_17",
       "agi": 21,
       "sta": 38,
-      "skill": 6
+      "skills": {
+        "2": 6
+      }
     },
     {
       "id": 20640,
@@ -5424,6 +5428,21 @@ var gear = {
       "p": "inv_jewelry_necklace_17",
       "agi": 30,
       "hit": 1
+    },
+    {
+      "id": 234130,
+      "type": "Miscellaneous",
+      "slot": "neck",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Amulet of Shadow Shielding",
+      "p": "inv_jewelry_necklace_17",
+      "sta": 15,
+      "resist": {
+        "shadow": 20
+      },
+      "d": 9
     }
   ],
   "shoulder": [
@@ -11295,11 +11314,11 @@ var gear = {
       "slot": "back",
       "r": 60,
       "q": "4",
-      "i": "70",
+      "i": "75",
       "name": "Cloak of Draconic Might",
       "p": "inv_misc_cape_11",
-      "agi": 18,
-      "str": 18,
+      "agi": 19,
+      "str": 19,
       "sta": 5
     },
     {
@@ -23028,14 +23047,18 @@ var gear = {
     },
     {
       "id": 14551,
-      "type": "Varied",
+      "type": "Mail",
       "slot": "hands",
       "r": 44,
       "q": "4",
       "i": "49",
       "name": "Edgemaster's Handguards",
       "p": "inv_gauntlets_30",
-      "skill": 7
+      "skills": {
+        "2": 7,
+        "11": 7,
+        "13": 7
+      }
     },
     {
       "id": 14564,
@@ -25446,7 +25469,7 @@ var gear = {
     },
     {
       "id": 213278,
-      "type": "FistMace",
+      "type": "Leather",
       "slot": "hands",
       "r": 40,
       "q": "3",
@@ -25455,7 +25478,10 @@ var gear = {
       "p": "inv_gauntlets_26",
       "agi": 10,
       "sta": 11,
-      "skill": 3
+      "skills": {
+        "4": 4,
+        "10": 3
+      }
     },
     {
       "id": 213288,
@@ -25889,7 +25915,7 @@ var gear = {
     },
     {
       "id": 228257,
-      "type": "Dagger",
+      "type": "Leather",
       "slot": "hands",
       "r": 60,
       "q": "4",
@@ -25902,7 +25928,9 @@ var gear = {
         "fire": 10
       },
       "crit": 1,
-      "skill": 3
+      "skills": {
+        "2": 3
+      }
     },
     {
       "id": 228260,
@@ -31394,7 +31422,7 @@ var gear = {
     },
     {
       "id": 215380,
-      "type": "Varied2H",
+      "type": "Mail",
       "slot": "waist",
       "r": 40,
       "q": "4",
@@ -31403,7 +31431,11 @@ var gear = {
       "p": "inv_belt_34",
       "str": 14,
       "sta": 15,
-      "skill": 3
+      "skills": {
+        "20": 3,
+        "21": 3,
+        "23": 3
+      }
     },
     {
       "id": 220550,
@@ -31657,7 +31689,7 @@ var gear = {
     },
     {
       "id": 228068,
-      "type": "Dagger",
+      "type": "Leather",
       "slot": "waist",
       "r": 57,
       "q": "3",
@@ -31666,7 +31698,9 @@ var gear = {
       "p": "inv_belt_02",
       "sta": 16,
       "crit": 1,
-      "skill": 3,
+      "skills": {
+        "2": 3
+      },
       "ap": 12
     },
     {
@@ -36348,21 +36382,6 @@ var gear = {
       "hit": 1
     },
     {
-      "id": 21530,
-      "type": "Mail",
-      "slot": "legs",
-      "r": 60,
-      "q": "4",
-      "i": "77",
-      "name": "Onyx Embedded Leggings",
-      "p": "inv_pants_mail_04",
-      "agi": 23,
-      "sta": 23,
-      "resist": {
-        "shadow": 30
-      }
-    },
-    {
       "id": 22328,
       "type": "Plate",
       "slot": "legs",
@@ -37290,6 +37309,19 @@ var gear = {
       },
       "hit": 1,
       "d": 19
+    },
+    {
+      "id": 234129,
+      "type": "Mail",
+      "slot": "legs",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Onyx Embedded Leggings",
+      "p": "inv_pants_mail_04",
+      "sta": 21,
+      "crit": 2,
+      "ap": 60
     }
   ],
   "feet": [
@@ -41200,22 +41232,6 @@ var gear = {
       "d": 4
     },
     {
-      "id": 21532,
-      "type": "Leather",
-      "slot": "feet",
-      "r": 60,
-      "q": "4",
-      "i": "77",
-      "name": "Drudge Boots",
-      "p": "inv_boots_08",
-      "agi": 17,
-      "str": 13,
-      "sta": 20,
-      "resist": {
-        "nature": 20
-      }
-    },
-    {
       "id": 22270,
       "type": "Plate",
       "slot": "feet",
@@ -42051,6 +42067,23 @@ var gear = {
         "nature": 10
       },
       "d": 11
+    },
+    {
+      "id": 234133,
+      "type": "Leather",
+      "slot": "feet",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Drudge Boots",
+      "p": "inv_boots_08",
+      "agi": 20,
+      "str": 15,
+      "sta": 12,
+      "resist": {
+        "nature": 20
+      },
+      "hit": 1
     }
   ],
   "finger1": [
@@ -52604,7 +52637,9 @@ var gear = {
       "mindmg": 35,
       "maxdmg": 65,
       "p": "inv_sword_21",
-      "skill": 4
+      "skills": {
+        "2": 4
+      }
     },
     {
       "id": 12248,
@@ -56138,7 +56173,9 @@ var gear = {
       "mindmg": 77,
       "maxdmg": 145,
       "p": "inv_mace_08",
-      "skill": 2,
+      "skills": {
+        "10": 2
+      },
       "proc": {
         "magic": true,
         "dmg": 78
@@ -56156,7 +56193,9 @@ var gear = {
       "mindmg": 71,
       "maxdmg": 134,
       "p": "inv_axe_08",
-      "skill": 2,
+      "skills": {
+        "13": 2
+      },
       "agi": 8,
       "str": 8,
       "rand": 690
@@ -56173,7 +56212,9 @@ var gear = {
       "mindmg": 71,
       "maxdmg": 134,
       "p": "inv_axe_08",
-      "skill": 2,
+      "skills": {
+        "13": 2
+      },
       "sta": 8,
       "str": 8,
       "rand": 1200
@@ -56190,7 +56231,9 @@ var gear = {
       "mindmg": 71,
       "maxdmg": 134,
       "p": "inv_axe_08",
-      "skill": 2,
+      "skills": {
+        "13": 2
+      },
       "str": 12,
       "rand": 193
     },
@@ -56445,34 +56488,6 @@ var gear = {
       "maxdmg": 130,
       "p": "inv_pick_03",
       "str": 11
-    },
-    {
-      "id": 21521,
-      "type": "Sword",
-      "slot": "mainhand",
-      "r": 60,
-      "q": "4",
-      "i": "76",
-      "name": "Runesword of the Red",
-      "speed": 2.2,
-      "mindmg": 53,
-      "maxdmg": 129,
-      "p": "inv_sword_51",
-      "sta": 17
-    },
-    {
-      "id": 21523,
-      "type": "Dagger",
-      "slot": "mainhand",
-      "r": 60,
-      "q": "4",
-      "i": "76",
-      "name": "Fang of Korialstrasz",
-      "speed": 1.8,
-      "mindmg": 44,
-      "maxdmg": 107,
-      "p": "inv_weapon_shortblade_29",
-      "sta": 9
     },
     {
       "id": 22315,
@@ -58535,7 +58550,9 @@ var gear = {
       "maxdmg": 162,
       "p": "inv_sword_49",
       "hit": 2,
-      "skill": 3
+      "skills": {
+        "11": 3
+      }
     },
     {
       "id": 232565,
@@ -58567,6 +58584,66 @@ var gear = {
       "agi": 17,
       "str": 10,
       "sta": 7
+    },
+    {
+      "id": 234137,
+      "type": "Dagger",
+      "slot": "mainhand",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Fang of Korialstrasz",
+      "speed": 1.8,
+      "mindmg": 42,
+      "maxdmg": 108,
+      "p": "inv_weapon_shortblade_29",
+      "sta": 9
+    },
+    {
+      "id": 234138,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Shadowsong's Sorrow",
+      "speed": 1.6,
+      "mindmg": 68,
+      "maxdmg": 126,
+      "p": "inv_weapon_shortblade_25",
+      "agi": 13,
+      "str": 14,
+      "sta": 9
+    },
+    {
+      "id": 234139,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Ravencrest's Legacy",
+      "speed": 2.8,
+      "mindmg": 119,
+      "maxdmg": 221,
+      "p": "inv_sword_49",
+      "agi": 9,
+      "str": 14,
+      "sta": 13
+    },
+    {
+      "id": 234141,
+      "type": "Sword",
+      "slot": "mainhand",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Runesword of the Red",
+      "speed": 2.2,
+      "mindmg": 51,
+      "maxdmg": 132,
+      "p": "inv_sword_51",
+      "sta": 17
     }
   ],
   "offhand": [
@@ -63611,7 +63688,9 @@ var gear = {
       "mindmg": 35,
       "maxdmg": 65,
       "p": "inv_sword_21",
-      "skill": 4
+      "skills": {
+        "2": 4
+      }
     },
     {
       "id": 12248,
@@ -67643,7 +67722,9 @@ var gear = {
       "mindmg": 77,
       "maxdmg": 145,
       "p": "inv_mace_08",
-      "skill": 2,
+      "skills": {
+        "10": 2
+      },
       "proc": {
         "magic": true,
         "dmg": 78
@@ -67661,7 +67742,9 @@ var gear = {
       "mindmg": 71,
       "maxdmg": 134,
       "p": "inv_axe_08",
-      "skill": 2,
+      "skills": {
+        "13": 2
+      },
       "agi": 8,
       "str": 8,
       "rand": 690
@@ -67678,7 +67761,9 @@ var gear = {
       "mindmg": 71,
       "maxdmg": 134,
       "p": "inv_axe_08",
-      "skill": 2,
+      "skills": {
+        "13": 2
+      },
       "sta": 8,
       "str": 8,
       "rand": 1200
@@ -67695,7 +67780,9 @@ var gear = {
       "mindmg": 71,
       "maxdmg": 134,
       "p": "inv_axe_08",
-      "skill": 2,
+      "skills": {
+        "13": 2
+      },
       "str": 12,
       "rand": 193
     },
@@ -68881,7 +68968,9 @@ var gear = {
       "mindmg": 42,
       "maxdmg": 64,
       "p": "inv_weapon_shortblade_05",
-      "skill": 3,
+      "skills": {
+        "2": 3
+      },
       "d": 7
     },
     {
@@ -69402,7 +69491,9 @@ var gear = {
       "maxdmg": 162,
       "p": "inv_sword_49",
       "hit": 2,
-      "skill": 3
+      "skills": {
+        "11": 3
+      }
     },
     {
       "id": 232565,
@@ -69434,6 +69525,38 @@ var gear = {
       "agi": 17,
       "str": 10,
       "sta": 7
+    },
+    {
+      "id": 234138,
+      "type": "Dagger",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Shadowsong's Sorrow",
+      "speed": 1.6,
+      "mindmg": 68,
+      "maxdmg": 126,
+      "p": "inv_weapon_shortblade_25",
+      "agi": 13,
+      "str": 14,
+      "sta": 9
+    },
+    {
+      "id": 234139,
+      "type": "Sword",
+      "slot": "onehand",
+      "r": 60,
+      "q": "4",
+      "i": "79",
+      "name": "Ravencrest's Legacy",
+      "speed": 2.8,
+      "mindmg": 119,
+      "maxdmg": 221,
+      "p": "inv_sword_49",
+      "agi": 9,
+      "str": 14,
+      "sta": 13
     }
   ],
   "twohand": [
@@ -70663,7 +70786,9 @@ var gear = {
       "mindmg": 34,
       "maxdmg": 52,
       "p": "inv_throwingaxe_01",
-      "skill": 2
+      "skills": {
+        "23": 2
+      }
     },
     {
       "id": 2915,
@@ -71448,7 +71573,9 @@ var gear = {
       "mindmg": 53,
       "maxdmg": 80,
       "p": "inv_hammer_04",
-      "skill": 7
+      "skills": {
+        "20": 7
+      }
     },
     {
       "id": "4562|672",
@@ -72033,7 +72160,9 @@ var gear = {
       "mindmg": 13,
       "maxdmg": 21,
       "p": "inv_fishingpole_02",
-      "skill": 5
+      "skills": {
+        "7": 5
+      }
     },
     {
       "id": 6366,
@@ -72047,7 +72176,9 @@ var gear = {
       "mindmg": 28,
       "maxdmg": 43,
       "p": "inv_fishingpole_02",
-      "skill": 15
+      "skills": {
+        "7": 15
+      }
     },
     {
       "id": 6367,
@@ -72061,7 +72192,9 @@ var gear = {
       "mindmg": 45,
       "maxdmg": 69,
       "p": "inv_fishingpole_01",
-      "skill": 20
+      "skills": {
+        "7": 20
+      }
     },
     {
       "id": 6505,
@@ -72979,7 +73112,9 @@ var gear = {
       "mindmg": 13,
       "maxdmg": 21,
       "p": "inv_fishingpole_02",
-      "skill": 3
+      "skills": {
+        "7": 3
+      }
     },
     {
       "id": 12243,
@@ -73166,7 +73301,9 @@ var gear = {
       "mindmg": 114,
       "maxdmg": 172,
       "p": "inv_weapon_halberd_11",
-      "skill": 10
+      "skills": {
+        "23": 10
+      }
     },
     {
       "id": 12776,
@@ -75183,7 +75320,9 @@ var gear = {
       "mindmg": 93,
       "maxdmg": 140,
       "p": "inv_fishingpole_01",
-      "skill": 25
+      "skills": {
+        "7": 25
+      }
     },
     {
       "id": 19106,
@@ -75304,7 +75443,9 @@ var gear = {
       "mindmg": 42,
       "maxdmg": 63,
       "p": "inv_fishingpole_01",
-      "skill": 35
+      "skills": {
+        "7": 35
+      }
     },
     {
       "id": 20083,
@@ -76560,7 +76701,9 @@ var gear = {
       "p": "inv_sword_28",
       "str": 42,
       "crit": 1,
-      "skill": 3
+      "skills": {
+        "21": 3
+      }
     },
     {
       "id": 228460,

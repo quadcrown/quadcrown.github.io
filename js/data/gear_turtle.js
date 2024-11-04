@@ -2958,8 +2958,13 @@ var gear = {
       "sta": 10,
       "ac": 248,
       "crit": 1,
-      "skill": 6,
-      "type": "Ouro1H",
+      "type": "1H Sword/Mace/Axe/Dagger",
+      "skills": {
+        "2": 6,
+        "10": 6,
+        "11": 6,
+        "13": 6,
+      },
       "phase": 7,
       "source": "AQ40",
       "q": 4,
@@ -2970,8 +2975,13 @@ var gear = {
       "str": 15,
       "sta": 10,
       "ac": 320,
-      "skill": 6,
-      "type": "Ouro2H",
+      "type": "2H Sword/Mace/Axe/Polearm",
+      "skills": {
+        "5": 6,
+        "20": 6,
+        "21": 6,
+        "23": 6,
+      },
       "crit": 1,
       "phase": 7,
       "source": "AQ40",
@@ -2985,7 +2995,7 @@ var gear = {
       "ap": 34,
       "crit": 1,
       "skill": 5,
-      "type": "Axe",
+      "type": "1H Axe",
       "source": "ZG",
       "phase": 4,
       "id": 19869,
@@ -3226,7 +3236,7 @@ var gear = {
       "crit": 1,
       "ac": 529,
       "skill": 5,
-      "type": "Mace",
+      "type": "1H Mace",
       "source": "Ostarius",
       "phase": 7,
       "id": 83485
@@ -3334,12 +3344,15 @@ var gear = {
     },
     {
       "name": "Edgemaster's Handguards",
-      "ac": 201,
-      "skill": 7,
-      "type": "Varied",
-      "source": "Other",
-      "phase": 1,
-      "id": 14551
+      "id": 14551,
+      "q": "4",
+      "i": "49",
+      "type": "1H Sword/Axe/Dagger",
+      "skills": {
+        "2": 7,
+        "11": 7,
+        "13": 7
+      }
     },
     {
       "name": "Flameguard Gauntlets",
@@ -3348,7 +3361,7 @@ var gear = {
       "ap": 54,
       "ac": 488,
       "skill": 7,
-      "type": "Axe",
+      "type": "2H Axe",
       "source": "MC",
       "phase": 1,
       "id": 19143

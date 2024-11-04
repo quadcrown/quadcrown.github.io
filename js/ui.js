@@ -1161,7 +1161,7 @@ SIM.UI = {
 
             table += `<tr data-id="${item.id}" data-name="${item.name}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
-                        <td data-quality="${item.q}"><a href="${WEB_DB_URL}item=${tooltip}${rand}"></a>${item.i}</td>
+                        <td data-quality="${item.q}"><a href="${WEB_DB_URL}item=${tooltip}${rand}"></a>${item.i || '?'}</td>
                         <td>${item.name}</td>`
 
             table +=`<td>${item.source || ''}</td>
@@ -1177,7 +1177,7 @@ SIM.UI = {
                         <td>${item.mindmg || ''}</td>
                         <td>${item.maxdmg || ''}</td>
                         <td>${item.speed || ''}</td>
-                        <td>${item.skill || ''}</td>
+                        <td>${item.skill || (item.skills && Object.values(item.skills)[0]) || ''}</td>
                         <td>${item.type || ''}</td>
                         <td class="ppm"><p contenteditable="true">${item.proc && item.proc.ppm || ''}</p></td>
                         <td>${item.dps || ''}</td>
@@ -1321,7 +1321,7 @@ SIM.UI = {
 
             table += `<tr data-id="${item.id}" class="${item.selected ? 'active' : ''} ${item.hidden ? 'hidden' : ''}">
                         ${editmode ? '<td class="hide">' + (item.hidden ? eyesvghidden : eyesvg) + '</td>' : ''}
-                        <td data-quality="${item.q}"><a href="${WEB_DB_URL}item=${tooltip}${rand}"></a>${item.i}</td>
+                        <td data-quality="${item.q}"><a href="${WEB_DB_URL}item=${tooltip}${rand}"></a>${item.i || '?'}</td>
                         <td>${item.name}</td>`
 
             table += `<td>${item.source || ''}</td>
@@ -1334,7 +1334,7 @@ SIM.UI = {
                         <td>${item.hit || ''}</td>
                         <td>${item.crit || ''}</td>
                         <td>${item.haste || ''}</td>
-                        <td>${item.skill || ''}</td>
+                        <td>${item.skill || (item.skills && Object.values(item.skills)[0]) || ''}</td>
                         <td>${item.type || ''}</td>
                         <td>${item.dps || ''}</td>
                     </tr>`;
