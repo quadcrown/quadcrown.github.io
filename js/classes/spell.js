@@ -261,7 +261,7 @@ class Bloodrage extends Spell {
         this.player.rage = Math.min(this.player.rage + this.rage, 100);
         this.player.auras.bloodrage.use();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
-        if (this.player.mode == "turtle" && this.talents.enrage)
+        if (this.player.mode == "turtle" && this.player.talents.enrage)
             this.player.auras.enrage.use();
         if (this.player.auras.consumedrage && oldRage < 60 && this.player.rage >= 60)
             this.player.auras.consumedrage.use();
