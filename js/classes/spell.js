@@ -2203,6 +2203,8 @@ class Rend extends Aura {
         let basedmg = this.value1;
         if (this.player.bloodfrenzy)
             basedmg += this.value1 + ~~(this.player.stats.ap * 0.03 * this.value2);
+        else if (this.player.mode == "turtle")
+            basedmg += ~~(this.player.stats.ap * 0.05 * this.value2);
         let dmg = basedmg * this.player.stats.dmgmod * this.dmgmod * this.player.bleedmod;
         this.tickdmg = dmg / this.value2;
 
