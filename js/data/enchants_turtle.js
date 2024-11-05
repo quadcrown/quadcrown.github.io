@@ -1036,6 +1036,10 @@ var enchant = {
         "id": 56014,
     },
    ],
+   "trinket1":[
+   ],
+   "trinket2":[
+   ],
 };
 
 var sets = [
