@@ -34,14 +34,15 @@ class Weapon {
         this.offhand = offhand;
         this.twohand = twohand;
         this.crit = 0;
+        this.arp = 0;
         this.basebonusdmg = 0;
         this.bonusdmg = 0;
         this.type = WEAPONTYPE[item.type.replace(' ','').toUpperCase()] || 0;
         this.totaldmg = 0;
         this.totalprocdmg = 0;
         this.data = [0,0,0,0,0];
-        if (this.type == WEAPONTYPE.AXE) this.crit += player.talents.poleaxecrit;
-        if (this.type == WEAPONTYPE.POLEARM) this.crit += player.talents.poleaxecrit;
+        if (this.type == WEAPONTYPE.AXE) this.crit += player.talents.axecrit;
+        if (this.type == WEAPONTYPE.MACE) this.arp += player.talents.macearp * this.player.level;
         if (this.type == WEAPONTYPE.DAGGER) this.normSpeed = 1.7;
         if (this.twohand) this.normSpeed = 3.3;
 

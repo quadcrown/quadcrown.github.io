@@ -192,6 +192,7 @@ class Execute extends Spell {
         else
             this.cost = 15 - player.talents.executecost - player.ragecostbonus;
 
+        this.dumpmod = player.talents.preccut ? 1 + (player.talents.preccut / 100) : 1;
         this.usedrage = 0;
         this.totalusedrage = 0;
         this.refund = false;
@@ -204,7 +205,7 @@ class Execute extends Spell {
     }
     dmg() {
         let dmg;
-        dmg = this.value1 + (this.value2 * this.usedrage);
+        dmg = this.value1 + (this.value2 * this.usedrage * this.dumpmod);
         return dmg * this.player.stats.dmgmod;
     }
     use(delayedheroic) {
@@ -260,6 +261,8 @@ class Bloodrage extends Spell {
         this.player.rage = Math.min(this.player.rage + this.rage, 100);
         this.player.auras.bloodrage.use();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
+        if (this.player.mode == "turtle" && this.talents.enrage)
+            this.player.auras.enrage.use();
         if (this.player.auras.consumedrage && oldRage < 60 && this.player.rage >= 60)
             this.player.auras.consumedrage.use();
     }
@@ -415,6 +418,13 @@ class Hamstring extends Spell {
         this.timer = this.cooldown * 1000;
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
+    canUse() {
+        return !this.player.timer && this.cost <= this.player.rage &&
+        (!this.minrage || this.player.rage >= this.minrage) &&
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
+            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+    }
 }
 
 class ThunderClap extends Spell {
@@ -494,7 +504,7 @@ class BerserkerRage extends Spell {
     constructor(player, id) {
         super(player, id);
         this.cost = 0;
-        this.rage = player.talents.berserkerbonus;
+        this.rage = player.talents.berserkerbonus ? player.talents.berserkerbonus : 0; // fucks up cc2 sim cause talent removed
         this.cooldown = 30;
         this.useonly = true;
         this.offensive = false;
@@ -1367,7 +1377,7 @@ class BloodFury extends Aura {
     constructor(player, id) {
         super(player, id, 'Blood Fury');
         this.duration = 15;
-        this.mult_stats = { baseapmod: 25 };
+        this.mult_stats = { ap: this.player.level * 2 };
     }
     use(a, prepull = 0) {
         if (this.timer) this.uptime += (step - this.starttimer);
@@ -1388,7 +1398,7 @@ class BloodFury extends Aura {
         }
     }
     canUse() {
-        return this.firstuse && !this.timer && !this.player.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep;
     }
 }
 
@@ -1419,7 +1429,34 @@ class Berserking extends Aura {
         return this.firstuse && !this.timer && this.player.rage >= 5 && step >= this.usestep;
     }
 }
-
+class Perception extends Aura {
+    constructor(player, id) {
+        super(player, id);
+        this.duration = 20;
+        if (this.player.mode == "turtle")
+            this.stats = { crit: 2, spellcrit: 2 }
+    }
+    use() {
+        if (this.timer) this.uptime += (step - this.starttimer);
+        this.timer = step + this.duration * 1000 - prepull;
+        this.starttimer = step - prepull;
+        this.player.update();
+        this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
+        /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
+    }
+    step() {
+        if (step >= this.timer) {
+            this.uptime += (this.timer - this.starttimer);
+            this.timer = 0;
+            this.firstuse = false;
+            this.player.update();
+            /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
+        }
+    }
+    canUse() {
+        return this.firstuse && !this.timer && this.player.timer && step >= this.usestep;
+    }
+}
 class Empyrean extends Aura {
     constructor(player, id) {
         super(player, id);

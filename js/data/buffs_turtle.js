@@ -1322,4 +1322,33 @@ var buffs = [
       skill: true,
       defense: 25,
    },
+  // racial dmgmods
+   {
+      id: 57733,
+      name: "Disassembler",
+      iconname: "inv_misc_gear_08",
+      spellid: true,
+      passiveracial: true,
+      dmgmod: 5,
+      spelldmgmod: 5,
+   },
+   {
+      id: 20557,
+      name: "Beast Slaying",
+      iconname: "inv_misc_pelt_bear_ruin_02",
+      spellid: true,
+      passiveracial: true,
+      dmgmod: 5,
+      spelldmgmod: 5,
+   },
+   {
+      id: 52522,
+      name: "Vengeance",
+      iconname: "Inv_misc_bone_humanskull_01",
+      spellid: true,
+      passiveracial: true,
+      dmgmod: 2,
+      spelldmgmod: 2,
+   },
+
 ];

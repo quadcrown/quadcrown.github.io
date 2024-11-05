@@ -24,6 +24,7 @@ class Player {
     constructor(testItem, testType, enchtype, config) {
         if (!config) config = Player.getConfig();
         this.rage = 0;
+        this.ragecap = 100;
         this.ragemod = 1;
         this.level = config.level;
         this.rageconversion = ((0.0091107836 * this.level * this.level) + 3.225598133 * this.level) + 4.2652911;
@@ -252,6 +253,7 @@ class Player {
             }
         }
         if (this.talents.defense) this.base.defense += this.talents.defense;
+        if (this.talents.boundless) this.ragecap += this.talents.boundless;
     }
     addGear() {
         for (let type in gear) {
@@ -692,6 +694,14 @@ class Player {
 
     }
     setSkills() {
+        if (this.talents.twoskill) { // twow cc2
+            this.base.skill_05 += this.talents.twoskill;
+            this.base.skill_05 += this.talents.twoskill;
+            this.base.skill_20 += this.talents.twoskill;
+            this.base.skill_21 += this.talents.twoskill;
+            this.base.skill_23 += this.talents.twoskill;
+        }
+
         this.base.skill_0 += this.mh.twohand ? this.base.skill_20 : this.base.skill_10;
         this.base.skill_1 += this.mh.twohand ? this.base.skill_21 : this.base.skill_11;
         this.base.skill_3 += this.mh.twohand ? this.base.skill_23 : this.base.skill_13;
@@ -970,6 +980,7 @@ class Player {
     }
     updateArmorReduction() {
         this.stats.arp = this.base.arp;
+        if (this.talents.macearp) this.stats.arp += this.mh.arp ? this.mh.arp : this.oh ? this.oh.arp : 0; // apply either MH arp, or OH arp, or neither. Needs rework to apply arp to only the weapon its on.
         this.target.armor = Math.max(this.target.basearmorbuffed - this.stats.arp, 0)
         if (this.auras.annihilator && this.auras.annihilator.timer)
             this.target.armor = Math.max(this.target.armor - (this.auras.annihilator.stacks * this.auras.annihilator.armor), 0);
@@ -1089,7 +1100,7 @@ class Player {
         if (this.extrarage && result == RESULT.HIT) this.rage += this.extrarage;
         if (this.extracritrage && result == RESULT.CRIT) this.rage += this.extracritrage;
 
-        if (this.rage > 100) this.rage = 100;
+        if (this.rage > this.ragecap) this.rage = this.ragecap;
 
         if (this.auras.consumedrage && oldRage < 60 && this.rage >= 60)
             this.auras.consumedrage.use();

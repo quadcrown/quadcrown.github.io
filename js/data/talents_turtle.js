@@ -41,7 +41,7 @@ var talents = [
                'Increases your Parry chance by 5%.'
             ],
             x: 1,
-            y: 0,
+            y: 1,
             c: 0,
             iconname: 'Ability_Parry',
             aura: function (count) { return { parry: count } },
@@ -49,22 +49,20 @@ var talents = [
          {
             i: 127,
             n: 'Improved Rend',
-            m: 3,
+            m: 2,
             s: [
                12286,
-               12658,
-               12659
+               12658
             ],
             d: [
-               'Increases the bleed damage done by your Rend ability by 15%.',
-               'Increases the bleed damage done by your Rend ability by 25%.',
-               'Increases the bleed damage done by your Rend ability by 35%.'
+               'Increases the bleed damage done by your Rend ability by 10%.',
+               'Increases the bleed damage done by your Rend ability by 20%.'
             ],
             x: 2,
             y: 0,
             c: 0,
             iconname: 'Ability_Gouge',
-            aura: function (count) { return { rendmod: 5 + count * 10 } },
+            aura: function (count) { return { rendmod: count * 10 } },
          },
          {
             i: 126,
@@ -103,7 +101,7 @@ var talents = [
                'You retain up to 25 of your rage points when you change stances.'
             ],
             x: 1,
-            y: 1,
+            y: 0,
             c: 0,
             iconname: 'Spell_Nature_EnchantArmor',
             aura: function (count) { return { rageretained: count * 5 } },
@@ -148,7 +146,7 @@ var talents = [
          },
          {
             i: 137,
-            n: 'Anger Management',
+            n: 'Counterattack',
             m: 1,
             s: [
                12296
@@ -163,8 +161,8 @@ var talents = [
                5
             ],
             c: 0,
-            iconname: 'Spell_Holy_BlessingOfStamina',
-            aura: function (count) { return { angermanagement: count } },
+            iconname: 'ability_warrior_riposte',
+            aura: function (count) { return { counterattack: count } },
          },
          {
             i: 121,
@@ -194,26 +192,22 @@ var talents = [
          {
             i: 136,
             n: 'Two-Handed Weapon Specialization',
-            m: 5,
+            m: 3,
             s: [
                12163,
                12711,
                12712,
-               12713,
-               12714
             ],
             d: [
-               'Increases the damage you deal with two-handed melee weapons by 1%.',
-               'Increases the damage you deal with two-handed melee weapons by 2%.',
-               'Increases the damage you deal with two-handed melee weapons by 3%.',
-               'Increases the damage you deal with two-handed melee weapons by 4%.',
-               'Increases the damage you deal with two-handed melee weapons by 5%.'
+               'Increases the damage you deal with two-handed melee weapons by 2% and increases your skill in all two-handed weapons by 1.',
+               'Increases the damage you deal with two-handed melee weapons by 4% and increases your skill in all two-handed weapons by 2.',
+               'Increases the damage you deal with two-handed melee weapons by 6% and increases your skill in all two-handed weapons by 3.',
             ],
             x: 1,
             y: 3,
             c: 0,
             iconname: 'INV_Axe_09',
-            aura: function (count) { return { twomod: count * 0.01 } },
+            aura: function (count) { return { twomod: count * 0.02, twoskill: count } },
          },
          {
             i: 662,
@@ -239,7 +233,7 @@ var talents = [
          },
          {
             i: 132,
-            n: 'Poleaxe Specialization',
+            n: 'Master of Arms',
             m: 5,
             s: [
                12700,
@@ -258,8 +252,8 @@ var talents = [
             x: 0,
             y: 4,
             c: 0,
-            iconname: 'INV_Weapon_Halbard_01',
-            aura: function (count) { return { poleaxecrit: count } },
+            iconname: 'garrison_weaponupgrade',
+            aura: function (count) { return { axecrit: count, swordproc: count, macearp: count * 2 } },
          },
          {
             i: 133,
@@ -279,8 +273,8 @@ var talents = [
          },
          {
             i: 125,
-            n: 'Mace Specialization',
-            m: 5,
+            n: 'Precision Cut',
+            m: 3,
             s: [
                12284,
                12701,
@@ -298,32 +292,32 @@ var talents = [
             x: 2,
             y: 4,
             c: 0,
-            iconname: 'INV_Mace_01',
-            aura: function (count) { return { macestun: count == 5 ? 6 : count } },
+            iconname: 'ability_hunter_swiftstrike',
+            aura: function (count) { return { preccut: count * 20 } },
          },
          {
-            i: 123,
-            n: 'Sword Specialization',
-            m: 5,
+            i: 168,
+            n: 'Improved Slam',
+            m: 2,
             s: [
-               12281,
-               12812,
-               12813,
-               12814,
-               12815
+               12862,
+               12330,
+               20497,
+               20498,
+               20499
             ],
             d: [
-               'Gives you a 1% chance to get an extra attack on the same target after dealing damage with your Sword.',
-               'Gives you a 2% chance to get an extra attack on the same target after dealing damage with your Sword.',
-               'Gives you a 3% chance to get an extra attack on the same target after dealing damage with your Sword.',
-               'Gives you a 4% chance to get an extra attack on the same target after dealing damage with your Sword.',
-               'Gives you a 5% chance to get an extra attack on the same target after dealing damage with your Sword.'
+               'Decreases the casting time of your Slam ability by 0.1 sec.',
+               'Decreases the casting time of your Slam ability by 0.2 sec.',
+               'Decreases the casting time of your Slam ability by 0.3 sec.',
+               'Decreases the casting time of your Slam ability by 0.4 sec.',
+               'Decreases the casting time of your Slam ability by 0.5 sec.'
             ],
             x: 3,
             y: 4,
             c: 0,
-            iconname: 'INV_Sword_27',
-            aura: function (count) { return { swordproc: count } },
+            iconname: 'Ability_Warrior_DecisiveStrike',
+            aura: function (count) { return { impslam: count * 2.5 } }, // cc2 talent is 2.5x better than 1.12 version
          },
          {
             i: 134,
@@ -335,19 +329,19 @@ var talents = [
                45578
             ],
             d: [
-               'Reduces the cooldown of your Retaliation, Recklessness and Shield Wall abilities by 2 min.',
                'Reduces the cooldown of your Retaliation, Recklessness and Shield Wall abilities by 4 min.',
-               'Reduces the cooldown of your Retaliation, Recklessness and Shield Wall abilities by 6 min.'
+               'Reduces the cooldown of your Retaliation, Recklessness and Shield Wall abilities by 8 min.',
+               'Reduces the cooldown of your Retaliation, Recklessness and Shield Wall abilities by 12 min.'
             ],
             x: 0,
             y: 5,
             c: 0,
             iconname: 'Ability_Warrior_Improveddisciplines',
-            aura: function (count) { return { polearmcrit: count } },
+            aura: function (count) { return { impdisc: count } },
          },
          {
             i: 129,
-            n: 'Improved Hamstring',
+            n: 'Boundless Anger',
             m: 3,
             s: [
                12289,
@@ -355,15 +349,15 @@ var talents = [
                23695
             ],
             d: [
-               'Gives your Hamstring ability a 5% chance to immobilize the target for 5 sec.',
-               'Gives your Hamstring ability a 10% chance to immobilize the target for 5 sec.',
-               'Gives your Hamstring ability a 15% chance to immobilize the target for 5 sec.'
+               'Increases your maximum rage by 10.',
+               'Increases your maximum rage by 20.',
+               'Increases your maximum rage by 30.'
             ],
             x: 2,
             y: 5,
             c: 0,
-            iconname: 'Ability_ShockWave',
-            aura: function (count) { return { imphamstring: count * 5 } },
+            iconname: 'ability_warrior_strengthofarms',
+            aura: function (count) { return { boundless: count * 10 } },
          },
          {
             i: 135,
@@ -457,7 +451,7 @@ var talents = [
                'Increases the melee attack power reduction of your Demoralizing Shout by 32%.',
                'Increases the melee attack power reduction of your Demoralizing Shout by 40%.'
             ],
-            x: 1,
+            x: 5, // disabled
             y: 1,
             c: 0,
             iconname: 'Ability_Warrior_WarCry',
@@ -489,7 +483,7 @@ var talents = [
          },
          {
             i: 166,
-            n: 'Improved Cleave',
+            n: 'Improved Pummel',
             m: 3,
             s: [
                12329,
@@ -501,11 +495,11 @@ var talents = [
                'Increases the bonus damage done by your Cleave ability by 80%.',
                'Increases the bonus damage done by your Cleave ability by 120%.'
             ],
-            x: 0,
-            y: 2,
+            x: 3,
+            y: 3,
             c: 0,
-            iconname: 'Ability_Warrior_Cleave',
-            aura: function (count) { return { cleavebonus: count * 40 } },
+            iconname: 'inv_gauntlets_04',
+            aura: function (count) { return { imppummel: count } },
          },
          {
             i: 160,
@@ -541,11 +535,11 @@ var talents = [
             y: 2,
             c: 0,
             iconname: 'Spell_Shadow_SummonImp',
-            aura: function (count) { return { bloodcraze: count } },
+            aura: function (count) { return { bloodcraze: count * 2 } }, // 2x more in cc2
          },
          {
             i: 154,
-            n: 'Improved Battle Shout',
+            n: 'Improved Shouts',
             m: 5,
             s: [
                12318,
@@ -561,11 +555,11 @@ var talents = [
                'Increases the melee attack power bonus of your Battle Shout by 20%.',
                'Increases the melee attack power bonus of your Battle Shout by 25%.'
             ],
-            x: 3,
+            x: 0,
             y: 2,
             c: 0,
-            iconname: 'Ability_Warrior_BattleShout',
-            aura: function (count) { return { impbattleshout: count * 0.05 } },
+            iconname: 'ability_warrior_commandingshout',
+            aura: function (count) { return { impbattleshout: count * 0.05, impdemoshout: count } },
          },
          {
             i: 1581,
@@ -579,14 +573,14 @@ var talents = [
                23588
             ],
             d: [
-               'Increases the damage done by your offhand weapon by 5%.',
-               'Increases the damage done by your offhand weapon by 10%.',
-               'Increases the damage done by your offhand weapon by 15%.',
-               'Increases the damage done by your offhand weapon by 20%.',
-               'Increases the damage done by your offhand weapon by 25%.'
+               'Increases the damage done by your offhand weapon by 5% and your chance to hit with your offhand weapon by 2%.',
+               'Increases the damage done by your offhand weapon by 10% and your chance to hit with your offhand weapon by 4%.',
+               'Increases the damage done by your offhand weapon by 15% and your chance to hit with your offhand weapon by 6%.',
+               'Increases the damage done by your offhand weapon by 20% and your chance to hit with your offhand weapon by 8%.',
+               'Increases the damage done by your offhand weapon by 25% and your chance to hit with your offhand weapon by 10%.'
             ],
-            x: 0,
-            y: 3,
+            x: 1,
+            y: 1,
             c: 0,
             iconname: 'Ability_DualWield',
             aura: function (count) { return { offmod: count * 0.05, offhit: count * 2 } },
@@ -690,7 +684,7 @@ var talents = [
          },
          {
             i: 1541,
-            n: 'Improved Berserker Rage',
+            n: 'Blooddrinker',
             m: 2,
             s: [
                20500,
@@ -700,11 +694,11 @@ var talents = [
                'The Berserker Rage ability will generate 5 rage when used.',
                'The Berserker Rage ability will generate 10 rage when used.'
             ],
-            x: 0,
+            x: 2,
             y: 5,
             c: 0,
-            iconname: 'Spell_Nature_AncestralGuardian',
-            aura: function (count) { return { berserkerbonus: count * 5 } },
+            iconname: 'racial_troll_berserk',
+            aura: function (count) { return { Blooddrinker: count } },
          },
          {
             i: 156,
@@ -724,7 +718,7 @@ var talents = [
                'Increases your attack speed by 25% for your next 3 swings after dealing a melee critical strike.',
                'Increases your attack speed by 30% for your next 3 swings after dealing a melee critical strike.'
             ],
-            x: 2,
+            x: 1,
             y: 5,
             r: [
                10,

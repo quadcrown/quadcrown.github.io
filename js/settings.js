@@ -396,6 +396,10 @@ SIM.SETTINGS = {
                 spell.active = false;
                 continue;
             }
+            if (spell.id == 20600 && storage.race !== "Human") {
+                spell.active = false;
+                continue;
+            }
 
             // level restriction
             let min = parseInt(spell.minlevel || 0);
@@ -653,7 +657,7 @@ SIM.SETTINGS = {
         view.buffs.append('<label class="active">Buffs</label>');
         let storage = JSON.parse(localStorage[mode + (globalThis.profileid || 0)]);
         let level = parseInt(storage.level);
-        let worldbuffs = '', consumes = '', other = '', armor = '', stances = '', skills = '';
+        let worldbuffs = '', consumes = '', other = '', armor = '', stances = '', skills = '', passiveracial = '';
         for (let buff of buffs) {
 
             // level restrictions
@@ -711,6 +715,7 @@ SIM.SETTINGS = {
             else if (buff.stance) stances += html;
             else if (buff.consume) consumes += html;
             else if (buff.other) other += html;
+            else if (buff.passiveracial) passiveracial += html;
             else if (buff.armor || buff.improvedexposed) armor += html;
             else if (buff.skill) skills += html;
             else view.buffs.append(html);
@@ -728,6 +733,8 @@ SIM.SETTINGS = {
         view.buffs.append(stances);
         view.buffs.append('<div class="label">Skill Specialization</div>');
         view.buffs.append(skills);
+        view.buffs.append('<div class="label">Situational Racial Passives</div>');
+        view.buffs.append(passiveracial);
         SIM.UI.updateSession();
         SIM.UI.updateSidebar();
     },
