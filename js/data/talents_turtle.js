@@ -625,7 +625,7 @@ var talents = [
             y: 3,
             c: 0,
             iconname: 'Spell_Shadow_UnholyFrenzy',
-            aura: function (count) { return { enrage: count * 5 } },
+            aura: function (count) { return { enrage: count * 3 } },
          },
          {
             i: 168,
