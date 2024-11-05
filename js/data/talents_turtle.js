@@ -685,10 +685,11 @@ var talents = [
          {
             i: 1541,
             n: 'Blooddrinker',
-            m: 2,
+            m: 3,
             s: [
                20500,
-               20501
+               20501,
+               20502,
             ],
             d: [
                'The Berserker Rage ability will generate 5 rage when used.',
