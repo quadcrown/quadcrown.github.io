@@ -396,7 +396,7 @@ class Player {
         for (let type in enchant) {
             for (let item of enchant[type]) {
                 if (!item.temp) continue;
-                if ((type == "mainhand" || type == "twohand") && this.mh.windfury) continue;
+                // if ((type == "mainhand" || type == "twohand") && this.mh.windfury) continue; // wf now stacks with mh ench in 1.17.2
                 if ((this.testTempEnchType == type && this.testTempEnch == item.id) ||
                     (this.testTempEnchType != type && item.selected)) {
 
