@@ -2473,6 +2473,18 @@ var gear = {
   ],
   "wrist": [
     {
+      "name": "Bracers of the Demonic Hunt (vs Demons)",
+      "ap": 14,
+      "agi": 7,
+      "sta": 3,
+      "ac": 160,
+      "phase": 7,
+      "source": "Other",
+      "q": 3,
+      "i": 62,
+      "id": 83267
+    },
+    {
       "name": "Bracers of Might",
       "str": 16,
       "agi": 12,

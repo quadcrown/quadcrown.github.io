@@ -321,6 +321,8 @@ class Player {
 
                     if (item.id == 21189)
                         this.base['moddmgdone'] += 4;
+                    if (item.id == 83267)
+                        this.base['moddmgdone'] += 8;
                     if (item.id == 19968)
                         this.base['moddmgdone'] += 2;
                     if (item.id == 215166)
