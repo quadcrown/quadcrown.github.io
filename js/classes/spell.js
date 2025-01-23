@@ -94,7 +94,7 @@ class Bloodthirst extends Spell {
     dmg() {
         let dmg;
         if (this.player.mode == "turtle")
-            dmg = 150 + this.player.stats.ap * 0.30;  // TODO lower levels
+            dmg = 200 + this.player.stats.ap * 0.35;  // TODO lower levels
         else
             dmg = this.player.stats.ap * 0.45;
 
