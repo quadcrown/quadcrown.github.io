@@ -1548,14 +1548,6 @@ class Player {
             this.proccrit(false, adjacent, spell);
         }
 
-        if (this.mode == 'turtle' && this.talents.enrage && spell instanceof Bloodthirst) {
-            let selfattack_result = this.rollmeleespell(spell)
-            if (this.logging) this.log(`Bloodthirst self attack ${RESULT2STR[selfattack_result]}`)
-            if (selfattack_result == RESULT.CRIT) {
-                this.auras.enrage.use();
-            }
-        }
-
         let done = this.dealdamage(dmg, result, this.mh, spell, adjacent);
         if (!adjacent) spell.data[result]++;
         spell.totaldmg += done;
