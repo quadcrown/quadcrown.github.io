@@ -87,7 +87,7 @@ class Spell {
 class Bloodthirst extends Spell {
     constructor(player, id) {
         super(player, id);
-        this.cost = 30 - player.ragecostbonus;
+        this.cost = 30 - player.ragecostbonus - (player.altmightfiveset ? 10 : 0);
         this.cooldown = 6;
         this.weaponspell = false;
     }
@@ -336,7 +336,7 @@ class Cleave extends Spell {
 class MortalStrike extends Spell {
     constructor(player, id) {
         super(player, id, 'Mortal Strike');
-        this.cost = 30 - player.ragecostbonus;
+        this.cost = 30 - player.ragecostbonus - (player.altmightfiveset ? 10 : 0);
         this.cooldown = 6;
     }
     dmg() {
@@ -1294,7 +1294,7 @@ class DeathWish extends Aura {
     use(a, prepull = 0) {
         if (this.timer) this.uptime += (step - this.starttimer);
         this.timer = step + this.duration * 1000 - prepull;
-        this.player.rage -= 10;
+        this.player.rage -= (this.player.altdreadnoughttwoset ? 0 : 10);
         this.player.timer = 1500;
         this.starttimer = step - prepull;
         this.player.updateDmgMod();
@@ -1302,7 +1302,7 @@ class DeathWish extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.timer && this.player.rage >= 10 && step >= this.usestep;
+        return !this.timer && !this.player.timer && this.player.rage >= (this.player.altdreadnoughttwoset ? 0 : 10) && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {

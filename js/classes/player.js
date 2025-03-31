@@ -578,6 +578,9 @@ class Player {
                         this.auras.defforecast = new DefForecast(this);
                         this.auras.gladforecast = new GladForecast(this);
                     }
+                    if (bonus.stats.altmightthreeset) this.altmightthreeset = true;
+                    if (bonus.stats.altmightfiveset) this.altmightfiveset = true;
+                    if (bonus.stats.altdreadnoughttwoset) this.altdreadnoughttwoset = true;
                     if (bonus.stats.overpowerrend) this.overpowerrend = bonus.stats.overpowerrend;
                     if (bonus.stats.heroicbonus) this.heroicbonus = bonus.stats.heroicbonus;
                     if (bonus.stats.slammainreset) this.slammainreset = bonus.stats.slammainreset;
@@ -1130,6 +1133,9 @@ class Player {
             if (result == RESULT.MISS || result == RESULT.DODGE) {
                 this.rage += spell.refund ? spell.cost * 0.8 : 0;
                 oldRage += (spell.cost || 0) + (spell.usedrage || 0); // prevent cbr proccing on refunds
+                    if (this.altmightthreeset) {
+                        this.rage += 15;
+                    }
             }
         }
         else {

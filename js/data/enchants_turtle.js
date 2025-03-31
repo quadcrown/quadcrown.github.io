@@ -1222,4 +1222,31 @@ var sets = [
          { count: 2, stats: { crit: 1 } }
       ]
    },
+   {
+      id: 1003,
+      name: 'Armor of Might',
+      items: [47240,47241,47242,47243,47244,47245,47246,47247],
+      bonus: [
+		 { count: 3, stats: { altmightthreeset: true } },
+		 { count: 5, stats: { altmightfiveset: true } },
+		 { count: 8, stats: { crit: 2 } }
+      ]
+   },
+   {
+      id: 2003,
+      name: 'Armor of Wrath',
+      items: [47248,47249,47250,47251,47252,47253,47254,47255],
+      bonus: [
+		 { count: 5, stats: { skill_0: 5, skill_1: 5, skill_2: 5, skill_3: 5, skill_4: 5, skill_5: 5, skill_6: 5 } }
+		 
+      ]
+   },
+      {
+      id: 3002,
+      name: 'Armor of the Dreadnought',
+      items: [47261,47262,47263,47264,47265,47266,47267,47268,47269],
+      bonus: [
+        { count: 2, stats: { altdreadnoughttwoset: true } }
+      ]
+   },
 ];
