@@ -37,7 +37,7 @@ var gear = {
       "i": 86,
       "id": 47261
     },
-	{
+	  {
       "name": "Helmet of the Brotherhood",
       "str": 32,
       "sta": 37,
@@ -45,10 +45,10 @@ var gear = {
       "ac": 834,
       "crit": 1,
       "phase": 7,
-      "source": "Upperkara",
+      "source": "UpperKara",
       "id": 47270
     },
-	{
+	  {
       "name": "Dreadslayer Horns (vs Demons)",
       "source": "UpperKara",
       "str": 20,
@@ -677,7 +677,7 @@ var gear = {
       "phase": 7,
       "id": 61512
     },
-	{
+	  {
       "name": "Choker of the Brotherhood",
       "source": "UpperKara",
       "agi": 14,
@@ -1001,7 +1001,7 @@ var gear = {
       "i": 86,
       "id": 47262
     },
-	{
+	  {
       "name": "Shoulderguards of the Brotherhood",
       "ac": 747,
       "str": 27,
@@ -1012,7 +1012,7 @@ var gear = {
       "source": "UpperKara",
       "id": 47271
     },
-	{
+    {
       "name": "Dreadslayer Shoulderblades",
       "ac": 736,
       "str": 32,
@@ -1917,14 +1917,14 @@ var gear = {
       "i": 86,
       "id": 47263
     },
-	{
+    {
       "name": "Chestguard of the Brotherhood",
       "str": 30,
       "sta": 42,
 	    "agi": 32,
       "ac": 1070,
       "phase": 7,
-      "source": "Upperkara",
+      "source": "UpperKara",
       "id": 47272
     },
     {
@@ -2905,7 +2905,7 @@ var gear = {
         "shadow": 10
       },
       "phase": 7,
-      "source": "Upperkara",
+      "source": "UpperKara",
       "id": 55356
     },
     {
@@ -3694,7 +3694,7 @@ var gear = {
       "hit": 1,
       "haste": 1,
       "phase": 7,
-      "source": "Upperkara",
+      "source": "UpperKara",
       "id": 69699
     },
     {
@@ -4282,7 +4282,7 @@ var gear = {
       "crit": 1,
 	    "hit": 1,
       "phase": 7,
-      "source": "Upperkara",
+      "source": "UpperKara",
       "id": 47273
     },
     {
@@ -4927,8 +4927,9 @@ var gear = {
     },
     {
       "name": "Dreadnaught Sabatons",
-      "str": 26,
-      "agi": 23,
+      "str": 19,
+      "agi": 18,
+      "sta": 15,
       "ac": 662,
       "hit": 1,
       "arp": 40,
@@ -4945,7 +4946,7 @@ var gear = {
       "agi": 19,
       "ac": 677,
       "phase": 7,
-      "source": "Upperkara",
+      "source": "UpperKara",
       "id": 47274
     },
     {
@@ -5447,6 +5448,14 @@ var gear = {
       "id": 47269
     },
     {
+      "name": "Loop of Hardened Slate",
+      "str": 13,
+      "sta": 19,
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55123
+    },
+    {
       "name": "Tarnished Lancelot Ring",
       "crit": 1,
       "ap": 10,
@@ -5818,6 +5827,14 @@ var gear = {
       "q": 4,
       "i": 86,
       "id": 47269
+    },
+    {
+      "name": "Loop of Hardened Slate",
+      "str": 13,
+      "sta": 19,
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55123
     },
     {
       "name": "Tarnished Lancelot Ring",
@@ -8841,6 +8858,30 @@ var gear = {
       "id": 18683,
       "str": 7,
       "sta": 12
+    },
+    {
+      "name": "Thunderfall, Stormhammer of the Chief Thane",
+      "crit": 2,
+      "arp": 35,
+      "sta": -13,
+      "mindmg": 167,
+      "maxdmg": 286,
+      "speed": 2.8,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55347
+    },
+    {
+      "name": "Forgotten Raven's Mallet",
+      "sta": 15,
+      "mindmg": 135,
+      "maxdmg": 252,
+      "speed": 2.7,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55276
     }
   ],
   "offhand": [
@@ -8869,6 +8910,30 @@ var gear = {
       "source": "UpperKara",
       "phase": 7,
       "id": 55080
+    },
+    {
+      "name": "Thunderfall, Stormhammer of the Chief Thane",
+      "crit": 2,
+      "arp": 35,
+      "sta": -13,
+      "mindmg": 167,
+      "maxdmg": 286,
+      "speed": 2.8,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55347
+    },
+    {
+      "name": "Forgotten Raven's Mallet",
+      "sta": 15,
+      "mindmg": 135,
+      "maxdmg": 252,
+      "speed": 2.7,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55276
     },
     {
       "name": "Hedgecutter",
@@ -9793,7 +9858,7 @@ var gear = {
       "phase": 6,
       "id": 23242
     },
-	{
+	  {
       "name": "Claw of the Mageweaver",
       "offhand": true,
       "crit": 1,
@@ -10356,6 +10421,34 @@ var gear = {
         "magic": true,
         "dmg": 286
       }
+    },
+    {
+      "name": "Checkmate",
+      "agi": 40,
+      "sta": 25,
+      "arp": 40,
+      "haste": 2,
+      "mindmg": 273,
+      "maxdmg": 419,
+      "speed": 3.7,
+      "id": 55100,
+      "source": "UpperKara",
+      "phase": 7,
+      "type": "Mace"
+    },
+    {
+      "name": "Shar'tateth, the Shattered Edge",
+      "agi": 25,
+      "str": 45,
+      "arp": 47,
+      "haste": 2,
+      "mindmg": 307,
+      "maxdmg": 453,
+      "speed": 3.8,
+      "id": 55127,
+      "source": "UpperKara",
+      "phase": 7,
+      "type": "Axe"
     },
     {
       "name": "Aspect of Seradane",
