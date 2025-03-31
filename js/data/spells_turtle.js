@@ -596,6 +596,22 @@ var spells = [
     expriority: 0,
 },
 
+// Pummel
+{
+    id: 6552,
+    name: 'Pummel',
+    classname: 'Pummel',
+    iconname: 'INV_Gauntlets_04',
+    minrage: 50,
+    minrageactive: true,
+    maincd: 2,
+    maincdactive: false,
+    minlevel: 18,
+    active: false,
+    priority: 2,
+    expriority: 0,
+},
+
 // Thunder Clap
 {
     id: 6343,

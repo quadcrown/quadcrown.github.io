@@ -427,6 +427,40 @@ class Hamstring extends Spell {
     }
 }
 
+class Pummel extends Spell {
+    constructor(player, id) {
+        super(player, id);
+        this.cost = 10 - player.ragecostbonus;
+        if (this.player.mode == "turtle")
+            this.cooldown = 10;
+    }
+    dmg() {
+        let dmg;
+        dmg = this.player.stats.ap * 0.05;
+        return dmg * this.player.stats.dmgmod;
+    }
+    use() {
+        if (!this.player.isValidStance('zerk') && !this.player.isValidStance('battle')) {
+            let newstance = 'zerk';
+            if (this.player.basestance == 'battle') newstance = 'battle';
+            else if (this.player.spells.unstoppablemight && this.player.spells.unstoppablemight.secondarystance == 'battle') newstance = 'battle';
+            this.player.switch(newstance);
+        }
+
+        this.player.timer = 1500;
+        this.player.rage -= this.cost;
+        this.timer = this.cooldown * 1000;
+        this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
+    }
+    canUse() {
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
+        (!this.minrage || this.player.rage >= this.minrage) &&
+        (!this.maincd ||
+            (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
+            (this.player.spells.mortalstrike && this.player.spells.mortalstrike.timer >= this.maincd));
+    }
+}
+
 class ThunderClap extends Spell {
     constructor(player, id) {
         super(player, id);
