@@ -1419,7 +1419,6 @@ class BloodFury extends Aura {
         if (this.timer) this.uptime += (step - this.starttimer);
         this.timer = step + this.duration * 1000 - prepull;
         this.starttimer = step - prepull;
-        this.player.timer = 1500;
         this.player.updateAuras();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
