@@ -1639,7 +1639,7 @@ class Player {
                 if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1);
                 if (weapon.proc1.physdmg) {
                     let dmg = this.physproc(weapon.proc1.physdmg);
-                    if (dmg > 0 && weapon.proc1.phantom) dmg += this.phantomproc(weapon)
+                    if (dmg > 0 && weapon.proc1.phantom && this.mode !='turtle') dmg += this.phantomproc(weapon)
                     procdmg += dmg
                 }
                 /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
@@ -1823,7 +1823,7 @@ class Player {
         roll = rng10k();
         let crit = this.crit + this.mh.crit;
         if (roll < (crit * 100)) dmg *= 1 + 1 * (1 + this.critdmgbonus * 2);
-        return dmg * this.stats.dmgmod * this.mh.modifier;
+        return dmg * this.stats.dmgmod * this.mh.modifier * (1-this.armorReduction);
     }
     serializeStats() {
         return {
