@@ -982,7 +982,7 @@ class Player {
         let mod = 1;
         if (this.auras.spicy && this.auras.spicy.timer)
             mod *= (1 + this.auras.spicy.mult_stats.haste / 100);
-        if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
+        if (this.auras.jujuflurry && this.auras.jujuflurry.timer && this.mode !=='turtle')
             mod *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
 
         this.mh.mindmg = this.mh.basemindmg / mod;

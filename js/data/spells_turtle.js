@@ -1614,7 +1614,7 @@ var spells = [
     classname: 'JujuFlurry',
     iconname: 'inv_misc_monsterscales_17',
     minlevel: 55,
-    timetoend: 11,
+    timetoend: 20,
     timetoendactive: false,
     timetostart: 0,
     timetostartactive: false,
