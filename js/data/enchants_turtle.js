@@ -1249,4 +1249,12 @@ var sets = [
         { count: 2, stats: { altdreadnoughttwoset: true } }
       ]
    },
+   {
+      id: 999,
+      name: 'Dreadslayer\'s Rampage',
+      items: [55113,55108],
+      bonus: [
+         { count: 2, stats: { arp: 150 } }
+      ]
+   },
 ];

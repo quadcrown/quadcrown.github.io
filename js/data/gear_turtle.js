@@ -37,6 +37,29 @@ var gear = {
       "i": 86,
       "id": 47261
     },
+	{
+      "name": "Helmet of the Brotherhood",
+      "str": 32,
+      "sta": 37,
+      "agi": 28,
+      "ac": 834,
+      "crit": 1,
+      "phase": 7,
+      "source": "Upperkara",
+      "id": 47270
+    },
+	{
+      "name": "Dreadslayer Horns (vs Demons)",
+      "source": "UpperKara",
+      "str": 20,
+	    "ap": 45,
+	    "agi": 28,
+	    "sta": 20,
+      "hit": 1,
+      "ac": 834,
+      "phase": 7,
+      "id": 55113
+    },
     {
       "name": "Ragereaver's Helm",
       "source": "Dungeon",
@@ -171,7 +194,8 @@ var gear = {
       "source": "Crafting",
       "subsource": "nature",
       "ac": 156,
-      "sta": 20,
+      "sta": 15,
+	  "agi": 12,
       "resist": {
         "nature": 30
       },
@@ -653,6 +677,16 @@ var gear = {
       "phase": 7,
       "id": 61512
     },
+	{
+      "name": "Choker of the Brotherhood",
+      "source": "UpperKara",
+      "agi": 14,
+      "str": 15,
+	    "crit": 2,
+	    "arp": 50,
+      "phase": 7,
+      "id": 47275
+    },
     {
       "name": "Bixxle's Necklace of Mastery",
       "source": "Quest",
@@ -966,6 +1000,28 @@ var gear = {
       "q": 4,
       "i": 86,
       "id": 47262
+    },
+	{
+      "name": "Shoulderguards of the Brotherhood",
+      "ac": 747,
+      "str": 27,
+      "agi": 22,
+	    "sta": 26,
+      "hit": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 47271
+    },
+	{
+      "name": "Dreadslayer Shoulderblades",
+      "ac": 736,
+      "str": 32,
+	    "sta": 19,
+      "hit": 1,
+	    "crit": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55108
     },
     {
       "name": "Rune-Etched Mantle",
@@ -1861,6 +1917,16 @@ var gear = {
       "i": 86,
       "id": 47263
     },
+	{
+      "name": "Chestguard of the Brotherhood",
+      "str": 30,
+      "sta": 42,
+	    "agi": 32,
+      "ac": 1070,
+      "phase": 7,
+      "source": "Upperkara",
+      "id": 47272
+    },
     {
       "name": "Centaur Battle Harness",
       "source": "Crafting",
@@ -2011,10 +2077,11 @@ var gear = {
       "name": "Sandstalker Breastplate",
       "source": "Crafting",
       "subsource": "nature",
-      "sta": 13,
-      "ac": 485,
+      "sta": 15,
+      "ac": 409,
+	  "ap": 24,
       "resist": {
-        "nature": 25
+        "nature": 30
       },
       "phase": "5",
       "id": 20478
@@ -2628,8 +2695,9 @@ var gear = {
       "name": "Sandstalker Bracer",
       "source": "Crafting",
       "subsource": "nature",
-      "sta": 7,
-      "ac": 220,
+      "sta": 9,
+      "ac": 179,
+	  "ap": 18,
       "resist": {
         "nature": 15
       },
@@ -2827,6 +2895,19 @@ var gear = {
       "phase": 5,
       "id": 21184
     },
+	{
+      "name": "Netherwrought Bracers",
+      "str": 24,
+	    "agi": 20,
+      "ac": 459,
+      "hit": 1,
+      "resist": {
+        "shadow": 10
+      },
+      "phase": 7,
+      "source": "Upperkara",
+      "id": 55356
+    },
     {
       "name": "Gordok Bracers of Power",
       "str": 17,
@@ -3000,6 +3081,20 @@ var gear = {
       "q": 4,
       "id": 55554
     },
+	{
+      "name": "Dragonclaw Gauntlets",
+      "source": "UpperKara",
+      "str": 28,
+	    "sta": 18,
+      "hit": 1,
+      "haste": 1,
+      "ac": 615,
+      "resist": {
+        "fire": 15
+      },
+      "phase": 7,
+      "id": 55103 //fix id 
+    },
     {
       "name": "Blooddrenched Grips",
       "ac": 122,
@@ -3150,10 +3245,11 @@ var gear = {
       "name": "Sandstalker Gauntlets",
       "source": "Crafting",
       "subsource": "nature",
-      "sta": 9,
-      "ac": 308,
+      "sta": 12,
+      "ac": 256,
+	  "ap": 24,
       "resist": {
-        "nature": 20
+        "nature": 25
       },
       "phase": 5,
       "id": 20477
@@ -3589,6 +3685,17 @@ var gear = {
       "q": 4,
       "i": 86,
       "id": 47266
+    },
+	{
+      "name": "Worldbreaker Girdle",
+      "str": 35,
+	    "agi": 25,
+      "ac": 578,
+      "hit": 1,
+      "haste": 1,
+      "phase": 7,
+      "source": "Upperkara",
+      "id": 69699
     },
     {
       "name": "Marksman's Girdle",
@@ -4165,6 +4272,18 @@ var gear = {
       "q": 4,
       "i": 86,
       "id": 47267
+    },
+	{
+      "name": "Legguards of the Brotherhood",
+      "str": 43,
+      "sta": 32,
+	    "agi": 16,
+      "ac": 898,
+      "crit": 1,
+	    "hit": 1,
+      "phase": 7,
+      "source": "Upperkara",
+      "id": 47273
     },
     {
       "name": "Slime-coated Leggings",
@@ -4818,6 +4937,16 @@ var gear = {
       "q": 4,
       "i": 86,
       "id": 47268
+    },
+	{
+      "name": "Greaves of the Brotherhood",
+      "str": 29,
+      "sta": 24,
+      "agi": 19,
+      "ac": 677,
+      "phase": 7,
+      "source": "Upperkara",
+      "id": 47274
     },
     {
       "name": "Boots of Blazing Steps",
@@ -8688,6 +8817,19 @@ var gear = {
         "dmg": 99
       }
     },
+	{
+      "name": "Bloodmoon, Sickle of the Murderous Flight",
+      "hit": 2,
+      "ap": 20,
+      "agi": 12,
+      "mindmg": 96,
+      "maxdmg": 162,
+      "speed": 1.8,
+      "type": "Axe",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55080
+    },
     {
       "name": "Hammer of the Vesper",
       "mindmg": 70,
@@ -8714,6 +8856,19 @@ var gear = {
       "source": "AQ40",
       "phase": 5,
       "id": 21673
+    },
+	{
+      "name": "Bloodmoon, Sickle of the Murderous Flight",
+      "hit": 2,
+      "ap": 20,
+      "agi": 12,
+      "mindmg": 96,
+      "maxdmg": 162,
+      "speed": 1.8,
+      "type": "Axe",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55080
     },
     {
       "name": "Hedgecutter",
@@ -9637,6 +9792,20 @@ var gear = {
       "source": "Naxx",
       "phase": 6,
       "id": 23242
+    },
+	{
+      "name": "Claw of the Mageweaver",
+      "offhand": true,
+      "crit": 1,
+      "sta": 11,
+      "ap": 30,
+      "mindmg": 70,
+      "maxdmg": 140,
+      "speed": 1.6,
+      "type": "Fist",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55133
     },
     {
       "name": "Eskhandar's Left Claw",
@@ -11229,7 +11398,7 @@ var gear = {
       "type": "Sword"
     },
     {
-      "name": "Kalimdor's Revenge *Classic PPM",
+      "name": "Kalimdor's Revenge",
       "str": 24,
       "sta": 18,
       "mindmg": 209,
@@ -11240,7 +11409,7 @@ var gear = {
       "phase": 5,
       "type": "Sword",
       "proc": {
-        "ppm": 1,
+        "ppm": 1.75,
         "magic": true,
         "dmg": 258
       }
