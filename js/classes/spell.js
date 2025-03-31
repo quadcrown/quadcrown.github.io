@@ -419,7 +419,7 @@ class Hamstring extends Spell {
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
     }
     canUse() {
-        return !this.player.timer && this.cost <= this.player.rage &&
+        return !this.timer && !this.player.timer && this.cost <= this.player.rage &&
         (!this.minrage || this.player.rage >= this.minrage) &&
         (!this.maincd ||
             (this.player.spells.bloodthirst && this.player.spells.bloodthirst.timer >= this.maincd) ||
