@@ -149,6 +149,34 @@ var gear = {
       "id": 12952
     },
     {
+      "name": "Ethereal Helmet",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 172,
+      "sta": 18,
+      "agi": 18,
+      "ap": 30,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "id": 55522
+    },
+    {
+      "name": "Reflective Helmet",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 654,
+      "sta": 25,
+      "str": 18,
+      "defense": 6,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "id": 55530
+    },
+    {
       "name": "Polar Helmet",
       "source": "Naxx",
       "subsource": "frost",
@@ -194,7 +222,7 @@ var gear = {
       "subsource": "nature",
       "ac": 156,
       "sta": 15,
-	  "agi": 12,
+	    "agi": 12,
       "resist": {
         "nature": 30
       },
@@ -1021,6 +1049,33 @@ var gear = {
       "phase": 7,
       "source": "UpperKara",
       "id": 55108
+    },
+    {
+      "name": "Ethereal Shoulder Pads",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 159,
+      "sta": 24,
+      "hit": 1,
+      "resist": {
+        "arcane": 20
+      },
+      "phase": 7,
+      "id": 55523
+    },
+    {
+      "name": "Reflective Pauldrons",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 608,
+      "sta": 18,
+      "str": 16,
+      "defense": 4,
+      "resist": {
+        "arcane": 20
+      },
+      "phase": 7,
+      "id": 55531
     },
     {
       "name": "Rune-Etched Mantle",
@@ -1925,6 +1980,34 @@ var gear = {
       "phase": 7,
       "source": "UpperKara",
       "id": 47272
+    },
+    {
+      "name": "Ethereal Tunic",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 238,
+      "sta": 23,
+      "agi": 18,
+      "ap": 22,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "id": 55524
+    },
+    {
+      "name": "Reflective Breastplate",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 787,
+      "sta": 22,
+      "ap": 38,
+      "defense": 7,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "id": 55532
     },
     {
       "name": "Centaur Battle Harness",
@@ -4283,6 +4366,33 @@ var gear = {
       "phase": 7,
       "source": "UpperKara",
       "id": 47273
+    },
+    {
+      "name": "Ethereal Leggings",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 184,
+      "sta": 22,
+      "agi": 15,
+      "str": 15,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "id": 55525
+    },
+    {
+      "name": "Reflective Leggings",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 700,
+      "sta": 28,
+      "defense": 10,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "id": 55533
     },
     {
       "name": "Slime-coated Leggings",
