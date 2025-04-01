@@ -3128,6 +3128,17 @@ var gear = {
       "id": 47265
     },
     {
+      "name": "Handwraps of Dead Winds",
+      "sta": 14,
+      "agi": 18,
+      "crit": 1,
+      "ap": 72,
+      "ac": 164,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55125
+    },
+    {
       "name": "Gloves of the Primordial Burrower",
       "str": 15,
       "sta": 10,
@@ -3768,7 +3779,17 @@ var gear = {
       "i": 86,
       "id": 47266
     },
-	{
+    {
+      "name": "Sash of the Grand Betrayal",
+      "sta": 16,
+      "ap": 52,
+      "crit": 1,
+      "haste": 2,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55357
+    },
+	  {
       "name": "Worldbreaker Girdle",
       "str": 35,
 	    "agi": 25,
@@ -5059,6 +5080,30 @@ var gear = {
       "id": 47274
     },
     {
+      "name": "Manahide Slippers",
+      "sta": 16,
+      "agi": 18,
+      "ac": 175,
+      "hit": 2,
+      "resist": {
+        "arcane": 24
+      },
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55092
+    },
+    {
+      "name": "Pawn's Advance",
+      "sta": 15,
+      "ap": 46,
+      "hit": 2,
+      "haste": 2,
+      "ac": 175,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55104
+    },
+    {
       "name": "Boots of Blazing Steps",
       "haste": 1,
       "agi": 14,
@@ -5557,6 +5602,27 @@ var gear = {
       "id": 47269
     },
     {
+      "name": "Mephistroth's Cunning",
+      "agi": 32,
+      "hit": 1,
+      "haste": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55353
+    },
+    {
+      "name": "Brand of Karazhan",
+      "str": 17,
+      "hit": 1,
+      "haste": 1,
+      "resist": {
+        "arcane": 15
+      },
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55666
+    },
+    {
       "name": "Loop of Hardened Slate",
       "str": 13,
       "sta": 19,
@@ -5936,6 +6002,27 @@ var gear = {
       "q": 4,
       "i": 86,
       "id": 47269
+    },
+    {
+      "name": "Mephistroth's Cunning",
+      "agi": 32,
+      "hit": 1,
+      "haste": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55353
+    },
+    {
+      "name": "Brand of Karazhan",
+      "str": 17,
+      "hit": 1,
+      "haste": 1,
+      "resist": {
+        "arcane": 15
+      },
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55666
     },
     {
       "name": "Loop of Hardened Slate",
@@ -6809,6 +6896,14 @@ var gear = {
       "source": "Dungeon",
       "phase": 7,
       "id": 61569
+    },
+    {
+      "name": "Fragments of Aldrach",
+      "agi": 19,
+      "crit": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "id": 55510
     },
     {
       "name": "Nature's Call",
