@@ -50,7 +50,7 @@ var gear = {
 	  {
       "name": "Dreadslayer Horns (vs Demons)",
       "source": "UpperKara",
-      "str": 20,
+      "str": 33,
 	    "ap": 45,
 	    "agi": 28,
 	    "sta": 20,
@@ -9052,6 +9052,20 @@ var gear = {
       "id": 55080
     },
     {
+      "name": "Riftcarver's Implement",
+      "str": 12,
+      "crit": 1,
+      "hit": 1,
+      "agi": 14,
+      "mindmg": 126,
+      "maxdmg": 179,
+      "speed": 2.0,
+      "type": "Dagger",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55115
+    },
+    {
       "name": "Hammer of the Vesper",
       "mindmg": 70,
       "maxdmg": 131,
@@ -9102,7 +9116,7 @@ var gear = {
       "phase": 5,
       "id": 21673
     },
-	{
+	  {
       "name": "Bloodmoon, Sickle of the Murderous Flight",
       "hit": 2,
       "ap": 20,
@@ -9114,6 +9128,20 @@ var gear = {
       "source": "UpperKara",
       "phase": 7,
       "id": 55080
+    },
+    {
+      "name": "Riftcarver's Implement",
+      "str": 12,
+      "crit": 1,
+      "hit": 1,
+      "agi": 14,
+      "mindmg": 126,
+      "maxdmg": 179,
+      "speed": 2.0,
+      "type": "Dagger",
+      "source": "UpperKara",
+      "phase": 7,
+      "id": 55115
     },
     {
       "name": "Thunderfall, Stormhammer of the Chief Thane",
@@ -10644,7 +10672,7 @@ var gear = {
       "name": "Shar'tateth, the Shattered Edge",
       "agi": 25,
       "str": 45,
-      "arp": 47,
+      "arp": 75,
       "haste": 2,
       "mindmg": 307,
       "maxdmg": 453,
