@@ -1250,6 +1250,14 @@ var sets = [
       ]
    },
    {
+      id: 3502,
+      name: 'Battlegear of the Brotherhood',
+      items: [47270,47271,47272,47273,47274,47275],
+      bonus: [
+        { count: 3, stats: { brotherhoodthreeset: true } }
+      ]
+   },
+   {
       id: 999,
       name: 'Dreadslayer\'s Rampage',
       items: [55113,55108],

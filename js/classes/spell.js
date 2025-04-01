@@ -108,7 +108,7 @@ class Bloodthirst extends Spell {
 class Whirlwind extends Spell {
     constructor(player, id) {
         super(player, id);
-        this.cost = 25 - player.ragecostbonus - (player.whirlwindcost || 0);
+        this.cost = 25 - player.ragecostbonus - (player.whirlwindcost || 0) - (player.brotherhoodthreeset ? 5 : 0);
         this.cooldown = 10;
         if (this.player.talents.impwhirlwind == 1) this.cooldown -= 1;
         if (this.player.talents.impwhirlwind == 2) this.cooldown -= 1.5;
@@ -279,7 +279,7 @@ class Bloodrage extends Spell {
 class HeroicStrike extends Spell {
     constructor(player, id) {
         super(player, id, "Heroic Strike");
-        this.cost = 15 - player.talents.impheroicstrike - player.ragecostbonus;
+        this.cost = 15 - player.talents.impheroicstrike - player.ragecostbonus - (player.brotherhoodthreeset ? 5 : 0);
         this.bonus = this.value1;
         this.useonly = true;
         this.unqueuetimer = 300 + rng(this.player.reactionmin, this.player.reactionmax);
@@ -355,7 +355,7 @@ class SunderArmor extends Spell {
         super(player, id, 'Sunder Armor');
         this.cost = 15 - player.talents.impsunderarmor - player.ragecostbonus;
         if (this.player.mode == "turtle")
-            this.cost = 10;
+            this.cost = 10 - (player.brotherhoodthreeset ? 5 : 0);
         this.stacks = 0;
         this.nocrit = true;
     }

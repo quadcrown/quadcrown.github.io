@@ -43,7 +43,6 @@ var gear = {
       "sta": 37,
       "agi": 28,
       "ac": 834,
-      "crit": 1,
       "phase": 7,
       "source": "UpperKara",
       "id": 47270
@@ -1005,7 +1004,7 @@ var gear = {
       "name": "Shoulderguards of the Brotherhood",
       "ac": 747,
       "str": 27,
-      "agi": 22,
+      "agi": 25,
 	    "sta": 26,
       "hit": 1,
       "phase": 7,
@@ -1922,7 +1921,7 @@ var gear = {
       "str": 30,
       "sta": 42,
 	    "agi": 32,
-      "ac": 1070,
+      "ac": 1071,
       "phase": 7,
       "source": "UpperKara",
       "id": 47272

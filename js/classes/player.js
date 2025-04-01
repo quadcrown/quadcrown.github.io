@@ -581,6 +581,7 @@ class Player {
                     if (bonus.stats.altmightthreeset) this.altmightthreeset = true;
                     if (bonus.stats.altmightfiveset) this.altmightfiveset = true;
                     if (bonus.stats.altdreadnaughttwoset) this.altdreadnaughttwoset = true;
+                    if (bonus.stats.brotherhoodthreeset) this.brotherhoodthreeset = true;
                     if (bonus.stats.overpowerrend) this.overpowerrend = bonus.stats.overpowerrend;
                     if (bonus.stats.heroicbonus) this.heroicbonus = bonus.stats.heroicbonus;
                     if (bonus.stats.slammainreset) this.slammainreset = bonus.stats.slammainreset;
