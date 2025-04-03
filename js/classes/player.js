@@ -27,10 +27,11 @@ class Player {
         this.ragecap = 100;
         this.ragemod = 1;
         this.level = config.level;
+        this.mode = config.mode;
         this.rageconversion = ((0.0091107836 * this.level * this.level) + 3.225598133 * this.level) + 4.2652911;
         if (this.level == 25) this.rageconversion = 82.25;
         if (this.level == 40) this.rageconversion = 140.5;
-        if (this.mode !== 'classic') this.rageconversion = ((0.0091107836 * this.level * this.level) + 2.5 * this.level)
+        if (this.mode == 'turtle') this.rageconversion = ((0.0091107836 * this.level * this.level) + 2.5 * this.level)
         this.agipercrit = this.getAgiPerCrit(this.level);
         this.timer = 0;
         this.itemtimer = 0;
@@ -54,7 +55,6 @@ class Player {
         this.adjacent = config.adjacent;
         this.spelldamage = 0;
         this.target = config.target;
-        this.mode = config.mode;
         this.bleedmod = parseFloat(this.target.bleedreduction);
         this.spellqueueing = config.spellqueueing;
         this.target.misschance = this.getTargetSpellMiss();
