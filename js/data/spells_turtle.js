@@ -144,6 +144,7 @@ var spells = [
     maxlevel: 7,
     value1: 11,
     active: true,
+    expriority: 0,
 },
 {
     id: 284,
@@ -161,6 +162,7 @@ var spells = [
     maxlevel: 15,
     value1: 21,
     active: true,
+    expriority: 0,
 },
 {
     id: 285,
@@ -178,6 +180,7 @@ var spells = [
     maxlevel: 23,
     value1: 32,
     active: true,
+    expriority: 0,
 },
 {
     id: 1608,
@@ -195,6 +198,7 @@ var spells = [
     maxlevel: 31,
     value1: 44,
     active: true,
+    expriority: 0,
 },
 {
     id: 11564,
@@ -212,6 +216,7 @@ var spells = [
     maxlevel: 39,
     value1: 58,
     active: true,
+    expriority: 0,
 },
 {
     id: 11565,
@@ -229,6 +234,7 @@ var spells = [
     maxlevel: 47,
     value1: 80,
     active: true,
+    expriority: 0,
 },
 {
     id: 11566,
@@ -246,6 +252,7 @@ var spells = [
     maxlevel: 55,
     value1: 111,
     active: true,
+    expriority: 0,
 },
 {
     id: 11567,
@@ -263,6 +270,7 @@ var spells = [
     value1: 138,
     active: true,
     aq: false,
+    expriority: 0,
 },
 {
     id: 25286,
@@ -280,6 +288,7 @@ var spells = [
     value1: 157,
     active: true,
     aq: true,
+    expriority: 0,
 },
 
 // Cleave
