@@ -400,7 +400,6 @@ var buffs = [
       name: "Windfury Totem",
       iconname: "spell_nature_windfury",
       group: "windfury",
-      wfap: 122,
       minlevel: 32,
       maxlevel: 41,
    },
@@ -410,7 +409,6 @@ var buffs = [
       name: "Windfury Totem",
       iconname: "spell_nature_windfury",
       group: "windfury",
-      wfap: 229,
       minlevel: 42,
       maxlevel: 51,
    },
@@ -420,7 +418,6 @@ var buffs = [
       name: "Windfury Totem",
       iconname: "spell_nature_windfury",
       group: "windfury",
-      wfap: 315,
       minlevel: 52
    },
    {
