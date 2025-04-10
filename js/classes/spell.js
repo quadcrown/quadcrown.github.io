@@ -1354,6 +1354,7 @@ class MightyRagePotion extends Aura {
         let oldRage = this.player.rage;
         this.player.rage = Math.min(this.player.rage + ~~rng(this.value1, this.value2), 100);
         this.timer = step + this.duration * 1000 - prepull;
+        this.player.timer = 1500;
         this.starttimer = step - prepull;
         this.player.updateStrength();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
