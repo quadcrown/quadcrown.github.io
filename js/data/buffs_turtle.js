@@ -926,6 +926,14 @@ var buffs = [
          fire: 60,
       }
    },
+   {
+      id: 22632,
+      name: "Druid Atiesh",
+      iconname: "INV_Staff_Medivh",
+      minlevel: 60,
+      other: true,
+      haste: 2
+   },
  
    
    
