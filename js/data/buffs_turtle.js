@@ -400,7 +400,6 @@ var buffs = [
       name: "Windfury Totem",
       iconname: "spell_nature_windfury",
       group: "windfury",
-      wfap: 122,
       minlevel: 32,
       maxlevel: 41,
    },
@@ -410,7 +409,6 @@ var buffs = [
       name: "Windfury Totem",
       iconname: "spell_nature_windfury",
       group: "windfury",
-      wfap: 229,
       minlevel: 42,
       maxlevel: 51,
    },
@@ -420,7 +418,6 @@ var buffs = [
       name: "Windfury Totem",
       iconname: "spell_nature_windfury",
       group: "windfury",
-      wfap: 315,
       minlevel: 52
    },
    {
@@ -928,6 +925,14 @@ var buffs = [
       resist: {
          fire: 60,
       }
+   },
+   {
+      id: 22632,
+      name: "Druid Atiesh",
+      iconname: "INV_Staff_Medivh",
+      minlevel: 60,
+      other: true,
+      haste: 2
    },
  
    

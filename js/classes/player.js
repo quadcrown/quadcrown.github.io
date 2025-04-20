@@ -27,9 +27,11 @@ class Player {
         this.ragecap = 100;
         this.ragemod = 1;
         this.level = config.level;
+        this.mode = config.mode;
         this.rageconversion = ((0.0091107836 * this.level * this.level) + 3.225598133 * this.level) + 4.2652911;
         if (this.level == 25) this.rageconversion = 82.25;
         if (this.level == 40) this.rageconversion = 140.5;
+        if (this.mode == 'turtle') this.rageconversion = ((0.0091107836 * this.level * this.level) + 2.5 * this.level)
         this.agipercrit = this.getAgiPerCrit(this.level);
         this.timer = 0;
         this.itemtimer = 0;
@@ -53,7 +55,6 @@ class Player {
         this.adjacent = config.adjacent;
         this.spelldamage = 0;
         this.target = config.target;
-        this.mode = config.mode;
         this.bleedmod = parseFloat(this.target.bleedreduction);
         this.spellqueueing = config.spellqueueing;
         this.target.misschance = this.getTargetSpellMiss();
@@ -577,6 +578,10 @@ class Player {
                         this.auras.defforecast = new DefForecast(this);
                         this.auras.gladforecast = new GladForecast(this);
                     }
+                    if (bonus.stats.altmightthreeset) this.altmightthreeset = true;
+                    if (bonus.stats.altmightfiveset) this.altmightfiveset = true;
+                    if (bonus.stats.altdreadnaughttwoset) this.altdreadnaughttwoset = true;
+                    if (bonus.stats.brotherhoodthreeset) this.brotherhoodthreeset = true;
                     if (bonus.stats.overpowerrend) this.overpowerrend = bonus.stats.overpowerrend;
                     if (bonus.stats.heroicbonus) this.heroicbonus = bonus.stats.heroicbonus;
                     if (bonus.stats.slammainreset) this.slammainreset = bonus.stats.slammainreset;
@@ -981,7 +986,7 @@ class Player {
         let mod = 1;
         if (this.auras.spicy && this.auras.spicy.timer)
             mod *= (1 + this.auras.spicy.mult_stats.haste / 100);
-        if (this.auras.jujuflurry && this.auras.jujuflurry.timer)
+        if (this.auras.jujuflurry && this.auras.jujuflurry.timer && this.mode !=='turtle')
             mod *= (1 + this.auras.jujuflurry.mult_stats.haste / 100);
 
         this.mh.mindmg = this.mh.basemindmg / mod;
@@ -1129,6 +1134,9 @@ class Player {
             if (result == RESULT.MISS || result == RESULT.DODGE) {
                 this.rage += spell.refund ? spell.cost * 0.8 : 0;
                 oldRage += (spell.cost || 0) + (spell.usedrage || 0); // prevent cbr proccing on refunds
+                    if (this.altmightthreeset) {
+                        this.rage += 15;
+                    }
             }
         }
         else {
@@ -1638,7 +1646,7 @@ class Player {
                 if (weapon.proc1.magicdmg) procdmg += weapon.proc1.chance == 10000 ? weapon.proc1.magicdmg : this.magicproc(weapon.proc1);
                 if (weapon.proc1.physdmg) {
                     let dmg = this.physproc(weapon.proc1.physdmg);
-                    if (dmg > 0 && weapon.proc1.phantom) dmg += this.phantomproc(weapon)
+                    if (dmg > 0 && weapon.proc1.phantom && this.mode !='turtle') dmg += this.phantomproc(weapon)
                     procdmg += dmg
                 }
                 /* start-log */ if (this.logging) this.log(`${weapon.name} proc ${procdmg ? 'for ' + ~~procdmg : ''}`); /* end-log */
@@ -1822,7 +1830,7 @@ class Player {
         roll = rng10k();
         let crit = this.crit + this.mh.crit;
         if (roll < (crit * 100)) dmg *= 1 + 1 * (1 + this.critdmgbonus * 2);
-        return dmg * this.stats.dmgmod * this.mh.modifier;
+        return dmg * this.stats.dmgmod * this.mh.modifier * (1-this.armorReduction);
     }
     serializeStats() {
         return {

@@ -37,6 +37,30 @@ var gear = {
       "i": 86,
       "id": 47261
     },
+	  {
+      "name": "Helmet of the Brotherhood",
+      "str": 32,
+      "sta": 37,
+      "agi": 28,
+      "ac": 834,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 47270
+    },
+	  {
+      "name": "Dreadslayer Horns (vs Demons)",
+      "source": "UpperKara",
+      "str": 33,
+	    "ap": 45,
+	    "agi": 28,
+	    "sta": 20,
+      "hit": 1,
+      "ac": 834,
+      "phase": 7,
+      "q": 4,
+      "id": 55113
+    },
     {
       "name": "Ragereaver's Helm",
       "source": "Dungeon",
@@ -44,6 +68,8 @@ var gear = {
       "crit": 2,
       "ac": 484,
       "phase": 7,
+      "q": 3,
+      "i": 57,
       "id": 60562
     },
     {
@@ -54,6 +80,8 @@ var gear = {
       "crit": 1,
       "ac": 163,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61260
     },
     {
@@ -64,6 +92,8 @@ var gear = {
       "hit": 1,
       "ac": 534,
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60291
     },
     {
@@ -74,6 +104,8 @@ var gear = {
       "ap": 30,
       "hit": 1,
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61039
     },
     {
@@ -84,6 +116,8 @@ var gear = {
       "str": 19,
       "haste": 1,
       "phase": 7,
+      "q": 3,
+      "i": 58,
       "id": 60573
     },
     {
@@ -95,6 +129,8 @@ var gear = {
       "hit": 1,
       "haste": 1,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 60007
     },
     {
@@ -107,6 +143,8 @@ var gear = {
         "fire": 35
       },
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 19148
     },
     {
@@ -124,7 +162,39 @@ var gear = {
         "shadow": 15
       },
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 12952
+    },
+    {
+      "name": "Ethereal Helmet",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 172,
+      "sta": 18,
+      "agi": 18,
+      "ap": 30,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55522
+    },
+    {
+      "name": "Reflective Helmet",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 654,
+      "sta": 25,
+      "str": 18,
+      "defense": 6,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55530
     },
     {
       "name": "Polar Helmet",
@@ -137,6 +207,8 @@ var gear = {
         "frost": 44
       },
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23020
     },
     {
@@ -150,6 +222,8 @@ var gear = {
         "frost": 44
       },
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23033
     },
     {
@@ -164,6 +238,8 @@ var gear = {
         "frost": 44
       },
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23019
     },
     {
@@ -171,11 +247,14 @@ var gear = {
       "source": "Crafting",
       "subsource": "nature",
       "ac": 156,
-      "sta": 20,
+      "sta": 15,
+	    "agi": 12,
       "resist": {
         "nature": 30
       },
       "phase": 5,
+      "q": 2,
+      "i": 70,
       "id": 22759
     },
     {
@@ -188,6 +267,8 @@ var gear = {
       "ac": 608,
       "source": "LowerKara",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61291
     },
     {
@@ -199,6 +280,8 @@ var gear = {
       "ac": 425,
       "source": "SCitadel",
       "phase": 7,
+      "q": 4,
+      "i": 83,
       "id": 84005
     },
     {
@@ -210,6 +293,8 @@ var gear = {
       "ac": 163,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 65026
     },
     {
@@ -220,6 +305,8 @@ var gear = {
       "ac": 219,
       "source": "PVP",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 83436
     },
     {
@@ -232,6 +319,8 @@ var gear = {
       "ac": 683,
       "source": "PVP",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 60365
     },
     {
@@ -243,6 +332,8 @@ var gear = {
       "ac": 102,
       "source": "Dungeon",
       "phase": 7,
+      "q": 4,
+      "i": 48,
       "id": 60258
     },
     {
@@ -254,6 +345,8 @@ var gear = {
       "ac": 143,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60436
     },
     {
@@ -265,6 +358,8 @@ var gear = {
       "ac": 151,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61060
     },
     {
@@ -275,6 +370,8 @@ var gear = {
       "ac": 558,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61047
     },
     {
@@ -285,6 +382,8 @@ var gear = {
       "ac": 72,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60385
     },
     {
@@ -296,6 +395,8 @@ var gear = {
       "skill": 5,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60414
     },
     {
@@ -306,6 +407,8 @@ var gear = {
       "hit": 1,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 62,
       "id": 83265
     },
     {
@@ -315,6 +418,8 @@ var gear = {
       "ac": 76,
       "source": "Quest",
       "phase": 7,
+      "q": 2,
+      "i": 30,
       "id": 70014
     },
     {
@@ -326,6 +431,8 @@ var gear = {
       "ac": 561,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51769
     },
     {
@@ -337,6 +444,8 @@ var gear = {
       "ac": 163,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51788
     },
     {
@@ -346,6 +455,8 @@ var gear = {
       "ac": 549,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 61003
     },
     {
@@ -357,6 +468,8 @@ var gear = {
       "type": "Mace",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 64,
       "id": 81223
     },
     {
@@ -366,6 +479,8 @@ var gear = {
       "ac": 750,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70056
     },
     {
@@ -374,6 +489,8 @@ var gear = {
       "ac": 754,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 70057
     },
     {
@@ -384,6 +501,8 @@ var gear = {
       "ac": 519,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 62,
       "id": 81124,
       "proc": {
         "chance": 5,
@@ -398,6 +517,8 @@ var gear = {
       "crit": 2,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12587
     },
     {
@@ -409,6 +530,8 @@ var gear = {
       "type": "Dagger",
       "source": "Emeriss",
       "phase": 4,
+      "q": 4,
+      "i": 76,
       "id": 20623
     },
     {
@@ -420,6 +543,8 @@ var gear = {
       "ac": 739,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 81,
       "id": 21329
     },
     {
@@ -430,6 +555,8 @@ var gear = {
       "ac": 392,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 76,
       "id": 18817
     },
     {
@@ -441,6 +568,8 @@ var gear = {
       "ac": 800,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 88,
       "id": 22418
     },
     {
@@ -452,6 +581,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 38,
       "id": 9375
     },
     {
@@ -462,6 +593,8 @@ var gear = {
       "ac": 445,
       "source": "Quest",
       "phase": 3,
+      "q": 3,
+      "i": 52,
       "id": 20521
     },
     {
@@ -474,6 +607,8 @@ var gear = {
       "ac": 661,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 72,
       "id": 21460
     },
     {
@@ -485,6 +620,8 @@ var gear = {
       "ac": 679,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 74,
       "id": 19372
     },
     {
@@ -495,6 +632,8 @@ var gear = {
       "ac": 556,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 21999
     },
     {
@@ -506,6 +645,8 @@ var gear = {
       "ac": 608,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16866
     },
     {
@@ -516,6 +657,8 @@ var gear = {
       "ac": 534,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 22411
     },
     {
@@ -526,6 +669,8 @@ var gear = {
       "ac": 526,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 16731
     },
     {
@@ -540,6 +685,8 @@ var gear = {
       },
       "source": "Onyxia",
       "phase": 1,
+      "q": 4,
+      "i": 76,
       "id": 16963
     },
     {
@@ -551,6 +698,8 @@ var gear = {
       "ac": 665,
       "source": "Crafting",
       "phase": 1,
+      "q": 4,
+      "i": 61,
       "id": 12640
     },
     {
@@ -561,6 +710,8 @@ var gear = {
       "ac": 123,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 57,
       "id": 13404
     },
     {
@@ -571,6 +722,8 @@ var gear = {
       "ac": 598,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 71,
       "id": 23314
     },
     {
@@ -581,6 +734,8 @@ var gear = {
       "ac": 719,
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 74,
       "id": 16478
     },
     {
@@ -591,6 +746,8 @@ var gear = {
       "ac": 160,
       "source": "ZG",
       "phase": 3,
+      "q": 4,
+      "i": 65,
       "id": 19945
     },
     {
@@ -601,6 +758,8 @@ var gear = {
       "ac": 153,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "id": 22718
     },
     {
@@ -612,6 +771,8 @@ var gear = {
       "ac": 164,
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 74,
       "id": 21455
     },
     {
@@ -622,6 +783,8 @@ var gear = {
       "ac": 132,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 57,
       "id": 11735
     },
     {
@@ -632,6 +795,8 @@ var gear = {
       "ac": 549,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 20263
     }
   ],
@@ -642,6 +807,8 @@ var gear = {
       "ap": 24,
       "str": 10,
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61029
     },
     {
@@ -651,7 +818,20 @@ var gear = {
       "type": "Fist",
       "agi": 4,
       "phase": 7,
+      "q": 2,
+      "i": 48,
       "id": 61512
+    },
+	  {
+      "name": "Choker of the Brotherhood",
+      "source": "UpperKara",
+      "agi": 14,
+      "str": 15,
+	    "crit": 2,
+	    "arp": 50,
+      "phase": 7,
+      "q": 4,
+      "id": 47275
     },
     {
       "name": "Bixxle's Necklace of Mastery",
@@ -659,6 +839,8 @@ var gear = {
       "haste": 1,
       "crit": 1,
       "phase": 7,
+      "q": 3,
+      "i": 62,
       "id": 60997
     },
     {
@@ -670,6 +852,8 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 16309
     },
     {
@@ -681,6 +865,8 @@ var gear = {
         "frost": 15
       },
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 18678
     },
     {
@@ -692,6 +878,8 @@ var gear = {
         "frost": 24
       },
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 22935
     },
     {
@@ -701,6 +889,8 @@ var gear = {
       "sta": 12,
       "source": "Other",
       "phase": 6,
+      "q": 4,
+      "i": 63,
       "id": 22659
     },
     {
@@ -709,6 +899,8 @@ var gear = {
       "crit": 1,
       "source": "Concavius",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 83234
     },
     {
@@ -719,6 +911,8 @@ var gear = {
       "agi": 15,
       "source": "Ostarius",
       "phase": 7,
+      "q": 4,
+      "i": 75,
       "id": 83484
     },
     {
@@ -728,6 +922,8 @@ var gear = {
       "agi": 8,
       "source": "Quest",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 61012
     },
     {
@@ -737,6 +933,8 @@ var gear = {
       "agi": 19,
       "source": "Quest",
       "phase": 3,
+      "q": 4,
+      "i": 65,
       "id": 19491
     },
     {
@@ -746,6 +944,8 @@ var gear = {
       "ap": 44,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21664
     },
     {
@@ -755,6 +955,8 @@ var gear = {
       "ap": 24,
       "source": "Quest",
       "phase": 5,
+      "q": 3,
+      "i": 63,
       "id": 22150
     },
     {
@@ -763,6 +965,8 @@ var gear = {
       "agi": 14,
       "source": "Kazzak",
       "phase": 2,
+      "q": 4,
+      "i": 68,
       "id": 17111,
       "proc": {
         "chance": 100,
@@ -776,6 +980,8 @@ var gear = {
       "ap": 42,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 70,
       "id": 21505
     },
     {
@@ -785,6 +991,8 @@ var gear = {
       "dodge": 1,
       "source": "Onyxia",
       "phase": 1,
+      "q": 4,
+      "i": 71,
       "id": 18205
     },
     {
@@ -794,6 +1002,8 @@ var gear = {
       "str": 8,
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 71,
       "id": 21809
     },
     {
@@ -802,6 +1012,8 @@ var gear = {
       "ap": 32,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 11933
     },
     {
@@ -810,6 +1022,8 @@ var gear = {
       "ap": 26,
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 15411
     },
     {
@@ -823,6 +1037,8 @@ var gear = {
       },
       "source": "Onyxia",
       "phase": 1,
+      "q": 4,
+      "i": 74,
       "id": 18404
     },
     {
@@ -831,6 +1047,8 @@ var gear = {
       "agi": 15,
       "source": "Dungeon",
       "phase": 5,
+      "q": 3,
+      "i": 63,
       "id": 22340
     },
     {
@@ -839,6 +1057,8 @@ var gear = {
       "agi": 30,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 83,
       "id": 19377
     },
     {
@@ -848,6 +1068,8 @@ var gear = {
       "ap": 20,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23023
     },
     {
@@ -857,6 +1079,8 @@ var gear = {
       "ap": 26,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 92,
       "id": 23053
     },
     {
@@ -865,6 +1089,8 @@ var gear = {
       "ap": 40,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "id": 19856
     },
     {
@@ -873,6 +1099,8 @@ var gear = {
       "ap": 30,
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 17044
     },
     {
@@ -881,6 +1109,8 @@ var gear = {
       "sta": 10,
       "source": "ZG",
       "phase": 4,
+      "q": 2,
+      "i": 60,
       "id": 19574
     },
     {
@@ -890,6 +1120,8 @@ var gear = {
       "agi": 6,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 60,
       "id": 19575
     },
     {
@@ -899,6 +1131,8 @@ var gear = {
       "agi": 8,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "id": 19576
     },
     {
@@ -908,6 +1142,8 @@ var gear = {
       "agi": 8,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 65,
       "id": 19577
     },
     {
@@ -916,6 +1152,8 @@ var gear = {
       "sta": 8,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 12929
     },
     {
@@ -926,6 +1164,8 @@ var gear = {
       "defense": 6,
       "phase": 5,
       "source": "AQ40",
+      "q": 4,
+      "i": 73,
       "id": 21700
     }
   ],
@@ -967,6 +1207,59 @@ var gear = {
       "i": 86,
       "id": 47262
     },
+	  {
+      "name": "Shoulderguards of the Brotherhood",
+      "ac": 747,
+      "str": 27,
+      "agi": 25,
+	    "sta": 26,
+      "hit": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 47271
+    },
+    {
+      "name": "Dreadslayer Shoulderblades",
+      "ac": 736,
+      "str": 32,
+	    "sta": 19,
+      "hit": 1,
+	    "crit": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55108
+    },
+    {
+      "name": "Ethereal Shoulder Pads",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 159,
+      "sta": 24,
+      "hit": 1,
+      "resist": {
+        "arcane": 20
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55523
+    },
+    {
+      "name": "Reflective Pauldrons",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 608,
+      "sta": 18,
+      "str": 16,
+      "defense": 4,
+      "resist": {
+        "arcane": 20
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55531
+    },
     {
       "name": "Rune-Etched Mantle",
       "str": 20,
@@ -985,6 +1278,8 @@ var gear = {
       "source": "Crafting",
       "ac": 500,
       "phase": 7,
+      "q": 3,
+      "i": 64,
       "id": 61649
     },
     {
@@ -995,6 +1290,8 @@ var gear = {
       "source": "Crafting",
       "ac": 638,
       "phase": 7,
+      "q": 4,
+      "i": 76,
       "id": 61364
     },
     {
@@ -1006,6 +1303,8 @@ var gear = {
       "haste": 1,
       "hit": 1,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 60009
     },
     {
@@ -1018,6 +1317,8 @@ var gear = {
         "fire": 22
       },
       "phase": 1,
+      "q": 4,
+      "i": 71,
       "id": 19139
     },
     {
@@ -1029,6 +1330,8 @@ var gear = {
         "fire": 18
       },
       "phase": 1,
+      "q": 2,
+      "i": 61,
       "id": 15055
     },
     {
@@ -1043,6 +1346,8 @@ var gear = {
         "frost": 33
       },
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 22940
     },
     {
@@ -1055,6 +1360,8 @@ var gear = {
         "frost": 33
       },
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 22967
     },
     {
@@ -1067,6 +1374,8 @@ var gear = {
         "frost": 33
       },
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 22941
     },
     {
@@ -1078,6 +1387,8 @@ var gear = {
         "nature": 20
       },
       "phase": "1",
+      "q": 2,
+      "i": 61,
       "id": 13533
     },
     {
@@ -1090,6 +1401,8 @@ var gear = {
         "nature": 20
       },
       "phase": "5",
+      "q": 3,
+      "i": 70,
       "id": 22758
     },
     {
@@ -1101,6 +1414,8 @@ var gear = {
       "ac": 208,
       "source": "PVP",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 83435
     },
     {
@@ -1112,6 +1427,8 @@ var gear = {
       "ac": 612,
       "source": "PVP",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 60364
     },
     {
@@ -1123,6 +1440,8 @@ var gear = {
       "ac": 441,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 56,
       "id": 60567
     },
     {
@@ -1133,6 +1452,8 @@ var gear = {
       "ac": 290,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61017
     },
     {
@@ -1143,6 +1464,8 @@ var gear = {
       "ac": 136,
       "source": "Crafting",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 19689
     },
     {
@@ -1153,6 +1476,8 @@ var gear = {
       "ac": 561,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51770
     },
     {
@@ -1163,6 +1488,8 @@ var gear = {
       "ac": 413,
       "source": "MC",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 81264
     },
     {
@@ -1171,6 +1498,8 @@ var gear = {
       "ac": 610,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70064
     },
     {
@@ -1180,6 +1509,8 @@ var gear = {
       "ac": 617,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70050
     },
     {
@@ -1190,6 +1521,8 @@ var gear = {
       "ac": 131,
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 62,
       "id": 18374
     },
     {
@@ -1202,6 +1535,8 @@ var gear = {
       "source": "Other",
       "phase": 4,
       "id": 20683,
+      "q": 3,
+      "i": 68,
       "rand": 2158
     },
     {
@@ -1212,6 +1547,8 @@ var gear = {
       "ac": 553,
       "source": "PVP",
       "phase": 4,
+      "q": 4,
+      "i": 65,
       "id": 20212
     },
     {
@@ -1221,6 +1558,8 @@ var gear = {
       "ac": 266,
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 15051
     },
     {
@@ -1232,6 +1571,8 @@ var gear = {
       "ac": 552,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 71,
       "id": 19878
     },
     {
@@ -1242,6 +1583,8 @@ var gear = {
       "ac": 151,
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 74,
       "id": 21474
     },
     {
@@ -1254,6 +1597,8 @@ var gear = {
       "ac": 659,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 78,
       "id": 21330
     },
     {
@@ -1265,6 +1610,8 @@ var gear = {
       "ac": 634,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "id": 19394
     },
     {
@@ -1276,6 +1623,8 @@ var gear = {
       "ac": 722,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 86,
       "id": 22419
     },
     {
@@ -1286,6 +1635,8 @@ var gear = {
       "ac": 562,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16868
     },
     {
@@ -1297,6 +1648,8 @@ var gear = {
       "ac": 650,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21639
     },
     {
@@ -1307,6 +1660,8 @@ var gear = {
       "ac": 642,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 76,
       "id": 16961
     },
     {
@@ -1317,6 +1672,8 @@ var gear = {
       "ac": 530,
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 68,
       "id": 21805
     },
     {
@@ -1327,6 +1684,8 @@ var gear = {
       "ac": 552,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 71,
       "id": 23315
     },
     {
@@ -1338,6 +1697,8 @@ var gear = {
       "ac": 626,
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 74,
       "id": 16480
     },
     {
@@ -1349,6 +1710,8 @@ var gear = {
       "ac": 410,
       "source": "Quest",
       "phase": 3,
+      "q": 3,
+      "i": 52,
       "id": 20517
     },
     {
@@ -1360,6 +1723,8 @@ var gear = {
       "ac": 507,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 22001
     },
     {
@@ -1370,6 +1735,8 @@ var gear = {
       "ac": 470,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 16733
     },
     {
@@ -1379,6 +1746,8 @@ var gear = {
       "ac": 129,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 12927
     },
     {
@@ -1387,6 +1756,8 @@ var gear = {
       "ac": 113,
       "source": "Quest",
       "phase": 1,
+      "q": 2,
+      "i": 58,
       "id": 12082
     },
     {
@@ -1397,6 +1768,8 @@ var gear = {
       "ac": 170,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21665
     },
     {
@@ -1406,6 +1779,8 @@ var gear = {
       "ac": 507,
       "source": "Crafting",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19695
     }
   ],
@@ -1418,6 +1793,8 @@ var gear = {
       "ac": 47,
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 60488
     },
     {
@@ -1426,6 +1803,8 @@ var gear = {
       "ac": 46,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83465
     },
     {
@@ -1439,6 +1818,8 @@ var gear = {
       "ac": 57,
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 78,
       "id": 61210
     },
     {
@@ -1448,6 +1829,8 @@ var gear = {
       "ac": 41,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60649
     },
     {
@@ -1457,6 +1840,8 @@ var gear = {
       "ac": 41,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60648
     },
     {
@@ -1466,6 +1851,8 @@ var gear = {
       "ac": 47,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 61709
     },
     {
@@ -1477,10 +1864,12 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 12905
     },
     {
-      "name": "Icy Cloak",
+      "name": "Sapphiron Drape",
       "source": "Onyxia",
       "subsource": "frost",
       "sta": 10,
@@ -1490,6 +1879,8 @@ var gear = {
         "arcane": 6
       },
       "phase": 1,
+      "q": 4,
+      "i": 72,
       "id": 17078
     },
     {
@@ -1501,6 +1892,8 @@ var gear = {
         "frost": 11
       },
       "phase": 1,
+      "q": 3,
+      "i": 40,
       "id": 4327
     },
     {
@@ -1513,6 +1906,8 @@ var gear = {
         "frost": 24
       },
       "phase": 6,
+      "q": 4,
+      "i": 80,
       "id": 22658
     },
     {
@@ -1522,6 +1917,8 @@ var gear = {
       "ac": 51,
       "source": "LowerKara",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61249
     },
     {
@@ -1533,6 +1930,8 @@ var gear = {
       "ac": 57,
       "source": "Ostarius",
       "phase": 7,
+      "q": 4,
+      "i": 75,
       "id": 83486
     },
     {
@@ -1544,6 +1943,8 @@ var gear = {
       "ac": 50,
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 61010
     },
     {
@@ -1554,6 +1955,8 @@ var gear = {
       "ac": 45,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80506
     },
     {
@@ -1563,6 +1966,8 @@ var gear = {
       "ac": 43,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 61,
       "id": 81122
     },
     {
@@ -1573,6 +1978,8 @@ var gear = {
       "ac": 53,
       "source": "Nerubian",
       "phase": 7,
+      "q": 4,
+      "i": 75,
       "id": 51733
     },
     {
@@ -1584,6 +1991,8 @@ var gear = {
       "ac": 53,
       "source": "Nerubian",
       "phase": 7,
+      "q": 4,
+      "i": 75,
       "id": 51734
     },
     {
@@ -1593,6 +2002,8 @@ var gear = {
       "ac": 57,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "id": 19398
     },
     {
@@ -1602,6 +2013,8 @@ var gear = {
       "ac": 45,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 13340
     },
     {
@@ -1613,6 +2026,8 @@ var gear = {
       "ac": 56,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 73,
       "id": 21701
     },
     {
@@ -1623,6 +2038,8 @@ var gear = {
       "ac": 54,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19436
     },
     {
@@ -1633,6 +2050,8 @@ var gear = {
       "ac": 66,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 88,
       "id": 21710
     },
     {
@@ -1644,6 +2063,8 @@ var gear = {
       "ac": 59,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 78,
       "id": 21621
     },
     {
@@ -1654,6 +2075,8 @@ var gear = {
       "ac": 50,
       "source": "PVP",
       "phase": 4,
+      "q": 4,
+      "i": 65,
       "id": 20073
     },
     {
@@ -1664,6 +2087,8 @@ var gear = {
       "ac": 63,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23030
     },
     {
@@ -1677,6 +2102,8 @@ var gear = {
       },
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 74,
       "id": 17102
     },
     {
@@ -1686,6 +2113,8 @@ var gear = {
       "ac": 116,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 73,
       "id": 17107
     },
     {
@@ -1697,6 +2126,8 @@ var gear = {
       "ac": 52,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 67,
       "id": 21394
     },
     {
@@ -1706,6 +2137,8 @@ var gear = {
       "ac": 44,
       "source": "Quest",
       "phase": 5,
+      "q": 3,
+      "i": 62,
       "id": 21187
     },
     {
@@ -1715,6 +2148,8 @@ var gear = {
       "ac": 51,
       "source": "Kazzak",
       "phase": 2,
+      "q": 4,
+      "i": 66,
       "id": 18204
     },
     {
@@ -1724,6 +2159,8 @@ var gear = {
       "ac": 114,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 18689
     },
     {
@@ -1734,6 +2171,8 @@ var gear = {
       "ac": 54,
       "source": "Azuregos",
       "phase": 2,
+      "q": 4,
+      "i": 70,
       "id": 18541
     },
     {
@@ -1745,6 +2184,8 @@ var gear = {
       "ac": 135,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 72,
       "id": 21456
     },
     {
@@ -1755,6 +2196,8 @@ var gear = {
       "ac": 68,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 90,
       "id": 23045
     },
     {
@@ -1765,6 +2208,8 @@ var gear = {
       "ac": 43,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 13397
     },
     {
@@ -1774,6 +2219,8 @@ var gear = {
       "ac": 43,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 60,
       "id": 19084
     },
     {
@@ -1784,6 +2231,8 @@ var gear = {
       "ac": 48,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "id": 19907
     },
     {
@@ -1795,6 +2244,8 @@ var gear = {
       "ac": 50,
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 20691
     },
     {
@@ -1804,6 +2255,8 @@ var gear = {
       "ac": 48,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "id": 22712
     },
     {
@@ -1813,6 +2266,8 @@ var gear = {
       "dodge": 1,
       "ac": 48,
       "source": "Crafting",
+      "q": 4,
+      "i": 62,
       "id": 18511
     },
     {
@@ -1821,6 +2276,8 @@ var gear = {
       "sta": 7,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 22337
     }
   ],
@@ -1862,6 +2319,47 @@ var gear = {
       "id": 47263
     },
     {
+      "name": "Chestguard of the Brotherhood",
+      "str": 30,
+      "sta": 42,
+	    "agi": 32,
+      "ac": 1071,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 47272
+    },
+    {
+      "name": "Ethereal Tunic",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 238,
+      "sta": 23,
+      "agi": 18,
+      "ap": 22,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55524
+    },
+    {
+      "name": "Reflective Breastplate",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 787,
+      "sta": 22,
+      "ap": 38,
+      "defense": 7,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55532
+    },
+    {
       "name": "Centaur Battle Harness",
       "source": "Crafting",
       "str": 5,
@@ -1871,6 +2369,8 @@ var gear = {
       "ap": 12,
       "ac": 173,
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60910
     },
     {
@@ -1881,6 +2381,8 @@ var gear = {
       "ap": 20,
       "ac": 652,
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60290
     },
     {
@@ -1892,6 +2394,8 @@ var gear = {
       "haste": 2,
       "crit": 1,
       "phase": 7,
+      "q": 3,
+      "i": 58,
       "id": 60574
     },
     {
@@ -1903,6 +2407,8 @@ var gear = {
       "ac": 422,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 60008
     },
     {
@@ -1914,6 +2420,8 @@ var gear = {
       "sta": 18,
       "source": "LowerKara",
       "phase": 7,
+      "q": 4,
+      "i": 72,
       "id": 61275
     },
     {
@@ -1925,6 +2433,8 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 2,
+      "i": 57,
       "id": 15053
     },
     {
@@ -1938,6 +2448,8 @@ var gear = {
         "frost": 40
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22664
     },
     {
@@ -1952,6 +2464,8 @@ var gear = {
         "frost": 42
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22669
     },
     {
@@ -1967,6 +2481,8 @@ var gear = {
         "frost": 8
       },
       "phase": "1",
+      "q": 2,
+      "i": 50,
       "id": 12405
     },
     {
@@ -1979,6 +2495,8 @@ var gear = {
         "frost": 16
       },
       "phase": "1",
+      "q": 2,
+      "i": 54,
       "id": 14100
     },
     {
@@ -1992,6 +2510,8 @@ var gear = {
         "frost": 40
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22661
     },
     {
@@ -2005,16 +2525,21 @@ var gear = {
         "nature": 30
       },
       "phase": "5",
+      "q": 3,
+      "i": 70,
       "id": 22762
     },
     {
       "name": "Sandstalker Breastplate",
       "source": "Crafting",
       "subsource": "nature",
-      "sta": 13,
-      "ac": 485,
+      "sta": 15,
+      "ac": 409,
+      "ap": 24,
+      "q": 3,
+      "i": 62,
       "resist": {
-        "nature": 25
+        "nature": 30
       },
       "phase": "5",
       "id": 20478
@@ -2028,6 +2553,8 @@ var gear = {
       "ac": 275,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 65024
     },
     {
@@ -2038,6 +2565,8 @@ var gear = {
       "ac": 612,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 58,
       "id": 60117
     },
     {
@@ -2049,6 +2578,8 @@ var gear = {
       "ac": 246,
       "source": "PVP",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 83434
     },
     {
@@ -2060,6 +2591,8 @@ var gear = {
       "ac": 799,
       "source": "PVP",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 60363
     },
     {
@@ -2070,6 +2603,8 @@ var gear = {
       "ac": 241,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60421
     },
     {
@@ -2079,6 +2614,8 @@ var gear = {
       "ac": 376,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83462
     },
     {
@@ -2089,6 +2626,8 @@ var gear = {
       "ac": 784,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83441
     },
     {
@@ -2101,6 +2640,8 @@ var gear = {
       "ac": 205,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 50427
     },
     {
@@ -2111,6 +2652,8 @@ var gear = {
       "ac": 172,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 59,
       "id": 60153
     },
     {
@@ -2121,6 +2664,8 @@ var gear = {
       "ac": 181,
       "source": "Crafting",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 19688
     },
     {
@@ -2132,6 +2677,8 @@ var gear = {
       "ac": 605,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 62,
       "id": 15141
     },
     {
@@ -2143,6 +2690,8 @@ var gear = {
       "ac": 592,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51786
     },
     {
@@ -2152,6 +2701,8 @@ var gear = {
       "ac": 749,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51771
     },
     {
@@ -2163,6 +2714,8 @@ var gear = {
       "ac": 687,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80507
     },
     {
@@ -2172,6 +2725,8 @@ var gear = {
       "ac": 835,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70058
     },
     {
@@ -2191,6 +2746,8 @@ var gear = {
       "ac": 172,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 61,
       "id": 80758
     },
     {
@@ -2200,6 +2757,8 @@ var gear = {
       "ac": 155,
       "source": "Other",
       "phase": 7,
+      "q": 2,
+      "i": 60,
       "id": 81218
     },
     {
@@ -2209,6 +2768,8 @@ var gear = {
       "ac": 344,
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 58,
       "id": 15050
     },
     {
@@ -2219,6 +2780,8 @@ var gear = {
       "ac": 381,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19690
     },
     {
@@ -2230,6 +2793,8 @@ var gear = {
       "ac": 824,
       "source": "AQ40",
       "phase": 4,
+      "q": 4,
+      "i": 73,
       "id": 21814
     },
     {
@@ -2241,6 +2806,8 @@ var gear = {
       "ac": 197,
       "source": "Quest",
       "phase": 1,
+      "q": 4,
+      "i": 65,
       "id": 12757
     },
     {
@@ -2252,6 +2819,8 @@ var gear = {
       "ac": 684,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 21997
     },
     {
@@ -2262,10 +2831,12 @@ var gear = {
       "ac": 749,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16865
     },
     {
-      "name": "Breastplate of the Chromatic Flight",
+      "name": "Chestplate of the Chromatic Flight",
       "str": 20,
       "sta": 30,
       "agi": 15,
@@ -2276,6 +2847,8 @@ var gear = {
         "fire": 15
       },
       "phase": 1,
+      "q": 4,
+      "i": 65,
       "id": 12895
     },
     {
@@ -2286,6 +2859,8 @@ var gear = {
       "ac": 657,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 16730
     },
     {
@@ -2295,6 +2870,8 @@ var gear = {
       "ap": 81,
       "source": "Other",
       "phase": 6,
+      "q": 3,
+      "i": 63,
       "id": 23087
     },
     {
@@ -2305,6 +2882,8 @@ var gear = {
       "ac": 857,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 76,
       "id": 16966
     },
     {
@@ -2315,6 +2894,8 @@ var gear = {
       "ac": 172,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 14637
     },
     {
@@ -2326,6 +2907,8 @@ var gear = {
       "ac": 985,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 88,
       "id": 21331
     },
     {
@@ -2336,6 +2919,8 @@ var gear = {
       "ac": 338,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 57,
       "id": 11926
     },
     {
@@ -2346,6 +2931,8 @@ var gear = {
       "ac": 369,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 78,
       "id": 23226
     },
     {
@@ -2355,6 +2942,8 @@ var gear = {
       "ac": 814,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "id": 19405
     },
     {
@@ -2364,6 +2953,8 @@ var gear = {
       "ac": 311,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 72,
       "id": 22191
     },
     {
@@ -2375,6 +2966,8 @@ var gear = {
       "ac": 365,
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 62,
       "id": 18530
     },
     {
@@ -2386,6 +2979,8 @@ var gear = {
       "ac": 953,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 85,
       "id": 23000
     },
     {
@@ -2397,6 +2992,8 @@ var gear = {
       "ac": 875,
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 74,
       "id": 16477
     },
     {
@@ -2407,6 +3004,8 @@ var gear = {
       "ac": 706,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 68,
       "id": 23300
     },
     {
@@ -2417,6 +3016,8 @@ var gear = {
       "ac": 416,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 65,
       "id": 19904
     },
     {
@@ -2428,6 +3029,8 @@ var gear = {
       "ac": 369,
       "source": "Dungeon",
       "phase": 1,
+      "q": 4,
+      "i": 57,
       "id": 11726
     },
     {
@@ -2439,6 +3042,8 @@ var gear = {
       "ac": 828,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 65,
       "id": 19822
     },
     {
@@ -2449,6 +3054,8 @@ var gear = {
       "ac": 174,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 13944
     },
     {
@@ -2459,6 +3066,8 @@ var gear = {
       "ac": 229,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 78,
       "id": 21680
     },
     {
@@ -2468,6 +3077,8 @@ var gear = {
       "ac": 736,
       "source": "Crafting",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19693
     }
   ],
@@ -2526,6 +3137,8 @@ var gear = {
       "sta": 5,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61362
     },
     {
@@ -2536,6 +3149,8 @@ var gear = {
       "sta": 11,
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61449
     },
     {
@@ -2546,6 +3161,8 @@ var gear = {
       "source": "LowerKara",
       "ac": 174,
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61280
     },
     {
@@ -2556,6 +3173,8 @@ var gear = {
       "source": "Crafting",
       "ac": 318,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61366
     },
     {
@@ -2568,6 +3187,8 @@ var gear = {
         "fire": 18
       },
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "id": 17014
     },
     {
@@ -2581,6 +3202,8 @@ var gear = {
         "fire": 10
       },
       "phase": 1,
+      "q": 3,
+      "i": 57,
       "id": 11767,
       "rand": 690
     },
@@ -2595,6 +3218,8 @@ var gear = {
         "frost": 20
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22663
     },
     {
@@ -2608,6 +3233,8 @@ var gear = {
         "frost": 20
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22665
     },
     {
@@ -2622,18 +3249,23 @@ var gear = {
         "frost": 24
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22671
     },
     {
       "name": "Sandstalker Bracer",
       "source": "Crafting",
       "subsource": "nature",
-      "sta": 7,
-      "ac": 220,
+      "sta": 9,
+      "ac": 179,
+	    "ap": 18,
       "resist": {
         "nature": 15
       },
       "phase": "5",
+      "q": 3,
+      "i": 62,
       "id": 20476
     },
     {
@@ -2646,6 +3278,8 @@ var gear = {
         "nature": 15
       },
       "phase": "5",
+      "q": 3,
+      "i": 51,
       "id": 17746
     },
     {
@@ -2657,6 +3291,8 @@ var gear = {
       "ac": 88,
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 78,
       "id": 61212
     },
     {
@@ -2667,6 +3303,8 @@ var gear = {
       "ac": 112,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 83433
     },
     {
@@ -2677,6 +3315,8 @@ var gear = {
       "ac": 349,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 60362
     },
     {
@@ -2688,6 +3328,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 39,
       "id": 83213
     },
     {
@@ -2697,6 +3339,8 @@ var gear = {
       "ac": 291,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83459
     },
     {
@@ -2707,6 +3351,8 @@ var gear = {
       "ac": 166,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60388
     },
     {
@@ -2717,6 +3363,8 @@ var gear = {
       "ac": 140,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51783
     },
     {
@@ -2737,6 +3385,8 @@ var gear = {
       "ac": 309,
       "source": "Other",
       "phase": "4",
+      "q": 3,
+      "i": 68,
       "id": 20687,
       "rand": 2163
     },
@@ -2747,6 +3397,8 @@ var gear = {
       "ac": 287,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12936
     },
     {
@@ -2757,6 +3409,8 @@ var gear = {
       "ac": 323,
       "source": "PVP",
       "phase": 3,
+      "q": 4,
+      "i": 65,
       "id": 19578
     },
     {
@@ -2766,6 +3420,8 @@ var gear = {
       "ac": 375,
       "source": "BWL",
       "phase": 2,
+      "q": 4,
+      "i": 76,
       "id": 16959
     },
     {
@@ -2776,6 +3432,8 @@ var gear = {
       "ac": 356,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 72,
       "id": 21457
     },
     {
@@ -2787,6 +3445,8 @@ var gear = {
       "ac": 296,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 21996
     },
     {
@@ -2796,6 +3456,8 @@ var gear = {
       "ac": 328,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16861
     },
     {
@@ -2805,6 +3467,8 @@ var gear = {
       "ap": 45,
       "source": "Other",
       "phase": 6,
+      "q": 3,
+      "i": 63,
       "id": 23090
     },
     {
@@ -2815,6 +3479,8 @@ var gear = {
       "ac": 261,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 57,
       "id": 16735
     },
     {
@@ -2825,7 +3491,23 @@ var gear = {
       "ac": 309,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 62,
       "id": 21184
+    },
+	{
+      "name": "Netherwrought Bracers",
+      "str": 24,
+	    "agi": 20,
+      "ac": 459,
+      "hit": 1,
+      "resist": {
+        "shadow": 10
+      },
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55356
     },
     {
       "name": "Gordok Bracers of Power",
@@ -2834,6 +3516,8 @@ var gear = {
       "ac": 287,
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "id": 18533
     },
     {
@@ -2843,6 +3527,8 @@ var gear = {
       "ac": 384,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 78,
       "id": 21618
     },
     {
@@ -2854,6 +3540,8 @@ var gear = {
       "ac": 103,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 81,
       "id": 21602
     },
     {
@@ -2864,6 +3552,8 @@ var gear = {
       "ac": 87,
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 73,
       "id": 21491
     },
     {
@@ -2874,6 +3564,8 @@ var gear = {
       "ac": 304,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 61,
       "id": 19824
     },
     {
@@ -2884,6 +3576,8 @@ var gear = {
       "ac": 270,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 59,
       "id": 13400
     },
     {
@@ -2893,6 +3587,8 @@ var gear = {
       "ac": 86,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 65,
       "id": 19146
     },
     {
@@ -2903,6 +3599,8 @@ var gear = {
       "ac": 198,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 71,
       "id": 18812
     },
     {
@@ -2913,6 +3611,8 @@ var gear = {
       "ac": 407,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22936
     },
     {
@@ -2923,6 +3623,8 @@ var gear = {
       "ac": 155,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 13211
     }
   ],
@@ -2965,6 +3667,18 @@ var gear = {
       "id": 47265
     },
     {
+      "name": "Handwraps of Dead Winds",
+      "sta": 14,
+      "agi": 18,
+      "crit": 1,
+      "ap": 72,
+      "ac": 164,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55125
+    },
+    {
       "name": "Gloves of the Primordial Burrower",
       "str": 15,
       "sta": 10,
@@ -2999,6 +3713,21 @@ var gear = {
       "source": "AQ40",
       "q": 4,
       "id": 55554
+    },
+	{
+      "name": "Dragonclaw Gauntlets",
+      "source": "UpperKara",
+      "str": 28,
+	    "sta": 18,
+      "hit": 1,
+      "haste": 1,
+      "ac": 615,
+      "resist": {
+        "fire": 15
+      },
+      "phase": 7,
+      "q": 4,
+      "id": 55103 //fix id 
     },
     {
       "name": "Blooddrenched Grips",
@@ -3037,6 +3766,8 @@ var gear = {
       "ap": 30,
       "source": "LowerKara",
       "phase": 7,
+      "i": 68,
+      "q": 3,
       "id": 61274
     },
     {
@@ -3048,6 +3779,8 @@ var gear = {
       "ac": 111,
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61267
     },
     {
@@ -3059,6 +3792,8 @@ var gear = {
       "ac": 301,
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 78,
       "id": 61213
     },
     {
@@ -3068,6 +3803,8 @@ var gear = {
       "crit": 1,
       "ac": 109,
       "phase": 7,
+      "q": 3,
+      "i": 62,
       "id": 21278
     },
     {
@@ -3077,6 +3814,8 @@ var gear = {
       "skill": 7,
       "type": "Dagger",
       "phase": 7,
+      "q": 3,
+      "i": 48,
       "id": 61336
     },
     {
@@ -3090,6 +3829,8 @@ var gear = {
         "fire": 28
       },
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 19164
     },
     {
@@ -3104,6 +3845,8 @@ var gear = {
         "fire": 10
       },
       "phase": 1,
+      "q": 3,
+      "i": 58,
       "id": 11814
     },
     {
@@ -3117,6 +3860,8 @@ var gear = {
         "frost": 30
       },
       "phase": 6,
+      "q": 4,
+      "i": 80,
       "id": 22662
     },
     {
@@ -3130,6 +3875,8 @@ var gear = {
         "frost": 30
       },
       "phase": 6,
+      "q": 4,
+      "i": 80,
       "id": 22666
     },
     {
@@ -3144,18 +3891,23 @@ var gear = {
         "frost": 32
       },
       "phase": 6,
+      "q": 4,
+      "i": 80,
       "id": 22670
     },
     {
       "name": "Sandstalker Gauntlets",
       "source": "Crafting",
       "subsource": "nature",
-      "sta": 9,
-      "ac": 308,
+      "sta": 12,
+      "ac": 256,
+	  "ap": 24,
       "resist": {
-        "nature": 20
+        "nature": 25
       },
       "phase": 5,
+      "q": 3,
+      "i": 62,
       "id": 20477
     },
     {
@@ -3169,6 +3921,8 @@ var gear = {
         "nature": 20
       },
       "phase": "5",
+      "q": 3,
+      "i": 70,
       "id": 22763
     },
     {
@@ -3180,6 +3934,8 @@ var gear = {
       "ac": 158,
       "source": "SCitadel",
       "phase": 7,
+      "q": 4,
+      "i": 88,
       "id": 84035,
       "proc": {
         "chance": 5,
@@ -3195,6 +3951,8 @@ var gear = {
       "ac": 421,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60791
     },
     {
@@ -3205,6 +3963,8 @@ var gear = {
       "ac": 173,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 57,
       "id": 60577
     },
     {
@@ -3217,6 +3977,8 @@ var gear = {
       "ac": 113,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60729
     },
     {
@@ -3228,6 +3990,8 @@ var gear = {
       "ac": 392,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 60359
     },
     {
@@ -3239,6 +4003,8 @@ var gear = {
       "ac": 155,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 83430
     },
     {
@@ -3251,6 +4017,8 @@ var gear = {
       "type": "1H Mace",
       "source": "Ostarius",
       "phase": 7,
+      "q": 4,
+      "i": 75,
       "id": 83485
     },
     {
@@ -3261,6 +4029,8 @@ var gear = {
       "ac": 421,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60625
     },
     {
@@ -3272,6 +4042,8 @@ var gear = {
       "ac": 113,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83463
     },
     {
@@ -3282,6 +4054,8 @@ var gear = {
       "ac": 238,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61013
     },
     {
@@ -3293,6 +4067,8 @@ var gear = {
       "ac": 225,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 61,
       "id": 81019
     },
     {
@@ -3303,6 +4079,8 @@ var gear = {
       "ac": 468,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51772
     },
     {
@@ -3313,6 +4091,8 @@ var gear = {
       "ac": 430,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80510
     },
     {
@@ -3322,6 +4102,8 @@ var gear = {
       "ac": 489,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70051
     },
     {
@@ -3330,6 +4112,8 @@ var gear = {
       "ac": 483,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70062
     },
     {
@@ -3342,6 +4126,8 @@ var gear = {
       "type": "Dagger",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 69,
       "id": 18823
     },
     {
@@ -3352,6 +4138,8 @@ var gear = {
       "ac": 103,
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 58,
       "id": 15063
     },
     {
@@ -3376,6 +4164,8 @@ var gear = {
       "type": "2H Axe",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 69,
       "id": 19143
     },
     {
@@ -3387,6 +4177,8 @@ var gear = {
       "ac": 615,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 88,
       "id": 21581
     },
     {
@@ -3397,6 +4189,8 @@ var gear = {
       "ac": 393,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 21998
     },
     {
@@ -3408,6 +4202,8 @@ var gear = {
       "ac": 468,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16863
     },
     {
@@ -3419,6 +4215,8 @@ var gear = {
       "ac": 535,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 76,
       "id": 21674
     },
     {
@@ -3430,6 +4228,8 @@ var gear = {
       "ac": 482,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 68,
       "id": 21479
     },
     {
@@ -3439,6 +4239,8 @@ var gear = {
       "ap": 60,
       "source": "Quest",
       "phase": 6,
+      "q": 3,
+      "i": 63,
       "id": 23078
     },
     {
@@ -3449,6 +4251,8 @@ var gear = {
       "ac": 386,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 59,
       "id": 16737
     },
     {
@@ -3460,6 +4264,8 @@ var gear = {
       "ac": 535,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 76,
       "id": 16964
     },
     {
@@ -3471,6 +4277,8 @@ var gear = {
       "ac": 140,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 76,
       "id": 21672
     },
     {
@@ -3481,6 +4289,8 @@ var gear = {
       "ac": 532,
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 71,
       "id": 16484
     },
     {
@@ -3490,6 +4300,8 @@ var gear = {
       "ac": 429,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 66,
       "id": 23286
     },
     {
@@ -3500,6 +4312,8 @@ var gear = {
       "ac": 398,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 13162
     },
     {
@@ -3510,6 +4324,8 @@ var gear = {
       "ac": 441,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "id": 22714
     },
     {
@@ -3520,6 +4336,8 @@ var gear = {
       "ac": 441,
       "source": "Crafting",
       "phase": 1,
+      "q": 4,
+      "i": 62,
       "id": 12639
     },
     {
@@ -3530,6 +4348,8 @@ var gear = {
       "ac": 221,
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 13963
     },
     {
@@ -3540,6 +4360,8 @@ var gear = {
       "ac": 279,
       "source": "Crafting",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19157
     },
     {
@@ -3549,6 +4371,8 @@ var gear = {
       "ac": 86,
       "source": "Dungeon",
       "phase": "1",
+      "q": 4,
+      "i": 42,
       "id": 867
     }
   ],
@@ -3591,12 +4415,37 @@ var gear = {
       "id": 47266
     },
     {
+      "name": "Sash of the Grand Betrayal",
+      "sta": 16,
+      "ap": 52,
+      "crit": 1,
+      "haste": 2,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55357
+    },
+	  {
+      "name": "Worldbreaker Girdle",
+      "str": 35,
+	    "agi": 25,
+      "ac": 578,
+      "hit": 1,
+      "haste": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 69699
+    },
+    {
       "name": "Marksman's Girdle",
       "source": "Dungeon",
       "ac": 202,
       "agi": 21,
       "hit": 1,
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 22232,
     },
     {
@@ -3610,6 +4459,8 @@ var gear = {
       "source": "Quest",
       "ac": 96,
       "phase": 7,
+      "q": 3,
+      "i": 60,
       "id": 61088
     },
     {
@@ -3621,6 +4472,8 @@ var gear = {
       "source": "Quest",
       "ac": 231,
       "phase": 7,
+      "q": 4,
+      "i": 64,
       "id": 61758
     },
     {
@@ -3630,6 +4483,8 @@ var gear = {
       "source": "Crafting",
       "ac": 341,
       "phase": 7,
+      "q": 3,
+      "i": 58,
       "id": 61648
     },
     {
@@ -3640,6 +4495,8 @@ var gear = {
       "sta": 15,
       "haste": 1,
       "phase": 7,
+      "q": 3,
+      "i": 55,
       "id": 60576
     },
     {
@@ -3651,6 +4508,8 @@ var gear = {
       "source": "LowerKara",
       "ac": 237,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61273
     },
     {
@@ -3662,6 +4521,8 @@ var gear = {
       "source": "Crafting",
       "ac": 108,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61359
     },
     {
@@ -3675,6 +4536,8 @@ var gear = {
         "fire": 12
       },
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 19163
     },
     {
@@ -3686,6 +4549,8 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 2,
+      "i": 62,
       "id": 13526
     },
     {
@@ -3700,6 +4565,8 @@ var gear = {
         "frost": 10
       },
       "phase": "1",
+      "q": 3,
+      "i": 62,
       "id": 14502
     },
     {
@@ -3715,6 +4582,8 @@ var gear = {
         "frost": 16
       },
       "phase": "2",
+      "q": 4,
+      "i": 71,
       "id": 18547
     },
     {
@@ -3728,6 +4597,8 @@ var gear = {
         "nature": 15
       },
       "phase": "5",
+      "q": 3,
+      "i": 70,
       "id": 22764
     },
     {
@@ -3739,6 +4610,8 @@ var gear = {
       "ac": 554,
       "source": "SCitadel",
       "phase": 7,
+      "q": 4,
+      "i": 88,
       "id": 84034
     },
     {
@@ -3749,6 +4622,8 @@ var gear = {
       "ac": 91,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 59,
       "id": 60550
     },
     {
@@ -3760,6 +4635,8 @@ var gear = {
       "ac": 425,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 60358
     },
     {
@@ -3770,6 +4647,8 @@ var gear = {
       "ac": 143,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 83429
     },
     {
@@ -3781,6 +4660,8 @@ var gear = {
       "ac": 275,
       "source": "BWL",
       "phase": 7,
+      "q": 4,
+      "i": 77,
       "id": 19393
     },
     {
@@ -3792,6 +4673,8 @@ var gear = {
       "ac": 488,
       "source": "BWL",
       "phase": 7,
+      "q": 4,
+      "i": 77,
       "id": 19392
     },
     {
@@ -3800,6 +4683,8 @@ var gear = {
       "source": "Dungeon",
       "phase": 7,
       "id": 60502,
+      "q": 3,
+      "i": 65,
       "rand": 2157
     },
     {
@@ -3811,6 +4696,8 @@ var gear = {
       "ac": 157,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83447
     },
     {
@@ -3820,6 +4707,8 @@ var gear = {
       "crit": 1,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 81376
     },
     {
@@ -3830,6 +4719,8 @@ var gear = {
       "ac": 178,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 55,
       "id": 83273
     },
     {
@@ -3840,6 +4731,8 @@ var gear = {
       "ac": 421,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51773
     },
     {
@@ -3851,6 +4744,8 @@ var gear = {
       "ac": 380,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80509
     },
     {
@@ -3864,6 +4759,8 @@ var gear = {
       "type": "Fist",
       "source": "MC",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 81265
     },
     {
@@ -3872,6 +4769,8 @@ var gear = {
       "ac": 416,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70063
     },
     {
@@ -3880,6 +4779,8 @@ var gear = {
       "ac": 550,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70052
     },
     {
@@ -3900,6 +4801,8 @@ var gear = {
       "ac": 88,
       "source": "Other",
       "phase": 7,
+      "q": 2,
+      "i": 60,
       "id": 81221
     },
     {
@@ -3910,6 +4813,8 @@ var gear = {
       "ac": 369,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "id": 20204
     },
     {
@@ -3922,6 +4827,8 @@ var gear = {
       "ac": 380,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 21994
     },
     {
@@ -3936,6 +4843,8 @@ var gear = {
       },
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16864
     },
     {
@@ -3947,6 +4856,8 @@ var gear = {
       "ac": 142,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 88,
       "id": 21586
     },
     {
@@ -3958,6 +4869,8 @@ var gear = {
       "ac": 108,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 70,
       "id": 20216
     },
     {
@@ -3968,6 +4881,8 @@ var gear = {
       "ac": 408,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 70,
       "id": 20213
     },
     {
@@ -3978,6 +4893,8 @@ var gear = {
       "ac": 494,
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 71,
       "id": 21503
     },
     {
@@ -3988,6 +4905,8 @@ var gear = {
       "ac": 341,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 58,
       "id": 16736
     },
     {
@@ -3998,6 +4917,8 @@ var gear = {
       "ac": 369,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 13142
     },
     {
@@ -4010,6 +4931,8 @@ var gear = {
       "ac": 536,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 85,
       "id": 23219
     },
     {
@@ -4021,6 +4944,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 62,
       "id": 18505
     },
     {
@@ -4031,6 +4956,8 @@ var gear = {
       "ac": 353,
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 13959
     },
     {
@@ -4041,6 +4968,8 @@ var gear = {
       "ac": 353,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 60,
       "id": 19087
     },
     {
@@ -4052,6 +4981,8 @@ var gear = {
       "ac": 494,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 78,
       "id": 19137
     },
     {
@@ -4063,6 +4994,8 @@ var gear = {
       "ac": 258,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 72,
       "id": 21463
     },
     {
@@ -4075,6 +5008,8 @@ var gear = {
       "ac": 512,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 81,
       "id": 21598
     },
     {
@@ -4085,6 +5020,8 @@ var gear = {
       "ac": 391,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 61,
       "id": 19823
     },
     {
@@ -4096,6 +5033,8 @@ var gear = {
       "ac": 295,
       "source": "BWL",
       "phase": 7,
+      "q": 4,
+      "i": 83,
       "id": 19380
     },
     {
@@ -4106,6 +5045,8 @@ var gear = {
       "ac": 476,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 75,
       "id": 21692
     },
     {
@@ -4116,6 +5057,8 @@ var gear = {
       "ac": 482,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 76,
       "id": 16960
     },
     {
@@ -4125,6 +5068,8 @@ var gear = {
       "ac": 224,
       "source": "Crafting",
       "phase": 5,
+      "q": 3,
+      "i": 68,
       "id": 22195
     }
   ],
@@ -4166,6 +5111,48 @@ var gear = {
       "i": 86,
       "id": 47267
     },
+	{
+      "name": "Legguards of the Brotherhood",
+      "str": 43,
+      "sta": 32,
+	    "agi": 16,
+      "ac": 898,
+      "crit": 1,
+	    "hit": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 47273
+    },
+    {
+      "name": "Ethereal Leggings",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 184,
+      "sta": 22,
+      "agi": 15,
+      "str": 15,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55525
+    },
+    {
+      "name": "Reflective Leggings",
+      "source": "Crafting",
+      "subsource": "arcane",
+      "ac": 700,
+      "sta": 28,
+      "defense": 10,
+      "resist": {
+        "arcane": 30
+      },
+      "phase": 7,
+      "q": 3,
+      "id": 55533
+    },
     {
       "name": "Slime-coated Leggings",
       "ac": 432,
@@ -4196,6 +5183,8 @@ var gear = {
       "ap": 64,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 70,
       "id": 65036
     },
     {
@@ -4207,6 +5196,8 @@ var gear = {
       "ap": 36,
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61279
     },
     {
@@ -4220,6 +5211,8 @@ var gear = {
       },
       "ac": 463,
       "phase": 7,
+      "q": 3,
+      "i": 58,
       "id": 81355
     },
     {
@@ -4230,6 +5223,8 @@ var gear = {
       "crit": 1,
       "ac": 575,
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60289
     },
     {
@@ -4241,6 +5236,8 @@ var gear = {
       "haste": 1,
       "hit": 1,
       "phase": 7,
+      "q": 3,
+      "i": 58,
       "id": 60575
     },
     {
@@ -4251,6 +5248,8 @@ var gear = {
       "source": "Crafting",
       "ac": 228,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61358
     },
     {
@@ -4263,6 +5262,8 @@ var gear = {
       "source": "Crafting",
       "ac": 648,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61365
     },
     {
@@ -4277,6 +5278,8 @@ var gear = {
         "fire": 35
       },
       "phase": 1,
+      "q": 4,
+      "i": 75,
       "id": 19433
     },
     {
@@ -4289,6 +5292,8 @@ var gear = {
         "fire": 30
       },
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 17013
     },
     {
@@ -4300,6 +5305,8 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 2,
+      "i": 54,
       "id": 15054
     },
     {
@@ -4313,6 +5320,8 @@ var gear = {
         "frost": 40
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22701
     },
     {
@@ -4326,6 +5335,8 @@ var gear = {
         "frost": 40
       },
       "phase": "6",
+      "q": 4,
+      "i": 80,
       "id": 22702
     },
     {
@@ -4340,7 +5351,9 @@ var gear = {
         "frost": 40
       },
       "phase": "6",
-      "id": 22702
+      "q": 4,
+      "i": 80,
+      "id": 22699
     },
     {
       "name": "Cenarion Reservist's Legplates",
@@ -4353,6 +5366,8 @@ var gear = {
         "nature": 25
       },
       "phase": "5",
+      "q": 3,
+      "i": 63,
       "id": 20699
     },
     {
@@ -4364,6 +5379,8 @@ var gear = {
       "ac": 169,
       "source": "Unknown",
       "phase": 7,
+      "q": 3,
+      "i": 64,
       "id": 81365
     },
     {
@@ -4378,6 +5395,8 @@ var gear = {
       "ac": 169,
       "source": "LowerKara",
       "phase": 7,
+      "q": 4,
+      "i": 72,
       "id": 61265
     },
     {
@@ -4390,6 +5409,8 @@ var gear = {
       "ac": 408,
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 78,
       "id": 61239
     },
     {
@@ -4401,6 +5422,8 @@ var gear = {
       "ac": 175,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 65025
     },
     {
@@ -4412,6 +5435,8 @@ var gear = {
       "ac": 668,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 60360
     },
     {
@@ -4423,6 +5448,8 @@ var gear = {
       "ac": 215,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 83431
     },
     {
@@ -4432,6 +5459,8 @@ var gear = {
       "ac": 334,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60503
     },
     {
@@ -4441,6 +5470,8 @@ var gear = {
       "ac": 582,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83466
     },
     {
@@ -4452,6 +5483,8 @@ var gear = {
       "ac": 159,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83454
     },
     {
@@ -4463,6 +5496,8 @@ var gear = {
       "ac": 364,
       "source": "Quest",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 12903
     },
     {
@@ -4473,6 +5508,8 @@ var gear = {
       "ac": 655,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51775
     },
     {
@@ -4484,6 +5521,8 @@ var gear = {
       "ac": 593,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80511
     },
     {
@@ -4493,6 +5532,8 @@ var gear = {
       "ac": 648,
       "source": "Dungeon",
       "phase": 7,
+      "q": 2,
+      "i": 63,
       "id": 70053
     },
     {
@@ -4501,6 +5542,8 @@ var gear = {
       "ac": 642,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70060
     },
     {
@@ -4513,6 +5556,8 @@ var gear = {
       "source": "Other",
       "phase": 4,
       "id": 20671,
+      "q": 3,
+      "i": 62,
       "rand": 2157
     },
     {
@@ -4522,6 +5567,8 @@ var gear = {
       "ac": 320,
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 15052
     },
     {
@@ -4533,6 +5580,8 @@ var gear = {
       "ac": 154,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12963
     },
     {
@@ -4543,6 +5592,8 @@ var gear = {
       "ac": 674,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "id": 19855
     },
     {
@@ -4552,6 +5603,8 @@ var gear = {
       "ac": 150,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 14638
     },
     {
@@ -4563,6 +5616,8 @@ var gear = {
       "ac": 617,
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 62,
       "id": 14554
     },
     {
@@ -4574,6 +5629,8 @@ var gear = {
       "ac": 617,
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 62,
       "id": 145541
     },
     {
@@ -4586,6 +5643,8 @@ var gear = {
       "ac": 796,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 81,
       "id": 21332
     },
     {
@@ -4596,6 +5655,8 @@ var gear = {
       "ac": 327,
       "source": "Lethon",
       "phase": 4,
+      "q": 4,
+      "i": 76,
       "id": 20627
     },
     {
@@ -4606,6 +5667,8 @@ var gear = {
       "ac": 148,
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 15062
     },
     {
@@ -4617,6 +5680,8 @@ var gear = {
       "ac": 566,
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 62,
       "id": 18380
     },
     {
@@ -4627,6 +5692,8 @@ var gear = {
       "ac": 548,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 60,
       "id": 13498
     },
     {
@@ -4638,6 +5705,8 @@ var gear = {
       "ac": 211,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23071
     },
     {
@@ -4649,6 +5718,8 @@ var gear = {
       "ac": 740,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "id": 19402
     },
     {
@@ -4659,6 +5730,8 @@ var gear = {
       "ac": 815,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23068
     },
     {
@@ -4671,6 +5744,8 @@ var gear = {
       "ac": 601,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 22000
     },
     {
@@ -4682,6 +5757,8 @@ var gear = {
       "ac": 655,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16867
     },
     {
@@ -4694,6 +5771,8 @@ var gear = {
       "type": "Sword",
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 71,
       "id": 21495
     },
     {
@@ -4704,6 +5783,8 @@ var gear = {
       "ac": 557,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 16732
     },
     {
@@ -4715,6 +5796,8 @@ var gear = {
       "ac": 749,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 76,
       "id": 16962
     },
     {
@@ -4726,6 +5809,8 @@ var gear = {
       "ac": 743,
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 71,
       "id": 16479
     },
     {
@@ -4736,6 +5821,8 @@ var gear = {
       "ac": 618,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 68,
       "id": 23301
     },
     {
@@ -4746,6 +5833,8 @@ var gear = {
       "ac": 427,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21651
     },
     {
@@ -4757,6 +5846,8 @@ var gear = {
       "ac": 656,
       "source": "PVP",
       "phase": 6,
+      "q": 4,
+      "i": 65,
       "id": 22672
     },
     {
@@ -4768,6 +5859,8 @@ var gear = {
       "ac": 598,
       "source": "Crafting",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 22385
     },
     {
@@ -4777,6 +5870,8 @@ var gear = {
       "ac": 722,
       "source": "Crafting",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19694
     }
   ],
@@ -4808,8 +5903,9 @@ var gear = {
     },
     {
       "name": "Dreadnaught Sabatons",
-      "str": 26,
-      "agi": 23,
+      "str": 19,
+      "agi": 18,
+      "sta": 15,
       "ac": 662,
       "hit": 1,
       "arp": 40,
@@ -4818,6 +5914,43 @@ var gear = {
       "q": 4,
       "i": 86,
       "id": 47268
+    },
+	{
+      "name": "Greaves of the Brotherhood",
+      "str": 29,
+      "sta": 24,
+      "agi": 19,
+      "ac": 677,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 47274
+    },
+    {
+      "name": "Manahide Slippers",
+      "sta": 16,
+      "agi": 18,
+      "ac": 175,
+      "hit": 2,
+      "resist": {
+        "arcane": 24
+      },
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55092
+    },
+    {
+      "name": "Pawn's Advance",
+      "sta": 15,
+      "ap": 46,
+      "hit": 2,
+      "haste": 2,
+      "ac": 175,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55104
     },
     {
       "name": "Boots of Blazing Steps",
@@ -4828,6 +5961,8 @@ var gear = {
       "ac": 129,
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61271
     },
     {
@@ -4839,6 +5974,8 @@ var gear = {
       "arp": 25,
       "hit": 1,
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61272
     },
     {
@@ -4849,6 +5986,8 @@ var gear = {
       "str": 10,
       "hit": 1,
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60807
     },
     {
@@ -4859,6 +5998,8 @@ var gear = {
       "str": 13,
       "haste": 1,
       "phase": 7,
+      "q": 3,
+      "i": 55,
       "id": 60578
     },
     {
@@ -4870,6 +6011,8 @@ var gear = {
       "source": "Crafting",
       "ac": 108,
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61367
     },
     {
@@ -4883,6 +6026,8 @@ var gear = {
         "fire": 24
       },
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "id": 16982
     },
     {
@@ -4896,6 +6041,8 @@ var gear = {
         "fire": 28
       },
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 20039
     },
     {
@@ -4907,6 +6054,8 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 2,
+      "i": 62,
       "id": 13527
     },
     {
@@ -4920,6 +6069,8 @@ var gear = {
         "fire": 18
       },
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 18047
     },
     {
@@ -4930,6 +6081,8 @@ var gear = {
       "ac": 166,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23073
     },
     {
@@ -4940,6 +6093,8 @@ var gear = {
       "ac": 515,
       "source": "LowerKara",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 61246
     },
     {
@@ -4950,6 +6105,8 @@ var gear = {
       "ac": 113,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 58,
       "id": 60666
     },
     {
@@ -4960,6 +6117,8 @@ var gear = {
       "ac": 138,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 65027
     },
     {
@@ -4970,6 +6129,8 @@ var gear = {
       "ac": 526,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 60361
     },
     {
@@ -4980,6 +6141,8 @@ var gear = {
       "ac": 179,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 83432
     },
     {
@@ -4990,6 +6153,8 @@ var gear = {
       "ac": 163,
       "source": "AQ40",
       "phase": 7,
+      "q": 4,
+      "i": 81,
       "id": 21613
     },
     {
@@ -5000,6 +6165,8 @@ var gear = {
       "ac": 289,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61024
     },
     {
@@ -5010,6 +6177,8 @@ var gear = {
       "ac": 472,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61036
     },
     {
@@ -5020,6 +6189,8 @@ var gear = {
       "ac": 131,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83442
     },
     {
@@ -5030,6 +6201,8 @@ var gear = {
       "ac": 424,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 59,
       "id": 18692
     },
     {
@@ -5040,6 +6213,8 @@ var gear = {
       "ac": 515,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51774
     },
     {
@@ -5050,6 +6225,8 @@ var gear = {
       "ac": 468,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80508
     },
     {
@@ -5060,6 +6237,8 @@ var gear = {
       "ac": 187,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 61005
     },
     {
@@ -5068,6 +6247,8 @@ var gear = {
       "ac": 578,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 70059
     },
     {
@@ -5078,6 +6259,8 @@ var gear = {
       "ac": 452,
       "source": "PVP",
       "phase": 4,
+      "q": 3,
+      "i": 63,
       "id": 20208
     },
     {
@@ -5087,6 +6270,8 @@ var gear = {
       "agi": 13,
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 55,
       "id": 12555
     },
     {
@@ -5096,6 +6281,8 @@ var gear = {
       "ac": 270,
       "source": "Crafting",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16984
     },
     {
@@ -5106,6 +6293,8 @@ var gear = {
       "ac": 129,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "id": 19906
     },
     {
@@ -5117,6 +6306,8 @@ var gear = {
       "ac": 247,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 14616
     },
     {
@@ -5127,6 +6318,8 @@ var gear = {
       "ac": 470,
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 60,
       "id": 21995
     },
     {
@@ -5138,6 +6331,8 @@ var gear = {
       "ac": 581,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 75,
       "id": 21688
     },
     {
@@ -5148,6 +6343,8 @@ var gear = {
       "ac": 286,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 83,
       "id": 19381
     },
     {
@@ -5158,6 +6355,8 @@ var gear = {
       "ac": 138,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 66,
       "id": 21493
     },
     {
@@ -5169,6 +6368,8 @@ var gear = {
       "ac": 647,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 73,
       "id": 21706
     },
     {
@@ -5179,6 +6380,8 @@ var gear = {
       "ac": 424,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 59,
       "id": 16734
     },
     {
@@ -5190,6 +6393,8 @@ var gear = {
       "ac": 596,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 77,
       "id": 19387
     },
     {
@@ -5201,6 +6406,8 @@ var gear = {
       "ac": 604,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 78,
       "id": 21333
     },
     {
@@ -5210,6 +6417,8 @@ var gear = {
       "ac": 116,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "id": 13210
     },
     {
@@ -5221,6 +6430,8 @@ var gear = {
       "ac": 592,
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 71,
       "id": 16483
     },
     {
@@ -5231,6 +6442,8 @@ var gear = {
       "ac": 472,
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 66,
       "id": 23287
     },
     {
@@ -5241,6 +6454,8 @@ var gear = {
       "ac": 515,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 16862
     },
     {
@@ -5251,6 +6466,8 @@ var gear = {
       "ac": 589,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 76,
       "id": 16965
     },
     {
@@ -5261,6 +6478,8 @@ var gear = {
       "ac": 417,
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 58,
       "id": 13070
     },
     {
@@ -5272,6 +6491,8 @@ var gear = {
       "ac": 519,
       "source": "AQ20",
       "phase": 5,
+      "q": 3,
+      "i": 73,
       "id": 21490
     },
     {
@@ -5282,6 +6503,8 @@ var gear = {
       "ac": 115,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 59,
       "id": 12553
     },
     {
@@ -5291,6 +6514,8 @@ var gear = {
       "ac": 247,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 13967
     },
     {
@@ -5301,6 +6526,8 @@ var gear = {
       "ac": 233,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 57,
       "id": 11731
     }
   ],
@@ -5318,12 +6545,46 @@ var gear = {
       "id": 47269
     },
     {
+      "name": "Mephistroth's Cunning",
+      "agi": 32,
+      "hit": 1,
+      "haste": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55353
+    },
+    {
+      "name": "Brand of Karazhan",
+      "str": 17,
+      "hit": 1,
+      "haste": 1,
+      "resist": {
+        "arcane": 15
+      },
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55666
+    },
+    {
+      "name": "Loop of Hardened Slate",
+      "str": 13,
+      "sta": 19,
+      "source": "UpperKara",
+      "q": 4,
+      "phase": 7,
+      "id": 55123
+    },
+    {
       "name": "Tarnished Lancelot Ring",
       "crit": 1,
       "ap": 10,
       "agi": 2,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60739
     },
     {
@@ -5332,6 +6593,8 @@ var gear = {
       "arp": 35,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 61,
       "id": 41062
     },
     {
@@ -5340,6 +6603,8 @@ var gear = {
       "arp": 40,
       "source": "Dungeon",
       "phase": 7,
+      "q": 4,
+      "i": 51,
       "id": 61406
     },
     {
@@ -5350,6 +6615,8 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 2,
+      "i": 65,
       "id": 12017
     },
     {
@@ -5361,6 +6628,8 @@ var gear = {
         "frost": 20
       },
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21526
     },
     {
@@ -5373,6 +6642,8 @@ var gear = {
         "frost": 20
       },
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23028
     },
     {
@@ -5384,6 +6655,8 @@ var gear = {
         "frost": 25
       },
       "phase": 6,
+      "q": 4,
+      "i": 80,
       "id": 22707
     },
     {
@@ -5391,6 +6664,8 @@ var gear = {
       "str": 20,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 64,
       "id": 81367
     },
     {
@@ -5399,6 +6674,8 @@ var gear = {
       "sta": 5,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60499
     },
     {
@@ -5408,6 +6685,8 @@ var gear = {
       "ap": 20,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60366
     },
     {
@@ -5415,6 +6694,8 @@ var gear = {
       "arp": 50,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 60,
       "id": 60547
     },
     {
@@ -5425,6 +6706,8 @@ var gear = {
       "haste": 1,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 40,
       "id": 83217
     },
     {
@@ -5435,6 +6718,8 @@ var gear = {
       "haste": 1,
       "source": "Concavius",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 83237
     },
     {
@@ -5444,6 +6729,8 @@ var gear = {
       "hit": 1,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 61,
       "id": 80760
     },
     {
@@ -5452,6 +6739,8 @@ var gear = {
       "agi": 14,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 83,
       "id": 19376
     },
     {
@@ -5461,6 +6750,8 @@ var gear = {
       "agi": 16,
       "source": "MC",
       "phase": "1",
+      "q": 4,
+      "i": 78,
       "id": 17063
     },
     {
@@ -5470,6 +6761,8 @@ var gear = {
       "str": 6,
       "source": "Quest",
       "phase": "5",
+      "q": 3,
+      "i": 66,
       "id": 21182
     },
     {
@@ -5479,6 +6772,8 @@ var gear = {
       "agi": 14,
       "source": "ZG",
       "phase": "4",
+      "q": 3,
+      "i": 68,
       "id": 19925
     },
     {
@@ -5486,6 +6781,8 @@ var gear = {
       "agi": 34,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 22961
     },
     {
@@ -5494,6 +6791,8 @@ var gear = {
       "sta": 13,
       "source": "Dungeon",
       "phase": "2",
+      "q": 3,
+      "i": 63,
       "id": 18522
     },
     {
@@ -5503,6 +6802,8 @@ var gear = {
       "ap": 52,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 85,
       "id": 23038
     },
     {
@@ -5512,6 +6813,8 @@ var gear = {
       "ap": 20,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 54,
       "id": 17713
     },
     {
@@ -5521,6 +6824,8 @@ var gear = {
       "agi": 22,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 75,
       "id": 19432
     },
     {
@@ -5531,6 +6836,8 @@ var gear = {
       "ap": 16,
       "source": "PVP",
       "phase": "2",
+      "q": 4,
+      "i": 65,
       "id": 19325
     },
     {
@@ -5540,6 +6847,8 @@ var gear = {
       "sta": 7,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 60,
       "id": 12548
     },
     {
@@ -5549,6 +6858,8 @@ var gear = {
       "ap": 48,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 83,
       "id": 19384
     },
     {
@@ -5558,6 +6869,8 @@ var gear = {
       "bonusdmg": 4,
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 62,
       "id": 21189
     },
     {
@@ -5567,6 +6880,8 @@ var gear = {
       "ap": 16,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 63,
       "id": 13098
     },
     {
@@ -5576,6 +6891,8 @@ var gear = {
       "agi": 12,
       "source": "PVP",
       "phase": 3,
+      "q": 3,
+      "i": 63,
       "id": 19514
     },
     {
@@ -5586,6 +6903,8 @@ var gear = {
       "ap": 30,
       "source": "MC",
       "phase": "1",
+      "q": 4,
+      "i": 67,
       "id": 18821
     },
     {
@@ -5596,6 +6915,8 @@ var gear = {
       "ac": 100,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 81,
       "id": 21601
     },
     {
@@ -5605,6 +6926,8 @@ var gear = {
       "ap": 30,
       "source": "AQ20",
       "phase": "5",
+      "q": 3,
+      "i": 74,
       "id": 21477
     },
     {
@@ -5613,6 +6936,8 @@ var gear = {
       "agi": 27,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 88,
       "id": 21596
     },
     {
@@ -5622,6 +6947,8 @@ var gear = {
       "ap": 40,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 78,
       "id": 21677
     },
     {
@@ -5631,6 +6958,8 @@ var gear = {
       "ap": 20,
       "source": "ZG",
       "phase": "4",
+      "q": 3,
+      "i": 68,
       "id": 19898
     },
     {
@@ -5639,6 +6968,8 @@ var gear = {
       "ap": 40,
       "source": "ZG",
       "phase": "4",
+      "q": 4,
+      "i": 65,
       "id": 22722
     },
     {
@@ -5648,6 +6979,8 @@ var gear = {
       "ac": 140,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 23018
     },
     {
@@ -5657,6 +6990,8 @@ var gear = {
       "sta": 14,
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 65,
       "id": 21393
     },
     {
@@ -5666,6 +7001,8 @@ var gear = {
       "agi": 24,
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 80,
       "id": 21205
     },
     {
@@ -5674,6 +7011,8 @@ var gear = {
       "agi": 15,
       "source": "Dungeon",
       "phase": "2",
+      "q": 3,
+      "i": 61,
       "id": 18500
     }
   ],
@@ -5691,12 +7030,46 @@ var gear = {
       "id": 47269
     },
     {
+      "name": "Mephistroth's Cunning",
+      "agi": 32,
+      "hit": 1,
+      "haste": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55353
+    },
+    {
+      "name": "Brand of Karazhan",
+      "str": 17,
+      "hit": 1,
+      "haste": 1,
+      "resist": {
+        "arcane": 15
+      },
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55666
+    },
+    {
+      "name": "Loop of Hardened Slate",
+      "str": 13,
+      "sta": 19,
+      "source": "UpperKara",
+      "q": 4,
+      "phase": 7,
+      "id": 55123
+    },
+    {
       "name": "Tarnished Lancelot Ring",
       "crit": 1,
       "ap": 10,
       "agi": 2,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60739
     },
     {
@@ -5705,6 +7078,8 @@ var gear = {
       "arp": 35,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 61,
       "id": 41062
     },
     {
@@ -5713,6 +7088,8 @@ var gear = {
       "arp": 40,
       "source": "Dungeon",
       "phase": 7,
+      "q": 4,
+      "i": 51,
       "id": 61406
     },
     {
@@ -5723,6 +7100,8 @@ var gear = {
         "fire": 20
       },
       "phase": 1,
+      "q": 2,
+      "i": 65,
       "id": 12017
     },
     {
@@ -5734,6 +7113,8 @@ var gear = {
         "frost": 20
       },
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21526
     },
     {
@@ -5746,6 +7127,8 @@ var gear = {
         "frost": 20
       },
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23028
     },
     {
@@ -5757,6 +7140,8 @@ var gear = {
         "frost": 25
       },
       "phase": 6,
+      "q": 4,
+      "i": 80,
       "id": 22707
     },
     {
@@ -5764,6 +7149,8 @@ var gear = {
       "str": 20,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 64,
       "id": 81367
     },
     {
@@ -5772,6 +7159,8 @@ var gear = {
       "sta": 5,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60499
     },
     {
@@ -5781,6 +7170,8 @@ var gear = {
       "ap": 20,
       "source": "PVP",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60366
     },
     {
@@ -5788,6 +7179,8 @@ var gear = {
       "arp": 50,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 60,
       "id": 60547
     },
     {
@@ -5798,6 +7191,8 @@ var gear = {
       "haste": 1,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 40,
       "id": 83217
     },
     {
@@ -5808,6 +7203,8 @@ var gear = {
       "haste": 1,
       "source": "Concavius",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 83237
     },
     {
@@ -5817,6 +7214,8 @@ var gear = {
       "hit": 1,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 61,
       "id": 80760
     },
     {
@@ -5825,6 +7224,8 @@ var gear = {
       "agi": 14,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 83,
       "id": 19376
     },
     {
@@ -5834,6 +7235,8 @@ var gear = {
       "agi": 16,
       "source": "MC",
       "phase": "1",
+      "q": 4,
+      "i": 78,
       "id": 17063
     },
     {
@@ -5843,6 +7246,8 @@ var gear = {
       "str": 6,
       "source": "Quest",
       "phase": "5",
+      "q": 3,
+      "i": 66,
       "id": 21182
     },
     {
@@ -5852,6 +7257,8 @@ var gear = {
       "agi": 14,
       "source": "ZG",
       "phase": "4",
+      "q": 3,
+      "i": 68,
       "id": 19925
     },
     {
@@ -5859,6 +7266,8 @@ var gear = {
       "agi": 34,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 22961
     },
     {
@@ -5867,6 +7276,8 @@ var gear = {
       "sta": 13,
       "source": "Dungeon",
       "phase": "2",
+      "q": 3,
+      "i": 63,
       "id": 18522
     },
     {
@@ -5876,6 +7287,8 @@ var gear = {
       "ap": 52,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 85,
       "id": 23038
     },
     {
@@ -5885,6 +7298,8 @@ var gear = {
       "ap": 20,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 54,
       "id": 17713
     },
     {
@@ -5894,6 +7309,8 @@ var gear = {
       "agi": 22,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 75,
       "id": 19432
     },
     {
@@ -5904,6 +7321,8 @@ var gear = {
       "ap": 16,
       "source": "PVP",
       "phase": "2",
+      "q": 4,
+      "i": 65,
       "id": 19325
     },
     {
@@ -5913,6 +7332,8 @@ var gear = {
       "sta": 7,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 60,
       "id": 12548
     },
     {
@@ -5922,6 +7343,8 @@ var gear = {
       "ap": 48,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 83,
       "id": 19384
     },
     {
@@ -5931,6 +7354,8 @@ var gear = {
       "bonusdmg": 4,
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 62,
       "id": 21189
     },
     {
@@ -5940,6 +7365,8 @@ var gear = {
       "ap": 16,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 63,
       "id": 13098
     },
     {
@@ -5949,6 +7376,8 @@ var gear = {
       "agi": 12,
       "source": "PVP",
       "phase": 3,
+      "q": 3,
+      "i": 63,
       "id": 19514
     },
     {
@@ -5959,6 +7388,8 @@ var gear = {
       "ap": 30,
       "source": "MC",
       "phase": "1",
+      "q": 4,
+      "i": 67,
       "id": 18821
     },
     {
@@ -5969,6 +7400,8 @@ var gear = {
       "ac": 100,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 81,
       "id": 21601
     },
     {
@@ -5978,6 +7411,8 @@ var gear = {
       "ap": 30,
       "source": "AQ20",
       "phase": "5",
+      "q": 3,
+      "i": 74,
       "id": 21477
     },
     {
@@ -5986,6 +7421,8 @@ var gear = {
       "agi": 27,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 88,
       "id": 21596
     },
     {
@@ -5995,6 +7432,8 @@ var gear = {
       "ap": 40,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 78,
       "id": 21677
     },
     {
@@ -6004,6 +7443,8 @@ var gear = {
       "ap": 20,
       "source": "ZG",
       "phase": "4",
+      "q": 3,
+      "i": 68,
       "id": 19898
     },
     {
@@ -6012,6 +7453,8 @@ var gear = {
       "ap": 40,
       "source": "ZG",
       "phase": "4",
+      "q": 4,
+      "i": 65,
       "id": 22722
     },
     {
@@ -6021,6 +7464,8 @@ var gear = {
       "ac": 140,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 23018
     },
     {
@@ -6030,6 +7475,8 @@ var gear = {
       "sta": 14,
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 65,
       "id": 21393
     },
     {
@@ -6039,6 +7486,8 @@ var gear = {
       "agi": 24,
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 80,
       "id": 21205
     },
     {
@@ -6047,6 +7496,8 @@ var gear = {
       "agi": 15,
       "source": "Dungeon",
       "phase": "2",
+      "q": 3,
+      "i": 61,
       "id": 18500
     }
   ],
@@ -6055,6 +7506,8 @@ var gear = {
       "name": "Vial of Potent Venoms (Assumed 50% proc chance)",
       "source": "LowerKara",
       "phase": "7",
+      "q": 4,
+      "i": 66,
       "id": 61243
     },
     {
@@ -6062,6 +7515,8 @@ var gear = {
       "source": "Quest",
       "arp": 50,
       "phase": 7,
+      "q": 3,
+      "i": 53,
       "id": 61517
     },
     {
@@ -6072,6 +7527,8 @@ var gear = {
         "fire": 15
       },
       "phase": "1",
+      "q": 3,
+      "i": 43,
       "id": 2802
     },
     {
@@ -6086,6 +7543,8 @@ var gear = {
         "frost": 13
       },
       "phase": "6",
+      "q": 4,
+      "i": 85,
       "id": 23042
     },
     {
@@ -6096,6 +7555,8 @@ var gear = {
         "frost": 15
       },
       "phase": "1",
+      "q": 3,
+      "i": 52,
       "id": 18634
     },
     {
@@ -6107,6 +7568,8 @@ var gear = {
         "frost": 10
       },
       "phase": "3",
+      "q": 4,
+      "i": 60,
       "id": 17904
     },
     {
@@ -6117,6 +7580,8 @@ var gear = {
         "nature": 10
       },
       "phase": "1",
+      "q": 3,
+      "i": 51,
       "id": 17744
     },
     {
@@ -6125,6 +7590,8 @@ var gear = {
       "crit": 2,
       "source": "EmerSanc",
       "phase": "7",
+      "q": 4,
+      "i": 76,
       "id": 61194
     },
     {
@@ -6132,6 +7599,8 @@ var gear = {
       "haste": 2,
       "source": "Quest",
       "phase": "7",
+      "q": 2,
+      "i": 63,
       "id": 60715
     },
     {
@@ -6140,6 +7609,7 @@ var gear = {
       "ap": 30,
       "source": "SCitadel",
       "phase": "7",
+      "q": 4,
       "id": 84006
     },
     {
@@ -6148,6 +7618,8 @@ var gear = {
       "hit": 1,
       "source": "Dungeon",
       "phase": "7",
+      "q": 3,
+      "i": 53,
       "id": 80674
     },
     {
@@ -6157,6 +7629,8 @@ var gear = {
       "ac": 120,
       "source": "Dungeon",
       "phase": "7",
+      "q": 3,
+      "i": 57,
       "id": 60559
     },
     {
@@ -6164,6 +7638,8 @@ var gear = {
       "haste": 3,
       "source": "Dungeon",
       "phase": "7",
+      "q": 3,
+      "i": 65,
       "id": 60501
     },
     {
@@ -6171,12 +7647,16 @@ var gear = {
       "haste": 2,
       "source": "Other",
       "phase": "7",
+      "q": 2,
+      "i": 60,
       "id": 61095
     },
     {
       "name": "Zandalarian Hero Medallion (Used last 20 secs)",
       "source": "ZG",
       "phase": "4",
+      "q": 4,
+      "i": 68,
       "id": 19949
     },
     {
@@ -6184,6 +7664,8 @@ var gear = {
       "source": "AQ40",
       "arpv": "0–1200",
       "phase": "5",
+      "q": 4,
+      "i": 76,
       "id": 21670
     },
     {
@@ -6191,6 +7673,8 @@ var gear = {
       "crit": 2,
       "source": "Quest",
       "phase": "1",
+      "q": 3,
+      "i": 63,
       "id": 13965
     },
     {
@@ -6199,12 +7683,16 @@ var gear = {
       "parry": 1,
       "source": "Dungeon",
       "phase": "2",
+      "q": 3,
+      "i": 63,
       "id": 18537
     },
     {
       "name": "Darkmoon Card: Maelstrom (Assumed 2% proc chance)",
       "source": "Quest",
       "phase": "3",
+      "q": 4,
+      "i": 66,
       "id": 19289,
       "proc": {
         "chance": 2,
@@ -6216,6 +7704,8 @@ var gear = {
       "name": "Diamond Flask (Used last 60 secs)",
       "source": "Quest",
       "phase": "3",
+      "q": 3,
+      "i": 52,
       "id": 20130
     },
     {
@@ -6225,12 +7715,16 @@ var gear = {
       "dodge": 1,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 75,
       "id": 19406
     },
     {
       "name": "Earthstrike (Used last 20 secs)",
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 66,
       "id": 21180
     },
     {
@@ -6238,6 +7732,8 @@ var gear = {
       "ap": 20,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 58,
       "id": 11815,
       "proc": {
         "chance": 2,
@@ -6248,6 +7744,8 @@ var gear = {
       "name": "Heart of Wyrmthalak (Assumed 2% proc chance)",
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 22321,
       "proc": {
         "chance": 2,
@@ -6259,6 +7757,8 @@ var gear = {
       "name": "Jom Gabbar (Used last 20 secs)",
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 81,
       "id": 23570
     },
     {
@@ -6267,6 +7767,8 @@ var gear = {
       "hit": 1,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 85,
       "id": 22954
     },
     {
@@ -6274,6 +7776,8 @@ var gear = {
       "hit": 1,
       "source": "Quest",
       "phase": "1",
+      "q": 2,
+      "i": 51,
       "id": 19120
     },
     {
@@ -6281,6 +7785,8 @@ var gear = {
       "ap": 81,
       "source": "Quest",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 13209
     },
     {
@@ -6288,6 +7794,8 @@ var gear = {
       "ap": 64,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 90,
       "id": 23041
     },
     {
@@ -6295,6 +7803,8 @@ var gear = {
       "ap": 150,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 90,
       "id": 23206
     }
   ],
@@ -6303,6 +7813,8 @@ var gear = {
       "name": "Vial of Potent Venoms (Assumed 50% proc chance)",
       "source": "LowerKara",
       "phase": "7",
+      "q": 4,
+      "i": 66,
       "id": 61243
     },
     {
@@ -6310,6 +7822,8 @@ var gear = {
       "source": "Quest",
       "arp": 50,
       "phase": 7,
+      "q": 3,
+      "i": 53,
       "id": 61517
     },
     {
@@ -6320,6 +7834,8 @@ var gear = {
         "fire": 15
       },
       "phase": "1",
+      "q": 3,
+      "i": 43,
       "id": 2802
     },
     {
@@ -6334,6 +7850,8 @@ var gear = {
         "frost": 13
       },
       "phase": "6",
+      "q": 4,
+      "i": 85,
       "id": 23042
     },
     {
@@ -6344,6 +7862,8 @@ var gear = {
         "frost": 15
       },
       "phase": "1",
+      "q": 3,
+      "i": 52,
       "id": 18634
     },
     {
@@ -6355,6 +7875,8 @@ var gear = {
         "frost": 10
       },
       "phase": "3",
+      "q": 4,
+      "i": 60,
       "id": 17904
     },
     {
@@ -6365,6 +7887,8 @@ var gear = {
         "nature": 10
       },
       "phase": "1",
+      "q": 3,
+      "i": 51,
       "id": 17744
     },
     {
@@ -6373,6 +7897,8 @@ var gear = {
       "crit": 2,
       "source": "EmerSanc",
       "phase": "7",
+      "q": 4,
+      "i": 76,
       "id": 61194
     },
     {
@@ -6380,6 +7906,8 @@ var gear = {
       "haste": 2,
       "source": "Quest",
       "phase": "7",
+      "q": 2,
+      "i": 63,
       "id": 60715
     },
     {
@@ -6388,6 +7916,7 @@ var gear = {
       "ap": 30,
       "source": "SCitadel",
       "phase": "7",
+      "q": 4,
       "id": 84006
     },
     {
@@ -6396,6 +7925,8 @@ var gear = {
       "hit": 1,
       "source": "Dungeon",
       "phase": "7",
+      "q": 3,
+      "i": 53,
       "id": 80674
     },
     {
@@ -6405,6 +7936,8 @@ var gear = {
       "ac": 120,
       "source": "Dungeon",
       "phase": "7",
+      "q": 3,
+      "i": 57,
       "id": 60559
     },
     {
@@ -6412,6 +7945,8 @@ var gear = {
       "haste": 3,
       "source": "Dungeon",
       "phase": "7",
+      "q": 3,
+      "i": 65,
       "id": 60501
     },
     {
@@ -6419,12 +7954,16 @@ var gear = {
       "haste": 2,
       "source": "Other",
       "phase": "7",
+      "q": 2,
+      "i": 60,
       "id": 61095
     },
     {
       "name": "Zandalarian Hero Medallion (Used last 20 secs)",
       "source": "ZG",
       "phase": "4",
+      "q": 4,
+      "i": 68,
       "id": 19949
     },
     {
@@ -6432,6 +7971,8 @@ var gear = {
       "source": "AQ40",
       "arpv": "0–1200",
       "phase": "5",
+      "q": 4,
+      "i": 76,
       "id": 21670
     },
     {
@@ -6439,6 +7980,8 @@ var gear = {
       "crit": 2,
       "source": "Quest",
       "phase": "1",
+      "q": 3,
+      "i": 63,
       "id": 13965
     },
     {
@@ -6447,12 +7990,16 @@ var gear = {
       "parry": 1,
       "source": "Dungeon",
       "phase": "2",
+      "q": 3,
+      "i": 63,
       "id": 18537
     },
     {
       "name": "Darkmoon Card: Maelstrom (Assumed 2% proc chance)",
       "source": "Quest",
       "phase": "3",
+      "q": 4,
+      "i": 66,
       "id": 19289,
       "proc": {
         "chance": 2,
@@ -6464,6 +8011,8 @@ var gear = {
       "name": "Diamond Flask (Used last 60 secs)",
       "source": "Quest",
       "phase": "3",
+      "q": 3,
+      "i": 52,
       "id": 20130
     },
     {
@@ -6473,12 +8022,16 @@ var gear = {
       "dodge": 1,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 75,
       "id": 19406
     },
     {
       "name": "Earthstrike (Used last 20 secs)",
       "source": "Quest",
       "phase": "5",
+      "q": 4,
+      "i": 66,
       "id": 21180
     },
     {
@@ -6486,6 +8039,8 @@ var gear = {
       "ap": 20,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 58,
       "id": 11815,
       "proc": {
         "chance": 2,
@@ -6496,6 +8051,8 @@ var gear = {
       "name": "Heart of Wyrmthalak (Assumed 2% proc chance)",
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 22321,
       "proc": {
         "chance": 2,
@@ -6507,6 +8064,8 @@ var gear = {
       "name": "Jom Gabbar (Used last 20 secs)",
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 81,
       "id": 23570
     },
     {
@@ -6515,6 +8074,8 @@ var gear = {
       "hit": 1,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 85,
       "id": 22954
     },
     {
@@ -6522,6 +8083,8 @@ var gear = {
       "hit": 1,
       "source": "Quest",
       "phase": "1",
+      "q": 2,
+      "i": 51,
       "id": 19120
     },
     {
@@ -6529,6 +8092,8 @@ var gear = {
       "ap": 81,
       "source": "Quest",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 13209
     },
     {
@@ -6536,6 +8101,8 @@ var gear = {
       "ap": 64,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 90,
       "id": 23041
     },
     {
@@ -6543,6 +8110,8 @@ var gear = {
       "ap": 150,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 90,
       "id": 23206
     }
   ],
@@ -6553,7 +8122,18 @@ var gear = {
       "haste": 1,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 64,
       "id": 61569
+    },
+    {
+      "name": "Fragments of Aldrach",
+      "agi": 19,
+      "crit": 1,
+      "phase": 7,
+      "source": "UpperKara",
+      "q": 4,
+      "id": 55510
     },
     {
       "name": "Nature's Call",
@@ -6562,6 +8142,8 @@ var gear = {
       "arp": 25,
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 81,
       "id": 61525
     },
     {
@@ -6574,6 +8156,8 @@ var gear = {
       "subsource": "nature",
       "source": "Emeriss",
       "phase": "4",
+      "q": 4,
+      "i": 76,
       "id": 20599
     },
     {
@@ -6585,6 +8169,8 @@ var gear = {
       "subsource": "nature",
       "source": "AQ20",
       "phase": "5",
+      "q": 4,
+      "i": 68,
       "id": 21478
     },
     {
@@ -6592,6 +8178,8 @@ var gear = {
       "agi": 12,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83452
     },
     {
@@ -6600,6 +8188,8 @@ var gear = {
       "agi": 7,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 60,
       "id": 13173
     },
     {
@@ -6607,6 +8197,8 @@ var gear = {
       "arp": 35,
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 61,
       "id": 60782
     },
     {
@@ -6615,6 +8207,8 @@ var gear = {
       "agi": 5,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60506
     },
     {
@@ -6623,6 +8217,8 @@ var gear = {
       "agi": 5,
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60624
     },
     {
@@ -6630,6 +8226,8 @@ var gear = {
       "crit": 1,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 62,
       "id": 83257
     },
     {
@@ -6637,6 +8235,8 @@ var gear = {
       "ap": 39,
       "source": "Dark Reaver",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 51780
     },
     {
@@ -6645,6 +8245,8 @@ var gear = {
       "sta": 5,
       "source": "Quest",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 61011
     },
     {
@@ -6653,6 +8255,8 @@ var gear = {
       "ap": 10,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 56,
       "id": 80795
     },
     {
@@ -6660,6 +8264,8 @@ var gear = {
       "agi": 11,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 18680
     },
     {
@@ -6669,6 +8275,8 @@ var gear = {
       "agi": 3,
       "source": "Quest",
       "phase": "1",
+      "q": 3,
+      "i": 62,
       "id": 16996
     },
     {
@@ -6677,6 +8285,8 @@ var gear = {
       "ap": 24,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 75,
       "id": 19350
     },
     {
@@ -6685,6 +8295,8 @@ var gear = {
       "agi": 10,
       "source": "ZG",
       "phase": "4",
+      "q": 3,
+      "i": 68,
       "id": 19993
     },
     {
@@ -6692,6 +8304,8 @@ var gear = {
       "agi": 18,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 78,
       "id": 21616
     },
     {
@@ -6700,6 +8314,8 @@ var gear = {
       "ap": 20,
       "source": "Other",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 22318
     },
     {
@@ -6708,6 +8324,8 @@ var gear = {
       "agi": 11,
       "source": "ZG",
       "phase": "4",
+      "q": 4,
+      "i": 66,
       "id": 20038
     },
     {
@@ -6717,6 +8335,8 @@ var gear = {
       "ap": 18,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 86,
       "id": 22811
     },
     {
@@ -6725,6 +8345,8 @@ var gear = {
       "agi": 5,
       "source": "PVP",
       "phase": "2",
+      "q": 3,
+      "i": 63,
       "id": 19562
     },
     {
@@ -6732,6 +8354,8 @@ var gear = {
       "ap": 22,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 59,
       "id": 12653
     },
     {
@@ -6740,6 +8364,8 @@ var gear = {
       "agi": 3,
       "source": "Dungeon",
       "phase": "2",
+      "q": 3,
+      "i": 58,
       "id": 18323
     },
     {
@@ -6748,6 +8374,8 @@ var gear = {
       "ap": 22,
       "source": "MC",
       "phase": "1",
+      "q": 4,
+      "i": 69,
       "id": 17069
     },
     {
@@ -6756,6 +8384,8 @@ var gear = {
       "agi": 3,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 59,
       "id": 12651
     },
     {
@@ -6764,6 +8394,8 @@ var gear = {
       "agi": 7,
       "source": "PVP",
       "phase": "2",
+      "q": 3,
+      "i": 63,
       "id": 19107
     },
     {
@@ -6772,6 +8404,8 @@ var gear = {
       "agi": 4,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 18738
     },
     {
@@ -6782,6 +8416,8 @@ var gear = {
       "agi": 7,
       "source": "AQ20",
       "phase": "5",
+      "q": 4,
+      "i": 72,
       "id": 21459
     },
     {
@@ -6790,6 +8426,8 @@ var gear = {
       "agi": 4,
       "source": "Quest",
       "phase": "5",
+      "q": 3,
+      "i": 65,
       "id": 22347
     },
     {
@@ -6798,6 +8436,8 @@ var gear = {
       "agi": 9,
       "source": "Other",
       "phase": "1",
+      "q": 3,
+      "i": 56,
       "id": 13040
     },
     {
@@ -6806,6 +8446,8 @@ var gear = {
       "ap": 24,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 89,
       "id": 22812
     },
     {
@@ -6814,6 +8456,8 @@ var gear = {
       "ap": 14,
       "source": "Other",
       "phase": "1",
+      "q": 3,
+      "i": 48,
       "id": 13039
     },
     {
@@ -6822,6 +8466,8 @@ var gear = {
       "sta": 6,
       "source": "MC",
       "phase": "1",
+      "q": 4,
+      "i": 70,
       "id": 17072
     },
     {
@@ -6830,6 +8476,8 @@ var gear = {
       "ap": 20,
       "source": "Other",
       "phase": "4",
+      "q": 3,
+      "i": 65,
       "id": 20722
     },
     {
@@ -6838,6 +8486,8 @@ var gear = {
       "agi": 14,
       "source": "BWL",
       "phase": "3",
+      "q": 4,
+      "i": 75,
       "id": 19368
     },
     {
@@ -6845,6 +8495,8 @@ var gear = {
       "ap": 30,
       "source": "ZG",
       "phase": "4",
+      "q": 4,
+      "i": 68,
       "id": 19853
     },
     {
@@ -6853,6 +8505,8 @@ var gear = {
       "agi": 8,
       "source": "Other",
       "phase": "1",
+      "q": 3,
+      "i": 50,
       "id": 13139
     },
     {
@@ -6861,6 +8515,8 @@ var gear = {
       "ap": 18,
       "source": "AQ40",
       "phase": "5",
+      "q": 4,
+      "i": 81,
       "id": 23557
     },
     {
@@ -6869,6 +8525,8 @@ var gear = {
       "agi": 4,
       "source": "AQ20",
       "phase": "5",
+      "q": 3,
+      "i": 68,
       "id": 21800
     },
     {
@@ -6877,6 +8535,8 @@ var gear = {
       "ap": 28,
       "source": "Naxx",
       "phase": "6",
+      "q": 4,
+      "i": 83,
       "id": 22810
     },
     {
@@ -6885,6 +8545,8 @@ var gear = {
       "ap": 8,
       "source": "Dungeon",
       "phase": "1",
+      "q": 3,
+      "i": 61,
       "id": 13380
     }
   ],
@@ -6900,6 +8562,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 60,
       "id": 18498,
     },
     {
@@ -6915,6 +8579,8 @@ var gear = {
       "type": "Fist",
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 57,
       "id": 61541,
       "Mainhand": true
     },
@@ -6931,6 +8597,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 64,
       "id": 61717,
       "Mainhand": true
     },
@@ -6943,6 +8611,8 @@ var gear = {
       "type": "Dagger",
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61278
     },
     {
@@ -6954,6 +8624,8 @@ var gear = {
       "type": "Mace",
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61295
     },
     {
@@ -6966,6 +8638,8 @@ var gear = {
       "type": "Axe",
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61452
     },
     {
@@ -6979,6 +8653,8 @@ var gear = {
       "type": "Sword",
       "source": "LowerKara",
       "phase": 7,
+      "q": 4,
+      "i": 72,
       "id": 61453
     },
     {
@@ -6993,6 +8669,8 @@ var gear = {
       "type": "Axe",
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 78,
       "id": 61448
     },
     {
@@ -7010,6 +8688,8 @@ var gear = {
       "type": "Sword",
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 81,
       "id": 61523
     },
     {
@@ -7023,6 +8703,8 @@ var gear = {
       "ap": 24,
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 74,
       "id": 61740,
       "Mainhand": true
     },
@@ -7037,6 +8719,8 @@ var gear = {
       "type": "Fist",
       "source": "AQ40",
       "phase": 7,
+      "q": 4,
+      "i": 84,
       "id": 60003,
       "Mainhand": true
     },
@@ -7049,6 +8733,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60806
     },
     {
@@ -7060,6 +8746,8 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 56,
       "id": 60543
     },
     {
@@ -7070,6 +8758,8 @@ var gear = {
       "type": "Fist",
       "source": "SCitadel",
       "phase": 7,
+      "q": 4,
+      "i": 88,
       "id": 84030,
       "Mainhand": true,
       "proc": {
@@ -7086,6 +8776,8 @@ var gear = {
       "type": "Sword",
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 65008,
       "proc": {
         "ppm": 7,
@@ -7102,6 +8794,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 83564,
       "proc": {
         "ppm": 0.6,
@@ -7116,6 +8810,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 60422,
       "proc": {
         "ppm": 1,
@@ -7135,6 +8831,8 @@ var gear = {
       "type": "Fist",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60410
     },
     {
@@ -7149,6 +8847,8 @@ var gear = {
       "sta": 8,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 60416
     },
     {
@@ -7161,6 +8861,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83446
     },
     {
@@ -7173,6 +8875,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61063
     },
     {
@@ -7185,6 +8889,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61046
     },
     {
@@ -7195,6 +8901,8 @@ var gear = {
       "type": "Fist",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61042,
       "proc": {
         "ppm": 1,
@@ -7214,6 +8922,8 @@ var gear = {
       "agi": 14,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 83445
     },
     {
@@ -7227,6 +8937,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61001
     },
     {
@@ -7240,6 +8952,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 63,
       "id": 83269
     },
     {
@@ -7253,6 +8967,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80528
     },
     {
@@ -7266,6 +8982,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65, 
       "id": 80536
     },
     {
@@ -7279,6 +8997,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80533
     },
     {
@@ -7292,6 +9012,8 @@ var gear = {
       "type": "Mace",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80530
     },
     {
@@ -7305,6 +9027,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "id": 80535
     },
     {
@@ -7317,6 +9041,8 @@ var gear = {
       "type": "Axe",
       "source": "MC",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 81260
     },
     {
@@ -7330,6 +9056,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 81288,
       "proc": {
         "ppm": 30,
@@ -7350,6 +9078,8 @@ var gear = {
       "type": "Fist",
       "source": "ZG",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 81003
     },
     {
@@ -7362,6 +9092,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ20",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 81004
     },
     {
@@ -7372,6 +9104,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 13246,
       "proc": {
         "ppm": 1,
@@ -7386,6 +9120,8 @@ var gear = {
       "type": "Axe",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "id": 19852,
       "proc": {
         "ppm": 1,
@@ -7402,6 +9138,8 @@ var gear = {
       "type": "Axe",
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12798,
       "proc": {
         "ppm": 2,
@@ -7416,6 +9154,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 58,
       "id": 13286,
       "proc": {
         "ppm": 5,
@@ -7431,6 +9171,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 57,
       "id": 811,
       "proc": {
         "ppm": 0.8,
@@ -7450,6 +9192,8 @@ var gear = {
       "type": "Axe",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 79,
       "id": 21242
     },
     {
@@ -7462,6 +9206,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 18737
     },
     {
@@ -7474,6 +9220,8 @@ var gear = {
       "type": "Axe",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 81,
       "id": 19363
     },
     {
@@ -7487,6 +9235,8 @@ var gear = {
       "type": "Axe",
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 17016
     },
     {
@@ -7497,6 +9247,8 @@ var gear = {
       "type": "Axe",
       "source": "Onyxia",
       "phase": 1,
+      "q": 4,
+      "i": 75,
       "id": 17068,
       "proc": {
         "ppm": 0.8,
@@ -7517,6 +9269,8 @@ var gear = {
       "type": "Axe",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19362
     },
     {
@@ -7527,6 +9281,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 47,
       "id": 871,
       "proc": {
         "ppm": 1.8,
@@ -7542,6 +9298,8 @@ var gear = {
       "type": "Axe",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 65,
       "id": 19103
     },
     {
@@ -7554,6 +9312,8 @@ var gear = {
       "type": "Axe",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22816
     },
     {
@@ -7565,19 +9325,22 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 13952
     },
     {
       "name": "R14 Axe",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Axe",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18827
     },
     {
@@ -7590,6 +9353,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 13015
     },
     {
@@ -7604,6 +9369,8 @@ var gear = {
       "type": "Axe",
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 74,
       "id": 21392
     },
     {
@@ -7615,6 +9382,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 4,
+      "q": 3,
+      "i": 62,
       "id": 20675
     },
     {
@@ -7627,6 +9396,8 @@ var gear = {
       "type": "Axe",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19921,
       "rand": 193
     },
@@ -7641,6 +9412,8 @@ var gear = {
       "type": "Axe",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 199211,
       "rand": 690
     },
@@ -7652,6 +9425,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "id": 14555,
       "proc": {
         "ppm": 1,
@@ -7667,6 +9442,8 @@ var gear = {
       "type": "Dagger",
       "source": "Crafting",
       "phase": 3,
+      "q": 4,
+      "i": 66,
       "id": 19166
     },
     {
@@ -7681,6 +9458,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 79,
       "id": 21244
     },
     {
@@ -7692,6 +9471,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 13368
     },
     {
@@ -7705,6 +9486,8 @@ var gear = {
       "type": "Dagger",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 18805
     },
     {
@@ -7715,6 +9498,8 @@ var gear = {
       "type": "Dagger",
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 13984,
       "proc": {
         "ppm": 1,
@@ -7733,6 +9518,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 84,
       "id": 21126
     },
     {
@@ -7746,6 +9533,8 @@ var gear = {
       "type": "Dagger",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 74,
       "id": 19346
     },
     {
@@ -7757,6 +9546,8 @@ var gear = {
       "type": "Dagger",
       "source": "Ysondre",
       "phase": 4,
+      "q": 4,
+      "i": 76,
       "id": 20578,
       "proc": {
         "ppm": 1,
@@ -7774,6 +9565,8 @@ var gear = {
       "type": "Dagger",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "id": 19859
     },
     {
@@ -7784,6 +9577,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "id": 12590,
       "proc": {
         "ppm": 1,
@@ -7799,6 +9594,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12709
     },
     {
@@ -7810,6 +9607,8 @@ var gear = {
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 65,
       "id": 19099,
       "proc": {
         "ppm": 1,
@@ -7825,6 +9624,8 @@ var gear = {
       "type": "Dagger",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 69,
       "id": 17071,
       "proc": {
         "ppm": 1,
@@ -7846,6 +9647,8 @@ var gear = {
       "type": "Dagger",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 78,
       "id": 23044
     },
     {
@@ -7858,19 +9661,22 @@ var gear = {
       "type": "Dagger",
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12783
     },
     {
       "name": "R14 Dagger",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 95,
-      "maxdmg": 143,
+      "mindmg": 107,
+      "maxdmg": 155,
       "speed": 2,
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18838
     },
     {
@@ -7884,6 +9690,8 @@ var gear = {
       "type": "Dagger",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 89,
       "id": 22802
     },
     {
@@ -7898,6 +9706,8 @@ var gear = {
       "type": "Dagger",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22804
     },
     {
@@ -7908,6 +9718,8 @@ var gear = {
       "type": "Dagger",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 77,
       "id": 18816,
       "proc": {
         "ppm": 1,
@@ -7925,6 +9737,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 66,
       "id": 21498
     },
     {
@@ -7937,6 +9751,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 5267
     },
     {
@@ -7949,6 +9765,8 @@ var gear = {
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "id": 19542
     },
     {
@@ -7962,6 +9780,8 @@ var gear = {
       "type": "Dagger",
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 76,
       "id": 21522
     },
     {
@@ -7972,6 +9792,8 @@ var gear = {
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 65,
       "id": 19324,
       "proc": {
         "ppm": 1,
@@ -7988,6 +9810,8 @@ var gear = {
       "type": "Dagger",
       "source": "Quest",
       "phase": 5,
+      "q": 3,
+      "i": 65,
       "id": 22377
     },
     {
@@ -8002,6 +9826,8 @@ var gear = {
       "type": "Fist",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "id": 19365
     },
     {
@@ -8014,6 +9840,8 @@ var gear = {
       "type": "Fist",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "id": 18203,
       "proc": {
         "ppm": 1,
@@ -8024,14 +9852,15 @@ var gear = {
       "name": "R14 Claw (MH)",
       "Mainhand": true,
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Fist",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18844
     },
     {
@@ -8044,6 +9873,8 @@ var gear = {
       "type": "Fist",
       "source": "Other",
       "phase": 5,
+      "q": 3,
+      "i": 61,
       "id": 22317
     },
     {
@@ -8057,6 +9888,8 @@ var gear = {
       "type": "Fist",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 65,
       "id": 19896
     },
     {
@@ -8070,6 +9903,8 @@ var gear = {
       "type": "Fist",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 22404
     },
     {
@@ -8083,6 +9918,8 @@ var gear = {
       "type": "Mace",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 71,
       "id": 21837
     },
     {
@@ -8097,6 +9934,8 @@ var gear = {
       "type": "Mace",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 79,
       "id": 21268
     },
     {
@@ -8108,6 +9947,8 @@ var gear = {
       "type": "Mace",
       "source": "Crafting",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19170,
       "proc": {
         "ppm": 0.8,
@@ -8125,6 +9966,8 @@ var gear = {
       "type": "Mace",
       "source": "Kazzak",
       "phase": 2,
+      "q": 4,
+      "i": 66,
       "id": 17112,
       "proc": {
         "ppm": 0.8,
@@ -8141,6 +9984,8 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 1,
+      "q": 4,
+      "i": 60,
       "proc": {
         "ppm": 1,
         "extra": 2
@@ -8158,19 +10003,22 @@ var gear = {
       "type": "Mace",
       "source": "Green Dragons",
       "phase": 4,
+      "q": 4,
+      "i": 75,
       "id": 20580
     },
     {
       "name": "R14 Hammer",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Mace",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18865
     },
     {
@@ -8184,6 +10032,8 @@ var gear = {
       "type": "Mace",
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 13006
     },
     {
@@ -8194,6 +10044,8 @@ var gear = {
       "type": "Mace",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 78,
       "id": 23221,
       "proc": {
         "ppm": 4,
@@ -8212,6 +10064,8 @@ var gear = {
       "type": "Mace",
       "source": "Crafting",
       "phase": 5,
+      "q": 4,
+      "i": 63,
       "id": 22384
     },
     {
@@ -8225,6 +10079,8 @@ var gear = {
       "type": "Mace",
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 72,
       "id": 21715
     },
     {
@@ -8236,6 +10092,8 @@ var gear = {
       "type": "Mace",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19908,
       "proc": {
         "ppm": 1,
@@ -8256,6 +10114,8 @@ var gear = {
       "type": "Mace",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 73,
       "id": 19335
     },
     {
@@ -8267,6 +10127,8 @@ var gear = {
       "type": "Mace",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 65,
       "id": 19104
     },
     {
@@ -8281,6 +10143,8 @@ var gear = {
       "type": "Mace",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22808
     },
     {
@@ -8294,6 +10158,8 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 62,
       "id": 18376
     },
     {
@@ -8307,6 +10173,8 @@ var gear = {
       "type": "Sword",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21650
     },
     {
@@ -8319,6 +10187,8 @@ var gear = {
       "type": "Sword",
       "source": "Crafting",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19168
     },
     {
@@ -8332,6 +10202,8 @@ var gear = {
       "type": "Sword",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 18832
     },
     {
@@ -8343,6 +10215,8 @@ var gear = {
       "type": "Sword",
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 61,
       "id": 18484
     },
     {
@@ -8356,6 +10230,8 @@ var gear = {
       "type": "Sword",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 77,
       "id": 19352
     },
     {
@@ -8368,6 +10244,8 @@ var gear = {
       "type": "Sword",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "id": 19110
     },
     {
@@ -8381,6 +10259,8 @@ var gear = {
       "type": "Sword",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12940
     },
     {
@@ -8393,6 +10273,8 @@ var gear = {
       "type": "Sword",
       "source": "Crafting",
       "phase": 1,
+      "q": 4,
+      "i": 65,
       "id": 17015
     },
     {
@@ -8405,6 +10287,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 89,
       "id": 23054
     },
     {
@@ -8419,6 +10303,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23014
     },
     {
@@ -8433,6 +10319,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 56,
       "id": 2244
     },
     {
@@ -8445,6 +10333,8 @@ var gear = {
       "type": "Sword",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "id": 19351
     },
     {
@@ -8457,6 +10347,8 @@ var gear = {
       "speed": 1.8,
       "type": "Sword",
       "source": "Quest",
+      "q": 3,
+      "i": 61,
       "phase": 1
     },
     {
@@ -8470,32 +10362,36 @@ var gear = {
       "type": "Sword",
       "source": "Taerar",
       "phase": 4,
+      "q": 4,
+      "i": 76,
       "id": 20577
     },
     {
       "name": "R14 Longsword",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Sword",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 12584
     },
     {
       "name": "R14 Swift Blade",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 85,
-      "maxdmg": 129,
+      "mindmg": 96,
+      "maxdmg": 140,
       "speed": 1.8,
       "type": "Sword",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 23456
     },
     {
@@ -8509,6 +10405,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 76,
       "id": 21520
     },
     {
@@ -8521,6 +10419,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 5,
+      "q": 3,
+      "i": 65,
       "id": 22378
     },
     {
@@ -8532,6 +10432,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 6622,
       "proc": {
         "ppm": 1.8,
@@ -8547,6 +10449,8 @@ var gear = {
       "type": "Sword",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "id": 19901,
       "proc": {
         "ppm": 1,
@@ -8564,6 +10468,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 65,
       "id": 1728,
       "proc": {
         "ppm": 1,
@@ -8582,6 +10488,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 89,
       "id": 23577
     },
     {
@@ -8592,6 +10500,8 @@ var gear = {
       "speed": 2.7,
       "type": "Sword",
       "source": "Quest",
+      "q": 3,
+      "i": 53,
       "phase": 1,
       "proc": {
         "ppm": 1,
@@ -8612,6 +10522,8 @@ var gear = {
         "nature": 9
       },
       "phase": 3,
+      "q": 5,
+      "i": 80,
       "id": 19019,
       "proc": {
         "ppm": 7.2,
@@ -8631,6 +10543,8 @@ var gear = {
       "type": "Sword",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "id": 19865
     },
     {
@@ -8645,6 +10559,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22806
     },
     {
@@ -8655,6 +10571,8 @@ var gear = {
       "type": "Sword",
       "source": "Onyxia",
       "phase": 1,
+      "q": 3,
+      "i": 74,
       "id": 17075,
       "proc": {
         "ppm": 1,
@@ -8671,6 +10589,8 @@ var gear = {
       "type": "Sword",
       "source": "PVP",
       "phase": 3,
+      "q": 3,
+      "i": 63,
       "id": 19554
     },
     {
@@ -8681,12 +10601,43 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 14487,
       "proc": {
         "ppm": 1.7,
         "magic": true,
         "dmg": 99
       }
+    },
+	{
+      "name": "Bloodmoon, Sickle of the Murderous Flight",
+      "hit": 2,
+      "ap": 20,
+      "agi": 12,
+      "mindmg": 96,
+      "maxdmg": 162,
+      "speed": 1.8,
+      "type": "Axe",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55080
+    },
+    {
+      "name": "Riftcarver's Implement",
+      "str": 12,
+      "crit": 1,
+      "hit": 1,
+      "agi": 14,
+      "mindmg": 126,
+      "maxdmg": 179,
+      "speed": 2.0,
+      "type": "Dagger",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55115
     },
     {
       "name": "Hammer of the Vesper",
@@ -8696,9 +10647,37 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 18683,
       "str": 7,
       "sta": 12
+    },
+    {
+      "name": "Thunderfall, Stormhammer of the Chief Thane",
+      "crit": 2,
+      "arp": 35,
+      "sta": -13,
+      "mindmg": 167,
+      "maxdmg": 286,
+      "speed": 2.8,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55347
+    },
+    {
+      "name": "Forgotten Raven's Mallet",
+      "sta": 15,
+      "mindmg": 135,
+      "maxdmg": 252,
+      "speed": 2.7,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55276
     }
   ],
   "offhand": [
@@ -8713,7 +10692,64 @@ var gear = {
       "type": "Fist",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 76,
       "id": 21673
+    },
+	  {
+      "name": "Bloodmoon, Sickle of the Murderous Flight",
+      "hit": 2,
+      "ap": 20,
+      "agi": 12,
+      "mindmg": 96,
+      "maxdmg": 162,
+      "speed": 1.8,
+      "type": "Axe",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55080
+    },
+    {
+      "name": "Riftcarver's Implement",
+      "str": 12,
+      "crit": 1,
+      "hit": 1,
+      "agi": 14,
+      "mindmg": 126,
+      "maxdmg": 179,
+      "speed": 2.0,
+      "type": "Dagger",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55115
+    },
+    {
+      "name": "Thunderfall, Stormhammer of the Chief Thane",
+      "crit": 2,
+      "arp": 35,
+      "sta": -13,
+      "mindmg": 167,
+      "maxdmg": 286,
+      "speed": 2.8,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55347
+    },
+    {
+      "name": "Forgotten Raven's Mallet",
+      "sta": 15,
+      "mindmg": 135,
+      "maxdmg": 252,
+      "speed": 2.7,
+      "type": "Mace",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55276
     },
     {
       "name": "Hedgecutter",
@@ -8726,6 +10762,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 60,
       "id": 18498,
     },
     {
@@ -8736,6 +10774,8 @@ var gear = {
       "type": "Axe",
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12798,
       "proc": {
         "ppm": 2,
@@ -8751,6 +10791,8 @@ var gear = {
       "type": "Dagger",
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61278
     },
     {
@@ -8762,6 +10804,8 @@ var gear = {
       "type": "Mace",
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61295
     },
     {
@@ -8775,6 +10819,8 @@ var gear = {
       "type": "Sword",
       "source": "LowerKara",
       "phase": 7,
+      "q": 4,
+      "i": 72,
       "id": 61453
     },
     {
@@ -8787,6 +10833,8 @@ var gear = {
       "type": "Axe",
       "source": "LowerKara",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61452
     },
     {
@@ -8801,6 +10849,8 @@ var gear = {
       "type": "Axe",
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 78,
       "id": 61448
     },
     {
@@ -8818,6 +10868,8 @@ var gear = {
       "type": "Sword",
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 81,
       "id": 61523
     },
     {
@@ -8829,6 +10881,8 @@ var gear = {
       "type": "Fist",
       "source": "Quest",
       "phase": 7,
+      "q": 4,
+      "i": 64,
       "id": 61755
     },
     {
@@ -8840,6 +10894,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 60806
     },
     {
@@ -8851,6 +10907,8 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 56,
       "id": 60543
     },
     {
@@ -8861,6 +10919,8 @@ var gear = {
       "type": "Sword",
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "id": 65008,
       "proc": {
         "ppm": 7,
@@ -8877,6 +10937,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 83564,
       "proc": {
         "ppm": 0.6,
@@ -8891,6 +10953,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 60422,
       "proc": {
         "ppm": 1,
@@ -8909,6 +10973,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61063
     },
     {
@@ -8921,6 +10987,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61046
     },
     {
@@ -8931,6 +10999,8 @@ var gear = {
       "type": "Fist",
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "id": 61042,
       "proc": {
         "ppm": 1,
@@ -8950,6 +11020,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 68,
       "id": 61001
     },
     {
@@ -8963,6 +11035,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65, 
       "id": 80528
     },
     {
@@ -8976,6 +11050,8 @@ var gear = {
       "type": "Sword",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65, 
       "id": 80536
     },
     {
@@ -8989,6 +11065,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65, 
       "id": 80533
     },
     {
@@ -9002,6 +11080,8 @@ var gear = {
       "type": "Mace",
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65, 
       "id": 80530
     },
     {
@@ -9014,6 +11094,8 @@ var gear = {
       "type": "Axe",
       "source": "MC",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "id": 81260
     },
     {
@@ -9027,6 +11109,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "id": 81288,
       "proc": {
         "ppm": 30,
@@ -9043,6 +11127,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ20",
       "phase": 7,
+      "q": 4,
+      "i": 68,
       "id": 13246
     },
     {
@@ -9053,6 +11139,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 13246,
       "proc": {
         "ppm": 1,
@@ -9067,6 +11155,8 @@ var gear = {
       "type": "Axe",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "id": 19852,
       "proc": {
         "ppm": 1,
@@ -9086,6 +11176,8 @@ var gear = {
       "type": "Axe",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 79,
       "id": 21242
     },
     {
@@ -9098,6 +11190,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 18737
     },
     {
@@ -9110,6 +11204,8 @@ var gear = {
       "type": "Axe",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 81,
       "id": 19363
     },
     {
@@ -9120,6 +11216,8 @@ var gear = {
       "type": "Axe",
       "source": "Onyxia",
       "phase": 1,
+      "q": 4,
+      "i": 75,
       "id": 17068,
       "proc": {
         "ppm": 0.8,
@@ -9140,6 +11238,8 @@ var gear = {
       "type": "Axe",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19362
     },
     {
@@ -9150,6 +11250,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 47,
       "id": 871,
       "proc": {
         "ppm": 1.8,
@@ -9165,6 +11267,8 @@ var gear = {
       "type": "Axe",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 65,
       "id": 19103
     },
     {
@@ -9177,19 +11281,22 @@ var gear = {
       "type": "Axe",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22816
     },
     {
       "name": "R14 Axe",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Axe",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18827
     },
     {
@@ -9202,6 +11309,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 13015
     },
     {
@@ -9216,6 +11325,8 @@ var gear = {
       "type": "Axe",
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 74,
       "id": 21392
     },
     {
@@ -9227,6 +11338,8 @@ var gear = {
       "type": "Axe",
       "source": "Other",
       "phase": 4,
+      "q": 3,
+      "i": 62,
       "id": 20675
     },
     {
@@ -9239,6 +11352,8 @@ var gear = {
       "type": "Axe",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19921,
       "rand": 193
     },
@@ -9253,6 +11368,8 @@ var gear = {
       "type": "Axe",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 199211,
       "rand": 690
     },
@@ -9267,6 +11384,8 @@ var gear = {
         "fire": 10
       },
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "id": 14555,
       "proc": {
         "ppm": 1,
@@ -9282,6 +11401,8 @@ var gear = {
       "type": "Dagger",
       "source": "Crafting",
       "phase": 3,
+      "q": 4,
+      "i": 66,
       "id": 19166
     },
     {
@@ -9296,6 +11417,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 79,
       "id": 21244
     },
     {
@@ -9307,6 +11430,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 13368
     },
     {
@@ -9320,6 +11445,8 @@ var gear = {
       "type": "Dagger",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 18805
     },
     {
@@ -9330,6 +11457,8 @@ var gear = {
       "type": "Dagger",
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 13984,
       "proc": {
         "ppm": 1,
@@ -9348,6 +11477,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 84,
       "id": 21126
     },
     {
@@ -9360,6 +11491,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 62,
       "id": 18392
     },
     {
@@ -9373,6 +11506,8 @@ var gear = {
       "type": "Dagger",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 74,
       "id": 19346
     },
     {
@@ -9384,6 +11519,8 @@ var gear = {
       "type": "Dagger",
       "source": "Ysondre",
       "phase": 4,
+      "q": 4,
+      "i": 76,
       "id": 20578,
       "proc": {
         "ppm": 1,
@@ -9401,6 +11538,8 @@ var gear = {
       "type": "Dagger",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "id": 19859
     },
     {
@@ -9411,6 +11550,8 @@ var gear = {
       "type": "Dagger",
       "source": "Dungeon",
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "id": 12590,
       "proc": {
         "ppm": 1,
@@ -9426,6 +11567,8 @@ var gear = {
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 65,
       "id": 19099,
       "proc": {
         "ppm": 1,
@@ -9441,6 +11584,8 @@ var gear = {
       "type": "Dagger",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 69,
       "id": 17071,
       "proc": {
         "ppm": 1,
@@ -9462,6 +11607,8 @@ var gear = {
       "type": "Dagger",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 78,
       "id": 23044
     },
     {
@@ -9474,19 +11621,22 @@ var gear = {
       "type": "Dagger",
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12783
     },
     {
       "name": "R14 Dagger",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 95,
-      "maxdmg": 143,
+      "mindmg": 107,
+      "maxdmg": 155,
       "speed": 2,
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18838
     },
     {
@@ -9500,6 +11650,8 @@ var gear = {
       "type": "Dagger",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 89,
       "id": 22802
     },
     {
@@ -9514,6 +11666,8 @@ var gear = {
       "type": "Dagger",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22804
     },
     {
@@ -9524,6 +11678,8 @@ var gear = {
       "type": "Dagger",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 77,
       "id": 18816,
       "proc": {
         "ppm": 1,
@@ -9541,6 +11697,8 @@ var gear = {
       "type": "Dagger",
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 66,
       "id": 21498
     },
     {
@@ -9553,6 +11711,8 @@ var gear = {
       "type": "Dagger",
       "source": "Other",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 5267
     },
     {
@@ -9565,6 +11725,8 @@ var gear = {
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "id": 19542
     },
     {
@@ -9578,6 +11740,8 @@ var gear = {
       "type": "Dagger",
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 76,
       "id": 21522
     },
     {
@@ -9588,6 +11752,8 @@ var gear = {
       "type": "Dagger",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
+      "i": 65,
       "id": 19324,
       "proc": {
         "ppm": 1,
@@ -9604,6 +11770,8 @@ var gear = {
       "type": "Dagger",
       "source": "Quest",
       "phase": 5,
+      "q": 3,
+      "i": 65,
       "id": 22377
     },
     {
@@ -9615,6 +11783,8 @@ var gear = {
       "type": "Fist",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 65,
       "id": 19910,
       "proc": {
         "ppm": 4,
@@ -9636,7 +11806,24 @@ var gear = {
       "type": "Fist",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 88,
       "id": 23242
+    },
+	  {
+      "name": "Claw of the Mageweaver",
+      "offhand": true,
+      "crit": 1,
+      "sta": 11,
+      "ap": 30,
+      "mindmg": 70,
+      "maxdmg": 140,
+      "speed": 1.6,
+      "type": "Fist",
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "id": 55133
     },
     {
       "name": "Eskhandar's Left Claw",
@@ -9648,20 +11835,23 @@ var gear = {
       "type": "Fist",
       "source": "Azuregos",
       "phase": 2,
+      "q": 4,
+      "i": 66,
       "id": 18202
     },
     {
       "name": "R14 Claw (OH)",
       "offhand": true,
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Fist",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18848
     },
     {
@@ -9674,6 +11864,8 @@ var gear = {
       "type": "Fist",
       "source": "Other",
       "phase": 5,
+      "q": 3,
+      "i": 61,
       "id": 22317
     },
     {
@@ -9687,6 +11879,8 @@ var gear = {
       "type": "Mace",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 71,
       "id": 21837
     },
     {
@@ -9701,6 +11895,8 @@ var gear = {
       "type": "Mace",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 79,
       "id": 21268
     },
     {
@@ -9712,6 +11908,8 @@ var gear = {
       "type": "Mace",
       "source": "Crafting",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19170,
       "proc": {
         "ppm": 0.8,
@@ -9723,14 +11921,15 @@ var gear = {
     {
       "name": "R14 Hammer",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Mace",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 18865
     },
     {
@@ -9741,6 +11940,8 @@ var gear = {
       "type": "Mace",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 78,
       "id": 23221,
       "proc": {
         "ppm": 4,
@@ -9759,6 +11960,8 @@ var gear = {
       "type": "Mace",
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 72,
       "id": 21715
     },
     {
@@ -9770,6 +11973,8 @@ var gear = {
       "type": "Mace",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 65,
       "id": 19908,
       "proc": {
         "ppm": 1,
@@ -9787,6 +11992,8 @@ var gear = {
       "type": "Mace",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 65,
       "id": 19104
     },
     {
@@ -9801,6 +12008,8 @@ var gear = {
       "type": "Mace",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22808
     },
     {
@@ -9814,6 +12023,8 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 62,
       "id": 18376
     },
     {
@@ -9827,6 +12038,8 @@ var gear = {
       "type": "Sword",
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "id": 21650
     },
     {
@@ -9839,6 +12052,8 @@ var gear = {
       "type": "Sword",
       "source": "Crafting",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "id": 19168
     },
     {
@@ -9852,6 +12067,8 @@ var gear = {
       "type": "Sword",
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 70,
       "id": 18832
     },
     {
@@ -9863,6 +12080,8 @@ var gear = {
       "type": "Sword",
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 61,
       "id": 18484
     },
     {
@@ -9876,6 +12095,8 @@ var gear = {
       "type": "Sword",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 77,
       "id": 19352
     },
     {
@@ -9888,6 +12109,8 @@ var gear = {
       "type": "Sword",
       "source": "PVP",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "id": 19110
     },
     {
@@ -9901,6 +12124,8 @@ var gear = {
       "type": "Sword",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "id": 12939
     },
     {
@@ -9913,6 +12138,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 89,
       "id": 23054
     },
     {
@@ -9926,6 +12153,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 23014
     },
     {
@@ -9938,6 +12167,8 @@ var gear = {
       "type": "Sword",
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "id": 19351
     },
     {
@@ -9950,6 +12181,8 @@ var gear = {
       "speed": 1.8,
       "type": "Sword",
       "source": "Quest",
+      "q": 3,
+      "i": 61,
       "phase": 1
     },
     {
@@ -9963,32 +12196,36 @@ var gear = {
       "type": "Sword",
       "source": "Taerar",
       "phase": 4,
+      "q": 4,
+      "i": 76,
       "id": 20577
     },
     {
       "name": "R14 Longsword",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 138,
-      "maxdmg": 207,
+      "mindmg": 156,
+      "maxdmg": 224,
       "speed": 2.9,
       "type": "Sword",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 12584
     },
     {
       "name": "R14 Swift Blade",
       "crit": 1,
-      "sta": 7,
+      "sta": 12,
       "ap": 28,
-      "mindmg": 85,
-      "maxdmg": 129,
+      "mindmg": 96,
+      "maxdmg": 140,
       "speed": 1.8,
       "type": "Sword",
       "source": "PVP",
       "phase": 2,
+      "q": 4,
       "id": 23456
     },
     {
@@ -10002,6 +12239,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 5,
+      "q": 4,
+      "i": 76,
       "id": 21520
     },
     {
@@ -10014,6 +12253,8 @@ var gear = {
       "type": "Sword",
       "source": "Quest",
       "phase": 5,
+      "q": 3,
+      "i": 65,
       "id": 22378
     },
     {
@@ -10025,6 +12266,8 @@ var gear = {
       "type": "Sword",
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 63,
       "id": 19901,
       "proc": {
         "ppm": 1,
@@ -10044,6 +12287,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 89,
       "id": 23577
     },
     {
@@ -10054,6 +12299,8 @@ var gear = {
       "speed": 2.7,
       "type": "Sword",
       "source": "Quest",
+      "q": 3,
+      "i": 53,
       "phase": 1,
       "proc": {
         "ppm": 1,
@@ -10070,6 +12317,8 @@ var gear = {
       "type": "Sword",
       "source": "MC",
       "phase": 3,
+      "q": 5,
+      "i": 80,
       "id": 19019,
       "proc": {
         "ppm": 6,
@@ -10088,6 +12337,8 @@ var gear = {
       "type": "Sword",
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 66,
       "id": 19866
     },
     {
@@ -10102,6 +12353,8 @@ var gear = {
       "type": "Sword",
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "id": 22806
     },
     {
@@ -10112,6 +12365,8 @@ var gear = {
       "type": "Sword",
       "source": "Onyxia",
       "phase": 1,
+      "q": 3,
+      "i": 74,
       "id": 17075,
       "proc": {
         "ppm": 0.6,
@@ -10128,6 +12383,8 @@ var gear = {
       "type": "Sword",
       "source": "PVP",
       "phase": 3,
+      "q": 3,
+      "i": 63,
       "id": 19554
     },
     {
@@ -10138,6 +12395,8 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "id": 14487,
       "proc": {
         "ppm": 1.7,
@@ -10153,6 +12412,8 @@ var gear = {
       "type": "Mace",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 61,
       "id": 18683,
       "str": 7,
       "sta": 12
@@ -10165,6 +12426,8 @@ var gear = {
       "type": "Axe",
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 58,
       "id": 13286,
       "proc": {
         "ppm": 1,
@@ -10178,6 +12441,8 @@ var gear = {
       "mindmg": 170,
       "maxdmg": 258,
       "speed": 3.3,
+      "q": 4,
+      "i": 68,
       "id": 61247,
       "source": "LowerKara",
       "phase": 7,
@@ -10189,6 +12454,36 @@ var gear = {
       }
     },
     {
+      "name": "Checkmate",
+      "agi": 40,
+      "sta": 25,
+      "arp": 40,
+      "haste": 2,
+      "mindmg": 273,
+      "maxdmg": 419,
+      "speed": 3.7,
+      "id": 55100,
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "type": "Mace"
+    },
+    {
+      "name": "Shar'tateth, the Shattered Edge",
+      "agi": 25,
+      "str": 45,
+      "arp": 75,
+      "haste": 2,
+      "mindmg": 307,
+      "maxdmg": 453,
+      "speed": 3.8,
+      "id": 55127,
+      "source": "UpperKara",
+      "phase": 7,
+      "q": 4,
+      "type": "Axe"
+    },
+    {
       "name": "Aspect of Seradane",
       "agi": 28,
       "hit": 1,
@@ -10198,6 +12493,8 @@ var gear = {
       "id": 41076,
       "source": "EmerSanc",
       "phase": 7,
+      "q": 4,
+      "i": 78,
       "type": "Mace"
     },
     {
@@ -10214,6 +12511,8 @@ var gear = {
       "maxdmg": 293,
       "speed": 3.6,
       "id": 61277,
+      "q": 4,
+      "i": 71,
       "source": "LowerKara",
       "phase": 7,
       "type": "Mace"
@@ -10229,6 +12528,8 @@ var gear = {
       "mindmg": 106,
       "maxdmg": 220,
       "speed": 3.1,
+      "q": 3,
+      "i": 60,
       "id": 61087,
       "source": "Quest",
       "phase": 7,
@@ -10246,6 +12547,8 @@ var gear = {
       "id": 60293,
       "source": "Crafting",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "type": "Sword"
     },
     {
@@ -10261,6 +12564,8 @@ var gear = {
       "id": 81060,
       "source": "Quest",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "type": "Sword"
     },
     {
@@ -10271,6 +12576,8 @@ var gear = {
       "id": 60010,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "type": "Mace",
       "proc": {
         "ppm": 1
@@ -10288,6 +12595,8 @@ var gear = {
       "id": 81369,
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 64,
       "type": "Polearm"
     },
     {
@@ -10300,6 +12609,8 @@ var gear = {
       "id": 60808,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "type": "Sword"
     },
     {
@@ -10313,6 +12624,8 @@ var gear = {
       "id": 60498,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Polearm"
     },
     {
@@ -10325,6 +12638,8 @@ var gear = {
       "id": 83461,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Polearm"
     },
     {
@@ -10337,6 +12652,8 @@ var gear = {
       "id": 83440,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Mace"
     },
     {
@@ -10350,6 +12667,8 @@ var gear = {
       "id": 61030,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "type": "Staff"
     },
     {
@@ -10363,6 +12682,8 @@ var gear = {
       "id": 50429,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "type": "Polearm"
     },
     {
@@ -10373,6 +12694,8 @@ var gear = {
       "id": 61049,
       "source": "Dungeon",
       "phase": 7,
+      "q": 4,
+      "i": 65,
       "type": "Sword",
       "proc": {
         "ppm": 2,
@@ -10391,6 +12714,8 @@ var gear = {
       "id": 61044,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "type": "Mace"
     },
     {
@@ -10403,6 +12728,8 @@ var gear = {
       "id": 61016,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 66,
       "type": "Sword"
     },
     {
@@ -10415,6 +12742,8 @@ var gear = {
       "id": 60413,
       "source": "Dungeon",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Polearm",
       "ppm": 0
     },
@@ -10426,6 +12755,8 @@ var gear = {
       "id": 9372,
       "source": "Dungeon",
       "phase": 1,
+      "q": 4,
+      "i": 55,
       "type": "Sword",
       "proc": {
         "ppm": 1.5,
@@ -10443,6 +12774,8 @@ var gear = {
       "id": 51779,
       "source": "Other",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "type": "Axe"
     },
     {
@@ -10456,6 +12789,8 @@ var gear = {
       "id": 80547,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Axe"
     },
     {
@@ -10469,6 +12804,8 @@ var gear = {
       "id": 80534,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Polearm"
     },
     {
@@ -10482,6 +12819,8 @@ var gear = {
       "id": 80531,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Mace"
     },
     {
@@ -10495,6 +12834,8 @@ var gear = {
       "id": 80537,
       "source": "Other",
       "phase": 7,
+      "q": 3,
+      "i": 65,
       "type": "Sword"
     },
     {
@@ -10505,6 +12846,8 @@ var gear = {
       "id": 12790,
       "source": "Crafting",
       "phase": 7,
+      "q": 3,
+      "i": 63,
       "type": "Sword",
       "proc": {
         "ppm": 1.2,
@@ -10521,6 +12864,8 @@ var gear = {
       "id": 12784,
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "type": "Axe"
     },
     {
@@ -10531,6 +12876,8 @@ var gear = {
       "id": 1263,
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 60,
       "type": "Axe",
       "proc": {
         "ppm": 1,
@@ -10545,6 +12892,8 @@ var gear = {
       "mindmg": 242,
       "maxdmg": 364,
       "speed": 3.5,
+      "q": 4,
+      "i": 84,
       "id": 21134,
       "source": "AQ40",
       "phase": 5,
@@ -10557,6 +12906,8 @@ var gear = {
       "mindmg": 174,
       "maxdmg": 262,
       "speed": 3.2,
+      "q": 4,
+      "i": 71,
       "id": 19354,
       "source": "BWL",
       "phase": 3,
@@ -10572,6 +12923,8 @@ var gear = {
       "id": 19353,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "skill": 8,
       "type": "Axe",
       "proc": {
@@ -10586,6 +12939,8 @@ var gear = {
       "mindmg": 149,
       "maxdmg": 225,
       "speed": 3.7,
+      "q": 3,
+      "i": 59,
       "id": 11931,
       "source": "Dungeon",
       "phase": 1,
@@ -10599,6 +12954,8 @@ var gear = {
       "id": 13983,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "type": "Axe"
     },
     {
@@ -10609,16 +12966,19 @@ var gear = {
       "id": 19962,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "type": "Axe"
     },
     {
       "name": "R14 Battle Axe",
       "crit": 1,
-      "str": 26,
-      "sta": 41,
-      "mindmg": 235,
-      "maxdmg": 353,
+      "str": 28,
+      "sta": 43,
+      "mindmg": 262,
+      "maxdmg": 380,
       "speed": 3.8,
+      "q": 4,
       "id": 18831,
       "source": "PVP",
       "phase": 2,
@@ -10631,6 +12991,8 @@ var gear = {
       "mindmg": 131,
       "maxdmg": 197,
       "speed": 3.1,
+      "q": 3,
+      "i": 62,
       "id": 18759,
       "source": "Dungeon",
       "phase": 1,
@@ -10643,6 +13005,8 @@ var gear = {
       "mindmg": 202,
       "maxdmg": 303,
       "speed": 3.7,
+      "q": 4,
+      "i": 71,
       "id": 21856,
       "source": "AQ40",
       "phase": 5,
@@ -10658,6 +13022,8 @@ var gear = {
       "mindmg": 187,
       "maxdmg": 282,
       "speed": 3.5,
+      "q": 4,
+      "i": 70,
       "id": 19169,
       "source": "Crafting",
       "phase": 1,
@@ -10674,6 +13040,8 @@ var gear = {
       "id": 22815,
       "source": "Naxx",
       "phase": 6,
+      "q": 4,
+      "i": 83,
       "type": "Axe"
     },
     {
@@ -10685,13 +13053,17 @@ var gear = {
       "id": 17104,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 76,
       "type": "Axe"
     },
     {
-      "name": "The Nicker *Classic PPM",
+      "name": "The Blackrock Slicer",
       "mindmg": 159,
       "maxdmg": 239,
       "speed": 4,
+      "q": 3,
+      "i": 58,
       "id": 13285,
       "source": "Dungeon",
       "phase": 1,
@@ -10711,6 +13083,8 @@ var gear = {
       "id": 18538,
       "source": "Dungeon",
       "phase": 2,
+      "q": 4,
+      "i": 63,
       "type": "Axe"
     },
     {
@@ -10723,6 +13097,8 @@ var gear = {
       "id": 19900,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "type": "Axe"
     },
     {
@@ -10735,6 +13111,8 @@ var gear = {
       "id": 18420,
       "source": "Quest",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "type": "Mace"
     },
     {
@@ -10747,6 +13125,8 @@ var gear = {
       "id": 20696,
       "source": "Other",
       "phase": 4,
+      "q": 3,
+      "i": 63,
       "type": "Mace"
     },
     {
@@ -10760,6 +13140,8 @@ var gear = {
       "id": 22348,
       "source": "Quest",
       "phase": 5,
+      "q": 3,
+      "i": 65,
       "type": "Mace"
     },
     {
@@ -10773,6 +13155,8 @@ var gear = {
       "id": 19358,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 70,
       "type": "Mace"
     },
     {
@@ -10784,6 +13168,8 @@ var gear = {
       "id": 17073,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 66,
       "type": "Mace"
     },
     {
@@ -10796,6 +13182,8 @@ var gear = {
       "id": 13167,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 60,
       "type": "Mace"
     },
     {
@@ -10807,16 +13195,19 @@ var gear = {
       "id": 12796,
       "source": "Crafting",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "type": "Mace"
     },
     {
       "name": "R14 Pulverizer",
       "crit": 1,
-      "str": 26,
-      "sta": 41,
-      "mindmg": 235,
-      "maxdmg": 353,
+      "str": 28,
+      "sta": 43,
+      "mindmg": 262,
+      "maxdmg": 380,
       "speed": 3.8,
+      "q": 4,
       "id": 18868,
       "source": "PVP",
       "phase": 2,
@@ -10828,6 +13219,8 @@ var gear = {
       "maxdmg": 248,
       "speed": 3.6,
       "id": 19918,
+      "q": 4,
+      "i": 65,
       "source": "ZG",
       "phase": 4,
       "type": "Mace",
@@ -10845,6 +13238,8 @@ var gear = {
       "maxdmg": 435,
       "speed": 3.8,
       "id": 22798,
+      "q": 4,
+      "i": 89,
       "source": "Naxx",
       "phase": 6,
       "type": "Mace"
@@ -10857,6 +13252,8 @@ var gear = {
       "id": 12969,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "type": "Mace"
     },
     {
@@ -10867,6 +13264,8 @@ var gear = {
       "maxdmg": 372,
       "speed": 3.7,
       "id": 17182,
+      "q": 5,
+      "i": 80,
       "source": "MC",
       "phase": 1,
       "type": "Mace",
@@ -10882,6 +13281,8 @@ var gear = {
       "mindmg": 175,
       "maxdmg": 295,
       "speed": 3.7,
+      "q": 4,
+      "i": 67,
       "id": 17193,
       "source": "MC",
       "phase": 1,
@@ -10901,6 +13302,8 @@ var gear = {
       "mindmg": 175,
       "maxdmg": 292,
       "speed": 3.8,
+      "q": 4,
+      "i": 65,
       "id": 19323,
       "source": "PVP",
       "phase": 2,
@@ -10913,6 +13316,8 @@ var gear = {
       "mindmg": 46,
       "maxdmg": 70,
       "speed": 2,
+      "q": 3,
+      "i": 34,
       "id": 9449,
       "source": "Other",
       "phase": 1,
@@ -10928,6 +13333,8 @@ var gear = {
       "id": 21635,
       "source": "AQ40",
       "phase": 5,
+      "q": 4,
+      "i": 77,
       "type": "Polearm"
     },
     {
@@ -10941,6 +13348,8 @@ var gear = {
       "id": 19167,
       "source": "Crafting",
       "phase": 7,
+      "q": 4,
+      "i": 66,
       "type": "Polearm"
     },
     {
@@ -10949,6 +13358,8 @@ var gear = {
       "maxdmg": 227,
       "speed": 3.5,
       "id": 12583,
+      "q": 3,
+      "i": 63,
       "source": "Dungeon",
       "phase": 1,
       "type": "Polearm",
@@ -10965,6 +13376,8 @@ var gear = {
       "id": 19874,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 66,
       "type": "Polearm",
       "proc": {
         "ppm": 1.2,
@@ -10980,16 +13393,19 @@ var gear = {
       "id": 22314,
       "source": "Dungeon",
       "phase": 2,
+      "q": 3,
+      "i": 61,
       "type": "Polearm"
     },
     {
       "name": "R14 Polearm",
       "crit": 1,
-      "str": 26,
-      "sta": 41,
-      "mindmg": 235,
-      "maxdmg": 353,
+      "str": 28,
+      "sta": 43,
+      "mindmg": 262,
+      "maxdmg": 380,
       "speed": 3.8,
+      "q": 4,
       "id": 18871,
       "source": "PVP",
       "phase": 2,
@@ -11006,6 +13422,8 @@ var gear = {
       "id": 19106,
       "source": "Quest",
       "phase": 2,
+      "q": 3,
+      "i": 63,
       "type": "Polearm"
     },
     {
@@ -11014,6 +13432,8 @@ var gear = {
       "mindmg": 123,
       "maxdmg": 185,
       "speed": 2.9,
+      "q": 3,
+      "i": 62,
       "id": 18502,
       "source": "Dungeon",
       "phase": 2,
@@ -11027,6 +13447,8 @@ var gear = {
       "id": 17223,
       "source": "MC",
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "type": "Polearm",
       "proc": {
         "ppm": 1.5,
@@ -11044,6 +13466,8 @@ var gear = {
       "id": 18725,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 59,
       "type": "Polearm"
     },
     {
@@ -11054,6 +13478,8 @@ var gear = {
       "id": 19963,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "type": "Polearm"
     },
     {
@@ -11063,6 +13489,8 @@ var gear = {
       "mindmg": 152,
       "maxdmg": 228,
       "speed": 3.7,
+      "q": 3,
+      "i": 60,
       "id": 20660,
       "source": "Other",
       "phase": 4,
@@ -11075,6 +13503,8 @@ var gear = {
       "mindmg": 251,
       "maxdmg": 378,
       "speed": 3.7,
+      "q": 4,
+      "i": 83,
       "id": 23039,
       "source": "Naxx",
       "phase": 6,
@@ -11091,6 +13521,8 @@ var gear = {
       "id": 19946,
       "source": "ZG",
       "phase": 4,
+      "q": 3,
+      "i": 68,
       "type": "Polearm"
     },
     {
@@ -11100,6 +13532,8 @@ var gear = {
       "mindmg": 229,
       "maxdmg": 344,
       "speed": 3.5,
+      "q": 4,
+      "i": 81,
       "id": 19364,
       "source": "BWL",
       "phase": 3,
@@ -11112,6 +13546,8 @@ var gear = {
       "mindmg": 138,
       "maxdmg": 207,
       "speed": 3.2,
+      "q": 3,
+      "i": 63,
       "id": 18520,
       "source": "Dungeon",
       "phase": 2,
@@ -11125,6 +13561,8 @@ var gear = {
       "id": 12592,
       "source": "Dungeon",
       "phase": 1,
+      "q": 4,
+      "i": 63,
       "type": "Sword"
     },
     {
@@ -11137,6 +13575,8 @@ var gear = {
       "mindmg": 101,
       "maxdmg": 152,
       "speed": 2.1,
+      "q": 4,
+      "i": 64,
       "id": 2801,
       "source": "Other",
       "phase": 7,
@@ -11150,6 +13590,8 @@ var gear = {
       "maxdmg": 310,
       "speed": 3.4,
       "id": 17076,
+      "q": 4,
+      "i": 77,
       "source": "MC",
       "phase": 1,
       "type": "Sword",
@@ -11166,6 +13608,8 @@ var gear = {
       "mindmg": 242,
       "maxdmg": 366,
       "speed": 3.6,
+      "q": 4,
+      "i": 83,
       "id": 22813,
       "source": "Naxx",
       "phase": 6,
@@ -11180,6 +13624,8 @@ var gear = {
       "maxdmg": 389,
       "speed": 3.6,
       "id": 22691,
+      "q": 4,
+      "i": 86,
       "source": "Naxx",
       "phase": 6,
       "type": "Sword",
@@ -11197,6 +13643,8 @@ var gear = {
       "maxdmg": 229,
       "speed": 3.6,
       "id": 20669,
+      "q": 3,
+      "i": 62,
       "source": "Other",
       "phase": 4,
       "type": "Sword"
@@ -11209,6 +13657,8 @@ var gear = {
       "id": 647,
       "source": "Other",
       "phase": 1,
+      "q": 4,
+      "i": 57,
       "type": "Sword",
       "proc": {
         "ppm": 1,
@@ -11218,29 +13668,32 @@ var gear = {
     {
       "name": "R14 Greatsword",
       "crit": 1,
-      "str": 26,
-      "sta": 41,
-      "mindmg": 235,
-      "maxdmg": 353,
+      "str": 28,
+      "sta": 43,
+      "mindmg": 262,
+      "maxdmg": 380,
       "speed": 3.8,
+      "q": 4,
       "id": 18877,
       "source": "PVP",
       "phase": 2,
       "type": "Sword"
     },
     {
-      "name": "Kalimdor's Revenge *Classic PPM",
+      "name": "Kalimdor's Revenge",
       "str": 24,
       "sta": 18,
       "mindmg": 209,
       "maxdmg": 315,
       "speed": 3.2,
       "id": 21679,
+      "q": 4,
+      "i": 81,
       "source": "AQ40",
       "phase": 5,
       "type": "Sword",
       "proc": {
-        "ppm": 1,
+        "ppm": 1.75,
         "magic": true,
         "dmg": 258
       }
@@ -11256,6 +13709,8 @@ var gear = {
       "id": 21492,
       "source": "AQ20",
       "phase": 5,
+      "q": 4,
+      "i": 66,
       "type": "Sword"
     },
     {
@@ -11268,6 +13723,8 @@ var gear = {
       "source": "MC",
       "phase": 1,
       "skill": 8,
+      "q": 4,
+      "i": 68,
       "type": "Sword"
     },
     {
@@ -11281,6 +13738,8 @@ var gear = {
       "id": 13163,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 62,
       "type": "Sword"
     },
     {
@@ -11289,6 +13748,8 @@ var gear = {
       "maxdmg": 257,
       "speed": 3.6,
       "id": 13505,
+      "q": 4,
+      "i": 63,
       "source": "Dungeon",
       "phase": 1,
       "type": "Sword"
@@ -11301,6 +13762,8 @@ var gear = {
       "maxdmg": 289,
       "speed": 3.4,
       "id": 19334,
+      "q": 4,
+      "i": 73,
       "source": "BWL",
       "phase": 3,
       "type": "Sword",
@@ -11318,6 +13781,8 @@ var gear = {
       "maxdmg": 225,
       "speed": 2.9,
       "id": 18542,
+      "q": 4,
+      "i": 68,
       "source": "Azuregos",
       "phase": 2,
       "type": "Sword"
@@ -11330,6 +13795,8 @@ var gear = {
       "id": 13982,
       "source": "Quest",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "type": "Sword"
     },
     {
@@ -11342,6 +13809,8 @@ var gear = {
       "id": 19854,
       "source": "ZG",
       "phase": 4,
+      "q": 4,
+      "i": 68,
       "type": "Sword"
     },
     {
@@ -11354,6 +13823,8 @@ var gear = {
       "id": 19357,
       "source": "BWL",
       "phase": 3,
+      "q": 4,
+      "i": 75,
       "type": "Mace"
     },
     {
@@ -11364,6 +13835,8 @@ var gear = {
       "id": 13348,
       "source": "Dungeon",
       "phase": 1,
+      "q": 3,
+      "i": 63,
       "type": "Sword",
       "proc": {
         "ppm": 1,
@@ -11378,6 +13851,8 @@ var gear = {
       "mindmg": 119,
       "maxdmg": 179,
       "speed": 3.0,
+      "q": 3,
+      "i": 58,
       "id": 12782,
       "source": "Crafting",
       "phase": 1,

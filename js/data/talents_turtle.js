@@ -615,11 +615,11 @@ var talents = [
                13048
             ],
             d: [
-               'Gives you a 5% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
-               'Gives you a 10% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
-               'Gives you a 15% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
-               'Gives you a 20% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
-               'Gives you a 25% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.'
+               'Gives you a 3% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
+               'Gives you a 6% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
+               'Gives you a 9% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
+               'Gives you a 12% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.',
+               'Gives you a 15% melee damage bonus for 12 sec up to a maximum of 12 swings after being the victim of a critical strike.'
             ],
             x: 2,
             y: 3,
