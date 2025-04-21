@@ -13864,12 +13864,15 @@ var gear = {
         "magic": true,
         "dmg": 90
       },
+    },
     {
       "name": "Gri'lek's Grinder (vs Dragonkin)",
       "ap": 48,
       "mindmg": 75,
       "maxdmg": 140,
       "speed": 2.4,
+      "q": 3,
+      "i": 68,
       "id": 19961,
       "source": "ZG",
       "phase": 4,
