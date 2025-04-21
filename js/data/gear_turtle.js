@@ -12959,7 +12959,8 @@ var gear = {
       "type": "Axe"
     },
     {
-      "name": "Gri'lek's Carver",
+      "name": "Gri'lek's Carver (vs Dragonkin)",
+      "ap": 117,
       "mindmg": 182,
       "maxdmg": 274,
       "speed": 3.9,
@@ -13471,7 +13472,8 @@ var gear = {
       "type": "Polearm"
     },
     {
-      "name": "Pitchfork of Madness",
+      "name": "Pitchfork of Madness (vs Demons)",
+      "ap": 117,
       "mindmg": 163,
       "maxdmg": 246,
       "speed": 3.5,
@@ -13861,7 +13863,20 @@ var gear = {
         "ppm": 3,
         "magic": true,
         "dmg": 90
-      }
+      },
+    },
+    {
+      "name": "Gri'lek's Grinder (vs Dragonkin)",
+      "ap": 48,
+      "mindmg": 75,
+      "maxdmg": 140,
+      "speed": 2.4,
+      "q": 3,
+      "i": 68,
+      "id": 19961,
+      "source": "ZG",
+      "phase": 4,
+      "type": "Mace"
     }
   ],
   "custom": [
