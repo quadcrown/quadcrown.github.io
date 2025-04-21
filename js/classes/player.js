@@ -1135,9 +1135,9 @@ class Player {
             if (result == RESULT.MISS || result == RESULT.DODGE) {
                 this.rage += spell.refund ? spell.cost * 0.8 : 0;
                 oldRage += (spell.cost || 0) + (spell.usedrage || 0); // prevent cbr proccing on refunds
-                    if (this.altmightthreeset) {
-                        this.rage += 15;
-                    }
+            }
+            if (result == RESULT.MISS && this.altmightthreeset) {
+                this.rage += 15;
             }
         }
         else {
