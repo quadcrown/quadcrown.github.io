@@ -31,7 +31,8 @@ class Player {
         this.rageconversion = ((0.0091107836 * this.level * this.level) + 3.225598133 * this.level) + 4.2652911;
         if (this.level == 25) this.rageconversion = 82.25;
         if (this.level == 40) this.rageconversion = 140.5;
-        if (this.mode == 'turtle') this.rageconversion = ((0.0091107836 * this.level * this.level) + 2.5 * this.level)
+        // TODO: Implement Turtle's TBC style Rage Formula
+        // if (this.mode == 'turtle') this.rageconversion = ((0.0091107836 * this.level * this.level) + 2.5 * this.level)
         this.agipercrit = this.getAgiPerCrit(this.level);
         this.timer = 0;
         this.itemtimer = 0;
