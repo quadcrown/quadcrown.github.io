@@ -1355,7 +1355,6 @@ class MightyRagePotion extends Aura {
         let oldRage = this.player.rage;
         this.player.rage = Math.min(this.player.rage + ~~rng(this.value1, this.value2), 100);
         this.timer = step + this.duration * 1000 - prepull;
-        this.player.timer = 1500;
         this.starttimer = step - prepull;
         this.player.updateStrength();
         this.maxdelay = rng(this.player.reactionmin, this.player.reactionmax);
@@ -1364,13 +1363,13 @@ class MightyRagePotion extends Aura {
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return !this.timer && !this.player.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
-            this.usestep = this.starttimer + (this.cooldown *1000);
+            this.firstuse = false;
             this.player.updateStrength();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
@@ -1386,19 +1385,18 @@ class QuicknessPotion extends Aura {
     }
     use() {
         this.timer = step + this.duration * 1000;
-        this.player.timer = 1500;
         this.starttimer = step;
         this.player.updateHaste();
         /* start-log */ if (this.player.logging) this.player.log(`${this.name} applied`); /* end-log */
     }
     canUse() {
-        return  !this.timer && !this.player.timer && step >= this.usestep;
+        return this.firstuse && !this.timer && step >= this.usestep;
     }
     step() {
         if (step >= this.timer) {
             this.uptime += (this.timer - this.starttimer);
             this.timer = 0;
-            this.usestep = this.starttimer + (this.cooldown *1000);
+            this.firstuse = false;
             this.player.updateHaste();
             /* start-log */ if (this.player.logging) this.player.log(`${this.name} removed`); /* end-log */
         }
