@@ -649,6 +649,7 @@ class Simulation {
             if (player.spells.overpower && player.spells.overpower.timer && !player.spells.overpower.step(next) && !player.spelldelay) spellcheck = true;
             if (player.spells.execute && player.spells.execute.timer && !player.spells.execute.step(next) && !player.spelldelay) spellcheck = true;
             if (player.spells.hamstring && player.spells.hamstring.timer && !player.spells.hamstring.step(next) && !player.spelldelay) spellcheck = true;
+            if (player.spells.pummel && player.spells.pummel.timer && !player.spells.pummel.step(next) && !player.spelldelay) spellcheck = true;
             if (player.spells.thunderclap && player.spells.thunderclap.timer && !player.spells.thunderclap.step(next) && !player.spelldelay) spellcheck = true;
             if (player.spells.sunderarmor && player.spells.sunderarmor.timer && !player.spells.sunderarmor.step(next) && !player.spelldelay) spellcheck = true;
             if (player.spells.slam && player.spells.slam.timer && !player.spells.slam.step(next) && !player.spelldelay) spellcheck = true;

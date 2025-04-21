@@ -38,6 +38,29 @@
   <script src="https://wow.zamimg.com/widgets/power.js"></script>
   <script>var mode = "turtle";</script>
 
+<!--
+TO ADD:
+-correct set bonus and upperkara gear ID's when database up
+-T2 DPS 3p - 15% haste for 5 sec after overpower
+-T2 DPS 8p - WW hits 2 extra targets
+-T3 DPS 8p bonus - increase dmg of next melee attack by 30 after crit
+-T3 DPS 8p bonus as "other" buff as its party wide
+-T3.5 5p bonus when details released
+-slam rework
+-sweeping strikes (upstream needs too)
+
+TO FIX:
+-Berserker stance 3% crit aura not showing, maybe working on back end? (upstream needs too)
+-Bonechopper proc'ing more than 30ppm, maybe small .01s cd?
+-Weapon with procs cause sunder/hms/pummel to trigger WF and double procs very often
+
+
+TO EXPLORE:
+-Haste may be overvalued in some cases
+-Hit may be overvalued in some cases
+-Default min reaction time used a lot when 200ms is a long time between chained non gcd spells
+-Rage formula needs refining. Decent for lvl 60's, but doesnt give enough rage as you get lower level
+-->
 </head>
 <body>
   <div class="alerts"></div>
@@ -52,23 +75,18 @@
     </div>
     <div class="tabs">
       <a href="https://guybrushgit.github.io/WarriorSim/classic.html" class="btn js-classic">Classic</a>
-      <a href="turtle.html" class="btn js-turtle active">Turtle WoW CC2 (WIP)</a>
+      <a href="turtle.html" class="btn js-turtle active">Turtle WoW CC2</a>
       <a href="turtleclassic.html" class="btn js-turtleclassic">CC1</a>
     </div>
     
     <div class="bg"></div>
     <div>Implemented:
-<br/>- Wep Skill rework, new Racial Wep Skills, Skill Books (SoD placeholders)
-<br/>- Racials: percep crit, helf agimod, nelf haste, nerfed troll, nerfed + nogcd orc, undead gnome and troll %dam
-<br/>- Buffs: Sunder cost reduced, BR self-enrage, R E N D
-<br/>- Nerfs: Offhand bonus from HS/cleave removed, hamstring cd, lv60 BT base+scaling, bugged new mortal strike values
-<br/>- DPS Talents: new 2h spec, new imp slam, Master of arms, boundless, prec cut reck exe and new exe values, dw offhit bonus, imp Whirlwind, new unbridled
-<br/>- Itemization: All Changelog updates, gemstone enchants, and new alt tier but not the new set bonuses, Anni potency nerf and ppm buff
-<br/>- MH/OH skill stat weighting
-<br/>To Do: (i am accepting PRs)
-<br/>-new rage gen formula
-<br/>-dps t1 t2 t3 set bonuses
-<br/>-pummel as dmg and flurry fisher, and sunder as proc fisher
+<br/>-CC2 Changes to Weapon Skill, racials, talents, spell changes, heroic strike, rage, & itemization
+<br/>-Upper Karazhan gear
+<br/>
+<br/>To Do: (I am accepting PRs)
+<br/>-dps t2 (3p&8p), t3 (8p), & t3.5 (5 set) set bonuses
+<br/>-sunder as proc fisher
 <br/>-slam rework
 <br/>-sweeping strikes (upstream needs this too)
 <br/>-prot talents but who cares?
@@ -341,6 +359,7 @@
           <li data-id="aq20">AQ20</li>
           <li data-id="aq40">AQ40</li>
           <li data-id="naxx">Naxxramas</li>
+          <li data-id="upperkara">Upper Karazhan</li>
           <li data-id="scitadel">Scarlet Citadel</li>
           <li data-id="emersanc">Emerald Sanctum</li>
           <li data-id="lowerkara">Lower Karazhan Halls</li>
