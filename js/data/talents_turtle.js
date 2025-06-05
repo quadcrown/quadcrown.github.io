@@ -253,7 +253,7 @@ var talents = [
             y: 4,
             c: 0,
             iconname: 'garrison_weaponupgrade',
-            aura: function (count) { return { axecrit: count, swordproc: count, macearp: count * 2 } },
+            aura: function (count) { return { axecrit: count, swordproc: count, macearp: count * 1 } },
          },
          {
             i: 133,
